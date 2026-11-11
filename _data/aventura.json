@@ -1,0 +1,3431 @@
+[
+ {
+  "_id": "1c7735f88af6b882",
+  "name": "Eat the Reich · La misión",
+  "img": "systems/mr-eat-the-reich/assets/libro/portada.webp",
+  "caption": "París, 1943. Un escuadrón de vampiros, un objetivo: beberse a Hitler.",
+  "description": "<p>Los seis vampiros de F.A.N.G., las fuerzas de ocupación y los Übermenschen, el mapa de París con sus localizaciones, las reglas resumidas y las tablas de flashback.</p>",
+  "actors": [
+   {
+    "_id": "251c26204b62e3be",
+    "name": "Iryna",
+    "type": "vampiro",
+    "img": "systems/mr-eat-the-reich/assets/libro/iryna.webp",
+    "folder": "c6137cd307e63588",
+    "sort": 0,
+    "system": {
+     "concepto": "Ocultista y muerta viviente de la alta sociedad, oveja negra de un clan vampírico de rancio abolengo. Los nazis arrasaron su casa ancestral y a su familia. Paga buena parte de las facturas de F.A.N.G.",
+     "insignia": "Escuadrón 43",
+     "atributos": {
+      "combate": 2,
+      "persuasion": 4,
+      "reparacion": 2,
+      "investigacion": 2,
+      "disparo": 3,
+      "sigilo": 1,
+      "atemorizar": 3
+     },
+     "sangre": 0,
+     "equipo": [
+      {
+       "nombre": "Rifle de caza exquisito",
+       "max": 5,
+       "usos": 5,
+       "bono": 1,
+       "req": "posición elevada",
+       "dado": true,
+       "nota": "",
+       "corchete": 0
+      },
+      {
+       "nombre": "Sable de caballería encantado",
+       "max": 5,
+       "usos": 5,
+       "bono": 1,
+       "req": "a la carga",
+       "dado": true,
+       "nota": "",
+       "corchete": 0
+      },
+      {
+       "nombre": "Runas explosivas",
+       "max": 3,
+       "usos": 3,
+       "bono": 2,
+       "req": "oculto",
+       "dado": true,
+       "nota": "",
+       "corchete": 0
+      },
+      {
+       "nombre": "Cigarrillos sacados de los bolsillos de un ahorcado",
+       "max": 3,
+       "usos": 3,
+       "bono": 0,
+       "req": "",
+       "dado": false,
+       "nota": "Marca un uso para obtener 2 de Sangre.",
+       "corchete": 0
+      }
+     ],
+     "habilidades": [
+      {
+       "nombre": "Glamur oscuro",
+       "tipo": "sangre",
+       "texto": "Quienes te rodean quedan hipnotizados por tu belleza antinatural.",
+       "coste": 1,
+       "bono": 1,
+       "req": "rodeada de belleza",
+       "activa": true
+      },
+      {
+       "nombre": "Sirvientes de la noche",
+       "tipo": "sangre",
+       "texto": "Invocas un enjambre de murciélagos bajo tu control.",
+       "coste": 1,
+       "bono": 1,
+       "req": "edificios antiguos",
+       "activa": true
+      },
+      {
+       "nombre": "Tiro certero",
+       "tipo": "especial",
+       "texto": "Cuando usas un arma de largo alcance: reduce en 1 el Ataque de una Amenaza.",
+       "coste": 0,
+       "bono": 0,
+       "req": "",
+       "activa": true
+      }
+     ],
+     "mejoras": [
+      {
+       "nombre": "Fuego voraz del infierno",
+       "tipo": "sangre",
+       "texto": "Ignora el Desafío en tu siguiente acción contra una Amenaza.",
+       "coste": 1,
+       "bono": 0,
+       "req": "",
+       "activa": false
+      },
+      {
+       "nombre": "Enervación del alma",
+       "tipo": "sangre",
+       "texto": "Tu próxima tirada gana ESPECIAL: inflige 4 de daño a un Übermensch.",
+       "coste": 1,
+       "bono": 0,
+       "req": "",
+       "activa": false
+      },
+      {
+       "nombre": "Manto de la bestia caída",
+       "tipo": "sangre",
+       "texto": "Combate y Atemorizar suben a 4, los demás atributos bajan a 1 y no puedes usar objetos. Dura hasta completar el Objetivo.",
+       "coste": 2,
+       "bono": 0,
+       "req": "",
+       "activa": false
+      }
+     ],
+     "lesiones": [
+      [
+       {
+        "nombre": "Traje rasgado",
+        "efecto": "",
+        "mod": {},
+        "bloqueo": "",
+        "marcada": false
+       },
+       {
+        "nombre": "Punción abdominal",
+        "efecto": "No puedes usar los +",
+        "mod": {},
+        "bloqueo": "bonos",
+        "marcada": false
+       }
+      ],
+      [
+       {
+        "nombre": "Pelo arruinado",
+        "efecto": "",
+        "mod": {},
+        "bloqueo": "",
+        "marcada": false
+       },
+       {
+        "nombre": "Disparo en la cabeza",
+        "efecto": "+2 Combate, −2 Persuasión",
+        "mod": {
+         "combate": 2,
+         "persuasion": -2
+        },
+        "bloqueo": "",
+        "marcada": false
+       }
+      ],
+      [
+       {
+        "nombre": "Hombro herido",
+        "efecto": "",
+        "mod": {},
+        "bloqueo": "",
+        "marcada": false
+       },
+       {
+        "nombre": "Brazo amputado",
+        "efecto": "Solo puedes usar un objeto por turno",
+        "mod": {},
+        "bloqueo": "unObjeto",
+        "marcada": false
+       }
+      ]
+     ],
+     "ultimoGesto": "Hechicerías prohibidas"
+    },
+    "prototypeToken": {
+     "name": "Iryna",
+     "displayName": 30,
+     "actorLink": true,
+     "disposition": 1,
+     "width": 1,
+     "height": 1,
+     "texture": {
+      "src": "systems/mr-eat-the-reich/assets/retratos/iryna.webp",
+      "fit": "cover"
+     }
+    },
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "iryna",
+      "retrato": {
+       "x": 0.47,
+       "y": 0.27,
+       "z": 2.3
+      }
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "da8790b3aa0260ae",
+    "name": "Nicole",
+    "type": "vampiro",
+    "img": "systems/mr-eat-the-reich/assets/libro/nicole.webp",
+    "folder": "c6137cd307e63588",
+    "sort": 100,
+    "system": {
+     "concepto": "Luchadora de la Résistance y experta en demoliciones, más dura que un pelotón entero. Perdió a su escuadrón en las purgas y recordarlo la enfurece. La mordió su novia vampira, que ya no está. Busca un final glorioso en el campo de batalla.",
+     "insignia": "Escuadrón 43",
+     "atributos": {
+      "combate": 2,
+      "persuasion": 2,
+      "reparacion": 1,
+      "investigacion": 2,
+      "disparo": 4,
+      "sigilo": 3,
+      "atemorizar": 3
+     },
+     "sangre": 0,
+     "equipo": [
+      {
+       "nombre": "Subfusil M3",
+       "max": 4,
+       "usos": 4,
+       "bono": 1,
+       "req": "flanquear",
+       "dado": true,
+       "nota": "",
+       "corchete": 1
+      },
+      {
+       "nombre": "Rifle Lee-Enfield recortado",
+       "max": 4,
+       "usos": 4,
+       "bono": 1,
+       "req": "corto alcance",
+       "dado": true,
+       "nota": "",
+       "corchete": 2
+      },
+      {
+       "nombre": "Granadas de humo",
+       "max": 3,
+       "usos": 3,
+       "bono": 1,
+       "req": "avanzar a cubierto",
+       "dado": true,
+       "nota": "",
+       "corchete": 3
+      },
+      {
+       "nombre": "Bombas incendiarias",
+       "max": 2,
+       "usos": 2,
+       "bono": 2,
+       "req": "trampa de fuego",
+       "dado": true,
+       "nota": "",
+       "corchete": 4
+      },
+      {
+       "nombre": "Lanzacohetes",
+       "max": 1,
+       "usos": 1,
+       "bono": 3,
+       "req": "objetivo fortificado",
+       "dado": true,
+       "nota": "",
+       "corchete": 5
+      },
+      {
+       "nombre": "Dinamita",
+       "max": 1,
+       "usos": 1,
+       "bono": 3,
+       "req": "demolición",
+       "dado": true,
+       "nota": "",
+       "corchete": 6
+      }
+     ],
+     "habilidades": [
+      {
+       "nombre": "Carroñera",
+       "tipo": "especial",
+       "texto": "Tira 1d6 y compáralo con los números entre corchetes de tu equipo: recupera 1 uso de esa arma.",
+       "coste": 0,
+       "bono": 0,
+       "req": "",
+       "activa": true
+      },
+      {
+       "nombre": "Zapadora",
+       "tipo": "especial",
+       "texto": "Cuando uses explosivos: reduce en 1 un Objetivo o el Desafío de una Amenaza.",
+       "coste": 0,
+       "bono": 0,
+       "req": "",
+       "activa": true
+      },
+      {
+       "nombre": "Parpadeo",
+       "tipo": "sangre",
+       "texto": "Implosionas en sombras y reapareces a unos metros.",
+       "coste": 1,
+       "bono": 1,
+       "req": "infiltración",
+       "activa": true
+      }
+     ],
+     "mejoras": [
+      {
+       "nombre": "Enjambre de ratas",
+       "tipo": "sangre",
+       "texto": "Invocas un enjambre de ratas bajo tu control.",
+       "coste": 1,
+       "bono": 3,
+       "req": "suciedad",
+       "activa": false
+      },
+      {
+       "nombre": "Alimentarse del miedo",
+       "tipo": "pasiva",
+       "texto": "Cuando reduces una Amenaza a 0, ganas 3 de Sangre.",
+       "coste": 0,
+       "bono": 0,
+       "req": "",
+       "activa": false
+      },
+      {
+       "nombre": "Negro absoluto",
+       "tipo": "sangre",
+       "texto": "Sumes la zona en una oscuridad en la que solo tú ves.",
+       "coste": 1,
+       "bono": 2,
+       "req": "emboscada",
+       "activa": false
+      }
+     ],
+     "lesiones": [
+      [
+       {
+        "nombre": "Aturdida",
+        "efecto": "",
+        "mod": {},
+        "bloqueo": "",
+        "marcada": false
+       },
+       {
+        "nombre": "Disparo en la cabeza",
+        "efecto": "",
+        "mod": {},
+        "bloqueo": "",
+        "marcada": false
+       }
+      ],
+      [
+       {
+        "nombre": "Solo un roce",
+        "efecto": "",
+        "mod": {},
+        "bloqueo": "",
+        "marcada": false
+       },
+       {
+        "nombre": "Desangrada",
+        "efecto": "Gastas 1 de Sangre al empezar tu turno",
+        "mod": {},
+        "bloqueo": "sangria",
+        "marcada": false
+       }
+      ],
+      [
+       {
+        "nombre": "Mano herida",
+        "efecto": "",
+        "mod": {},
+        "bloqueo": "",
+        "marcada": false
+       },
+       {
+        "nombre": "Brazo mutilado",
+        "efecto": "Solo puedes usar un objeto por turno",
+        "mod": {},
+        "bloqueo": "unObjeto",
+        "marcada": false
+       }
+      ]
+     ],
+     "ultimoGesto": "Preparada para explotar"
+    },
+    "prototypeToken": {
+     "name": "Nicole",
+     "displayName": 30,
+     "actorLink": true,
+     "disposition": 1,
+     "width": 1,
+     "height": 1,
+     "texture": {
+      "src": "systems/mr-eat-the-reich/assets/retratos/nicole.webp",
+      "fit": "cover"
+     }
+    },
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "nicole",
+      "retrato": {
+       "x": 0.38,
+       "y": 0.28,
+       "z": 2.3
+      }
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "535f27547750d2aa",
+    "name": "Cosgrave",
+    "type": "vampiro",
+    "img": "systems/mr-eat-the-reich/assets/libro/cosgrave.webp",
+    "folder": "c6137cd307e63588",
+    "sort": 200,
+    "system": {
+     "concepto": "Nigromante de Hackney, adiestrado por su tía. Clínicamente muerto, sigue rondando el East End y huye de la mafia de los muertos vivientes. Más falso que un billete de tres chelines, pero con un encanto arrollador y la manga llena de trucos de magia negra.",
+     "insignia": "F.A.N.G.",
+     "atributos": {
+      "combate": 2,
+      "persuasion": 3,
+      "reparacion": 3,
+      "investigacion": 2,
+      "disparo": 2,
+      "sigilo": 3,
+      "atemorizar": 2
+     },
+     "sangre": 0,
+     "equipo": [
+      {
+       "nombre": "Espada monstruosa",
+       "max": 4,
+       "usos": 4,
+       "bono": 1,
+       "req": "ataque sigiloso",
+       "dado": true,
+       "nota": "",
+       "corchete": 0
+      },
+      {
+       "nombre": "Escopeta recortada",
+       "max": 3,
+       "usos": 3,
+       "bono": 2,
+       "req": "a quemarropa",
+       "dado": true,
+       "nota": "",
+       "corchete": 0
+      },
+      {
+       "nombre": "Espectro embotellado",
+       "max": 2,
+       "usos": 2,
+       "bono": 2,
+       "req": "atraviesa paredes",
+       "dado": true,
+       "nota": "",
+       "corchete": 0
+      },
+      {
+       "nombre": "Frasco robado con el alma de la madre Millicent",
+       "max": 1,
+       "usos": 1,
+       "bono": 3,
+       "req": "lo que sea",
+       "dado": true,
+       "nota": "",
+       "corchete": 0
+      }
+     ],
+     "habilidades": [
+      {
+       "nombre": "Danse macabre",
+       "tipo": "sangre",
+       "texto": "Controlas por completo un cadáver durante un minuto; después se deshace.",
+       "coste": 1,
+       "bono": 1,
+       "req": "«Hans, ¿estás bien?»",
+       "activa": true
+      },
+      {
+       "nombre": "Maleficio en el bolsillo",
+       "tipo": "especial",
+       "texto": "Reduce en 1 el Ataque de una Amenaza.",
+       "coste": 0,
+       "bono": 0,
+       "req": "",
+       "activa": true
+      },
+      {
+       "nombre": "Fantasmagoría",
+       "tipo": "sangre",
+       "texto": "Conjuras ilusiones de pesadilla a tu alrededor.",
+       "coste": 1,
+       "bono": 1,
+       "req": "usas tu trasfondo con ingenio",
+       "activa": true
+      }
+     ],
+     "mejoras": [
+      {
+       "nombre": "Memoria pútrida",
+       "tipo": "sangre",
+       "texto": "Quitas o implantas recuerdos a alguien a quien miras fijamente.",
+       "coste": 1,
+       "bono": 1,
+       "req": "nunca estuviste aquí",
+       "activa": false
+      },
+      {
+       "nombre": "Explosión mortífera",
+       "tipo": "sangre",
+       "texto": "Maldices a un nazi cercano: estalla al morir.",
+       "coste": 1,
+       "bono": 2,
+       "req": "espacios cerrados",
+       "activa": false
+      },
+      {
+       "nombre": "Suerte de muerto",
+       "tipo": "pasiva",
+       "texto": "Después de tirar y antes de descartar, quita éxitos de ataque del GM según tus dados (ver la ficha del manual).",
+       "coste": 0,
+       "bono": 0,
+       "req": "",
+       "activa": false
+      }
+     ],
+     "lesiones": [
+      [
+       {
+        "nombre": "Dedos cercenados",
+        "efecto": "",
+        "mod": {},
+        "bloqueo": "",
+        "marcada": false
+       },
+       {
+        "nombre": "Brazo arrancado",
+        "efecto": "−1 a todos los atributos",
+        "mod": {
+         "combate": -1,
+         "persuasion": -1,
+         "reparacion": -1,
+         "investigacion": -1,
+         "disparo": -1,
+         "sigilo": -1,
+         "atemorizar": -1
+        },
+        "bloqueo": "",
+        "marcada": false
+       }
+      ],
+      [
+       {
+        "nombre": "Tórax hundido",
+        "efecto": "",
+        "mod": {},
+        "bloqueo": "",
+        "marcada": false
+       },
+       {
+        "nombre": "Disparo en la frente",
+        "efecto": "+2 Atemorizar, −2 Persuasión",
+        "mod": {
+         "atemorizar": 2,
+         "persuasion": -2
+        },
+        "bloqueo": "",
+        "marcada": false
+       }
+      ],
+      [
+       {
+        "nombre": "Grimorio estropeado",
+        "efecto": "",
+        "mod": {},
+        "bloqueo": "",
+        "marcada": false
+       },
+       {
+        "nombre": "Poderes comprometidos",
+        "efecto": "No puedes gastar Sangre para usar habilidades",
+        "mod": {},
+        "bloqueo": "gastar",
+        "marcada": false
+       }
+      ]
+     ],
+     "ultimoGesto": "Horda de muertos vivientes"
+    },
+    "prototypeToken": {
+     "name": "Cosgrave",
+     "displayName": 30,
+     "actorLink": true,
+     "disposition": 1,
+     "width": 1,
+     "height": 1,
+     "texture": {
+      "src": "systems/mr-eat-the-reich/assets/retratos/cosgrave.webp",
+      "fit": "cover"
+     }
+    },
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "cosgrave",
+      "retrato": {
+       "x": 0.45,
+       "y": 0.24,
+       "z": 2.4
+      }
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "5936831f0752c6f0",
+    "name": "Chuck",
+    "type": "vampiro",
+    "img": "systems/mr-eat-the-reich/assets/libro/chuck.webp",
+    "folder": "c6137cd307e63588",
+    "sort": 300,
+    "system": {
+     "concepto": "Nació en el lado malo del pueblo y ha enterrado a más de un pariente. Le gustan el trabajo honrado, las películas del Oeste, el hígado humano y la llanura abierta. Un buen chico, si pasas por alto lo de comerse a la gente. F.A.N.G. lo sacó de la cárcel tras zamparse al sheriff y a media comisaría.",
+     "insignia": "F.A.N.G.",
+     "atributos": {
+      "combate": 3,
+      "persuasion": 1,
+      "reparacion": 4,
+      "investigacion": 2,
+      "disparo": 3,
+      "sigilo": 2,
+      "atemorizar": 2
+     },
+     "sangre": 0,
+     "equipo": [
+      {
+       "nombre": "Par de revólveres, Betsy y María",
+       "max": 5,
+       "usos": 5,
+       "bono": 1,
+       "req": "duelo",
+       "dado": true,
+       "nota": "",
+       "corchete": 0
+      },
+      {
+       "nombre": "Cinturón de herramientas",
+       "max": 4,
+       "usos": 4,
+       "bono": 1,
+       "req": "reparación improvisada",
+       "dado": true,
+       "nota": "",
+       "corchete": 0
+      },
+      {
+       "nombre": "Sombrero vaquero",
+       "max": 1,
+       "usos": 1,
+       "bono": 0,
+       "req": "",
+       "dado": false,
+       "nota": "Márcalo para ignorar una Lesión o evitar ser Derribado; el sombrero queda destruido.",
+       "corchete": 0
+      }
+     ],
+     "habilidades": [
+      {
+       "nombre": "Escupitajo ácido",
+       "tipo": "sangre",
+       "texto": "Escupes ácido corrosivo.",
+       "coste": 1,
+       "bono": 2,
+       "req": "contra metal",
+       "activa": true
+      },
+      {
+       "nombre": "Araña escurridiza",
+       "tipo": "sangre",
+       "texto": "Te deslizas por techos y paredes.",
+       "coste": 1,
+       "bono": 1,
+       "req": "bajo techo",
+       "activa": true
+      },
+      {
+       "nombre": "Devorador de cadáveres",
+       "tipo": "pasiva",
+       "texto": "Después de tirar y antes de descartar, ganas 1 de Sangre por cada «1» que hayas sacado.",
+       "coste": 0,
+       "bono": 0,
+       "req": "",
+       "activa": true
+      }
+     ],
+     "mejoras": [
+      {
+       "nombre": "Arremangarse",
+       "tipo": "especial",
+       "texto": "Cuando superas tú solo un objetivo con Reparación: reduce en 4 una Amenaza.",
+       "coste": 0,
+       "bono": 0,
+       "req": "",
+       "activa": false
+      },
+      {
+       "nombre": "Fluidos corrosivos",
+       "tipo": "pasiva",
+       "texto": "Cuando marcas una Lesión, reduce en 2 la Amenaza a la que te enfrentas.",
+       "coste": 0,
+       "bono": 0,
+       "req": "",
+       "activa": false
+      },
+      {
+       "nombre": "Lengua de látigo",
+       "tipo": "sangre",
+       "texto": "Tu lengua, fuerte y prensil, se extiende cientos de metros.",
+       "coste": 1,
+       "bono": 1,
+       "req": "inmovilizado",
+       "activa": false
+      }
+     ],
+     "lesiones": [
+      [
+       {
+        "nombre": "Herida superficial",
+        "efecto": "",
+        "mod": {},
+        "bloqueo": "",
+        "marcada": false
+       },
+       {
+        "nombre": "Acribillado",
+        "efecto": "Gastas 1 de Sangre al empezar tu turno",
+        "mod": {},
+        "bloqueo": "sangria",
+        "marcada": false
+       }
+      ],
+      [
+       {
+        "nombre": "Cojeando",
+        "efecto": "",
+        "mod": {},
+        "bloqueo": "",
+        "marcada": false
+       },
+       {
+        "nombre": "A rastras",
+        "efecto": "−1 a todos los atributos",
+        "mod": {
+         "combate": -1,
+         "persuasion": -1,
+         "reparacion": -1,
+         "investigacion": -1,
+         "disparo": -1,
+         "sigilo": -1,
+         "atemorizar": -1
+        },
+        "bloqueo": "",
+        "marcada": false
+       }
+      ],
+      [
+       {
+        "nombre": "Mutilado",
+        "efecto": "",
+        "mod": {},
+        "bloqueo": "",
+        "marcada": false
+       },
+       {
+        "nombre": "Destripado",
+        "efecto": "No puedes usar los +",
+        "mod": {},
+        "bloqueo": "bonos",
+        "marcada": false
+       }
+      ]
+     ],
+     "ultimoGesto": "Tiroteo final"
+    },
+    "prototypeToken": {
+     "name": "Chuck",
+     "displayName": 30,
+     "actorLink": true,
+     "disposition": 1,
+     "width": 1,
+     "height": 1,
+     "texture": {
+      "src": "systems/mr-eat-the-reich/assets/retratos/chuck.webp",
+      "fit": "cover"
+     }
+    },
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "chuck",
+      "retrato": {
+       "x": 0.37,
+       "y": 0.27,
+       "z": 2.3
+      }
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "f38105290a3cc806",
+    "name": "Astrid",
+    "type": "vampiro",
+    "img": "systems/mr-eat-the-reich/assets/libro/astrid.webp",
+    "folder": "c6137cd307e63588",
+    "sort": 400,
+    "system": {
+     "concepto": "Expiloto. Algo la mordió tras estrellarse en una arboleda helada y el espíritu parásito de un depredador salvaje anidó en su corazón. Magia antigua corre por su sangre y los espíritus salvajes la veneran. (Y si eso falla, siempre le queda la ametralladora.)",
+     "insignia": "F.A.N.G.",
+     "atributos": {
+      "combate": 3,
+      "persuasion": 1,
+      "reparacion": 2,
+      "investigacion": 3,
+      "disparo": 2,
+      "sigilo": 2,
+      "atemorizar": 4
+     },
+     "sangre": 0,
+     "equipo": [
+      {
+       "nombre": "Ametralladora",
+       "max": 4,
+       "usos": 4,
+       "bono": 1,
+       "req": "enemigos a cubierto",
+       "dado": true,
+       "nota": "",
+       "corchete": 0
+      },
+      {
+       "nombre": "Lanza",
+       "max": 4,
+       "usos": 4,
+       "bono": 1,
+       "req": "alguien carga contra ti",
+       "dado": true,
+       "nota": "",
+       "corchete": 0
+      },
+      {
+       "nombre": "Granada de fragmentación",
+       "max": 2,
+       "usos": 2,
+       "bono": 2,
+       "req": "espacios cerrados",
+       "dado": true,
+       "nota": "",
+       "corchete": 0
+      },
+      {
+       "nombre": "Grilletes espirituales",
+       "max": 2,
+       "usos": 2,
+       "bono": 3,
+       "req": "animales",
+       "dado": true,
+       "nota": "",
+       "corchete": 0
+      }
+     ],
+     "habilidades": [
+      {
+       "nombre": "Depredadora suprema",
+       "tipo": "especial",
+       "texto": "Reduce en 3 una Amenaza.",
+       "coste": 0,
+       "bono": 0,
+       "req": "",
+       "activa": true
+      },
+      {
+       "nombre": "Resistencia sobrenatural",
+       "tipo": "especial",
+       "texto": "Reduce en 3 el Ataque del GM.",
+       "coste": 0,
+       "bono": 0,
+       "req": "",
+       "activa": true
+      },
+      {
+       "nombre": "Rastro de sangre",
+       "tipo": "sangre",
+       "texto": "Rastreas a un enemigo o buscas algo con el olfato.",
+       "coste": 1,
+       "bono": 1,
+       "req": "el enemigo huye",
+       "activa": true
+      }
+     ],
+     "mejoras": [
+      {
+       "nombre": "Regeneración de pesadilla",
+       "tipo": "especial",
+       "texto": "Elimina una lesión marcada.",
+       "coste": 0,
+       "bono": 0,
+       "req": "",
+       "activa": false
+      },
+      {
+       "nombre": "Espíritu de la tormenta",
+       "tipo": "sangre",
+       "texto": "Lanzas objetos como un fantasma.",
+       "coste": 1,
+       "bono": 2,
+       "req": "algo afilado y pesado",
+       "activa": false
+      },
+      {
+       "nombre": "Atadura fantasmal",
+       "tipo": "sangre",
+       "texto": "Reduce en 1 un Objetivo o el Desafío de una Amenaza hasta el final de la ronda.",
+       "coste": 1,
+       "bono": 0,
+       "req": "",
+       "activa": false
+      }
+     ],
+     "lesiones": [
+      [
+       {
+        "nombre": "Espíritus intimidados",
+        "efecto": "",
+        "mod": {},
+        "bloqueo": "",
+        "marcada": false
+       },
+       {
+        "nombre": "Espíritus exorcizados",
+        "efecto": "No puedes usar ESPECIALES",
+        "mod": {},
+        "bloqueo": "especiales",
+        "marcada": false
+       }
+      ],
+      [
+       {
+        "nombre": "Símbolos estropeados",
+        "efecto": "",
+        "mod": {},
+        "bloqueo": "",
+        "marcada": false
+       },
+       {
+        "nombre": "Sombras sangrantes",
+        "efecto": "+2 Sigilo, +2 Atemorizar",
+        "mod": {
+         "sigilo": 2,
+         "atemorizar": 2
+        },
+        "bloqueo": "",
+        "marcada": false
+       }
+      ],
+      [
+       {
+        "nombre": "Cojeando",
+        "efecto": "",
+        "mod": {},
+        "bloqueo": "",
+        "marcada": false
+       },
+       {
+        "nombre": "Pierna rota",
+        "efecto": "−1 a todos los atributos",
+        "mod": {
+         "combate": -1,
+         "persuasion": -1,
+         "reparacion": -1,
+         "investigacion": -1,
+         "disparo": -1,
+         "sigilo": -1,
+         "atemorizar": -1
+        },
+        "bloqueo": "",
+        "marcada": false
+       }
+      ]
+     ],
+     "ultimoGesto": "Desata a los espíritus"
+    },
+    "prototypeToken": {
+     "name": "Astrid",
+     "displayName": 30,
+     "actorLink": true,
+     "disposition": 1,
+     "width": 1,
+     "height": 1,
+     "texture": {
+      "src": "systems/mr-eat-the-reich/assets/retratos/astrid.webp",
+      "fit": "cover"
+     }
+    },
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "astrid",
+      "retrato": {
+       "x": 0.4,
+       "y": 0.24,
+       "z": 2.4
+      }
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "fd4f0ade65ed889d",
+    "name": "Flint",
+    "type": "vampiro",
+    "img": "systems/mr-eat-the-reich/assets/libro/flint.webp",
+    "folder": "c6137cd307e63588",
+    "sort": 500,
+    "system": {
+     "concepto": "Nacido en una cueva de la que lo echaron los nazis. Mitad murciélago, mitad humano, todo pesadilla. Un cazador monstruoso con sed de sangre. Puede que hable… o no (quizá solo sea tímido).",
+     "insignia": "XIII Escuadrón Ataúd",
+     "atributos": {
+      "combate": 4,
+      "persuasion": 2,
+      "reparacion": 2,
+      "investigacion": 2,
+      "disparo": 1,
+      "sigilo": 3,
+      "atemorizar": 3
+     },
+     "sangre": 0,
+     "equipo": [
+      {
+       "nombre": "Garras de acero",
+       "max": 4,
+       "usos": 4,
+       "bono": 1,
+       "req": "emboscada",
+       "dado": true,
+       "nota": "",
+       "corchete": 0
+      },
+      {
+       "nombre": "Gancho de escalada",
+       "max": 3,
+       "usos": 3,
+       "bono": 3,
+       "req": "tres pisos o más",
+       "dado": true,
+       "nota": "",
+       "corchete": 0
+      }
+     ],
+     "habilidades": [
+      {
+       "nombre": "Apetito voraz",
+       "tipo": "especial",
+       "texto": "Cuando estás en combate cuerpo a cuerpo: obtienes 3 de Sangre.",
+       "coste": 0,
+       "bono": 0,
+       "req": "",
+       "activa": true
+      },
+      {
+       "nombre": "Sentir el latido",
+       "tipo": "sangre",
+       "texto": "Ves el latido de los seres vivos a través de paredes y objetos.",
+       "coste": 1,
+       "bono": 1,
+       "req": "cobertura gruesa",
+       "activa": true
+      },
+      {
+       "nombre": "Proyectil improvisado",
+       "tipo": "sangre",
+       "texto": "Arrojas algo largo y pesado a una distancia increíble.",
+       "coste": 1,
+       "bono": 1,
+       "req": "aerodinámico",
+       "activa": true
+      },
+      {
+       "nombre": "Alas",
+       "tipo": "sangre",
+       "texto": "Puedes volar.",
+       "coste": 1,
+       "bono": 1,
+       "req": "combate aéreo",
+       "activa": true
+      }
+     ],
+     "mejoras": [
+      {
+       "nombre": "Chillido infernal",
+       "tipo": "sangre",
+       "texto": "Reduce en 1 el Desafío de una Amenaza.",
+       "coste": 2,
+       "bono": 0,
+       "req": "",
+       "activa": false
+      },
+      {
+       "nombre": "Armadura de huesos",
+       "tipo": "pasiva",
+       "texto": "Después de tirar y antes de descartar, quita 1 éxito de ataque del GM por cada «1» que hayas sacado.",
+       "coste": 0,
+       "bono": 0,
+       "req": "",
+       "activa": false
+      },
+      {
+       "nombre": "Forma de babosa",
+       "tipo": "sangre",
+       "texto": "Te filtras por las grietas y te deslizas bajo las puertas.",
+       "coste": 1,
+       "bono": 1,
+       "req": "¡está en las paredes!",
+       "activa": false
+      }
+     ],
+     "lesiones": [
+      [
+       {
+        "nombre": "Dientes rotos",
+        "efecto": "",
+        "mod": {},
+        "bloqueo": "",
+        "marcada": false
+       },
+       {
+        "nombre": "Mandíbula rota",
+        "efecto": "No puedes obtener Sangre de nazis",
+        "mod": {},
+        "bloqueo": "beber",
+        "marcada": false
+       }
+      ],
+      [
+       {
+        "nombre": "Asustado",
+        "efecto": "",
+        "mod": {},
+        "bloqueo": "",
+        "marcada": false
+       },
+       {
+        "nombre": "Aterrado",
+        "efecto": "+2 Investigación, −2 Combate",
+        "mod": {
+         "investigacion": 2,
+         "combate": -2
+        },
+        "bloqueo": "",
+        "marcada": false
+       }
+      ],
+      [
+       {
+        "nombre": "Alas perforadas",
+        "efecto": "",
+        "mod": {},
+        "bloqueo": "",
+        "marcada": false
+       },
+       {
+        "nombre": "Destripado",
+        "efecto": "No puedes usar los +",
+        "mod": {},
+        "bloqueo": "bonos",
+        "marcada": false
+       }
+      ]
+     ],
+     "ultimoGesto": "Forma final"
+    },
+    "prototypeToken": {
+     "name": "Flint",
+     "displayName": 30,
+     "actorLink": true,
+     "disposition": 1,
+     "width": 1,
+     "height": 1,
+     "texture": {
+      "src": "systems/mr-eat-the-reich/assets/retratos/flint.webp",
+      "fit": "cover"
+     }
+    },
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "flint",
+      "retrato": {
+       "x": 0.5,
+       "y": 0.6,
+       "z": 2.2
+      }
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "1f3af430d21704df",
+    "name": "Patrulla policial",
+    "type": "amenaza",
+    "img": "icons/svg/skull.svg",
+    "folder": "8446d0aa331cc493",
+    "sort": 0,
+    "system": {
+     "valor": 4,
+     "ataque": 2,
+     "desafio": 0,
+     "revive": true,
+     "crece": true,
+     "uber": false,
+     "umbral": 4,
+     "anatema": false,
+     "garras": false,
+     "sinDolor": false,
+     "sinSangre": false,
+     "refuerzoValor": 0,
+     "rasgos": "",
+     "presagio": "",
+     "sabor": "",
+     "descripcion": "Un grupo de agentes con pistolas, porras y esposas.",
+     "pagina": 61
+    },
+    "prototypeToken": {
+     "name": "Patrulla policial",
+     "displayName": 30,
+     "actorLink": false,
+     "disposition": -1,
+     "width": 1,
+     "height": 1,
+     "texture": {
+      "src": "icons/svg/skull.svg",
+      "fit": "cover"
+     }
+    },
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "patrulla"
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "2e7513d7431c7e2c",
+    "name": "Escuadrón de infantería",
+    "type": "amenaza",
+    "img": "icons/svg/skull.svg",
+    "folder": "8446d0aa331cc493",
+    "sort": 100,
+    "system": {
+     "valor": 6,
+     "ataque": 3,
+     "desafio": 0,
+     "revive": true,
+     "crece": true,
+     "uber": false,
+     "umbral": 4,
+     "anatema": false,
+     "garras": false,
+     "sinDolor": false,
+     "sinSangre": false,
+     "refuerzoValor": 0,
+     "rasgos": "",
+     "presagio": "",
+     "sabor": "",
+     "descripcion": "Diez soldados con fusiles y subfusiles.",
+     "pagina": 61
+    },
+    "prototypeToken": {
+     "name": "Escuadrón de infantería",
+     "displayName": 30,
+     "actorLink": false,
+     "disposition": -1,
+     "width": 1,
+     "height": 1,
+     "texture": {
+      "src": "icons/svg/skull.svg",
+      "fit": "cover"
+     }
+    },
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "infanteria"
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "bd4a8b220fe30dc8",
+    "name": "Vehículo blindado",
+    "type": "amenaza",
+    "img": "icons/svg/skull.svg",
+    "folder": "8446d0aa331cc493",
+    "sort": 200,
+    "system": {
+     "valor": 4,
+     "ataque": 2,
+     "desafio": 1,
+     "revive": false,
+     "crece": false,
+     "uber": false,
+     "umbral": 4,
+     "anatema": false,
+     "garras": false,
+     "sinDolor": false,
+     "sinSangre": false,
+     "refuerzoValor": 0,
+     "rasgos": "",
+     "presagio": "",
+     "sabor": "",
+     "descripcion": "Transporte de tropas de acero con una ametralladora atornillada arriba.",
+     "pagina": 61
+    },
+    "prototypeToken": {
+     "name": "Vehículo blindado",
+     "displayName": 30,
+     "actorLink": false,
+     "disposition": -1,
+     "width": 1,
+     "height": 1,
+     "texture": {
+      "src": "icons/svg/skull.svg",
+      "fit": "cover"
+     }
+    },
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "blindado"
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "9a29c06018d47e77",
+    "name": "Infantería blindada",
+    "type": "amenaza",
+    "img": "icons/svg/skull.svg",
+    "folder": "8446d0aa331cc493",
+    "sort": 300,
+    "system": {
+     "valor": 6,
+     "ataque": 3,
+     "desafio": 1,
+     "revive": true,
+     "crece": true,
+     "uber": false,
+     "umbral": 4,
+     "anatema": false,
+     "garras": false,
+     "sinDolor": false,
+     "sinSangre": false,
+     "refuerzoValor": 0,
+     "rasgos": "",
+     "presagio": "",
+     "sabor": "",
+     "descripcion": "Placas de acero y cuero endurecido: cuesta tumbarlos.",
+     "pagina": 61
+    },
+    "prototypeToken": {
+     "name": "Infantería blindada",
+     "displayName": 30,
+     "actorLink": false,
+     "disposition": -1,
+     "width": 1,
+     "height": 1,
+     "texture": {
+      "src": "icons/svg/skull.svg",
+      "fit": "cover"
+     }
+    },
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "infanteria-blindada"
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "f816f24086da54fb",
+    "name": "Escuadrón de motoristas",
+    "type": "amenaza",
+    "img": "icons/svg/skull.svg",
+    "folder": "8446d0aa331cc493",
+    "sort": 400,
+    "system": {
+     "valor": 10,
+     "ataque": 3,
+     "desafio": 0,
+     "revive": false,
+     "crece": false,
+     "uber": false,
+     "umbral": 4,
+     "anatema": false,
+     "garras": false,
+     "sinDolor": false,
+     "sinSangre": false,
+     "refuerzoValor": 0,
+     "rasgos": "<b>Chocar y arder:</b> mientras se enfrenten a ellos, todos los vampiros tienen este ESPECIAL: inflige 3 de daño al escuadrón.",
+     "presagio": "",
+     "sabor": "",
+     "descripcion": "Pilotos expertos en motos rápidas. Si los desmontas, siguen a pie.",
+     "pagina": 61
+    },
+    "prototypeToken": {
+     "name": "Escuadrón de motoristas",
+     "displayName": 30,
+     "actorLink": false,
+     "disposition": -1,
+     "width": 1,
+     "height": 1,
+     "texture": {
+      "src": "icons/svg/skull.svg",
+      "fit": "cover"
+     }
+    },
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "motoristas"
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "53ad02f2216b4274",
+    "name": "Equipo de francotiradores",
+    "type": "amenaza",
+    "img": "icons/svg/skull.svg",
+    "folder": "8446d0aa331cc493",
+    "sort": 500,
+    "system": {
+     "valor": 3,
+     "ataque": 6,
+     "desafio": 2,
+     "revive": false,
+     "crece": false,
+     "uber": false,
+     "umbral": 4,
+     "anatema": false,
+     "garras": false,
+     "sinDolor": false,
+     "sinSangre": false,
+     "refuerzoValor": 0,
+     "rasgos": "",
+     "presagio": "",
+     "sabor": "",
+     "descripcion": "Tiradores y observadores en posiciones ocultas.",
+     "pagina": 61
+    },
+    "prototypeToken": {
+     "name": "Equipo de francotiradores",
+     "displayName": 30,
+     "actorLink": false,
+     "disposition": -1,
+     "width": 1,
+     "height": 1,
+     "texture": {
+      "src": "icons/svg/skull.svg",
+      "fit": "cover"
+     }
+    },
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "francotiradores"
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "14a3434292834bcd",
+    "name": "Escuadrón de paracaidistas",
+    "type": "amenaza",
+    "img": "icons/svg/skull.svg",
+    "folder": "8446d0aa331cc493",
+    "sort": 600,
+    "system": {
+     "valor": 6,
+     "ataque": 3,
+     "desafio": 0,
+     "revive": true,
+     "crece": true,
+     "uber": false,
+     "umbral": 4,
+     "anatema": false,
+     "garras": false,
+     "sinDolor": false,
+     "sinSangre": false,
+     "refuerzoValor": 2,
+     "rasgos": "<b>Despliegue rápido:</b> cuando los refuerzos suben su Ataque, suma también +2 a su Amenaza.",
+     "presagio": "",
+     "sabor": "",
+     "descripcion": "Saltan de los aviones para caer encima de los vampiros.",
+     "pagina": 61
+    },
+    "prototypeToken": {
+     "name": "Escuadrón de paracaidistas",
+     "displayName": 30,
+     "actorLink": false,
+     "disposition": -1,
+     "width": 1,
+     "height": 1,
+     "texture": {
+      "src": "icons/svg/skull.svg",
+      "fit": "cover"
+     }
+    },
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "paracaidistas"
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "51ec8f5001ac384e",
+    "name": "Tanque",
+    "type": "amenaza",
+    "img": "icons/svg/skull.svg",
+    "folder": "8446d0aa331cc493",
+    "sort": 700,
+    "system": {
+     "valor": 8,
+     "ataque": 6,
+     "desafio": 2,
+     "revive": false,
+     "crece": false,
+     "uber": false,
+     "umbral": 4,
+     "anatema": false,
+     "garras": false,
+     "sinDolor": false,
+     "sinSangre": false,
+     "refuerzoValor": 0,
+     "rasgos": "",
+     "presagio": "",
+     "sabor": "",
+     "descripcion": "Un tanque que ruge y retumba, con un cañón en la torreta.",
+     "pagina": 61
+    },
+    "prototypeToken": {
+     "name": "Tanque",
+     "displayName": 30,
+     "actorLink": false,
+     "disposition": -1,
+     "width": 1,
+     "height": 1,
+     "texture": {
+      "src": "icons/svg/skull.svg",
+      "fit": "cover"
+     }
+    },
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "tanque"
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "3f651156219a4a7c",
+    "name": "Escuadra de Vampirjäger",
+    "type": "amenaza",
+    "img": "systems/mr-eat-the-reich/assets/libro/vampirjager.webp",
+    "folder": "8446d0aa331cc493",
+    "sort": 800,
+    "system": {
+     "valor": 8,
+     "ataque": 6,
+     "desafio": 0,
+     "revive": true,
+     "crece": true,
+     "uber": false,
+     "umbral": 4,
+     "anatema": true,
+     "garras": false,
+     "sinDolor": false,
+     "sinSangre": false,
+     "refuerzoValor": 0,
+     "rasgos": "<b>Anatema:</b> cada 6 en sus dados de ataque cuenta como 2 éxitos.",
+     "presagio": "",
+     "sabor": "",
+     "descripcion": "Cinco cazadores con balas de plata, agua bendita, estacas y bombas incendiarias.",
+     "pagina": 61
+    },
+    "prototypeToken": {
+     "name": "Escuadra de Vampirjäger",
+     "displayName": 30,
+     "actorLink": false,
+     "disposition": -1,
+     "width": 1,
+     "height": 1,
+     "texture": {
+      "src": "systems/mr-eat-the-reich/assets/retratos/vampirjager.webp",
+      "fit": "cover"
+     }
+    },
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "cazavampiros",
+      "retrato": {
+       "x": 0.5,
+       "y": 0.45,
+       "z": 1.3
+      }
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "e6a1b25264a78f9d",
+    "name": "Brigada quema-arte",
+    "type": "amenaza",
+    "img": "icons/svg/skull.svg",
+    "folder": "8446d0aa331cc493",
+    "sort": 900,
+    "system": {
+     "valor": 4,
+     "ataque": 4,
+     "desafio": 0,
+     "revive": true,
+     "crece": true,
+     "uber": false,
+     "umbral": 4,
+     "anatema": false,
+     "garras": false,
+     "sinDolor": false,
+     "sinSangre": false,
+     "refuerzoValor": 0,
+     "rasgos": "",
+     "presagio": "",
+     "sabor": "",
+     "descripcion": "Como una patrulla, pero con lanzallamas.",
+     "pagina": 58
+    },
+    "prototypeToken": {
+     "name": "Brigada quema-arte",
+     "displayName": 30,
+     "actorLink": false,
+     "disposition": -1,
+     "width": 1,
+     "height": 1,
+     "texture": {
+      "src": "icons/svg/skull.svg",
+      "fit": "cover"
+     }
+    },
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "quema-arte"
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "515841733095391e",
+    "name": "Einherjar",
+    "type": "amenaza",
+    "img": "icons/svg/skull.svg",
+    "folder": "8446d0aa331cc493",
+    "sort": 1000,
+    "system": {
+     "valor": 7,
+     "ataque": 3,
+     "desafio": 0,
+     "revive": true,
+     "crece": true,
+     "uber": false,
+     "umbral": 4,
+     "anatema": false,
+     "garras": false,
+     "sinDolor": true,
+     "sinSangre": true,
+     "refuerzoValor": 0,
+     "rasgos": "<b>Sin dolor:</b> cada 1 en los dados de ataque del GM sube en 1 su Desafío. <b>Sin sangre:</b> no se puede beber Sangre mientras solo te enfrentes a ellos.",
+     "presagio": "",
+     "sabor": "",
+     "descripcion": "Armaduras encantadas y momias guerreras animadas por magia nazi.",
+     "pagina": 55
+    },
+    "prototypeToken": {
+     "name": "Einherjar",
+     "displayName": 30,
+     "actorLink": false,
+     "disposition": -1,
+     "width": 1,
+     "height": 1,
+     "texture": {
+      "src": "icons/svg/skull.svg",
+      "fit": "cover"
+     }
+    },
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "einherjar"
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "6c772a90c3041568",
+    "name": "Stahlsoldat",
+    "type": "amenaza",
+    "img": "icons/svg/skull.svg",
+    "folder": "2cf4545586d0fcde",
+    "sort": 1100,
+    "system": {
+     "valor": 6,
+     "ataque": 4,
+     "desafio": 2,
+     "revive": false,
+     "crece": true,
+     "uber": true,
+     "umbral": 4,
+     "anatema": false,
+     "garras": false,
+     "sinDolor": false,
+     "sinSangre": false,
+     "refuerzoValor": 0,
+     "rasgos": "<b>Arrancando:</b> gana Ataque con los refuerzos como cualquiera, pero queda destruido cuando su Amenaza llega a 0.",
+     "presagio": "Pancartas de los avances de guerra; silbidos y chirridos; persianas de acero que se cierran de golpe.",
+     "sabor": "Lejía, barniz, gasolina.",
+     "descripcion": "Mitad hombre, mitad máquina: garras neumáticas, pistola de dispersión y una pulgada de blindaje.",
+     "pagina": 53
+    },
+    "prototypeToken": {
+     "name": "Stahlsoldat",
+     "displayName": 30,
+     "actorLink": false,
+     "disposition": -1,
+     "width": 1,
+     "height": 1,
+     "texture": {
+      "src": "icons/svg/skull.svg",
+      "fit": "cover"
+     }
+    },
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "stahlsoldat"
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "46340b4b068254c1",
+    "name": "Rust-Witch",
+    "type": "amenaza",
+    "img": "systems/mr-eat-the-reich/assets/libro/rust-witch.webp",
+    "folder": "2cf4545586d0fcde",
+    "sort": 1200,
+    "system": {
+     "valor": 10,
+     "ataque": 6,
+     "desafio": 0,
+     "revive": false,
+     "crece": false,
+     "uber": true,
+     "umbral": 5,
+     "anatema": false,
+     "garras": false,
+     "sinDolor": false,
+     "sinSangre": false,
+     "refuerzoValor": 0,
+     "rasgos": "<b>Aura de desgracia:</b> contra ella los jugadores descartan del 1 al 4 (solo el 5 y el 6 son éxitos). <b>Maldición del óxido:</b> al final de cada ronda, elige un PJ: una pieza de su equipo, al azar, queda inservible.",
+     "presagio": "Carroñeros en el cielo, un tanque abandonado e inútil, un caza que se desploma.",
+     "sabor": "Ruda, caramelos masticables y tónica.",
+     "descripcion": "Bruja de la entropía: las máquinas fallan y el metal se oxida a su paso.",
+     "pagina": 56
+    },
+    "prototypeToken": {
+     "name": "Rust-Witch",
+     "displayName": 30,
+     "actorLink": false,
+     "disposition": -1,
+     "width": 1,
+     "height": 1,
+     "texture": {
+      "src": "systems/mr-eat-the-reich/assets/retratos/rust-witch.webp",
+      "fit": "cover"
+     }
+    },
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "rust-witch",
+      "retrato": {
+       "x": 0.42,
+       "y": 0.24,
+       "z": 2.4
+      }
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "37a2fa96cf1aa896",
+    "name": "Dämonenblut",
+    "type": "amenaza",
+    "img": "systems/mr-eat-the-reich/assets/libro/damonenblut.webp",
+    "folder": "2cf4545586d0fcde",
+    "sort": 1300,
+    "system": {
+     "valor": 12,
+     "ataque": 4,
+     "desafio": 1,
+     "revive": false,
+     "crece": false,
+     "uber": true,
+     "umbral": 4,
+     "anatema": false,
+     "garras": false,
+     "sinDolor": false,
+     "sinSangre": false,
+     "refuerzoValor": 0,
+     "rasgos": "",
+     "presagio": "Carteles con su cara de galán, cuernos y dientes por el suelo y las paredes, público encogido de miedo.",
+     "sabor": "Un tarro de grasa de pollo con una colilla apagada.",
+     "descripcion": "Franz Vogel, estrella de cine con corazón de demonio: cuernos, garras e icor negro.",
+     "pagina": 59
+    },
+    "prototypeToken": {
+     "name": "Dämonenblut",
+     "displayName": 30,
+     "actorLink": false,
+     "disposition": -1,
+     "width": 1,
+     "height": 1,
+     "texture": {
+      "src": "systems/mr-eat-the-reich/assets/retratos/damonenblut.webp",
+      "fit": "cover"
+     }
+    },
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "damonenblut",
+      "retrato": {
+       "x": 0.43,
+       "y": 0.25,
+       "z": 2.3
+      }
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "5cf6cd8e4f6bd4f1",
+    "name": "Werhund",
+    "type": "amenaza",
+    "img": "systems/mr-eat-the-reich/assets/libro/werhund.webp",
+    "folder": "2cf4545586d0fcde",
+    "sort": 1400,
+    "system": {
+     "valor": 10,
+     "ataque": 5,
+     "desafio": 1,
+     "revive": false,
+     "crece": false,
+     "uber": true,
+     "umbral": 4,
+     "anatema": false,
+     "garras": true,
+     "sinDolor": false,
+     "sinSangre": false,
+     "refuerzoValor": 0,
+     "rasgos": "<b>Garras desgarradoras:</b> al marcar una lesión suya, marca todas las casillas libres de esa columna. <b>Regeneración:</b> su Desafío no se puede reducir de ningún modo.",
+     "presagio": "Luna llena, aullidos por toda la ciudad, cadáveres de soldados que no habéis matado vosotros.",
+     "sabor": "Sudor, carne, cuero barato.",
+     "descripcion": "El primer hombre lobo nazi. Hasta un vampiro debería temer esas garras.",
+     "pagina": 64
+    },
+    "prototypeToken": {
+     "name": "Werhund",
+     "displayName": 30,
+     "actorLink": false,
+     "disposition": -1,
+     "width": 1,
+     "height": 1,
+     "texture": {
+      "src": "systems/mr-eat-the-reich/assets/retratos/werhund.webp",
+      "fit": "cover"
+     }
+    },
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "werhund",
+      "retrato": {
+       "x": 0.43,
+       "y": 0.33,
+       "z": 2.2
+      }
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   }
+  ],
+  "combats": [],
+  "items": [],
+  "journal": [
+   {
+    "_id": "43a19bee46c5385a",
+    "name": "Eat the Reich · Cómo se juega",
+    "pages": [
+     {
+      "_id": "742a421fcbd2ccdf",
+      "name": "En tu turno",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 1
+      },
+      "sort": 0,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Resumen de mesa; las reglas completas están en el manual, pp. 30-41.</em></p>\n    <ol><li><strong>Elige un atributo</strong> según lo que haces y coge tantos dados como su valor. Si ninguno encaja, 2 dados.</li>\n    <li><strong>Suma equipo y habilidades:</strong> +1 dado por cada objeto (gasta un uso) y por cada habilidad (paga su Sangre). El último uso de un objeto que empezó con varios «explota»: +1 dado más.</li>\n    <li><strong>Tirad los dos:</strong> tú, tu reserva; el GM, el Ataque de la amenaza a la que te enfrentas, +1 dado por cada otra amenaza en juego.</li>\n    <li><strong>Descartad del 1 al 3.</strong> Cada 4 o 5 es un éxito. Tus 6 son críticos: valen dos éxitos (los del GM, no).</li>\n    <li><strong>Gasta tus éxitos uno a uno</strong> —pulsando cada dado de la tarjeta— y añade un detalle a la escena con cada uno: avanzar un Objetivo, atacar una Amenaza, defenderte (quita dados de ataque del GM), beber sangre nazi (+1 Sangre) o activar un ESPECIAL (solo con un 6).</li>\n    <li><strong>Los +:</strong> si lo que cuentas cumple el requisito de un objeto o habilidad que has usado, tira sus dados de bonificación desde la tarjeta.</li>\n    <li><strong>Termina el turno.</strong> Si al GM le quedan ataques sin defender, sufres una lesión.</li></ol>\n    <h2>Los atributos</h2><ul><li><strong>Combate.</strong> Matar nazis de cerca.</li><li><strong>Persuasión.</strong> Influir con mentiras, halagos o carisma.</li><li><strong>Reparación.</strong> Reparar o modificar aparatos y estructuras.</li><li><strong>Investigación.</strong> Descubrir información.</li><li><strong>Disparo.</strong> Matar nazis a distancia.</li><li><strong>Sigilo.</strong> Evitar que te detecten.</li><li><strong>Atemorizar.</strong> Asustar a los nazis para que obedezcan.</li></ul>\n    <p>Tú mandas en los detalles: no preguntes si hay una puerta, di que la echas abajo. Lo único que no narras son los actos de los personajes con nombre de los demás. La mesa puede vetar cualquier detalle.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "3c9c7b3212b4f6dc",
+      "name": "Sangre, lesiones y muerte",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 1
+      },
+      "sort": 100,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Manual, pp. 35-37.</em></p>\n    <ul><li><strong>Sangre:</strong> empiezas con 0 y el máximo es 10. Se comparte libremente entre vampiros al alcance del brazo.</li>\n    <li><strong>Lesión:</strong> con 1 o 2 ataques sin defender, tira 1d6 y marca la primera casilla libre de esa columna (si está llena, otra).</li>\n    <li><strong>Derribado:</strong> con 3 o más (ajustable a 4 en los ajustes del sistema), marcas todas las casillas libres de la columna y quedas fuera de combate hasta que te rescaten: aparece un objetivo secundario para ello.</li>\n    <li><strong>La segunda casilla</strong> de cada columna trae una penalización; la hoja la aplica o te la recuerda.</li>\n    <li><strong>Curar</strong> una lesión cuesta 3 de Sangre, en cualquier momento.</li>\n    <li><strong>Muerte:</strong> con las seis marcadas llega tu último gesto de resistencia: 8 dados, repártelos como quieras y despídete.</li></ul>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "e1e66d529978110e",
+      "name": "Objetivos, amenazas y refuerzos",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 1
+      },
+      "sort": 200,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Manual, pp. 37-39.</em></p>\n    <ul><li><strong>Objetivo:</strong> valor de 2 a 12; cada éxito le quita 1. A 0, cumplido: quien quitó el último punto cuenta cómo, y la escena termina.</li>\n    <li><strong>Amenaza:</strong> tiene valor y Ataque. A 0 deja de atacar… hasta que lleguen refuerzos.</li>\n    <li><strong>Desafío:</strong> absorbe ese número de éxitos de cada acción antes de que empiecen a contar.</li>\n    <li><strong>Refuerzos (fin de ronda):</strong> cada amenaza a 0 vuelve con 1d6 y la mitad de su Ataque inicial; cada amenaza activa sube 1 su Ataque. Si el GM no saca ni un éxito contra ti, el Ataque de esa amenaza sube 1.</li>\n    <li><strong>«Solo» y Übermenschen:</strong> no usan refuerzos; a 0 quedan eliminados. Beber la sangre de un Übermensch desbloquea una Mejora.</li>\n    <li><strong>Objetivos secundarios</strong> (la mitad del principal). Al cumplir uno, elige: reducir 1d6 un objetivo principal; reducir 1d6 una amenaza; ganar 1d6 de sangre; reducir en 2 el ataque de una amenaza; reducir en 1 el desafío de una amenaza u objetivo; conseguir un equipo inusual o poderoso.</li>\n    <li><strong>Retirada:</strong> cread un objetivo «¡Escapar!»; al cumplirlo volvéis a una localización que no esté más cerca de la torre.</li></ul>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "f1f62695de1fae8f",
+      "name": "Botín y flashbacks",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 1
+      },
+      "sort": 300,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Manual, pp. 39-41.</em></p>\n    <p><strong>Botín.</strong> Una vez por Objetivo puedes quedarte algo: apúntalo en el hueco de botín de tu hoja con un requisito de bonificación pactado con el GM. Funciona como un objeto de 3 usos. Solo uno a la vez.</p>\n    <ul><li>Subfusil (+flanquear)</li><li>Rifle (+largo alcance)</li><li>Pistola (+espacios cerrados)</li><li>Ametralladora (+enemigos a cubierto)</li><li>Granadas de fragmentación (+espacios cerrados)</li><li>Coche blindado (+bajo fuego pesado)</li><li>Coche de lujo (+abrir camino)</li><li>Tanque (+aplastar edificios)</li></ul>\n    <p><strong>Flashback.</strong> Una vez por sesión, si sacas 2 éxitos o menos, la tarjeta te ofrece un flashback: te hace una pregunta sobre una misión pasada de F.A.N.G., la respondes con una escena breve y repites la tirada con 2 dados más.</p>\n    <p>Contextos: @UUID[RollTable.91398a114b51c2e4]{Flashback · ¿dónde fue?}. Preguntas: @UUID[RollTable.95786a0c9d936692]{Flashback · la pregunta}.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     }
+    ],
+    "sort": 0,
+    "folder": null,
+    "ownership": {
+     "default": 2
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "reglas"
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "7ef6926cd48a2fd4",
+    "name": "París · La misión y sus localizaciones",
+    "pages": [
+     {
+      "_id": "d358d8e964ae9e9b",
+      "name": "Cómo va la misión",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 1
+      },
+      "sort": 0,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Manual, pp. 42-49.</em></p>\n    <ol><li><strong>Los ataúdes.</strong> Los vampiros caen sobre un punto del Sector 3 que eligen ellos. Sube de 2 a 4 los Objetivos de esa primera escena para que todos tengan su entrada, y aprovéchala para enseñar Objetivos, Amenazas y Sangre.</li>\n    <li><strong>El avance.</strong> Ellos eligen por dónde; cada localización es una escena de acción. Con 2 o 3 por sector va bien. Si un sitio no da juego, pasad de largo.</li>\n    <li><strong>Los Übermenschen.</strong> Son las peleas que importan: preságialos antes de que aparezcan y, si los esquivan, que los sigan.</li>\n    <li><strong>El clímax.</strong> Torre, zepelín, cazavampiros, el Werhund… y Hitler, que no dice ni una palabra.</li>\n    <li><strong>El epílogo.</strong> Un par de frases por jugador sobre qué hace su vampiro después de la guerra.</li></ol>\n    <p>En jornadas (3 horas): al empezar la tercera hora, que estén entrando en el Sector 1. Recorta, regala un camión blindado, lo que haga falta.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "30608c47900bb3da",
+      "name": "Plaza de la Sirena",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 2
+      },
+      "sort": 100,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Sector 3 · manual, p. 50.</em></p><p>Barrio elegante de bistrós y boutiques alrededor de una fuente.</p>\n  <p><strong>Objetivo:</strong> Salir de la zona de caída y ponerse a cubierto (6)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.1f3af430d21704df]{Patrulla policial} ×2</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Plaza de la Sirena</strong> → Cargar.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "bcb06a377158aff7",
+      "name": "Los grandes almacenes",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 2
+      },
+      "sort": 200,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Sector 3 · manual, p. 50.</em></p><p>Varias plantas de género alemán, escaleras mecánicas y dependientes a la carrera.</p>\n  <p><strong>Objetivo:</strong> Encontrar la salida del laberinto de plantas (6)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.2e7513d7431c7e2c]{Escuadrón de infantería} — os busca</li><li>@UUID[Actor.bd4a8b220fe30dc8]{Vehículo blindado} — espera fuera</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Los grandes almacenes</strong> → Cargar.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "3f71d903e5e46ada",
+      "name": "Cementerio",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 2
+      },
+      "sort": 300,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Sector 3 · manual, p. 50.</em></p><p>Camposanto nuevo, solo para alemanes, en pleno funeral militar con salva de honor.</p>\n  <p><strong>Objetivo:</strong> Arruinar el funeral (6)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.2e7513d7431c7e2c]{Escuadrón de infantería} — pillados por sorpresa, pero armados</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Cementerio</strong> → Cargar.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "33c0da4f077e0edc",
+      "name": "Hôtel L'Étoile",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 2
+      },
+      "sort": 400,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Sector 3 · manual, p. 51.</em></p><p>Hotel de lujo para las familias del mando; el bar del sexto piso tiene uno de los últimos pianos de cola de París.</p>\n  <p><strong>Objetivo:</strong> Hacer una entrada como es debido (6)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.1f3af430d21704df]{Oficiales tomando una copa} ×2 (como Patrulla policial)</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Hôtel L'Étoile</strong> → Cargar.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "7ce948764237abd0",
+      "name": "Mausoleo",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 2
+      },
+      "sort": 500,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Sector 3 · manual, p. 51.</em></p><p>Entrada a túneles y criptas olvidadas: buen sitio para perderse de vista, malo para orientarse.</p>\n  <p><strong>Objetivo:</strong> Entrar en el laberinto subterráneo (y salir) (6, Desafío 1)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.9a29c06018d47e77]{Infantería blindada} — muy asustados</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Mausoleo</strong> → Cargar.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "496b9aed76b5f78e",
+      "name": "Catedral de Saint-Médard",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 2
+      },
+      "sort": 600,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Sector 3 · manual, p. 51.</em></p><p>Vidrieras, bancos de roble y un gran altar. El suelo sagrado no hace nada a los vampiros; las balas que entran por las ventanas, sí.</p>\n  <p><strong>Objetivo:</strong> Abrir un hueco en el cerco y salir (8)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.2e7513d7431c7e2c]{Escuadrón de infantería} ×2</li><li>@UUID[Actor.53ad02f2216b4274]{Equipo de francotiradores} — en el edificio de enfrente</li></ul>\n  <p><strong>Botín:</strong></p><ul><li>Una cruz especialmente grande (++saltar vallas)</li></ul>\n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Catedral de Saint-Médard</strong> → Cargar.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "5a7dab2e0518678b",
+      "name": "Palacio de la Tecnología Alemana",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 2
+      },
+      "sort": 2100,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Sector 2 · manual, p. 52.</em></p><p>Sala de exposiciones con pilas experimentales, aleaciones nuevas y una plataforma de armas de cuatro patas, apagada.</p>\n  <p><strong>Objetivo:</strong> Asaltar el pabellón y salir por el otro lado (9)</p>\n  <p><strong>Objetivos secundarios:</strong></p><ul><li>Arreglar la plataforma de armas (5). Da acceso, sin ocupar botín, a: Plataforma de armas cuadrúpeda (+ignorar el fuego enemigo) y Torreta de microondas (+++antitanque).</li></ul>\n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.6c772a90c3041568]{Stahlsoldat}</li></ul>\n  <p><strong>Botín:</strong></p><ul><li>Prototipo de lanzarrayos (++++bien calibrado antes de disparar)</li><li>Bidón de combustible experimental (++sobre algo inflamable)</li></ul>\n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Palacio de la Tecnología Alemana</strong> → Cargar.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "12ae8d9a8c0a7ad2",
+      "name": "Estación de metro",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 2
+      },
+      "sort": 2200,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Sector 2 · manual, p. 53.</em></p><p>No circulan trenes, pero los túneles llegan a casi cualquier parte… y bajo tierra es fácil acabar acorralado.</p>\n  <p><strong>Objetivo:</strong> Atajar por los túneles del metro (10)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.9a29c06018d47e77]{Infantería blindada} ×2 — buscan vampiros</li><li>@UUID[Actor.f816f24086da54fb]{Escuadrón de motoristas} — si ponéis un tren en marcha</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Estación de metro</strong> → Cargar.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "35bcd46ba04a897f",
+      "name": "Garaje de coches de lujo",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 2
+      },
+      "sort": 2300,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Sector 2 · manual, p. 54.</em></p><p>Coches caros de diplomáticos y expatriados: aguantan poco, corren mucho.</p>\n  <p><strong>Objetivo:</strong> Robar algo llamativo y salir pitando (8)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.2e7513d7431c7e2c]{Infantería en vehículo blindado} (como Escuadrón de infantería) — en persecución</li><li>@UUID[Actor.53ad02f2216b4274]{Equipo de francotiradores} — en una azotea</li></ul>\n  <p><strong>Botín:</strong></p><ul><li>Deportivo italiano descapotable (++maniobras)</li><li>Berlina alemana de importación (++volantazos)</li><li>Cacharro francés (++pasar desapercibido)</li></ul>\n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Garaje de coches de lujo</strong> → Cargar.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "5fe3efec2c687cf5",
+      "name": "El Cerdo Negro",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 2
+      },
+      "sort": 2400,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Sector 2 · manual, p. 54.</em></p><p>Bar de sótanos encadenados y humo; escondite de la Resistencia, avisada de vuestra llegada.</p>\n  <p><strong>Objetivo:</strong> Despistar a los nazis escondiéndose en el bar (6)</p>\n  <p><strong>Objetivos secundarios:</strong></p><ul><li>Hacer equipo con la Resistencia (4). Da acceso, sin ocupar botín, a: Escuadrón guerrillero (+maniobra de flanqueo).</li></ul>\n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.1f3af430d21704df]{Patrulla policial} ×2</li><li>@UUID[Actor.2e7513d7431c7e2c]{Infantería en vehículo blindado} (como Escuadrón de infantería) — llega de camino</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>El Cerdo Negro</strong> → Cargar.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "05f0579174e841d9",
+      "name": "Museo de la Guerra Europea",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 2
+      },
+      "sort": 2500,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Sector 2 · manual, p. 55.</em></p><p>Mil años de armas en vitrinas polvorientas… que un brujo nazi acaba de animar.</p>\n  <p><strong>Objetivo:</strong> Cruzar el museo antes de que os desborden los no-muertos (8, Desafío 1)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.515841733095391e]{Einherjar}</li><li>@UUID[Actor.1f3af430d21704df]{Guardias del museo} (como Patrulla policial)</li></ul>\n  <p><strong>Botín:</strong></p><ul><li>Arco largo, una obra maestra (++asesino silencioso)</li><li>Cañón cargado que aún funciona (+++objetivo inmóvil)</li><li>Momia guerrera traidora (+vendaje bien prieto)</li><li>El caballo no-muerto de Napoleón (+pisotear)</li></ul>\n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Museo de la Guerra Europea</strong> → Cargar.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "7ab5174ed22726f3",
+      "name": "Parque de atracciones",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 2
+      },
+      "sort": 2600,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Sector 2 · manual, p. 56.</em></p><p>Feria de luces con la tercera noria más grande de Europa, encendida y sin nadie al mando.</p>\n  <p><strong>Objetivo:</strong> Cruzar la feria que se derrumba, perseguidos por la bruja (10, Desafío 1)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.46340b4b068254c1]{Rust-Witch} — os echa la noria encima</li><li>@UUID[Actor.1f3af430d21704df]{Tripulación del tanque} (como Patrulla policial) — lo han abandonado</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Parque de atracciones</strong> → Cargar.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "82b8fb855c49be58",
+      "name": "Galería de arte censurado",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 2
+      },
+      "sort": 2700,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Sector 2 · manual, p. 58.</em></p><p>Arte «degenerado» mal colgado y, esta noche, la mayor quema de cuadros que se recuerda.</p>\n  <p><strong>Objetivo:</strong> Atravesar la galería rápido y con violencia (8)</p>\n  <p><strong>Objetivos secundarios:</strong></p><ul><li>Localizar un Van Gogh perdido (o algo así) (4). Sin ventaja mecánica: tenéis un Van Gogh.</li></ul>\n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.2e7513d7431c7e2c]{Infantería en vehículo blindado} (como Escuadrón de infantería) — revientan la pared</li><li>@UUID[Actor.e6a1b25264a78f9d]{Brigada quema-arte}</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Galería de arte censurado</strong> → Cargar.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "9450ee80605d8ca9",
+      "name": "La Ópera",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 2
+      },
+      "sort": 2800,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Sector 2 · manual, p. 58.</em></p><p>Wagner a medio segundo acto, puertas cerradas y un galán de cine que ejecuta a alguien del público por cada nota fallada.</p>\n  <p><strong>Objetivo:</strong> Correr por los pasillos hacia Hitler sin hacer caso al Übermensch (4)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.37a2fa96cf1aa896]{Dämonenblut}</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>La Ópera</strong> → Cargar.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "557501e4faf4d9d7",
+      "name": "Depósito de armas y vehículos",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 2
+      },
+      "sort": 4100,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Sector 1 · manual, p. 62.</em></p><p>Semiorugas, coches de mando y todoterrenos de los oficiales.</p>\n  <p><strong>Objetivo:</strong> Atravesar el aparcamiento (8)</p>\n  <p><strong>Objetivos secundarios:</strong></p><ul><li>Asaltar el depósito de municiones (4). Cada jugador recupera todos los usos de sus armas de fuego, granadas y similares.</li></ul>\n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.f816f24086da54fb]{Escuadrón de motoristas} — a toda velocidad entre coberturas</li><li>@UUID[Actor.2e7513d7431c7e2c]{Escuadrón de infantería} — de guardia</li><li>@UUID[Actor.51ec8f5001ac384e]{Tanque} — sale del hangar cuando cae un enemigo</li></ul>\n  <p><strong>Botín:</strong></p><ul><li>El Volkswagen negro blindado de tus sueños (++ametralladoras frontales)</li></ul>\n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Depósito de armas y vehículos</strong> → Cargar.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "39c3955900a720d3",
+      "name": "Jardín temático nazi",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 2
+      },
+      "sort": 4200,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Sector 1 · manual, p. 62.</em></p><p>Una postal austriaca al pie de la torre, con el alto mando de banquete. Mucha cobertura para vosotros… y para los tiradores.</p>\n  <p><strong>Objetivo:</strong> Guerra relámpago en la fiesta del jardín (8)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.2e7513d7431c7e2c]{Oficiales borrachos} (como Escuadrón de infantería)</li><li>@UUID[Actor.53ad02f2216b4274]{Equipo de francotiradores} ×2</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Jardín temático nazi</strong> → Cargar.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "06e4929bdc039019",
+      "name": "La Torre Eiffel",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 2
+      },
+      "sort": 4300,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Sector 1 · manual, p. 63.</em></p><p>Ascensores, focos y antenas de última tecnología alemana. Arriba, amarrado, el zepelín.</p>\n  <p><strong>Objetivo:</strong> Subir a lo alto de la Torre Eiffel (8, Desafío 1)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.9a29c06018d47e77]{Infantería blindada} — os esperan</li><li>@UUID[Actor.14a3434292834bcd]{Escuadrón de paracaidistas} — caen arriba y por los lados</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>La Torre Eiffel</strong> → Cargar.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "d87fceea89617504",
+      "name": "El zepelín del Führer",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 2
+      },
+      "sort": 4400,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Sector 1 · manual, p. 63.</em></p><p>Mármol, seda, oro y caoba en el aire, cuadros sin mérito y tesoros saqueados.</p>\n  <p><strong>Objetivo:</strong> Llegar a la sala de transmisión de Hitler (6, Desafío 1)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.3f651156219a4a7c]{Escuadra de Vampirjäger}</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>El zepelín del Führer</strong> → Cargar.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "d08775e304183ce7",
+      "name": "Sala de transmisión de Hitler",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 2
+      },
+      "sort": 4500,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Sector 1 · manual, p. 64.</em></p><p>Decorado de pancartas, atril y brasero para retransmitir en directo vuestra muerte. Si el Werhund cae, Hitler queda a vuestra merced. Hitler no habla: no tiene voz.</p>\n  <p><strong>Objetivo:</strong> Acabar con el Werhund (10, Desafío 1)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.5cf6cd8e4f6bd4f1]{Werhund}</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Sala de transmisión de Hitler</strong> → Cargar.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     }
+    ],
+    "sort": 1,
+    "folder": null,
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "mision"
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "f75a4a1f42db0643",
+    "name": "Seguridad y tono",
+    "pages": [
+     {
+      "_id": "12d9188c1df17c44",
+      "name": "Antes de empezar",
+      "type": "text",
+      "title": {
+       "show": true,
+       "level": 1
+      },
+      "sort": 0,
+      "text": {
+       "format": 1,
+       "content": "<p><em>Manual, pp. 6-9 y 68-69. Léelo: lo que sigue es solo un recordatorio.</em></p>\n  <ul><li><strong>Expectativas:</strong> es un festín de sangre exagerado; terror solo desde el punto de vista de los nazis.</li>\n  <li><strong>Líneas y velos:</strong> acordadlos antes y apuntadlos en <em>Seguridad en la sesión</em> (el escudo de los controles de escena).</li>\n  <li><strong>Tarjeta X, Pausa y Velo:</strong> en ese mismo panel; llegan a toda la mesa y son anónimas.</li>\n  <li><strong>Calibrad la maldad:</strong> qué es parte del juego sin discusión, qué puede enfrentar a los personajes, qué solo hacen los villanos y qué no hace nadie.</li>\n  <li><strong>Daños colaterales:</strong> decidid si no se muestran o si se asumen sin recrearse.</li>\n  <li><strong>Hitler no habla.</strong> Y nadie interpreta saludos ni insultos: se dice que ocurren.</li></ul>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     }
+    ],
+    "sort": 2,
+    "folder": null,
+    "ownership": {
+     "default": 2
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "seguridad"
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   }
+  ],
+  "scenes": [
+   {
+    "_id": "1cf836a742cd2f37",
+    "name": "París, 1943",
+    "folder": null,
+    "sort": 0,
+    "navigation": true,
+    "navOrder": 0,
+    "navName": "París",
+    "background": {
+     "src": "systems/mr-eat-the-reich/assets/libro/mapa.webp"
+    },
+    "thumb": "systems/mr-eat-the-reich/assets/libro/mapa-thumb.webp",
+    "width": 4000,
+    "height": 2473,
+    "padding": 0,
+    "backgroundColor": "#0c1026",
+    "grid": {
+     "type": 0,
+     "size": 100,
+     "distance": 1,
+     "units": ""
+    },
+    "tokenVision": false,
+    "fog": {
+     "exploration": false
+    },
+    "initial": {
+     "x": 2000,
+     "y": 1236.5,
+     "scale": 0.35
+    },
+    "tiles": [],
+    "tokens": [],
+    "drawings": [],
+    "lights": [],
+    "notes": [
+     {
+      "_id": "2bd0eda880c203ce",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "30608c47900bb3da",
+      "x": 3271,
+      "y": 2119,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/skull.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 60,
+      "text": "Plaza de la Sirena",
+      "fontFamily": "Signika",
+      "fontSize": 40,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "8ac2b5f3109456f8",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "bcb06a377158aff7",
+      "x": 2788,
+      "y": 2158,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/skull.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 60,
+      "text": "Los grandes almacenes",
+      "fontFamily": "Signika",
+      "fontSize": 40,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "a2ff0edcff2a97ed",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "3f71d903e5e46ada",
+      "x": 3090,
+      "y": 1806,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/skull.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 60,
+      "text": "Cementerio",
+      "fontFamily": "Signika",
+      "fontSize": 40,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "e9dc887916d03646",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "33c0da4f077e0edc",
+      "x": 2834,
+      "y": 1806,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/skull.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 60,
+      "text": "Hôtel L'Étoile",
+      "fontFamily": "Signika",
+      "fontSize": 40,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "a8779dc24a83566a",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "7ce948764237abd0",
+      "x": 2485,
+      "y": 1984,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/skull.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 60,
+      "text": "Mausoleo",
+      "fontFamily": "Signika",
+      "fontSize": 40,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "f39344c0088c457a",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "496b9aed76b5f78e",
+      "x": 2798,
+      "y": 1614,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/skull.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 60,
+      "text": "Catedral de Saint-Médard",
+      "fontFamily": "Signika",
+      "fontSize": 40,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "d93750868a72d1d1",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "5a7dab2e0518678b",
+      "x": 2478,
+      "y": 1333,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/skull.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 60,
+      "text": "Palacio de la Tecnología Alemana",
+      "fontFamily": "Signika",
+      "fontSize": 40,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "d8b0440b81ef35a1",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "12ae8d9a8c0a7ad2",
+      "x": 2329,
+      "y": 1557,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/skull.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 60,
+      "text": "Estación de metro",
+      "fontFamily": "Signika",
+      "fontSize": 40,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "2b18c48936d57d8f",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "35bcd46ba04a897f",
+      "x": 1600,
+      "y": 2052,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/skull.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 60,
+      "text": "Garaje de coches de lujo",
+      "fontFamily": "Signika",
+      "fontSize": 40,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "3af5fc2729534fe7",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "5fe3efec2c687cf5",
+      "x": 1067,
+      "y": 1913,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/skull.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 60,
+      "text": "El Cerdo Negro",
+      "fontFamily": "Signika",
+      "fontSize": 40,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "a4fb2257115be5bf",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "05f0579174e841d9",
+      "x": 1621,
+      "y": 1685,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/skull.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 60,
+      "text": "Museo de la Guerra Europea",
+      "fontFamily": "Signika",
+      "fontSize": 40,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "031846063c67a95e",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "7ab5174ed22726f3",
+      "x": 1323,
+      "y": 2247,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/skull.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 60,
+      "text": "Parque de atracciones",
+      "fontFamily": "Signika",
+      "fontSize": 40,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "7177516cfd932ede",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "82b8fb855c49be58",
+      "x": 1600,
+      "y": 1465,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/skull.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 60,
+      "text": "Galería de arte censurado",
+      "fontFamily": "Signika",
+      "fontSize": 40,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "20c0a50e8460583a",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "9450ee80605d8ca9",
+      "x": 622,
+      "y": 2084,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/skull.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 60,
+      "text": "La Ópera",
+      "fontFamily": "Signika",
+      "fontSize": 40,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "8231161046bb6540",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "557501e4faf4d9d7",
+      "x": 1038,
+      "y": 1372,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/skull.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 60,
+      "text": "Depósito de armas y vehículos",
+      "fontFamily": "Signika",
+      "fontSize": 40,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "50f49fd37ce249db",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "39c3955900a720d3",
+      "x": 1330,
+      "y": 1109,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/skull.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 60,
+      "text": "Jardín temático nazi",
+      "fontFamily": "Signika",
+      "fontSize": 40,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "0ee3eab074cce06b",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "06e4929bdc039019",
+      "x": 853,
+      "y": 1038,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/skull.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 60,
+      "text": "La Torre Eiffel",
+      "fontFamily": "Signika",
+      "fontSize": 40,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "e4f8d1b61ef27f3f",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "d87fceea89617504",
+      "x": 1291,
+      "y": 754,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/skull.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 60,
+      "text": "El zepelín del Führer",
+      "fontFamily": "Signika",
+      "fontSize": 40,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     }
+    ],
+    "sounds": [],
+    "templates": [],
+    "walls": [],
+    "regions": [],
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "escena": "paris"
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   }
+  ],
+  "tables": [
+   {
+    "_id": "91398a114b51c2e4",
+    "name": "Flashback · ¿dónde fue?",
+    "img": "icons/svg/d6-grey.svg",
+    "description": "",
+    "formula": "1d6",
+    "replacement": true,
+    "displayRoll": true,
+    "folder": null,
+    "sort": 0,
+    "results": [
+     {
+      "_id": "d36190d460049a68",
+      "type": "text",
+      "name": "",
+      "description": "A bordo de un avión en caída libre",
+      "text": "A bordo de un avión en caída libre",
+      "img": "icons/svg/d6-grey.svg",
+      "weight": 1,
+      "range": [
+       1,
+       1
+      ],
+      "drawn": false,
+      "flags": {}
+     },
+     {
+      "_id": "f7d0ba70798bde80",
+      "type": "text",
+      "name": "",
+      "description": "Rescatando prisioneros de guerra en plena tormenta",
+      "text": "Rescatando prisioneros de guerra en plena tormenta",
+      "img": "icons/svg/d6-grey.svg",
+      "weight": 1,
+      "range": [
+       2,
+       2
+      ],
+      "drawn": false,
+      "flags": {}
+     },
+     {
+      "_id": "d9bc2b4b273e90b1",
+      "type": "text",
+      "name": "",
+      "description": "Asesinando a un general nazi en la ópera",
+      "text": "Asesinando a un general nazi en la ópera",
+      "img": "icons/svg/d6-grey.svg",
+      "weight": 1,
+      "range": [
+       3,
+       3
+      ],
+      "drawn": false,
+      "flags": {}
+     },
+     {
+      "_id": "627f555697c6e9c1",
+      "type": "text",
+      "name": "",
+      "description": "Sacando a un espía de detrás de las líneas enemigas",
+      "text": "Sacando a un espía de detrás de las líneas enemigas",
+      "img": "icons/svg/d6-grey.svg",
+      "weight": 1,
+      "range": [
+       4,
+       4
+      ],
+      "drawn": false,
+      "flags": {}
+     },
+     {
+      "_id": "0e6414239cc8eede",
+      "type": "text",
+      "name": "",
+      "description": "Robando una máquina de cifrado de un submarino",
+      "text": "Robando una máquina de cifrado de un submarino",
+      "img": "icons/svg/d6-grey.svg",
+      "weight": 1,
+      "range": [
+       5,
+       5
+      ],
+      "drawn": false,
+      "flags": {}
+     },
+     {
+      "_id": "44342886fa7099f2",
+      "type": "text",
+      "name": "",
+      "description": "Saboteando un arsenal enemigo con explosivos improvisados",
+      "text": "Saboteando un arsenal enemigo con explosivos improvisados",
+      "img": "icons/svg/d6-grey.svg",
+      "weight": 1,
+      "range": [
+       6,
+       6
+      ],
+      "drawn": false,
+      "flags": {}
+     }
+    ],
+    "ownership": {
+     "default": 2
+    },
+    "flags": {},
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "95786a0c9d936692",
+    "name": "Flashback · la pregunta",
+    "img": "icons/svg/d6-grey.svg",
+    "description": "",
+    "formula": "1d6",
+    "replacement": true,
+    "displayRoll": true,
+    "folder": null,
+    "sort": 0,
+    "results": [
+     {
+      "_id": "5ce68c976cbcdd38",
+      "type": "text",
+      "name": "",
+      "description": "Salvaste a [personaje] de una muerte segura. ¿Qué o quién quería matarlo?",
+      "text": "Salvaste a [personaje] de una muerte segura. ¿Qué o quién quería matarlo?",
+      "img": "icons/svg/d6-grey.svg",
+      "weight": 1,
+      "range": [
+       1,
+       1
+      ],
+      "drawn": false,
+      "flags": {}
+     },
+     {
+      "_id": "604aac6dbc3f2a6e",
+      "type": "text",
+      "name": "",
+      "description": "Reclutaste a [personaje] para F.A.N.G. ¿Qué tuviste que hacer para convencerlo?",
+      "text": "Reclutaste a [personaje] para F.A.N.G. ¿Qué tuviste que hacer para convencerlo?",
+      "img": "icons/svg/d6-grey.svg",
+      "weight": 1,
+      "range": [
+       2,
+       2
+      ],
+      "drawn": false,
+      "flags": {}
+     },
+     {
+      "_id": "6409f7d034d66dd0",
+      "type": "text",
+      "name": "",
+      "description": "Le debes la vida a [personaje]. ¿Cómo te salvó?",
+      "text": "Le debes la vida a [personaje]. ¿Cómo te salvó?",
+      "img": "icons/svg/d6-grey.svg",
+      "weight": 1,
+      "range": [
+       3,
+       3
+      ],
+      "drawn": false,
+      "flags": {}
+     },
+     {
+      "_id": "20c958e75f56c2ba",
+      "type": "text",
+      "name": "",
+      "description": "[personaje] te enseñó unos cuantos trucos. ¿Cuál fue el más importante?",
+      "text": "[personaje] te enseñó unos cuantos trucos. ¿Cuál fue el más importante?",
+      "img": "icons/svg/d6-grey.svg",
+      "weight": 1,
+      "range": [
+       4,
+       4
+      ],
+      "drawn": false,
+      "flags": {}
+     },
+     {
+      "_id": "55eedd4304180b18",
+      "type": "text",
+      "name": "",
+      "description": "No quieres que [personaje] te vea fracasar así. ¿Qué esperas de él?",
+      "text": "No quieres que [personaje] te vea fracasar así. ¿Qué esperas de él?",
+      "img": "icons/svg/d6-grey.svg",
+      "weight": 1,
+      "range": [
+       5,
+       5
+      ],
+      "drawn": false,
+      "flags": {}
+     },
+     {
+      "_id": "d64cfa65bee12733",
+      "type": "text",
+      "name": "",
+      "description": "No quieres que [personaje] te vea fracasar así. ¿Qué espera de ti?",
+      "text": "No quieres que [personaje] te vea fracasar así. ¿Qué espera de ti?",
+      "img": "icons/svg/d6-grey.svg",
+      "weight": 1,
+      "range": [
+       6,
+       6
+      ],
+      "drawn": false,
+      "flags": {}
+     }
+    ],
+    "ownership": {
+     "default": 2
+    },
+    "flags": {},
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.1.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   }
+  ],
+  "macros": [],
+  "cards": [],
+  "playlists": [],
+  "folders": [
+   {
+    "_id": "c6137cd307e63588",
+    "name": "Vampiros de F.A.N.G.",
+    "type": "Actor",
+    "color": "#b3124b",
+    "sorting": "m",
+    "sort": 0,
+    "folder": null,
+    "description": "",
+    "flags": {}
+   },
+   {
+    "_id": "8446d0aa331cc493",
+    "name": "Fuerzas de ocupación",
+    "type": "Actor",
+    "color": "#2c4a52",
+    "sorting": "m",
+    "sort": 1,
+    "folder": null,
+    "description": "",
+    "flags": {}
+   },
+   {
+    "_id": "2cf4545586d0fcde",
+    "name": "Übermenschen",
+    "type": "Actor",
+    "color": "#5a2a7a",
+    "sorting": "m",
+    "sort": 2,
+    "folder": null,
+    "description": "",
+    "flags": {}
+   }
+  ],
+  "sort": 0,
+  "flags": {
+   "mr-eat-the-reich": {
+    "version": "0.1.0"
+   }
+  },
+  "_stats": {
+   "coreVersion": "13.351",
+   "systemId": "mr-eat-the-reich",
+   "systemVersion": "0.1.0",
+   "createdTime": 0,
+   "modifiedTime": 0,
+   "lastModifiedBy": null,
+   "compendiumSource": null,
+   "duplicateSource": null
+  }
+ }
+]

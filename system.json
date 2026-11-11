@@ -1,0 +1,36 @@
+{
+  "id": "mr-eat-the-reich",
+  "title": "MR- Eat the Reich",
+  "description": "Sistema no oficial, de uso privado, para jugar a EAT THE REICH (Grant Howitt y Will Kirkby; Rowan, Rook and Decard) en Foundry VTT: hoja de vampiro, amenazas, Panel de misión con Objetivos, Amenazas y refuerzos, y la tirada del Havoc Engine en una sola tarjeta (reparto de éxitos dado a dado, dados de bonificación, flashback y lesiones). No está afiliado a Rowan, Rook and Decard ni a Will Kirkby.",
+  "version": "0.1.0",
+  "compatibility": { "minimum": "13", "verified": "13.351", "maximum": "14" },
+  "authors": [
+    { "name": "Manu Romera", "url": "https://github.com/ManuRomera", "flags": { "role": "Diseño e implementación para Foundry" } },
+    { "name": "Anthropic Claude", "flags": { "role": "Asistencia de desarrollo" } }
+  ],
+  "esmodules": ["mr-eat-the-reich.mjs", "module/mr-credits.mjs"],
+  "styles": ["styles/mr-eat-the-reich.css"],
+  "languages": [{ "lang": "es", "name": "Español", "path": "lang/es.json" }],
+  "documentTypes": {
+    "Actor": {
+      "vampiro": { "htmlFields": ["notas"] },
+      "amenaza": { "htmlFields": ["rasgos", "notas"] }
+    }
+  },
+  "packs": [
+    {
+      "name": "aventura",
+      "label": "Eat the Reich · La misión",
+      "path": "packs/aventura",
+      "type": "Adventure",
+      "system": "mr-eat-the-reich",
+      "ownership": { "PLAYER": "NONE", "ASSISTANT": "OWNER" }
+    }
+  ],
+  "socket": true,
+  "grid": { "distance": 1, "units": "" },
+  "primaryTokenAttribute": "",
+  "background": "systems/mr-eat-the-reich/assets/libro/portada.webp",
+  "flags": { "hotReload": { "extensions": ["css", "hbs", "json"], "paths": ["styles", "templates", "lang"] } },
+  "license": "NOTICE.md"
+}

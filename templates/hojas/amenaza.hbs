@@ -1,0 +1,44 @@
+<div class="er-hoja-cuerpo">
+  <header class="er-cab">
+    <button type="button" class="er-retrato" data-action="retrato" data-tooltip="Encuadrar la imagen" aria-label="Encuadrar la imagen de {{actor.name}}">
+      <img src="{{actor.img}}" data-retrato="{{actor.id}}" data-lupa alt="">
+    </button>
+    <div class="er-cab-texto">
+      <input type="text" class="er-nombre" name="name" value="{{actor.name}}" aria-label="Nombre" {{disabled (not editable)}}>
+      {{#if system.uber}}<span class="er-sello">Übermensch</span>{{/if}}
+      <textarea name="system.descripcion" rows="3" aria-label="Descripción" {{disabled (not editable)}}>{{system.descripcion}}</textarea>
+    </div>
+  </header>
+
+  <div class="er-cifras">
+    <label><span>Amenaza</span><input type="number" name="system.valor" value="{{system.valor}}" min="0" max="30" {{disabled (not editable)}}></label>
+    <label><span>Ataque</span><input type="number" name="system.ataque" value="{{system.ataque}}" min="0" max="20" {{disabled (not editable)}}></label>
+    <label><span>Desafío</span><input type="number" name="system.desafio" value="{{system.desafio}}" min="0" max="6" {{disabled (not editable)}}></label>
+  </div>
+  {{#if esGM}}<button type="button" class="er-boton" data-action="aMision"><i class="fa-solid fa-skull" inert></i> Meter en la misión</button>{{/if}}
+
+  {{#if system.rasgos}}<section class="er-rasgos"><h2>Reglas propias</h2>{{{rasgos}}}</section>{{/if}}
+  {{#if system.presagio}}<p><b>Presagios:</b> {{system.presagio}}</p>{{/if}}
+  {{#if system.sabor}}<p><b>A qué sabe su sangre:</b> {{system.sabor}}</p>{{/if}}
+
+  {{#if editable}}
+  <details class="er-ajustes-amenaza" data-memoria="reglas"><summary>Cómo se comporta</summary>
+    <label class="er-casilla"><input type="checkbox" name="system.revive" {{checked system.revive}}> Vuelve con refuerzos cuando cae a 0</label>
+    <label class="er-casilla"><input type="checkbox" name="system.crece" {{checked system.crece}}> Su Ataque sube 1 al final de cada ronda</label>
+    <label class="er-casilla"><input type="checkbox" name="system.uber" {{checked system.uber}}> Übermensch (matarlo desbloquea una mejora)</label>
+    <label class="er-casilla"><input type="checkbox" name="system.anatema" {{checked system.anatema}}> Sus 6 de ataque valen dos éxitos</label>
+    <label class="er-casilla"><input type="checkbox" name="system.garras" {{checked system.garras}}> Sus lesiones marcan toda la columna</label>
+    <label class="er-casilla"><input type="checkbox" name="system.sinDolor" {{checked system.sinDolor}}> Cada 1 del GM sube su Desafío</label>
+    <label class="er-casilla"><input type="checkbox" name="system.sinSangre" {{checked system.sinSangre}}> No se le puede beber la sangre</label>
+    <label class="er-campo"><span>Los jugadores aciertan con</span><select name="system.umbral">{{selectOptions umbrales selected=system.umbral}}</select></label>
+    <label class="er-campo"><span>Amenaza extra con cada refuerzo</span><input type="number" name="system.refuerzoValor" value="{{system.refuerzoValor}}" min="0" max="6"></label>
+    <label class="er-campo"><span>Reglas propias</span><prose-mirror name="system.rasgos" value="{{system.rasgos}}" toggled compact>{{{rasgos}}}</prose-mirror></label>
+    <label class="er-campo"><span>Presagios</span><input type="text" name="system.presagio" value="{{system.presagio}}"></label>
+    <label class="er-campo"><span>Sabor de la sangre</span><input type="text" name="system.sabor" value="{{system.sabor}}"></label>
+  </details>
+  {{/if}}
+
+  <details class="er-notas" data-memoria="notas"><summary>Notas</summary>
+    {{#if editable}}<prose-mirror name="system.notas" value="{{system.notas}}" toggled compact>{{{notas}}}</prose-mirror>{{else}}{{{notas}}}{{/if}}
+  </details>
+</div>

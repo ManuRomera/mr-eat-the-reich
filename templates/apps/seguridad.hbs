@@ -1,0 +1,21 @@
+<div class="er-dialogo-cuerpo">
+  <p class="er-nota">Es un festín de sangre exagerado contra nazis, y aun así puede tocar temas duros. Si algo incomoda a alguien, <b>se cambia sin explicaciones</b>. Estas señales llegan a todo el grupo al instante y no dicen quién las ha pulsado.</p>
+  <div class="er-senales">
+    {{#each senales}}
+    <button type="button" class="er-boton er-senal er-senal-{{clave}}" data-action="senal" data-senal="{{clave}}">
+      <i class="fa-solid {{icono}}"></i><span>{{titulo}}</span>
+    </button>
+    {{/each}}
+  </div>
+
+  <section class="er-acuerdos">
+    <h3><i class="fa-solid fa-ban"></i> Líneas <small>no aparecen en la partida</small></h3>
+    {{#if esGM}}<textarea name="lineas" rows="3" placeholder="Una por línea">{{lineasTexto}}</textarea>
+    {{else}}{{#if lineas.length}}<ul>{{#each lineas}}<li>{{this}}</li>{{/each}}</ul>{{else}}<p class="er-tenue">Aún sin acordar.</p>{{/if}}{{/if}}
+    <h3><i class="fa-solid fa-eye-slash"></i> Velos <small>pasan fuera de plano, sin detalle</small></h3>
+    {{#if esGM}}<textarea name="velos" rows="3" placeholder="Una por línea">{{velosTexto}}</textarea>
+    {{else}}{{#if velos.length}}<ul>{{#each velos}}<li>{{this}}</li>{{/each}}</ul>{{else}}<p class="er-tenue">Aún sin acordar.</p>{{/if}}{{/if}}
+  </section>
+  {{#if esGM}}<div class="er-pie-formulario"><span class="er-tenue">Los acuerdos los guarda quien dirige.</span>
+    <button type="button" class="er-boton" data-action="guardar"><i class="fa-solid fa-floppy-disk"></i> Guardar</button></div>{{/if}}
+</div>

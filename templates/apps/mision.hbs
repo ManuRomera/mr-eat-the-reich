@@ -1,0 +1,74 @@
+{{#*inline "contador"}}
+  <span class="er-contador" data-tooltip="{{etiqueta}}" aria-label="{{etiqueta}}: {{valor}}">
+    {{#if icono}}<i class="fa-solid {{icono}}" inert></i>{{/if}}
+    {{#if esGM}}<button type="button" class="er-pm" data-action="menos" data-lista="{{lista}}" data-id="{{id}}" data-campo="{{campo}}" aria-label="Bajar {{etiqueta}}">−</button>{{/if}}
+    <b>{{valor}}</b>
+    {{#if esGM}}<button type="button" class="er-pm" data-action="mas" data-lista="{{lista}}" data-id="{{id}}" data-campo="{{campo}}" aria-label="Subir {{etiqueta}}">+</button>{{/if}}
+  </span>
+{{/inline}}
+
+<div class="er-mision-cuerpo">
+  <header class="er-mision-cab">
+    {{#if esGM}}<input type="text" class="er-escena" data-campo="escena" value="{{m.escena}}" placeholder="¿Dónde estáis?" aria-label="Escena">
+    {{else}}<h2>{{#if m.escena}}{{m.escena}}{{else}}París, 1943{{/if}}</h2>{{/if}}
+    <span class="er-ronda" data-tooltip="Ronda">R{{m.ronda}}</span>
+    <span class="er-ataque {{#if ataque}}peligro{{/if}}" data-tooltip="Dados de ataque que tira ahora el GM (la amenaza mayor + 1 por cada otra)"><i class="fa-solid fa-dice" inert></i> {{ataque}}</span>
+  </header>
+
+  <section aria-label="Turnos">
+    <div class="er-turnos">
+      {{#each vampiros}}
+        <button type="button" class="er-turno {{#if actuo}}actuo{{/if}} {{#if derribado}}derribado{{/if}} {{#if muerto}}muerto{{/if}}" data-action="turno" data-id="{{id}}"
+          data-tooltip="{{nombre}}{{#if actuo}}: ya ha actuado{{else}}: le toca{{/if}}{{#if derribado}} · derribado{{/if}}" aria-pressed="{{actuo}}" aria-label="{{nombre}}">
+          <img src="{{img}}" data-retrato="{{id}}" alt=""><span class="er-turno-sangre"><i class="fa-solid fa-droplet" inert></i>{{sangre}}</span>
+        </button>
+      {{else}}<p class="er-tenue">Aún no hay vampiros en el mundo.</p>{{/each}}
+    </div>
+  </section>
+
+  <section aria-label="Objetivos">
+    <h3><i class="fa-solid fa-bullseye" inert></i> Objetivos</h3>
+    {{#each objetivos}}
+      <div class="er-fila {{#if hecho}}hecho{{/if}} {{#if secundario}}secundario{{/if}}">
+        {{#if ../esGM}}<input type="text" data-lista="objetivos" data-id="{{id}}" data-campo="nombre" value="{{nombre}}" aria-label="Objetivo">{{else}}<span class="er-fila-nombre">{{nombre}}</span>{{/if}}
+        {{> contador lista="objetivos" campo="valor" valor=valor etiqueta="Pasos" esGM=../esGM}}
+        {{> contador lista="objetivos" campo="desafio" valor=desafio etiqueta="Desafío" icono="fa-shield-halved" esGM=../esGM}}
+        {{#if ../esGM}}<button type="button" class="er-icono" data-action="quitar" data-lista="objetivos" data-id="{{id}}" aria-label="Quitar {{nombre}}"><i class="fa-solid fa-xmark" inert></i></button>{{/if}}
+        {{#if hecho}}{{#if secundario}}<p class="er-premio"><b>Cumplido.</b> {{#if premio}}{{premio}}{{else}}Elige: {{#each ../premios}}{{this}}{{#unless @last}} · {{/unless}}{{/each}}.{{/if}}</p>{{else}}<p class="er-premio"><b>¡Objetivo cumplido!</b> Quien quitó el último punto cuenta cómo. La escena termina.</p>{{/if}}{{/if}}
+      </div>
+    {{else}}<p class="er-tenue">Sin objetivos. {{#if esGM}}Carga una localización o añade uno.{{/if}}</p>{{/each}}
+  </section>
+
+  <section aria-label="Amenazas">
+    <h3><i class="fa-solid fa-skull" inert></i> Amenazas</h3>
+    {{#each amenazas}}
+      <div class="er-fila er-fila-amenaza {{#if caida}}hecho{{/if}} {{#if uber}}uber{{/if}}">
+        <img src="{{img}}" data-lupa alt="" {{#if uuid}}data-action="abrir" data-uuid="{{uuid}}" role="button" tabindex="0"{{/if}}>
+        {{#if ../esGM}}<input type="text" data-lista="amenazas" data-id="{{id}}" data-campo="nombre" value="{{nombre}}" aria-label="Amenaza">{{else}}<span class="er-fila-nombre">{{nombre}}</span>{{/if}}
+        {{> contador lista="amenazas" campo="valor" valor=valor etiqueta="Amenaza" esGM=../esGM}}
+        {{> contador lista="amenazas" campo="ataque" valor=ataque etiqueta="Ataque" icono="fa-dice" esGM=../esGM}}
+        {{> contador lista="amenazas" campo="desafio" valor=desafio etiqueta="Desafío" icono="fa-shield-halved" esGM=../esGM}}
+        {{#if ../esGM}}<button type="button" class="er-icono" data-action="quitar" data-lista="amenazas" data-id="{{id}}" aria-label="Quitar {{nombre}}"><i class="fa-solid fa-xmark" inert></i></button>{{/if}}
+        <p class="er-fila-nota">{{#if caida}}<b>{{#if revive}}Rechazada: volverá con refuerzos.{{else}}Destruida.{{/if}}</b> {{/if}}{{#if solo}}Solo · {{/if}}{{#if nota}}{{nota}}. {{/if}}{{{rasgos}}}</p>
+      </div>
+    {{else}}<p class="er-tenue">Nadie os dispara. Por ahora.</p>{{/each}}
+  </section>
+
+  {{#if esGM}}
+  <footer class="er-mision-pie">
+    <div class="er-fila-botones">
+      <button type="button" class="er-boton {{#if rondaHecha}}er-boton-fuerte{{/if}}" data-action="ronda" data-tooltip="Las amenazas caídas vuelven a la mitad de Ataque, las activas suben 1 y empieza otra ronda"><i class="fa-solid fa-person-military-rifle" inert></i> Fin de ronda: refuerzos</button>
+      <button type="button" class="er-boton er-boton-suave" data-action="limpiar"><i class="fa-solid fa-broom" inert></i> Escena nueva</button>
+    </div>
+    <details data-memoria="preparar" open><summary>Preparar la escena</summary>
+      <div class="er-linea"><select name="lugar" aria-label="Localización">{{#each sectores}}<optgroup label="{{nombre}}">{{#each lugares}}<option value="{{clave}}">{{nombre}}</option>{{/each}}</optgroup>{{/each}}</select>
+        <button type="button" class="er-boton" data-action="cargar" data-tooltip="Sustituye lo que hay por el objetivo y los enemigos de esa localización">Cargar</button></div>
+      <div class="er-linea"><select name="catalogo" aria-label="Amenaza">{{#each catalogo}}<option value="{{v}}">{{n}}</option>{{/each}}</select>
+        <button type="button" class="er-boton er-boton-suave" data-action="amenaza"><i class="fa-solid fa-plus" inert></i> Amenaza</button></div>
+      <div class="er-linea"><button type="button" class="er-boton er-boton-suave" data-action="objetivo"><i class="fa-solid fa-plus" inert></i> Objetivo</button>
+        <button type="button" class="er-boton er-boton-suave" data-action="objetivo" data-secundario="1"><i class="fa-solid fa-plus" inert></i> Secundario</button></div>
+      <p class="er-tenue">También puedes arrastrar aquí una amenaza desde el directorio de actores.</p>
+    </details>
+  </footer>
+  {{/if}}
+</div>

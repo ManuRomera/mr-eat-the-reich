@@ -1,0 +1,105 @@
+<!doctype html>
+<!-- Arnés visual sin Foundry: pinta las plantillas reales con el CSS de Foundry y datos del sistema.
+     Servir Data/ en :30021 y la carpeta public de Foundry en :30022 (ver .claude/launch.json) y abrir
+     http://localhost:30021/systems/mr-eat-the-reich/tests/arnes.html  (?oscuro, ?contraste, ?legible) -->
+<meta charset="utf-8">
+<title>Arnés · MR- Eat the Reich</title>
+<link rel="stylesheet" href="http://localhost:30022/css/foundry2.css">
+<link rel="stylesheet" href="http://localhost:30022/fonts/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="../styles/mr-eat-the-reich.css?v=3">
+<style>
+  html, body { overflow: auto !important; height: auto !important; position: static !important; background: #2a2d45 !important; }
+  body { padding: 20px; display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
+  .application { position: relative !important; display: flex; flex-direction: column; }
+  .chat { width: 300px; background: #1c1b22; padding: 8px; display: flex; flex-direction: column; gap: 10px; }
+  .er-menu { position: static !important; }
+</style>
+<script src="handlebars.min.js"></script>
+<body class="vtt game system-mr-eat-the-reich">
+<script type="module">
+const clase = class { static DEFAULT_OPTIONS = {}; };
+globalThis.foundry = {
+  applications: { api: { ApplicationV2: clase, HandlebarsApplicationMixin: B => B, DialogV2: clase }, sheets: { ActorSheetV2: clase }, apps: { DocumentSheetConfig: clase },
+    handlebars: { renderTemplate() {}, loadTemplates() {} }, ux: { TextEditor: { implementation: {} } }, instances: new Map() },
+  utils: { escapeHTML: t => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;"), deepClone: structuredClone, randomID: () => Math.random().toString(36).slice(2, 10), mergeObject: (a, b) => ({ ...a, ...b }) }
+};
+globalThis.Hooks = { on() {}, once() {}, callAll() {} };
+const { VAMPIROS, AMENAZAS, LOCALIZACIONES, ATRIBUTOS, AYUDA_ATRIBUTOS, BLOQUEOS, PREMIOS_SECUNDARIO } = await import("../module/datos.mjs");
+const R = await import("../module/reglas.mjs");
+const RUTA = "/systems/mr-eat-the-reich";
+const actores = new Map(VAMPIROS.map(v => [v.clave, { id: v.clave, name: v.nombre, img: `${RUTA}/assets/libro/${v.clave}.webp`, isOwner: true, system: { ...structuredClone(v), flashback: false }, getFlag: () => null }]));
+globalThis.game = { actors: { get: id => actores.get(id) }, settings: { get: () => ({}) }, users: {}, user: { isGM: true } };
+const { htmlTirada } = await import("../module/tirada.mjs");
+
+for (const c of new URLSearchParams(location.search).keys()) document.body.classList.add(`er-${c}`);
+Handlebars.registerHelper({
+  checked: v => (v ? "checked" : ""), disabled: v => (v ? "disabled" : ""), not: v => !v,
+  selectOptions: (op, { hash }) => new Handlebars.SafeString(Object.entries(op).map(([k, n]) => `<option value="${k}" ${String(k) === String(hash.selected) ? "selected" : ""}>${n}</option>`).join(""))
+});
+const plantilla = async ruta => Handlebars.compile(await (await fetch(`../templates/${ruta}`)).text());
+const ventana = (titulo, clases, html, ancho, alto) => {
+  const d = document.createElement("div");
+  d.className = `application mr-eat-the-reich themed theme-light ${clases}`;
+  d.style.cssText = `width:${ancho}px;${new URLSearchParams(location.search).has('alto') ? `height:${alto}px` : 'height:auto'}`;
+  d.innerHTML = `<header class="window-header"><i class="window-icon fa-fw fa-solid fa-user"></i><h1 class="window-title">${titulo}</h1>
+    <button type="button" class="header-control icon fa-solid fa-universal-access er-a11y-boton"></button><button type="button" class="header-control icon fa-solid fa-xmark" data-action="close"></button></header>
+    <section class="window-content">${html}</section>`;
+  document.body.append(d);
+  return d;
+};
+
+/* Hoja de vampiro: mismo contexto que HojaVampiro._prepareContext */
+function contextoVampiro(v, editando) {
+  const s = structuredClone(v);
+  Object.assign(s, { sangre: 4, botin: { nombre: "Subfusil", usos: 2, max: 3, bono: 1, req: "flanquear" }, notas: "", flashback: false });
+  s.equipo[0].usos = 1; s.equipo[2].usos = 0; s.mejoras = s.mejoras.map((m, i) => ({ ...m, activa: i === 0 }));
+  s.lesiones[0][0].marcada = s.lesiones[0][1].marcada = s.lesiones[1][0].marcada = true;
+  s.efectivos = R.atributosEfectivos(s.atributos, s.lesiones); s.bloqueos = [...R.bloqueos(s.lesiones)];
+  const cajas = o => Array.from({ length: o.max }, (_, i) => ({ i: i + 1, llena: i >= o.max - o.usos, ultima: i === o.max - 1 && o.max > 1 }));
+  const poder = h => ({ ...h, especial: h.tipo === "especial", sangre: h.tipo === "sangre", mas: "+".repeat(h.bono) });
+  return {
+    actor: { id: v.clave, name: v.nombre, img: `${RUTA}/assets/libro/${v.clave}.webp` }, system: s, editable: true, editando, esGM: true,
+    atributos: Object.entries(ATRIBUTOS).map(([k, nombre]) => ({ k, nombre, base: s.atributos[k], valor: s.efectivos[k], cambia: s.efectivos[k] !== s.atributos[k], ayuda: AYUDA_ATRIBUTOS[k] })),
+    sangre: Array.from({ length: 10 }, (_, i) => ({ n: i + 1, llena: i < s.sangre })),
+    equipo: s.equipo.map(e => ({ ...e, cajas: cajas(e), mas: "+".repeat(e.bono) })), botin: { ...s.botin, cajas: cajas(s.botin) },
+    habilidades: s.habilidades.map(poder), mejoras: s.mejoras.map(poder),
+    columnas: s.lesiones.map((col, i) => ({ rango: ["1-2", "3-4", "5-6"][i], casillas: col.map((l, j) => ({ ...l, ruta: `lesiones.${i}.${j}` })) })),
+    bloqueos: s.bloqueos.map(b => BLOQUEOS[b]), tipos: { especial: "ESPECIAL", sangre: "Gasta Sangre", pasiva: "Pasiva" }, listaBloqueos: { "": "—", ...BLOQUEOS }, puedeCurar: true, costeCurar: 3
+  };
+}
+const quien = new URLSearchParams(location.search).get("pj") ?? "iryna";
+const hv = await plantilla("hojas/vampiro.hbs");
+ventana(quien, "er-hoja er-hoja-vampiro", hv(contextoVampiro(VAMPIROS.find(v => v.clave === quien), false)), 820, 860);
+ventana("Edición", "er-hoja er-hoja-vampiro", hv(contextoVampiro(VAMPIROS[1], true)), 820, 860);
+
+/* Amenaza */
+const w = AMENAZAS.find(a => a.clave === "werhund");
+ventana("Werhund", "er-hoja er-hoja-amenaza", (await plantilla("hojas/amenaza.hbs"))({ actor: { id: "w", name: w.nombre, img: `${RUTA}/assets/libro/werhund.webp` }, system: w, editable: true, esGM: true, rasgos: w.rasgos, umbrales: { 4: "4 o más", 5: "5 o más", 6: "solo con 6" } }), 520, 640);
+
+/* Panel de misión */
+const l = LOCALIZACIONES.find(x => x.clave === "museo");
+const fa = (clave, extra = {}) => { const a = AMENAZAS.find(x => x.clave === clave); return { id: clave, ...a, img: a.arte ? `${RUTA}/assets/retratos/${a.arte}.webp` : "http://localhost:30022/icons/svg/skull.svg", max: a.valor, inicial: a.ataque, solo: !a.revive && !a.crece, caida: false, ...extra }; };
+const m = { escena: l.nombre, ronda: 2, objetivos: [{ id: "o1", ...l.objetivo, valor: 5 }, { id: "o2", nombre: "Rescatar a Flint", valor: 0, desafio: 0, secundario: true, hecho: true, premio: "Flint vuelve al combate." }],
+  amenazas: [fa("einherjar", { valor: 4 }), fa("patrulla", { nombre: "Guardias del museo", valor: 0, ataque: 0, caida: true }), fa("rust-witch")] };
+ventana("Misión", "er-mision", (await plantilla("apps/mision.hbs"))({ esGM: true, m, objetivos: m.objetivos, amenazas: m.amenazas, ataque: R.reservaAtaque(m.amenazas).dados, premios: PREMIOS_SECUNDARIO,
+  sectores: [3, 2, 1].map(s => ({ nombre: `Sector ${s}`, lugares: LOCALIZACIONES.filter(x => x.sector === s) })), catalogo: AMENAZAS.map(a => ({ v: a.clave, n: `${a.nombre} (${a.valor}/${a.ataque})` })),
+  vampiros: VAMPIROS.map((v, i) => ({ id: v.clave, nombre: v.nombre, img: `${RUTA}/assets/retratos/${v.clave}.webp`, sangre: i * 2, actuo: i < 2, derribado: i === 5, muerto: false })), rondaHecha: false }), 540, 720);
+
+/* Tarjetas de chat */
+const chat = document.createElement("div"); chat.className = "chat"; document.body.append(chat);
+const base = { actor: "iryna", ultimo: false, atributo: "Disparo", umbral: 4, usados: ["Rifle de caza exquisito", "Runas explosivas"], bonos: [{ nombre: "Rifle de caza exquisito", n: 1, req: "posición elevada", hecho: false }, { nombre: "Runas explosivas", n: 2, req: "oculto", hecho: false }],
+  especiales: [{ nombre: "Tiro certero", texto: "…" }], defensa: 0, absorbido: {}, notas: [], flashback: null, cerrada: false, resultado: null, sinBonos: false, sinBeber: false,
+  gm: { caras: [6, 4, 1], exitos: 2, amenaza: "x", nombre: "Escuadrón de infantería", garras: false, otras: 1 } };
+const dados = cs => cs.map(c => ({ c, origen: "", destino: null }));
+const tarjetas = [
+  { ...base, dados: dados([6, 5, 4, 2, 2, 1]) },
+  { ...base, defensa: 2, dados: [{ c: 6, origen: "", destino: { tipo: "defensa", nombre: "Defensa", texto: "Se defiende: −2 ataques" } }, { c: 5, origen: "", destino: { tipo: "objetivo", nombre: "x", texto: "Ponerse a cubierto: −1 → 4" } }, ...dados([4, 2, 2, 1]), { c: 4, origen: "Runas", destino: null }], bonos: [{ ...base.bonos[0], hecho: true }, { ...base.bonos[1], hecho: true }] },
+  { ...base, actor: "flint", atributo: "Combate", dados: dados([3, 2, 1, 1]), usados: [], bonos: [], cerrada: true, resultado: { quedan: 2, lesion: { d6: 3, marcadas: ["Asustado"], derribado: false, muerto: false }, sube: "" }, flashback: { contexto: "A bordo de un avión en caída libre", pregunta: "Le debes la vida a Nicole. ¿Cómo te salvó?" } },
+  { ...base, actor: "nicole", ultimo: true, atributo: "Último gesto: Preparada para explotar", dados: dados([6, 6, 5, 4, 4, 3, 2, 1]), usados: [], bonos: [], gm: { caras: [], exitos: 0, nombre: "", otras: 0 } }
+];
+for (const t of tarjetas) { const d = document.createElement("div"); d.innerHTML = htmlTirada({ id: "m" }, t); chat.append(d); }
+const menu = document.createElement("div"); menu.className = "mr-eat-the-reich er-menu";
+menu.innerHTML = `<p>Gastar este crítico (2 éxitos) en…</p><button><i class="fa-solid fa-bullseye"></i> Objetivo: Cruzar el museo (5, Desafío 1)</button><button><i class="fa-solid fa-skull"></i> Atacar: Einherjar (4)</button><button><i class="fa-solid fa-shield"></i> Defenderse (quedan 2 ataques)</button><button><i class="fa-solid fa-star"></i> ESPECIAL · Tiro certero</button>`;
+chat.append(menu);
+document.title = "Arnés listo";
+</script>

@@ -1,0 +1,274 @@
+/* MR- Eat the Reich · expediente de F.A.N.G.: papel de informe mecanografiado sobre noche azul, tinta casi negra,
+   magenta de sangre de neón y verde azulado de cinta de embalar.
+   Regla fija: nunca tocar la fuente de los botones con iconos (fa-*) ni la cabecera de ventana. */
+
+@font-face { font-family: "ER Maquina"; src: url("../fonts/SpecialElite-Regular.ttf") format("truetype"); font-display: swap; }
+@font-face { font-family: "ER Rotulo"; src: url("../fonts/oswald.woff2") format("woff2"); font-weight: 300 700; font-display: swap; }
+
+:root {
+  --er-escala: 1;
+  --er-papel: #efe6cf;
+  --er-papel-2: #e2d6b8;
+  --er-campo: #f8f2e2;
+  --er-tinta: #17152a;
+  --er-noche: #10132b;
+  --er-noche-2: #1b1f45;
+  --er-sangre: #d81557;
+  --er-neon: #ff3d8b;
+  --er-cinta: #1f6f78;
+  --er-oro: #f2c230;
+  --er-linea: #17152a;
+  --er-tenue: rgba(23, 21, 42, .68);
+  --er-sobre: #ffffff;
+  --er-rotulo: "ER Rotulo", "Arial Narrow", "Helvetica Neue", sans-serif;
+  --er-texto: "ER Maquina", "Courier New", monospace;
+  --er-legible: "Atkinson Hyperlegible", Verdana, "Trebuchet MS", sans-serif;
+}
+
+/* ---------- Ventanas ---------- */
+.mr-eat-the-reich.application { --color-text-primary: var(--er-tinta); border: 2px solid var(--er-noche); border-radius: 3px; box-shadow: 0 0 0 1px var(--er-neon), 0 12px 40px rgba(0, 0, 0, .6); background: var(--er-papel); }
+.mr-eat-the-reich.application .window-content {
+  font-family: var(--er-texto); font-size: calc(14px * var(--er-escala)); line-height: 1.35; color: var(--er-tinta); padding: 10px 12px; font-synthesis: weight style;
+  background: repeating-linear-gradient(0deg, transparent 0 27px, rgba(23, 21, 42, .05) 27px 28px), linear-gradient(var(--er-papel), var(--er-papel-2));
+}
+.mr-eat-the-reich.application > .window-header { background: linear-gradient(90deg, var(--er-noche), var(--er-noche-2)); border-bottom: 3px solid var(--er-sangre); color: #fff; }
+.mr-eat-the-reich.application > .window-header .window-title { font-family: var(--er-rotulo); font-weight: 600; font-size: 1em; letter-spacing: .12em; text-transform: uppercase; color: #fff; margin: 0; }
+.mr-eat-the-reich :is(h1, h2, h3) { font-family: var(--er-rotulo); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--er-tinta); border: 0; margin: 0; }
+.mr-eat-the-reich h2 { font-size: 1.15em; border-bottom: 3px solid var(--er-tinta); padding-bottom: 1px; margin: 4px 0 6px; display: flex; align-items: baseline; gap: 8px; }
+.mr-eat-the-reich h2 small { font-family: var(--er-texto); font-weight: 400; text-transform: none; letter-spacing: 0; font-size: .72em; color: var(--er-tenue); }
+.mr-eat-the-reich h3 { font-size: 1em; margin: 10px 0 4px; }
+.mr-eat-the-reich :is(input[type="text"], input[type="number"], textarea, select) {
+  font-family: var(--er-texto); font-size: 1em; color: var(--er-tinta); background: var(--er-campo); border: 1px solid var(--er-tenue); border-radius: 2px; padding: 2px 6px; height: auto; min-height: 26px;
+}
+.mr-eat-the-reich textarea { width: 100%; resize: vertical; }
+.mr-eat-the-reich :is(input, textarea, select, button):focus-visible { outline: 3px solid var(--er-neon); outline-offset: 1px; }
+.mr-eat-the-reich input[type="checkbox"] { accent-color: var(--er-sangre); width: 18px; height: 18px; flex: none; margin: 0; }
+.mr-eat-the-reich fieldset { border: 1px solid var(--er-tenue); border-radius: 2px; padding: 4px 8px 6px; margin: 0; }
+.mr-eat-the-reich legend { font-family: var(--er-rotulo); text-transform: uppercase; font-size: .82em; letter-spacing: .06em; padding: 0 4px; }
+
+.mr-eat-the-reich .er-campo { display: flex; flex-direction: column; gap: 2px; margin: 0 0 6px; }
+.mr-eat-the-reich .er-campo > span { font-family: var(--er-rotulo); font-weight: 600; font-size: .82em; text-transform: uppercase; letter-spacing: .06em; }
+.mr-eat-the-reich :is(.er-nota, .er-tenue) { font-size: .88em; color: var(--er-tenue); margin: 4px 0; }
+.mr-eat-the-reich .er-fila-botones { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
+.er-casilla { display: flex; align-items: center; gap: 8px; margin: 3px 0; cursor: pointer; }
+.er-casilla-texto { display: flex; gap: 8px; align-items: flex-start; margin: 5px 0; cursor: pointer; }
+.er-casilla-texto small { display: block; color: var(--er-tenue); font-size: .86em; }
+.er-casilla-texto:has(input:disabled) { opacity: .5; cursor: default; }
+.er-dialogo-cuerpo { display: flex; flex-direction: column; gap: 8px; }
+.er-avisos { list-style: none; margin: 0; padding: 4px 8px; background: var(--er-sangre); color: #fff; border-radius: 2px; }
+.er-avisos li::before { content: "⚠ "; }
+.er-banda { padding: 6px 10px; margin: 6px 0; display: flex; align-items: center; gap: 10px; background: var(--er-noche); color: #fff; border-left: 6px solid var(--er-neon); }
+
+/* Botones propios (los de icono de Foundry no se tocan) */
+.mr-eat-the-reich .er-boton, .er-tc .er-boton, .er-boton-panel, .er-seguridad-caja .er-boton {
+  font-family: var(--er-rotulo); font-weight: 600; font-size: calc(13px * var(--er-escala)); text-transform: uppercase; letter-spacing: .06em; line-height: 1.2;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: auto; height: auto; min-height: 30px; padding: 4px 12px; cursor: pointer;
+  background: var(--er-noche); color: #fff; border: 2px solid var(--er-noche); border-radius: 2px; box-shadow: 3px 3px 0 var(--er-sangre); transition: transform .08s, box-shadow .08s;
+}
+.mr-eat-the-reich .er-boton:hover, .er-tc .er-boton:hover, .er-boton-panel:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--er-neon); }
+.mr-eat-the-reich .er-boton:active, .er-tc .er-boton:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--er-sangre); }
+.mr-eat-the-reich .er-boton-suave, .er-tc .er-boton-suave { background: var(--er-campo); color: var(--er-tinta); box-shadow: 2px 2px 0 var(--er-cinta); }
+.mr-eat-the-reich .er-boton-fuerte { background: var(--er-sangre); border-color: var(--er-sangre); box-shadow: 3px 3px 0 var(--er-noche); }
+.mr-eat-the-reich .er-boton:disabled, .er-tc .er-boton:disabled { opacity: .45; cursor: default; transform: none; }
+.er-boton-panel { width: 100%; margin-top: 4px; }
+.mr-eat-the-reich .er-icono { width: 26px; height: 26px; min-height: 0; padding: 0; flex: none; display: inline-grid; place-items: center; background: transparent; border: 1px solid transparent; color: var(--er-tinta); border-radius: 2px; cursor: pointer; }
+.mr-eat-the-reich .er-icono:hover { border-color: var(--er-sangre); color: var(--er-sangre); }
+.mr-eat-the-reich .er-icono:disabled { opacity: .35; cursor: default; }
+
+/* ---------- Hoja de vampiro ---------- */
+.er-hoja .window-content { padding: 0; }
+.er-hoja-cuerpo { padding: 12px 16px 16px; overflow-y: auto; height: 100%; display: flex; flex-direction: column; gap: 8px; }
+.er-cab { display: flex; gap: 14px; align-items: flex-start; }
+.mr-eat-the-reich .er-retrato { flex: 0 0 132px; width: 132px; height: 160px; padding: 0; border: 3px solid var(--er-tinta); background: var(--er-noche); box-shadow: 5px 5px 0 var(--er-sangre); transform: rotate(-1.5deg); cursor: pointer; overflow: hidden; border-radius: 0; }
+.er-retrato img { width: 100%; height: 100%; object-fit: cover; border: 0; display: block; }
+.er-cab-texto { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
+.er-cab-texto h1 { font-size: 2.6em; line-height: 1; background: var(--er-noche); color: #fff; padding: 2px 14px 4px; transform: rotate(-.6deg); letter-spacing: .08em; }
+.er-cab-texto :is(input, textarea) { width: 100%; }
+.er-cab-texto .er-nombre { font-family: var(--er-rotulo); font-size: 1.6em; font-weight: 700; text-transform: uppercase; }
+.er-sello { font-family: var(--er-rotulo); font-size: .78em; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--er-sangre); border: 2px solid var(--er-sangre); padding: 0 8px; transform: rotate(1deg); }
+.er-concepto { margin: 2px 0 0; font-size: .95em; }
+.er-editar { flex: none; }
+.er-dos { display: grid; grid-template-columns: 230px 1fr; gap: 16px; }
+.er-dos-sangre { grid-template-columns: 150px 1fr; }
+
+.mr-eat-the-reich .er-atr { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; height: auto; min-height: 30px; margin: 0 0 4px; padding: 0 0 0 10px; cursor: pointer;
+  font-family: var(--er-rotulo); font-size: 1em; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; background: var(--er-noche); color: #fff; border: 0; border-radius: 0; clip-path: polygon(0 0, 100% 0, 100% 100%, 8px 100%, 0 70%); }
+.er-atr b { background: var(--er-campo); color: var(--er-tinta); font-family: var(--er-texto); font-size: 1.25em; min-width: 40px; align-self: stretch; display: grid; place-items: center; border: 2px solid var(--er-noche); }
+.er-atr:hover { background: var(--er-sangre); } .er-atr:hover b { border-color: var(--er-sangre); }
+.er-atr.cambia b { background: var(--er-oro); }
+.er-atr.libre { background: var(--er-cinta); } .er-atr.libre b { border-color: var(--er-cinta); }
+.er-atr-edita { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; } .er-atr-edita input { width: 60px; }
+
+.er-objeto { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin: 0 0 7px; }
+.er-objeto-nombre { flex: 1 0 100%; font-size: .92em; text-transform: uppercase; letter-spacing: .04em; }
+.er-objeto-nombre i { color: var(--er-sangre); font-style: normal; }
+.er-usos { display: inline-flex; gap: 4px; }
+.mr-eat-the-reich .er-uso { width: 22px; height: 22px; min-height: 0; padding: 0; border: 2px solid var(--er-tinta); border-radius: 0; background: transparent; cursor: pointer; position: relative; }
+.er-uso.ultima { background: rgba(23, 21, 42, .22); }
+.er-uso:not(.llena)::after { content: "✕"; position: absolute; inset: -4px 0 0; font-size: 20px; line-height: 24px; color: var(--er-sangre); font-family: var(--er-rotulo); }
+.er-req { font-size: .9em; } .er-req-edita { flex: 1; min-width: 100px; }
+.er-botin { border-top: 1px dashed var(--er-tenue); padding-top: 6px; } .er-botin .er-objeto-nombre { flex: 0 0 auto; } .er-botin > input[type="text"] { flex: 1; min-width: 120px; }
+.er-mini { display: inline-flex; align-items: center; gap: 2px; } .er-mini input { width: 46px; }
+
+.er-gotas { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin-bottom: 8px; }
+.mr-eat-the-reich .er-gota { height: 26px; min-height: 0; padding: 0; border: 2px solid var(--er-tinta); border-radius: 0; background: transparent; color: var(--er-tinta); font-family: var(--er-texto); font-size: .86em; cursor: pointer; }
+.mr-eat-the-reich .er-gota.llena { background: var(--er-sangre); color: #fff; border-color: var(--er-sangre); }
+.er-sangre h2 b { color: var(--er-sangre); font-size: 1.3em; }
+
+.er-poder { margin: 0 0 6px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; }
+.er-poder-nombre { font-family: var(--er-rotulo); font-size: .86em; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; background: var(--er-noche); color: #fff; padding: 1px 8px; white-space: nowrap; }
+.er-poder.especial .er-poder-nombre { background: var(--er-sangre); }
+.er-poder.pasiva .er-poder-nombre { background: var(--er-cinta); }
+.er-poder-texto { flex: 1 1 260px; font-size: .94em; }
+.er-poder.apagada > :not(input) { opacity: .5; }
+.er-fila-edita { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; margin-bottom: 6px; padding: 4px; background: rgba(23, 21, 42, .06); }
+.er-fila-edita input[type="text"] { flex: 1 1 120px; } .er-fila-edita input[type="number"] { width: 50px; } .er-fila-edita label { display: inline-flex; align-items: center; gap: 3px; font-size: .86em; }
+.er-fila-edita textarea { flex: 1 0 100%; }
+
+.er-columnas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.er-rango { display: inline-block; font-family: var(--er-rotulo); font-weight: 700; background: var(--er-noche); color: #fff; padding: 0 8px; margin-bottom: 4px; transform: rotate(-2deg); }
+.er-lesion { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; }
+.er-lesion span { flex: 1; } .er-lesion b { font-weight: 400; text-transform: uppercase; letter-spacing: .04em; } .er-lesion small { display: block; color: var(--er-tenue); }
+.mr-eat-the-reich .er-marca { width: 26px; height: 26px; min-height: 0; padding: 0; flex: none; border: 2px solid var(--er-tinta); border-radius: 0; background: transparent; cursor: pointer; }
+.er-lesion.marcada .er-marca { background: var(--er-sangre); border-color: var(--er-sangre); box-shadow: inset 0 0 0 3px var(--er-campo); }
+.er-lesion.marcada b { color: var(--er-sangre); } .er-lesion.marcada small { color: var(--er-tinta); font-weight: 700; }
+.er-gesto { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+.er-gesto > span { font-family: var(--er-rotulo); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; background: var(--er-noche); color: #fff; padding: 2px 10px; white-space: nowrap; }
+.er-gesto input { flex: 1; text-transform: uppercase; }
+.er-notas summary { font-family: var(--er-rotulo); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; cursor: pointer; }
+.er-notas prose-mirror, .er-campo prose-mirror { min-height: 80px; background: var(--er-campo); border: 1px solid var(--er-tenue); }
+.er-hoja-cuerpo.muerto .er-retrato img { filter: grayscale(1) contrast(1.2); }
+
+/* Hoja de amenaza */
+.er-cifras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.er-cifras label { display: flex; flex-direction: column; align-items: center; background: var(--er-noche); padding: 4px 6px 6px; }
+.er-cifras span { font-family: var(--er-rotulo); font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: #fff; }
+.mr-eat-the-reich .er-cifras input { width: 100%; text-align: center; font-size: 1.7em; }
+.er-rasgos p { margin: 0 0 4px; }
+.er-ajustes-amenaza summary { font-family: var(--er-rotulo); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; cursor: pointer; margin-bottom: 4px; }
+
+/* ---------- Panel de misión ---------- */
+.er-mision .window-content { padding: 0; }
+.er-mision-cuerpo { padding: 10px 12px; overflow-y: auto; height: 100%; }
+.er-mision-cab { display: flex; align-items: center; gap: 8px; }
+.er-mision-cab h2, .er-mision-cab .er-escena { flex: 1; margin: 0; font-family: var(--er-rotulo) !important; font-size: 1.25em !important; font-weight: 700; text-transform: uppercase; }
+.er-ronda, .er-ataque { font-family: var(--er-rotulo); font-weight: 700; padding: 2px 10px; background: var(--er-noche); color: #fff; white-space: nowrap; }
+.er-ataque.peligro { background: var(--er-sangre); }
+.er-turnos { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; }
+.mr-eat-the-reich .er-turno { position: relative; width: 54px; height: 54px; min-height: 0; padding: 0; border: 3px solid var(--er-neon); border-radius: 50%; overflow: visible; background: var(--er-noche); cursor: pointer; box-shadow: 0 0 10px var(--er-neon); }
+.er-turno img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 0; display: block; }
+.er-turno.actuo { border-color: var(--er-tenue); box-shadow: none; } .er-turno.actuo img { filter: grayscale(1) brightness(.7); }
+.er-turno.derribado { border-style: dashed; border-color: var(--er-oro); } .er-turno.muerto img { filter: grayscale(1) brightness(.35); }
+.er-turno-sangre { position: absolute; right: -8px; bottom: -6px; background: var(--er-sangre); color: #fff; font-family: var(--er-rotulo); font-size: 12px; font-weight: 700; padding: 0 5px; border-radius: 8px; display: inline-flex; gap: 2px; align-items: center; }
+.er-fila { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 6px 8px; margin-bottom: 6px; background: var(--er-campo); border-left: 6px solid var(--er-cinta); }
+.er-fila-amenaza { border-left-color: var(--er-noche); } .er-fila.uber { border-left-color: var(--er-sangre); background: #f6dfe6; }
+.er-fila.secundario { border-left-style: dashed; }
+.er-fila > input[type="text"], .er-fila-nombre { flex: 1 1 80px; min-width: 0; font-weight: 700; }
+.er-fila-amenaza > img { background: var(--er-noche); width: 36px; height: 36px; object-fit: cover; object-position: 45% 25%; border: 2px solid var(--er-tinta); flex: none; cursor: pointer; }
+.er-fila.hecho { opacity: .7; } .er-fila.hecho :is(.er-fila-nombre, input[type="text"]) { text-decoration: line-through; }
+.er-fila-nota, .er-premio { flex: 1 0 100%; margin: 0; font-size: .86em; color: var(--er-tenue); } .er-fila-nota:empty { display: none; }
+.er-premio { color: var(--er-tinta); }
+.er-contador { display: inline-flex; align-items: center; gap: 3px; font-family: var(--er-rotulo); }
+.er-contador b { min-width: 24px; text-align: center; font-size: 1.3em; }
+.mr-eat-the-reich .er-pm { width: 22px; height: 22px; min-height: 0; padding: 0; line-height: 1; border: 1px solid var(--er-tinta); border-radius: 50%; background: transparent; color: var(--er-tinta); font-family: var(--er-rotulo); font-weight: 700; cursor: pointer; }
+.mr-eat-the-reich .er-pm:hover { background: var(--er-tinta); color: var(--er-campo); }
+.er-mision-pie { border-top: 3px solid var(--er-tinta); margin-top: 10px; padding-top: 6px; }
+.er-mision-pie summary { font-family: var(--er-rotulo); font-weight: 600; text-transform: uppercase; cursor: pointer; margin: 4px 0; }
+.er-linea { display: flex; gap: 6px; margin-bottom: 6px; } .er-linea select { flex: 1; min-width: 0; }
+
+/* ---------- Tarjetas de chat ---------- */
+.chat-message:has(.er-tirada) .dice-roll { display: none; }
+.er-tc { font-synthesis: weight style; font-family: var(--er-texto); font-size: calc(13px * var(--er-escala)); color: var(--er-tinta); background: var(--er-papel); border: 2px solid var(--er-noche); box-shadow: 3px 3px 0 var(--er-sangre); padding: 0 8px 8px; }
+.er-tc p { margin: 6px 0; }
+.er-tc-cab { display: flex; align-items: center; gap: 8px; margin: 0 -8px 6px; padding: 5px 8px; background: var(--er-noche); color: #fff; border-bottom: 3px solid var(--er-sangre); }
+.er-tc-cab img { width: 44px; height: 44px; object-fit: cover; border: 2px solid var(--er-neon); border-radius: 50%; flex: none; }
+.er-tc-cab div { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.er-tc-cab strong { font-family: var(--er-rotulo); font-size: 1.25em; letter-spacing: .08em; text-transform: uppercase; }
+.er-tc-cab span { font-size: .9em; opacity: .9; }
+.er-tc-total { font-family: var(--er-rotulo); font-size: 2em; line-height: 1; color: var(--er-neon); }
+.er-tc.ultimo .er-tc-cab { background: var(--er-sangre); border-bottom-color: var(--er-noche); }
+.er-tc.ultimo .er-tc-total { color: #fff; }
+.mr-eat-the-reich :is(b, strong), .er-tc :is(b, strong) { font-weight: 700; }
+.er-tc-usa, .er-tc-nota { font-size: .9em; color: var(--er-tenue); }
+.er-tc-flash { margin: 6px 0; padding: 4px 8px; border-left: 4px solid var(--er-cinta); background: var(--er-campo); font-style: normal; }
+.er-dados { display: flex; flex-wrap: wrap; gap: 5px; margin: 6px 0; }
+.er-tc .er-dado { width: 34px; height: 34px; min-height: 0; padding: 0; display: inline-grid; place-items: center; font-family: var(--er-rotulo); font-size: 20px; font-weight: 700; line-height: 1; border: 2px solid var(--er-tinta); border-radius: 5px; background: var(--er-campo); color: var(--er-tinta); }
+.er-tc button.er-dado:not(:disabled) { cursor: pointer; }
+.er-tc button.er-dado:not(:disabled):hover { transform: translateY(-2px) rotate(-4deg); }
+.er-tc .er-dado.exito { background: var(--er-noche); color: #fff; border-color: var(--er-noche); }
+.er-tc .er-dado.critico { background: var(--er-sangre); color: #fff; border-color: var(--er-sangre); box-shadow: 0 0 8px var(--er-neon); }
+.er-tc .er-dado.fallo { opacity: .38; border-style: dashed; }
+.er-tc .er-dado.gastado { background: transparent; color: var(--er-cinta); border-color: var(--er-cinta); opacity: 1; font-size: 15px; }
+.er-tc .er-dado.bono { border-radius: 50% 5px; }
+.er-tc .er-dado:disabled { opacity: 1; } .er-tc .er-dado.fallo:disabled { opacity: .38; }
+.er-tc-gm { border-top: 1px dashed var(--er-tenue); padding-top: 4px; }
+.er-tc-gm > span:first-child { font-family: var(--er-rotulo); text-transform: uppercase; letter-spacing: .06em; font-size: .9em; }
+.er-dados.gm .er-dado { width: 26px; height: 26px; font-size: 15px; border-radius: 3px; }
+.er-dados.gm .er-dado.exito { background: var(--er-tinta); color: var(--er-papel); border-color: var(--er-tinta); }
+.er-tc-quedan { display: block; } .er-tc-quedan.peligro b { color: var(--er-sangre); font-size: 1.2em; }
+.er-tc-reparto { list-style: none; margin: 6px 0; padding: 0; } .er-tc-reparto li { padding: 1px 0; } .er-tc-reparto i { color: var(--er-cinta); width: 16px; }
+.er-tc-botones { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+.er-tc-botones .er-boton { width: 100%; text-transform: none; letter-spacing: .02em; }
+.er-tc-fin { margin-top: 8px; padding: 6px 8px; background: var(--er-noche); color: #fff; border-left: 6px solid var(--er-cinta); }
+.er-tc-fin.herida { border-left-color: var(--er-neon); }
+.er-aviso { font-family: var(--er-texto); }
+.er-pista { font-size: .9em; border-left: 4px solid var(--er-cinta); padding-left: 8px; }
+
+.er-menu { position: fixed; z-index: 10000; min-width: 240px; max-width: 340px; padding: 6px; display: flex; flex-direction: column; gap: 3px; background: var(--er-papel); color: var(--er-tinta); border: 2px solid var(--er-noche); box-shadow: 4px 4px 0 var(--er-sangre); font-family: var(--er-texto); font-size: calc(13px * var(--er-escala)); }
+.er-menu p { margin: 0 0 3px; font-family: var(--er-rotulo); text-transform: uppercase; letter-spacing: .06em; }
+.er-menu button { display: flex; gap: 8px; align-items: center; width: 100%; height: auto; min-height: 30px; padding: 3px 8px; text-align: left; font-family: var(--er-texto); font-size: 1em; line-height: 1.2; background: var(--er-campo); color: var(--er-tinta); border: 1px solid var(--er-tenue); border-radius: 2px; cursor: pointer; }
+.er-menu button:hover, .er-menu button:focus-visible { background: var(--er-noche); color: #fff; outline: 0; }
+.er-menu button i { width: 16px; text-align: center; color: var(--er-sangre); }
+
+/* ---------- Seguridad, retrato, diagnóstico, lupa ---------- */
+.er-senales { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 4px 0 8px; }
+.mr-eat-the-reich .er-senal { flex-direction: column; padding: 12px 8px; gap: 6px; }
+.er-senal i { font-size: 22px; }
+.er-acuerdos ul { margin: 0 0 8px; }
+.er-seguridad-senal { position: fixed; z-index: 100000; font-family: var(--er-texto); }
+.er-seguridad-senal.pantalla { inset: 0; display: grid; place-items: center; background: rgba(16, 19, 43, .92); }
+.er-seguridad-senal.cinta { left: 0; right: 0; top: 0; background: var(--er-papel); border-bottom: 3px solid var(--er-sangre); }
+.er-seguridad-caja { max-width: 520px; text-align: center; background: var(--er-papel); border: 3px solid var(--er-noche); box-shadow: 8px 8px 0 var(--er-sangre); padding: 22px 26px; color: var(--er-tinta); }
+.er-seguridad-senal.cinta .er-seguridad-caja { max-width: none; display: flex; align-items: center; gap: 18px; padding: 10px 20px; text-align: left; box-shadow: none; border: 0; }
+.er-seguridad-caja i { font-size: 42px; color: var(--er-sangre); }
+.er-seguridad-caja h2 { font-family: var(--er-rotulo); font-size: 40px; margin: 6px 0; border: 0; display: block; text-transform: uppercase; }
+.er-ret-cuerpo { display: flex; gap: 12px; align-items: stretch; }
+.er-ret-escenario { position: relative; flex: 1; height: 420px; background: var(--er-noche); overflow: hidden; touch-action: none; cursor: crosshair; border: 2px solid var(--er-linea); }
+.er-ret-escenario img.base { position: absolute; user-select: none; border: 0; }
+.er-ret-escenario .marco { position: absolute; border: 3px solid var(--er-neon); box-shadow: 0 0 0 9999px rgba(0, 0, 0, .55); pointer-events: none; }
+.er-ret-lado { flex: 0 0 168px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.er-ret-lado .vistas { display: flex; align-items: center; gap: 8px; min-height: 66px; }
+.er-ret-lado .vistas img { border-radius: 50%; border: 2px solid var(--er-linea); object-fit: cover; }
+.er-ret-lado .v-ficha { width: 64px; height: 64px; } .er-ret-lado .v-media { width: 44px; height: 44px; } .er-ret-lado .v-chica { width: 30px; height: 30px; }
+.er-ret-lado input[type="range"], .er-a11y-escala input { width: 100%; accent-color: var(--er-sangre); }
+.er-ret-acciones { display: flex; gap: 6px; }
+.er-pie-formulario { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 10px; }
+.er-diag-resumen { font-family: var(--er-rotulo); font-size: 22px; margin: 0; text-transform: uppercase; }
+.er-diag-resumen.ok { color: var(--er-cinta); } .er-diag-resumen.mal { color: var(--er-sangre); }
+.er-diag-lista { list-style: none; padding: 0; margin: 4px 0 10px; }
+.er-diag-lista li { padding: 2px 0; } .er-diag-lista .ok i { color: var(--er-cinta); } .er-diag-lista .mal i { color: var(--er-sangre); }
+.er-diag-lista + label textarea { font-family: monospace; font-size: 11px; }
+.er-a11y-acciones { display: flex; justify-content: flex-end; margin-top: 4px; }
+.er-lupa { position: fixed; z-index: 99999; pointer-events: none; animation: er-lupa .16s ease-out; }
+.er-lupa img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(6px 6px 0 rgba(0, 0, 0, .8)); border: 0; }
+@keyframes er-lupa { from { opacity: 0; transform: scale(.94); } to { opacity: 1; transform: none; } }
+
+/* Diarios del sistema */
+.er-diario .journal-entry-content :is(h1, h2, h3) { font-family: var(--er-rotulo); text-transform: uppercase; letter-spacing: .06em; }
+.er-diario .journal-entry-page { font-family: var(--er-texto); }
+
+/* ---------- Accesibilidad ---------- */
+body.er-oscuro {
+  --er-papel: #171a36; --er-papel-2: #121428; --er-campo: #22264a; --er-tinta: #f1ead6; --er-linea: #8d8fb8; --er-tenue: rgba(241, 234, 214, .72);
+  --er-noche: #070817; --er-noche-2: #0f1130; --er-cinta: #49b9c4; --er-sangre: #ff3d8b;
+}
+body.er-oscuro .er-fila.uber { background: #3a1730; }
+body.er-oscuro .mr-eat-the-reich :is(.er-atr b, .er-boton-suave) { color: var(--er-tinta); }
+body.er-contraste { --er-tenue: var(--er-tinta); --er-papel: #ffffff; --er-papel-2: #ffffff; --er-campo: #ffffff; --er-tinta: #000000; --er-sangre: #b00040; --er-cinta: #005560; }
+body.er-contraste.er-oscuro { --er-papel: #000000; --er-papel-2: #000000; --er-campo: #000000; --er-tinta: #ffffff; --er-sangre: #ff6aa6; --er-cinta: #7fe6f0; }
+body.er-contraste .mr-eat-the-reich.application .window-content { background: var(--er-papel); }
+body.er-contraste .er-tc .er-dado.fallo { opacity: .6; }
+body.er-legible { --er-texto: var(--er-legible); --er-rotulo: var(--er-legible); }
+body.er-sin-movimiento :is(.mr-eat-the-reich, .er-tc, .er-lupa, .er-menu) * { transition: none !important; animation: none !important; }
+body.er-sin-movimiento .er-lupa { animation: none; }
+@media (prefers-reduced-motion: reduce) { .mr-eat-the-reich *, .er-tc * { transition: none !important; animation: none !important; } }

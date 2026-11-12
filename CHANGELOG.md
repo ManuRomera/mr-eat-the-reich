@@ -1,6 +1,10 @@
 # Cambios
 
-## 0.2.3 · 12-11-2026 (para enseñar a la editorial)
+## 0.2.4 · 12-11-2026 (para enseñar a la editorial)
+
+- La prioridad de MR- Dirección sobre la música vale también para mundos importados con versiones anteriores, sin reimportar.
+
+## 0.2.3 · 12-11-2026
 
 - El paquete incluye las ilustraciones del manual (retratos, mapa de París y páginas): sin ellas la hoja-ataúd salía sin personaje y el mapa vacío.
 - Hoja-ataúd sin desenfoque: la ventana es transparente del todo.

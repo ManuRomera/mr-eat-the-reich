@@ -26,8 +26,11 @@ async function repartirMusica() {
   if (!game.users.activeGM?.isSelf) return;
   const manda = Boolean(api());
   for (const s of game.scenes) {
-    const m = s.flags?.[ID]?.musica;
-    if (!s.flags?.[ID]?.escena || !m) continue;
+    if (!s.flags?.[ID]?.escena) continue;
+    // Escenas importadas con una versión anterior no llevan el flag: se guarda su enlace actual antes de soltarlo.
+    let m = s.flags[ID].musica;
+    if (!m && s._source.playlistSound) { m = { playlist: s._source.playlist, playlistSound: s._source.playlistSound }; await s.setFlag(ID, "musica", m); }
+    if (!m) continue;
     const quiere = manda ? { playlist: null, playlistSound: null } : m;
     if ((s._source.playlist ?? null) !== quiere.playlist || (s._source.playlistSound ?? null) !== quiere.playlistSound) await s.update(quiere);
   }

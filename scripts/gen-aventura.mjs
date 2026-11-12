@@ -154,7 +154,7 @@ const escenaBase = { padding: 0, backgroundColor: "#0c1026", grid: { type: 0, si
 const scenes = [
   { ...escenaBase, _id: uid("escena-paris"), name: "París, 1943", folder: null, sort: 0, navigation: true, navOrder: 0, navName: "París",
     background: { src: `${R}/libro/mapa.webp` }, thumb: `${R}/libro/mapa-thumb.webp`, width: ANCHO, height: ALTO, initial: { x: ANCHO / 2, y: ALTO / 2, scale: 0.35 },
-    tiles: [], notes, journal: journal[1]._id, ...musicaDe("paris"), flags: { [ID]: { escena: "paris" } } },
+    tiles: [], notes, journal: journal[1]._id, ...musicaDe("paris"), flags: { [ID]: { escena: "paris", musica: musicaDe("paris") } } },
   ...LOCALIZACIONES.map((l, i) => ({
     ...escenaBase, _id: uid(`escena-${l.clave}`), name: l.nombre, folder: folders.find(f => f.type === "Scene" && f.name.startsWith(`Sector ${l.sector}`))._id, sort: (i + 1) * 100, navigation: false, navOrder: i + 1, navName: l.nombre,
     background: { src: `${R}/escenas/${l.clave}.webp` }, thumb: `${R}/escenas/${l.clave}-thumb.webp`, width: 1920, height: 1080, initial: { x: 960, y: 540, scale: 0.6 },
@@ -165,7 +165,7 @@ const scenes = [
       nota(`manual-${l.clave}`, 290, 90, `El manual (p. ${l.pagina})`, { pageId: uid(`pag-manual-${l.clave}-${l.pagina}`), texture: { src: "icons/svg/eye.svg", tint: "#ffffff" }, iconSize: 48, fontSize: 28 })
     ],
     tiles: marcaJson ? [{ _id: uid(`tile-marca-${l.clave}`), texture: { src: `${R}/marca/mr-marca.webm`, scaleX: 1, scaleY: 1, tint: "#ffffff", fit: "fill" }, x: marcaJson.x, y: marcaJson.y, width: marcaJson.w, height: marcaJson.h, elevation: 0, sort: 10, rotation: 0, alpha: 1, hidden: false, locked: true, video: { loop: true, autoplay: true, volume: 0 }, flags: {} }] : [],
-    flags: { [ID]: { escena: l.clave } }
+    flags: { [ID]: { escena: l.clave, musica: musicaDe(l.clave) } }
   }))
 ];
 

@@ -78,6 +78,7 @@ export class PanelMision extends ConMemoria(HandlebarsApplicationMixin(Applicati
     const sectores = [3, 2, 1].map(s => ({ nombre: `Sector ${s}`, lugares: LOCALIZACIONES.filter(l => l.sector === s) }));
     const mundo = game.actors.filter(a => a.type === "amenaza" && !AMENAZAS.some(x => x.clave === a.getFlag(ID, "clave")));
     return {
+      direccion: Boolean(game.modules.get("mr-direccion")?.active),
       pistas: catalogoMusica(), sonando: pistaSonando(), hayEscena: Boolean(LOCALIZACIONES.find(l => l.nombre === m.escena)),
       esGM: game.user.isGM, m, sectores, ataque: ataque.dados, premios: PREMIOS_SECUNDARIO,
       objetivos: m.objetivos.map(o => ({ ...o, hecho: o.valor <= 0 })),

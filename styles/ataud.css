@@ -2,9 +2,11 @@
    Regla fija: nunca tocar la fuente de los botones con iconos (fa-*) ni de la cabecera. */
 
 .mr-eat-the-reich.application.er-hoja-ataud {
-  background: none; border: 0; border-radius: 0; box-shadow: none; overflow: visible; pointer-events: none; min-width: 0; min-height: 0;
+  background: none !important; border: 0; border-radius: 0; box-shadow: none !important; overflow: visible; pointer-events: none; min-width: 0; min-height: 0;
+  backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
 }
-.mr-eat-the-reich.application.er-hoja-ataud .window-content { background: none; padding: 0; overflow: visible; }
+.mr-eat-the-reich.application.er-hoja-ataud .window-content { background: none !important; padding: 0; overflow: visible; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+.mr-eat-the-reich.application.er-hoja-ataud::before, .mr-eat-the-reich.application.er-hoja-ataud::after { content: none !important; }
 .er-hoja-ataud .window-resize-handle { display: none; }
 
 /* La cabecera de Foundry queda como un trozo de cinta negra pegado sobre la caja: de ahí se arrastra y se cierra. */

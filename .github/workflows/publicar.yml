@@ -26,6 +26,8 @@ jobs:
           # Sin el compendio no hay misión; sin decorados ni música, las escenas salen vacías y mudas.
           unzip -l dist/mr-eat-the-reich.zip | grep -q "packs/aventura"
           unzip -l dist/mr-eat-the-reich.zip | grep -q "assets/escenas/sirena.webp"
+          unzip -l dist/mr-eat-the-reich.zip | grep -q "assets/libro/mapa.webp"
+          unzip -l dist/mr-eat-the-reich.zip | grep -q "assets/libro/iryna.webp"
           unzip -l dist/mr-eat-the-reich.zip | grep -q "assets/audio/musica/accion.ogg"
           unzip -l dist/mr-eat-the-reich.zip | grep -q "content/direccion-es.json"
           unzip -l dist/mr-eat-the-reich.zip | tail -1

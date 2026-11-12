@@ -18,12 +18,29 @@ async function registrar(a) {
   } catch (e) { console.error(`${ID} | no se pudo registrar el paquete de MR- Dirección`, e); return false; }
 }
 
+/**
+ * Quién pone la música: si MR- Dirección está activo, manda él (se desenlaza la pista nativa de cada escena y se para nuestra lista);
+ * si no, las escenas recuperan su pista para que suene sola al activarlas.
+ */
+async function repartirMusica() {
+  if (!game.users.activeGM?.isSelf) return;
+  const manda = Boolean(api());
+  for (const s of game.scenes) {
+    const m = s.flags?.[ID]?.musica;
+    if (!s.flags?.[ID]?.escena || !m) continue;
+    const quiere = manda ? { playlist: null, playlistSound: null } : m;
+    if ((s._source.playlist ?? null) !== quiere.playlist || (s._source.playlistSound ?? null) !== quiere.playlistSound) await s.update(quiere);
+  }
+  if (manda) await game.playlists.find(p => p.flags?.[ID]?.clave === "musica")?.stopAll();
+}
+
 export function registrarDireccionMR() {
   game.settings.register(ID, "avisoDireccion", { scope: "world", config: false, type: Boolean, default: false });
   Hooks.on("mrDireccion.ready", a => registrar(a));
   Hooks.once("ready", async () => {
     if (!game.user.isGM) return;
     await registrar(api());
+    await repartirMusica();
     if (!api() && !game.settings.get(ID, "avisoDireccion")) {
       await game.settings.set(ID, "avisoDireccion", true);
       ui.notifications.info(`Con el módulo MR- Dirección tendrás una barra para dirigir la misión (escenas, música con fundido, motivos y efectos). Manifiesto: ${MANIFIESTO}`, { permanent: true });

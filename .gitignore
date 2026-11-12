@@ -3,6 +3,3 @@ packs/
 dist/
 .DS_Store
 ._*
-# Arte extraído del PDF del manual (copia propia): nunca se versiona ni se publica
-assets/libro/
-assets/retratos/

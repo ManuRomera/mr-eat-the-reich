@@ -1,5 +1,11 @@
 # Cambios
 
+## 0.2.3 · 12-11-2026 (para enseñar a la editorial)
+
+- El paquete incluye las ilustraciones del manual (retratos, mapa de París y páginas): sin ellas la hoja-ataúd salía sin personaje y el mapa vacío.
+- Hoja-ataúd sin desenfoque: la ventana es transparente del todo.
+- Con MR- Dirección activo manda su música: se desenlaza la pista nativa de cada escena y se para la lista del sistema.
+
 ## 0.2.2 · 12-11-2026 (uso privado)
 
 - Banda sonora completa: las 18 piezas (se suman Claro de luna, Guillermo Tell, la Quinta de Beethoven, la fuga de Bach, Dies iræ y Lacrimosa de Mozart, El Danubio azul y la Obertura 1812). Cada escena suena ya con su pieza y no con la alternativa.

@@ -22,6 +22,7 @@ const lista = () => game.playlists.find(p => p.getFlag(ID, "clave") === "musica"
 /** Pone una pista de la banda sonora (solo GM) parando la que sonase. Sin argumento, silencio. */
 export async function musica(clave = "") {
   if (!game.user.isGM) return;
+  if (game.modules.get("mr-direccion")?.active) return ui.notifications.info("Con MR- Dirección activo, la música se lleva desde su barra.");
   const p = lista();
   if (!p) return ui.notifications.warn("Importa primero la misión: la banda sonora viene en el compendio.");
   const sonido = p.sounds.find(s => s.getFlag(ID, "clave") === clave);

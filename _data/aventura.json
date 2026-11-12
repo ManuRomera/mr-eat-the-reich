@@ -3703,7 +3703,7 @@
     ],
     "journal": "7ef6926cd48a2fd4",
     "playlist": "7f3bee911bc773d9",
-    "playlistSound": "b8e07ddf690794e5",
+    "playlistSound": "30a7c49859f60cab",
     "flags": {
      "mr-eat-the-reich": {
       "escena": "paris"
@@ -3764,7 +3764,7 @@
     "journal": "7ef6926cd48a2fd4",
     "journalEntryPage": "30608c47900bb3da",
     "playlist": "7f3bee911bc773d9",
-    "playlistSound": "b8e07ddf690794e5",
+    "playlistSound": "30a7c49859f60cab",
     "notes": [
      {
       "_id": "0c7e69c5e592e424",
@@ -3922,7 +3922,7 @@
     "journal": "7ef6926cd48a2fd4",
     "journalEntryPage": "bcb06a377158aff7",
     "playlist": "7f3bee911bc773d9",
-    "playlistSound": "10d81b7310a68e4b",
+    "playlistSound": "58550e2e34ddaf65",
     "notes": [
      {
       "_id": "d5654acf9bf9a820",
@@ -4396,7 +4396,7 @@
     "journal": "7ef6926cd48a2fd4",
     "journalEntryPage": "7ce948764237abd0",
     "playlist": "7f3bee911bc773d9",
-    "playlistSound": "4b4b899b979f05d5",
+    "playlistSound": "e2873257ec16b4a4",
     "notes": [
      {
       "_id": "a9a299d2ea93ec54",
@@ -4554,7 +4554,7 @@
     "journal": "7ef6926cd48a2fd4",
     "journalEntryPage": "496b9aed76b5f78e",
     "playlist": "7f3bee911bc773d9",
-    "playlistSound": "5b515e00b30b1de8",
+    "playlistSound": "a81cc5b61d74e023",
     "notes": [
      {
       "_id": "a5b2803c79a58f7e",
@@ -5028,7 +5028,7 @@
     "journal": "7ef6926cd48a2fd4",
     "journalEntryPage": "35bcd46ba04a897f",
     "playlist": "7f3bee911bc773d9",
-    "playlistSound": "9d0ff172b2132c5a",
+    "playlistSound": "1d219d39b31ac342",
     "notes": [
      {
       "_id": "0bffcc1daaee9dff",
@@ -5660,7 +5660,7 @@
     "journal": "7ef6926cd48a2fd4",
     "journalEntryPage": "82b8fb855c49be58",
     "playlist": "7f3bee911bc773d9",
-    "playlistSound": "46c8be964bad9921",
+    "playlistSound": "1d219d39b31ac342",
     "notes": [
      {
       "_id": "5718c5df540a0700",
@@ -6450,7 +6450,7 @@
     "journal": "7ef6926cd48a2fd4",
     "journalEntryPage": "d87fceea89617504",
     "playlist": "7f3bee911bc773d9",
-    "playlistSound": "10d81b7310a68e4b",
+    "playlistSound": "58550e2e34ddaf65",
     "notes": [
      {
       "_id": "e0700ba87855399b",
@@ -6608,7 +6608,7 @@
     "journal": "7ef6926cd48a2fd4",
     "journalEntryPage": "d08775e304183ce7",
     "playlist": "7f3bee911bc773d9",
-    "playlistSound": "46d7f39026c62472",
+    "playlistSound": "1d219d39b31ac342",
     "notes": [
      {
       "_id": "0287fec911e885bc",
@@ -6965,24 +6965,6 @@
     "sort": 0,
     "sounds": [
      {
-      "_id": "b8e07ddf690794e5",
-      "name": "París de noche — Claro de luna · Debussy",
-      "description": "",
-      "path": "systems/mr-eat-the-reich/assets/audio/musica/noche.ogg",
-      "channel": "music",
-      "playing": false,
-      "pausedTime": null,
-      "repeat": true,
-      "volume": 0.55,
-      "fade": 2500,
-      "sort": 0,
-      "flags": {
-       "mr-eat-the-reich": {
-        "clave": "noche"
-       }
-      }
-     },
-     {
       "_id": "1d219d39b31ac342",
       "name": "Acción — Capricho n.º 24 · Paganini",
       "description": "",
@@ -6993,28 +6975,10 @@
       "repeat": true,
       "volume": 0.55,
       "fade": 2500,
-      "sort": 100,
+      "sort": 0,
       "flags": {
        "mr-eat-the-reich": {
         "clave": "accion"
-       }
-      }
-     },
-     {
-      "_id": "9d0ff172b2132c5a",
-      "name": "Persecución — Guillermo Tell (final) · Rossini",
-      "description": "",
-      "path": "systems/mr-eat-the-reich/assets/audio/musica/persecucion.ogg",
-      "channel": "music",
-      "playing": false,
-      "pausedTime": null,
-      "repeat": true,
-      "volume": 0.55,
-      "fade": 2500,
-      "sort": 200,
-      "flags": {
-       "mr-eat-the-reich": {
-        "clave": "persecucion"
        }
       }
      },
@@ -7029,7 +6993,7 @@
       "repeat": true,
       "volume": 0.55,
       "fade": 2500,
-      "sort": 300,
+      "sort": 100,
       "flags": {
        "mr-eat-the-reich": {
         "clave": "sigilo"
@@ -7047,7 +7011,7 @@
       "repeat": true,
       "volume": 0.55,
       "fade": 2500,
-      "sort": 400,
+      "sort": 200,
       "flags": {
        "mr-eat-the-reich": {
         "clave": "misterio"
@@ -7065,28 +7029,10 @@
       "repeat": true,
       "volume": 0.55,
       "fade": 2500,
-      "sort": 500,
+      "sort": 300,
       "flags": {
        "mr-eat-the-reich": {
         "clave": "miedo"
-       }
-      }
-     },
-     {
-      "_id": "46c8be964bad9921",
-      "name": "Sorpresa — Sinfonía n.º 5 · Beethoven",
-      "description": "",
-      "path": "systems/mr-eat-the-reich/assets/audio/musica/sorpresa.ogg",
-      "channel": "music",
-      "playing": false,
-      "pausedTime": null,
-      "repeat": true,
-      "volume": 0.55,
-      "fade": 2500,
-      "sort": 600,
-      "flags": {
-       "mr-eat-the-reich": {
-        "clave": "sorpresa"
        }
       }
      },
@@ -7101,7 +7047,7 @@
       "repeat": true,
       "volume": 0.55,
       "fade": 2500,
-      "sort": 700,
+      "sort": 400,
       "flags": {
        "mr-eat-the-reich": {
         "clave": "guerra"
@@ -7119,7 +7065,7 @@
       "repeat": true,
       "volume": 0.55,
       "fade": 2500,
-      "sort": 800,
+      "sort": 500,
       "flags": {
        "mr-eat-the-reich": {
         "clave": "vampiros"
@@ -7137,7 +7083,7 @@
       "repeat": true,
       "volume": 0.55,
       "fade": 2500,
-      "sort": 900,
+      "sort": 600,
       "flags": {
        "mr-eat-the-reich": {
         "clave": "calma"
@@ -7155,7 +7101,7 @@
       "repeat": true,
       "volume": 0.55,
       "fade": 2500,
-      "sort": 1000,
+      "sort": 700,
       "flags": {
        "mr-eat-the-reich": {
         "clave": "fiesta"
@@ -7173,46 +7119,10 @@
       "repeat": true,
       "volume": 0.55,
       "fade": 2500,
-      "sort": 1100,
+      "sort": 800,
       "flags": {
        "mr-eat-the-reich": {
         "clave": "funeral"
-       }
-      }
-     },
-     {
-      "_id": "4b4b899b979f05d5",
-      "name": "La cripta — «Pequeña» fuga en sol menor · Bach",
-      "description": "",
-      "path": "systems/mr-eat-the-reich/assets/audio/musica/cripta.ogg",
-      "channel": "music",
-      "playing": false,
-      "pausedTime": null,
-      "repeat": true,
-      "volume": 0.55,
-      "fade": 2500,
-      "sort": 1200,
-      "flags": {
-       "mr-eat-the-reich": {
-        "clave": "cripta"
-       }
-      }
-     },
-     {
-      "_id": "5b515e00b30b1de8",
-      "name": "La catedral — Dies iræ del Réquiem · Mozart",
-      "description": "",
-      "path": "systems/mr-eat-the-reich/assets/audio/musica/catedral.ogg",
-      "channel": "music",
-      "playing": false,
-      "pausedTime": null,
-      "repeat": true,
-      "volume": 0.55,
-      "fade": 2500,
-      "sort": 1300,
-      "flags": {
-       "mr-eat-the-reich": {
-        "clave": "catedral"
        }
       }
      },
@@ -7227,64 +7137,10 @@
       "repeat": true,
       "volume": 0.55,
       "fade": 2500,
-      "sort": 1400,
+      "sort": 900,
       "flags": {
        "mr-eat-the-reich": {
         "clave": "opera"
-       }
-      }
-     },
-     {
-      "_id": "10d81b7310a68e4b",
-      "name": "El zepelín — El Danubio azul · Strauss",
-      "description": "",
-      "path": "systems/mr-eat-the-reich/assets/audio/musica/zepelin.ogg",
-      "channel": "music",
-      "playing": false,
-      "pausedTime": null,
-      "repeat": true,
-      "volume": 0.55,
-      "fade": 2500,
-      "sort": 1500,
-      "flags": {
-       "mr-eat-the-reich": {
-        "clave": "zepelin"
-       }
-      }
-     },
-     {
-      "_id": "46d7f39026c62472",
-      "name": "Clímax — Obertura 1812 · Chaikovski",
-      "description": "",
-      "path": "systems/mr-eat-the-reich/assets/audio/musica/climax.ogg",
-      "channel": "music",
-      "playing": false,
-      "pausedTime": null,
-      "repeat": true,
-      "volume": 0.55,
-      "fade": 2500,
-      "sort": 1600,
-      "flags": {
-       "mr-eat-the-reich": {
-        "clave": "climax"
-       }
-      }
-     },
-     {
-      "_id": "9126aaf7e53b8e49",
-      "name": "Último gesto — Lacrimosa del Réquiem · Mozart",
-      "description": "",
-      "path": "systems/mr-eat-the-reich/assets/audio/musica/muerte.ogg",
-      "channel": "music",
-      "playing": false,
-      "pausedTime": null,
-      "repeat": true,
-      "volume": 0.55,
-      "fade": 2500,
-      "sort": 1700,
-      "flags": {
-       "mr-eat-the-reich": {
-        "clave": "muerte"
        }
       }
      }

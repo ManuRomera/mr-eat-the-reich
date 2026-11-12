@@ -4,6 +4,7 @@
  * Los textos son resúmenes propios con remisión a la página del manual; no se copia el libro.
  */
 import fs from "node:fs/promises";
+import { existsSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { VAMPIROS, AMENAZAS, LOCALIZACIONES, FLASHBACK, PREMIOS_SECUNDARIO, BOTIN_EJEMPLOS, ATRIBUTOS, AYUDA_ATRIBUTOS, PISTAS, MOTIVOS, MUSICA_LUGAR, EFECTOS } from "../module/datos.mjs";
 
@@ -126,14 +127,20 @@ const tabla = (clave, nombre, filas) => ({
 const tables = [tabla("contexto", "Flashback · ¿dónde fue?", FLASHBACK.contexto), tabla("preguntas", "Flashback · la pregunta", FLASHBACK.preguntas)];
 
 /* ───────── Música y efectos ───────── */
+// Solo entran las pistas que existen en disco; si falta la de una escena, suena la alternativa más parecida.
+const hay = k => existsSync(`assets/audio/musica/${k}.ogg`);
+const ALTERNATIVA = { climax: "accion", sorpresa: "accion", persecucion: "accion", zepelin: "fiesta", catedral: "funeral", muerte: "funeral", cripta: "misterio", noche: "calma", guerra: "miedo", opera: "accion", vampiros: "miedo", fiesta: "accion", funeral: "calma", misterio: "calma", sigilo: "misterio", miedo: "misterio", calma: "misterio" };
+const pista = k => (hay(k) ? k : hay(ALTERNATIVA[k]) ? ALTERNATIVA[k] : Object.keys(PISTAS).find(hay));
+const faltan = Object.keys(PISTAS).filter(k => !hay(k));
+if (faltan.length) console.warn(`AVISO: faltan pistas (python3 tools/audio.py musica <carpeta>): ${faltan.join(", ")}`);
 const sonido = (lista, clave, nombre, ruta, extra = {}) => ({ _id: uid(`son-${lista}-${clave}`), name: nombre, description: "", path: ruta, channel: lista === "musica" ? "music" : "interface", playing: false, pausedTime: null, repeat: lista === "musica", volume: 0.55, fade: lista === "musica" ? 2500 : 0, sort: 0, flags: { [ID]: { clave } }, ...extra });
 const playlists = [
   { _id: uid("lista-musica"), name: "Eat the Reich · Banda sonora (música clásica)", description: "Dominio público. Créditos en assets/audio/CREDITOS.md.", channel: "music", mode: -1, playing: false, fade: 2500, folder: null, sorting: "a", sort: 0,
-    sounds: Object.entries(PISTAS).map(([k, [titulo, obra]], i) => sonido("musica", k, `${titulo} — ${obra}`, `${R}/audio/musica/${k}.ogg`, { sort: i * 100 })), ownership: { default: 0 }, flags: { [ID]: { clave: "musica" } }, _stats: STATS },
+    sounds: Object.entries(PISTAS).filter(([k]) => hay(k)).map(([k, [titulo, obra]], i) => sonido("musica", k, `${titulo} — ${obra}`, `${R}/audio/musica/${k}.ogg`, { sort: i * 100 })), ownership: { default: 0 }, flags: { [ID]: { clave: "musica" } }, _stats: STATS },
   { _id: uid("lista-sfx"), name: "Eat the Reich · Efectos", description: "Sintetizados para el sistema.", channel: "interface", mode: -1, playing: false, folder: null, sorting: "a", sort: 1,
     sounds: Object.entries(EFECTOS).map(([k, [nombre]], i) => sonido("sfx", k, nombre, `${R}/audio/sfx/${k}.ogg`, { sort: i * 100, volume: 0.7 })), ownership: { default: 0 }, flags: { [ID]: { clave: "sfx" } }, _stats: STATS }
 ];
-const musicaDe = clave => ({ playlist: playlists[0]._id, playlistSound: uid(`son-musica-${MUSICA_LUGAR[clave]}`) });
+const musicaDe = clave => ({ playlist: playlists[0]._id, playlistSound: uid(`son-musica-${pista(MUSICA_LUGAR[clave])}`) });
 
 /* ───────── Escenas ───────── */
 const ANCHO = 4000, ALTO = 2473, PT = ANCHO / 1125; // el mapa ocupa 1125 pt a doble página; la 49 empieza en x=557
@@ -168,13 +175,13 @@ const direccion = {
   schema: 1, id: ID, title: "Eat the Reich · La misión", version: manifiesto.version, author: "Manu Romera", license: "Uso privado",
   settings: {
     fade: 3.5,
-    motifs: Object.entries(MOTIVOS).map(([k, icon]) => ({ id: k, label: PISTAS[k][0], icon, music: src("musica", k) })),
+    motifs: Object.entries(MOTIVOS).filter(([k]) => hay(k)).map(([k, icon]) => ({ id: k, label: PISTAS[k][0], icon, music: src("musica", k) })),
     effects: Object.entries(EFECTOS).map(([k, [label, icon]]) => ({ id: k, label, icon, sound: src("sfx", k) })),
     markers: { milestones: AMENAZAS.filter(a => a.uber).map(a => ({ id: a.clave, label: `${a.nombre} ha caído`, public: true })), clocks: [{ id: "amanecer", label: "Hasta el amanecer", segments: 6, public: true, announce: true, phrases: ["La noche se acaba."] }] }
   },
   scenes: [{ clave: "paris", nombre: "París, 1943", pagina: uid("pag-estructura"), enemigos: [], thumb: `${R}/libro/mapa-thumb.webp` },
     ...LOCALIZACIONES.map(l => ({ clave: l.clave, nombre: l.nombre, pagina: uid(`pag-lugar-${l.clave}`), enemigos: l.enemigos, thumb: `${R}/escenas/${l.clave}-thumb.webp` }))].map((e, i) => ({
-    ref: { flag: [ID, "escena", e.clave] }, order: i, name: e.nombre, reading: { uuid: `JournalEntry.${journal[1]._id}.JournalEntryPage.${e.pagina}` }, music: src("musica", MUSICA_LUGAR[e.clave]),
+    ref: { flag: [ID, "escena", e.clave] }, order: i, name: e.nombre, reading: { uuid: `JournalEntry.${journal[1]._id}.JournalEntryPage.${e.pagina}` }, music: src("musica", pista(MUSICA_LUGAR[e.clave])),
     motifs: null, cues: [], ambient: null, figures: e.enemigos.map(x => ({ ref: { uuid: `Actor.${uid(`amenaza-${x.clave}`)}` }, label: x.alias || AMENAZAS.find(a => a.clave === x.clave).nombre })),
     handouts: [], notes: "", thumb: e.thumb, stage: e.clave === "paris" ? { mode: "none" } : { mode: "horizon", eye: 0.5 }
   }))

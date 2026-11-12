@@ -29,7 +29,8 @@ export async function musica(clave = "") {
   if (sonido) await p.playSound(sonido);
 }
 export const pistaSonando = () => lista()?.sounds.find(s => s.playing)?.getFlag(ID, "clave") ?? "";
-export const catalogoMusica = () => Object.entries(PISTAS).map(([id, [titulo, obra]]) => ({ id, titulo, obra }));
+/** Las pistas que hay de verdad en la lista importada (con su obra). */
+export const catalogoMusica = () => (lista()?.sounds.contents ?? []).sort((a, b) => a.sort - b.sort).map(s => { const id = s.getFlag(ID, "clave"); return { id, titulo: PISTAS[id]?.[0] ?? s.name, obra: PISTAS[id]?.[1] ?? "" }; });
 
 export function registrarEscenas() {
   game.settings.register(ID, "sonidos", {

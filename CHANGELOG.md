@@ -1,5 +1,9 @@
 # Cambios
 
+## 0.2.2 · 12-11-2026 (uso privado)
+
+- Banda sonora completa: las 18 piezas (se suman Claro de luna, Guillermo Tell, la Quinta de Beethoven, la fuga de Bach, Dies iræ y Lacrimosa de Mozart, El Danubio azul y la Obertura 1812). Cada escena suena ya con su pieza y no con la alternativa.
+
 ## 0.2.1 · 12-11-2026 (uso privado)
 
 - Repositorio al estilo de la casa: portada con arte propio, capturas, release con zip y manifiesto, y publicación por etiqueta.

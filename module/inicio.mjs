@@ -36,6 +36,7 @@ async function bienvenida() {
     content: `<div class="er-tc er-parte"><header class="er-tc-cab"><div><strong>MR- Eat the Reich ${game.system.version}</strong><span>París, 1943</span></div></header>
       <p>Reparte los seis vampiros (clic derecho → Configurar propiedad). Abre el <b>Panel de misión</b> (botón en el directorio de Actores o en los controles de escena), carga una localización del Sector 3 y que alguien pulse un atributo de su hoja.</p>
       <p>Cada éxito de la tarjeta se gasta pulsando su dado: Objetivo, Amenaza, Defensa, Sangre o un ESPECIAL con los seises. Al terminar el turno, los ataques sin defender marcan la lesión solos.</p>
+      <p><b>El mapa:</b> doble clic en una calavera te lleva al decorado de esa localización (Mayús + doble clic abre su diario, con la página del manual). Cada escena trae su pieza de música clásica.</p>
       <p class="er-tc-nota">Líneas, velos y Tarjeta X: icono del escudo en los controles de escena.</p></div>`
   });
 }

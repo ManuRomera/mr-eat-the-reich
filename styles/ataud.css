@@ -1,0 +1,127 @@
+/* La hoja-ataúd: una ventana sin marco ni fondo. Lo único que existe (y que recibe el ratón) son la tapa abierta y la caja.
+   Regla fija: nunca tocar la fuente de los botones con iconos (fa-*) ni de la cabecera. */
+
+.mr-eat-the-reich.application.er-hoja-ataud {
+  background: none; border: 0; border-radius: 0; box-shadow: none; overflow: visible; pointer-events: none; min-width: 0; min-height: 0;
+}
+.mr-eat-the-reich.application.er-hoja-ataud .window-content { background: none; padding: 0; overflow: visible; }
+.er-hoja-ataud .window-resize-handle { display: none; }
+
+/* La cabecera de Foundry queda como un trozo de cinta negra pegado sobre la caja: de ahí se arrastra y se cierra. */
+.mr-eat-the-reich.application.er-hoja-ataud > .window-header {
+  position: absolute; z-index: 5; top: 0; left: 640px; width: 280px; min-height: 0; height: 30px; padding: 0 8px; pointer-events: auto;
+  background: #05060f; border: 0; border-bottom: 3px solid var(--er-sangre); transform: rotate(-1.5deg);
+  clip-path: polygon(0 12%, 4% 0, 97% 4%, 100% 20%, 98% 100%, 2% 92%); box-shadow: none;
+}
+.er-hoja-ataud > .window-header .window-title { font-size: 12px; }
+
+.er-ataud { position: relative; width: 1090px; height: 920px; --forro: #ff4f93; --tinta-forro: #17152a; }
+.er-tapa, .er-caja { position: absolute; filter: drop-shadow(0 14px 22px rgba(0, 0, 0, .7)); }
+.er-marco { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
+
+/* ── Tapa: abierta hacia la izquierda, algo caída ── */
+.er-tapa { left: 0; top: 96px; width: 500px; height: 780px; z-index: 1; }
+.er-tapa-giro { position: absolute; inset: 0; transform: rotate(-5deg); transform-origin: 100% 40%; pointer-events: auto;
+  clip-path: polygon(27% 0, 73% 0, 100% 21%, 79% 100%, 21% 100%, 0 21%); background: #05060f; }
+.er-tapa-hueco { position: absolute; inset: 16px; clip-path: polygon(27% 0, 73% 0, 100% 21%, 79% 100%, 21% 100%, 0 21%); background: #0d0f22; }
+.er-tapa-hueco img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; border: 0; display: block; }
+.er-tapa-placa { position: absolute; z-index: 3; left: 50%; bottom: 46px; transform: translateX(-50%) rotate(2deg); white-space: nowrap;
+  font-family: var(--er-rotulo); font-weight: 700; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: #fff; background: #05060f; padding: 2px 12px; border: 2px solid var(--er-sangre); }
+.er-ataud.muerto .er-tapa-hueco img { filter: grayscale(1) contrast(1.3); }
+
+/* ── Caja ── */
+.er-caja { left: 470px; top: 30px; width: 620px; height: 880px; z-index: 2; }
+.er-caja > .er-marco { z-index: 3; }
+.er-forro {
+  position: absolute; inset: 22px; z-index: 1; pointer-events: auto; overflow: hidden; padding: 16px 0 34px;
+  clip-path: polygon(27% 0, 73% 0, 100% 21%, 79% 100%, 21% 100%, 0 21%);
+  color: var(--tinta-forro); font-family: var(--er-texto); font-size: calc(17.5px * var(--er-escala) * var(--er-ajuste, 1)); line-height: 1.34; text-align: center; font-synthesis: weight style;
+  /* forro acolchado: rombos de costura y trama de puntos sobre el color del personaje */
+  background:
+    radial-gradient(circle at 50% 24%, rgba(255, 255, 255, .28), transparent 62%),
+    repeating-linear-gradient(60deg, transparent 0 46px, rgba(0, 0, 0, .10) 46px 48px),
+    repeating-linear-gradient(-60deg, transparent 0 46px, rgba(0, 0, 0, .10) 46px 48px),
+    radial-gradient(circle, rgba(0, 0, 0, .13) 1px, transparent 1.6px) 0 0 / 7px 7px,
+    var(--forro);
+}
+/* Cuñas invisibles que empujan el texto para que siga la forma del ataúd */
+.er-cuna { height: 100%; width: 27%; shape-margin: 14px; }
+.er-cuna.izq { float: left; shape-outside: polygon(0 0, 100% 0, 0 21%, 77.8% 100%, 0 100%); }
+.er-cuna.der { float: right; shape-outside: polygon(100% 0, 0 0, 100% 21%, 22.2% 100%, 100% 100%); }
+
+.er-forro :is(h1, h2, p, div, section, nav) { display: block; margin: 0; border: 0; padding: 0; }
+.er-forro .tab { display: none; }
+.er-forro .tab.active { display: block; }
+.er-forro :is(b, strong) { font-weight: 700; }
+.er-forro small { font-size: .86em; }
+.er-forro :is(input[type="text"], input[type="number"]) { display: inline-block; width: 150px; min-height: 0; height: 1.9em; vertical-align: middle; background: rgba(255, 255, 255, .55); color: var(--tinta-forro); border: 0; border-bottom: 2px solid var(--tinta-forro); border-radius: 0; font-size: 1em; text-align: center; }
+.er-forro input.er-num { width: 40px; }
+
+.mr-eat-the-reich .er-nombre-cinta { display: inline-block; font-size: 2.5em; line-height: 1; letter-spacing: .08em; color: #fff; background: #05060f; padding: 2px 16px 5px; transform: rotate(-1.5deg); margin: 0 0 8px;
+  clip-path: polygon(0 8%, 3% 0, 98% 3%, 100% 16%, 99% 100%, 1% 94%); }
+.er-pestanas { margin: 0 0 8px; }
+.mr-eat-the-reich .er-pestanas a { display: inline-block; margin: 2px 1px; padding: 0 7px 1px; font-family: var(--er-rotulo); font-weight: 600; font-size: .8em; letter-spacing: .1em; text-transform: uppercase; cursor: pointer;
+  color: var(--tinta-forro); background: rgba(255, 255, 255, .5); border: 2px solid var(--tinta-forro); text-decoration: none; text-shadow: none; }
+.mr-eat-the-reich .er-pestanas a:nth-child(2n) { transform: rotate(1.5deg); } .mr-eat-the-reich .er-pestanas a:nth-child(2n+1) { transform: rotate(-1.5deg); }
+.mr-eat-the-reich .er-pestanas a.active { color: #fff; background: #05060f; }
+.er-grito { font-family: var(--er-rotulo); font-weight: 700; font-size: 1.3em; letter-spacing: .08em; color: #fff; background: var(--er-sangre); display: inline-block !important; padding: 0 12px !important; transform: rotate(1deg); margin-bottom: 6px !important; }
+.er-avisos-linea span { display: inline-block; margin: 0 3px 4px; padding: 0 8px; background: #05060f; color: #fff; font-size: .86em; }
+.er-avisos-linea span::before { content: "⚠ "; color: var(--er-neon); }
+
+/* Cinta rotulada: los títulos de sección */
+.er-cinta { display: inline-block; margin: 6px 6px 4px 0; padding: 0 10px 1px; font-family: var(--er-rotulo); font-weight: 700; font-size: 1.02em; letter-spacing: .12em; text-transform: uppercase; color: #fff; background: #05060f; transform: rotate(-2deg);
+  clip-path: polygon(0 10%, 4% 0, 100% 6%, 97% 100%, 2% 92%); vertical-align: middle; }
+.er-susurro { opacity: .75; }
+
+/* Atributos: fichas que se pulsan para tirar */
+.er-atrs { margin: 2px 0 6px !important; }
+.mr-eat-the-reich .er-chip { display: inline-flex; align-items: stretch; width: auto; height: auto; min-height: 0; margin: 3px 3px; padding: 0; cursor: pointer; border: 2px solid #05060f; border-radius: 0; background: #05060f; color: #fff;
+  font-family: var(--er-rotulo); font-size: 1em; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; line-height: 1.5; box-shadow: 3px 3px 0 rgba(0, 0, 0, .35); transition: transform .08s; }
+.er-chip span { padding: 1px 9px; }
+.er-chip b { min-width: 30px; display: grid; place-items: center; background: #fff; color: #05060f; font-family: var(--er-texto); font-size: 1.2em; }
+.mr-eat-the-reich .er-chip:nth-child(2n) { transform: rotate(1.2deg); } .mr-eat-the-reich .er-chip:nth-child(3n) { transform: rotate(-1.6deg); }
+.mr-eat-the-reich .er-chip:hover { transform: scale(1.08) rotate(-2deg); background: var(--er-sangre); border-color: var(--er-sangre); }
+.er-chip.cambia b { background: var(--er-oro); }
+.er-chip.libre { background: var(--er-cinta); border-color: var(--er-cinta); }
+.er-chip.rojo { background: var(--er-sangre); border-color: var(--er-sangre); }
+.mr-eat-the-reich .er-chip:disabled { opacity: .4; cursor: default; transform: none; }
+.mr-eat-the-reich .er-chip-mini { display: inline-block; width: auto; height: auto; min-height: 0; padding: 0 8px; margin: 2px; cursor: pointer; font-family: var(--er-texto); font-size: .9em; line-height: 1.5; color: var(--tinta-forro); background: rgba(255, 255, 255, .55); border: 2px solid var(--tinta-forro); border-radius: 0; }
+.mr-eat-the-reich .er-chip-mini:hover { background: #05060f; color: #fff; }
+
+.er-sangre-linea { margin: 2px 0 4px !important; }
+.er-forro .er-gota { display: inline-block; vertical-align: middle; margin: 0 -1px; font-family: var(--er-rotulo); color: var(--tinta-forro); cursor: pointer; min-height: 0; line-height: 1; }
+.er-forro .er-usos { display: inline-block; vertical-align: middle; }
+.er-forro .er-uso, .er-forro .er-marca { display: inline-block; vertical-align: middle; cursor: pointer; min-height: 0; }
+.er-obj { margin: 1px 0 3px !important; }
+.er-obj-nombre { font-weight: 700; text-transform: uppercase; letter-spacing: .03em; margin-right: 4px; }
+.er-obj-nombre i { font-style: normal; opacity: .7; }
+.er-forro .er-req { font-size: .92em; }
+
+.er-pod { margin: 0 0 6px !important; }
+.er-forro .er-poder-nombre { display: inline-block; background: #05060f; color: #fff; padding: 0 8px; margin-right: 3px; transform: rotate(-1deg); font-size: .9em; }
+.er-pod.especial .er-poder-nombre { background: var(--er-sangre); }
+.er-pod.pasiva .er-poder-nombre { background: #0f4a52; }
+.er-pod.apagada { opacity: .62; }
+.er-pod input[type="checkbox"] { vertical-align: middle; }
+
+.er-col-les { margin: 2px 0 6px !important; }
+.er-forro .er-rango { display: inline-block; vertical-align: middle; margin: 0 4px 0 0; background: #05060f; color: #fff; font-family: var(--er-rotulo); font-weight: 700; padding: 0 8px; transform: rotate(-3deg); }
+.er-forro .er-lesion { display: inline-block; margin: 0 6px 0 0; }
+.er-forro .er-lesion b { text-transform: uppercase; letter-spacing: .03em; font-weight: 700; color: var(--tinta-forro); }
+.er-forro .er-lesion.marcada small { font-weight: 700; color: var(--tinta-forro); }
+.er-forro .er-lesion small { display: inline; color: var(--tinta-forro); }
+.er-forro .er-icono { vertical-align: middle; color: var(--tinta-forro); }
+.er-gesto-flujo { margin-top: 6px !important; }
+.er-casilla-flujo { display: inline-block; margin-top: 4px; cursor: pointer; }
+.er-casilla-flujo input { vertical-align: middle; }
+.er-forro .er-sello { display: inline-block; color: #05060f; border-color: #05060f; margin-bottom: 6px; }
+.er-forro .er-concepto { margin: 0 0 8px !important; }
+.er-notas-ataud { margin-top: 4px !important; text-align: left; }
+.er-notas-ataud prose-mirror { min-height: 120px; background: rgba(255, 255, 255, .6); border: 2px solid var(--tinta-forro); color: var(--tinta-forro); }
+
+/* Accesibilidad */
+body.er-contraste .er-forro { background: #fff; --tinta-forro: #000; }
+body.er-contraste.er-oscuro .er-forro { background: #000; --tinta-forro: #fff; }
+body.er-contraste.er-oscuro .er-forro :is(.er-chip-mini, .er-pestanas a, input) { background: #000; }
+body.er-sin-movimiento .er-ataud * { transform: none !important; transition: none !important; }
+body.er-sin-movimiento .er-tapa-giro { transform: rotate(-5deg) !important; }

@@ -20,6 +20,11 @@ Por eso:
 - Los textos del compendio son resúmenes propios con remisión a la página del manual; las hojas de personaje están traducidas.
 - Antes de cualquier publicación hace falta el permiso escrito de Rowan, Rook and Decard que cubra esos tres puntos.
 
+## Imágenes generadas y audio
+
+- `assets/escenas/` y `assets/amenazas/` se han generado con IA (Codex) a partir de descripciones propias, sin usar ilustraciones del libro como referencia. Es uno de los motivos por los que este sistema no puede publicarse bajo la licencia comunitaria.
+- `assets/audio/musica/`: obras y grabaciones de dominio público o CC0 (detalle y fuentes en `assets/audio/CREDITOS.md`). `assets/audio/sfx/`: sintetizados para este sistema.
+
 ## Terceros
 
 - Special Elite (Astigmatic), SIL Open Font License 1.1. Oswald (The Oswald Project Authors), SIL Open Font License 1.1.

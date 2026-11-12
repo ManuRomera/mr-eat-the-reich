@@ -89,7 +89,7 @@
 .er-concepto { margin: 2px 0 0; font-size: .95em; }
 .er-editar { flex: none; }
 .er-dos { display: grid; grid-template-columns: 230px 1fr; gap: 16px; }
-.er-dos-sangre { grid-template-columns: 150px 1fr; }
+.er-dos-sangre { grid-template-columns: 190px 1fr; }
 
 .mr-eat-the-reich .er-atr { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; height: auto; min-height: 30px; margin: 0 0 4px; padding: 0 0 0 10px; cursor: pointer;
   font-family: var(--er-rotulo); font-size: 1em; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; background: var(--er-noche); color: #fff; border: 0; border-radius: 0; clip-path: polygon(0 0, 100% 0, 100% 100%, 8px 100%, 0 70%); }

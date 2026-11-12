@@ -25,3 +25,9 @@ for nombre, (x, y, z) in CARA.items():
     im.crop((int(cx - lado / 2), int(cy - lado / 2), int(cx + lado / 2), int(cy + lado / 2))).resize((400, 400)).save(f"{ret}/{nombre}.webp", quality=88)
 m = Image.open(f"{out}/mapa.webp"); m.thumbnail((600, 600)); m.save(f"{out}/mapa-thumb.webp", quality=80)
 print("retratos", len(CARA))
+
+# Páginas del manual que hablan de cada localización (y la de enemigos comunes): se leen dentro del diario de cada escena.
+for n in (42, 43, 50, 51, 52, 53, 54, 55, 56, 58, 59, 61, 62, 63, 64):
+    pm = pdf[n - 1].get_pixmap(dpi=150)
+    Image.frombytes("RGB", (pm.width, pm.height), pm.samples).save(f"{out}/pag-{n}.webp", quality=82)
+print("páginas del manual listas")

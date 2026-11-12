@@ -32,6 +32,12 @@ export function registrarAjustes() {
     hint: "El manual dice 3 en la página de reglas y en la hoja de referencia, y 4 en el apartado de bajas. Elige el que use tu mesa.",
     scope: "world", config: true, type: Number, default: 3, choices: { 3: "3 ataques", 4: "4 ataques" }
   });
+  game.settings.register(ID, "escalaAtaud", {
+    name: "Tamaño de la hoja-ataúd",
+    hint: "0 = automático (lo que quepa en tu pantalla). Ajuste de este navegador.",
+    scope: "client", config: true, type: Number, default: 0, range: { min: 0, max: 1.3, step: 0.05 },
+    onChange: () => { for (const app of foundry.applications.instances.values()) if (app.element?.classList.contains("er-hoja-ataud")) app.render(); }
+  });
   game.settings.registerMenu(ID, "ventanas", {
     name: "Memoria de ventanas", label: "Olvidar posiciones",
     hint: "Las ventanas del sistema recuerdan posición, tamaño, pestaña y secciones plegadas en este navegador.",

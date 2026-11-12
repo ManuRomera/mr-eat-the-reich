@@ -1,0 +1,85 @@
+{{#*inline "pod"}}
+  <p class="er-pod {{tipo}} {{#if mejora}}{{#unless activa}}apagada{{/unless}}{{/if}}">
+    {{#if mejora}}<input type="checkbox" data-ruta="{{lista}}.{{@index}}.activa" {{checked activa}} aria-label="Mejora desbloqueada: {{nombre}}">{{/if}}
+    <span class="er-poder-nombre">{{nombre}}</span>
+    {{#if especial}}<b>ESPECIAL:</b> {{/if}}{{#if sangre}}<b>Gasta {{coste}} de Sangre:</b> {{/if}}{{texto}}{{#if bono}} <i>({{mas}}{{req}})</i>{{/if}}
+  </p>
+{{/inline}}
+
+<div class="er-ataud {{#if system.muerto}}muerto{{/if}} {{#if system.derribado}}derribado{{/if}}" style="--forro: {{forro}};">
+
+  {{!-- La tapa, abierta a un lado: el personaje a cuerpo entero --}}
+  <aside class="er-tapa" aria-label="Tapa del ataúd con el retrato de {{actor.name}}">
+    <div class="er-tapa-giro">
+      <div class="er-tapa-hueco"><img src="{{actor.img}}" alt="{{actor.name}}" data-lupa></div>
+      {{{marcoTapa}}}
+      {{#if system.insignia}}<span class="er-tapa-placa">{{system.insignia}}</span>{{/if}}
+    </div>
+  </aside>
+
+  {{!-- La caja: todo lo de la hoja va dentro, y el texto se ciñe a la forma --}}
+  <section class="er-caja">
+    {{{marcoCaja}}}
+    <div class="er-forro">
+      <i class="er-cuna izq" inert></i><i class="er-cuna der" inert></i>
+
+      <h1 class="er-nombre-cinta">{{actor.name}}</h1>
+      <nav class="tabs er-pestanas" aria-label="Secciones de la hoja">
+        {{#each pestanas}}<a class="{{#if activa}}active{{/if}}" data-action="tab" data-group="ataud" data-tab="{{id}}" role="tab" tabindex="0">{{nombre}}</a>{{/each}}
+      </nav>
+      {{#if system.derribado}}<p class="er-grito">¡DERRIBADO! {{#if editable}}<button type="button" class="er-chip-mini" data-action="rescatar">rescatado</button>{{/if}}</p>{{/if}}
+      {{#if system.muerto}}<p class="er-grito">SEIS LESIONES. ÚLTIMO GESTO.</p>{{/if}}
+
+      <section class="tab {{#if (eq pestana 'accion')}}active{{/if}}" data-group="ataud" data-tab="accion">
+        {{#if bloqueos.length}}<p class="er-avisos-linea">{{#each bloqueos}}<span>{{this}}</span>{{/each}}</p>{{/if}}
+        <div class="er-atrs" role="group" aria-label="Atributos">
+          {{#each atributos}}<button type="button" class="er-chip {{#if cambia}}cambia{{/if}}" data-action="tirar" data-atributo="{{k}}" data-tooltip="{{ayuda}}{{#if cambia}} (base {{base}}: cambia por una lesión){{/if}}"><span>{{nombre}}</span><b>{{valor}}</b></button>{{/each}}<button type="button" class="er-chip libre" data-action="tirar" data-tooltip="Si ninguna encaja, tira 2 dados"><span>Otra cosa</span><b>2</b></button>
+        </div>
+        <div class="er-sangre-linea" role="group" aria-label="Sangre: {{system.sangre}} de 10">
+          <span class="er-cinta">Sangre</span>{{#each sangre}}<button type="button" class="er-gota {{#if llena}}llena{{/if}}" data-action="sangre" data-n="{{n}}" aria-label="Sangre {{n}}">{{n}}</button>{{/each}}
+        </div>
+        <div class="er-equipo-flujo">
+          <span class="er-cinta">Equipo</span>
+          {{#each equipo}}
+            <div class="er-obj"><span class="er-obj-nombre">{{nombre}}{{#if corchete}} <i>[{{corchete}}]</i>{{/if}}</span>
+              <span class="er-usos" role="group" aria-label="Usos de {{nombre}}">{{#each cajas}}<button type="button" class="er-uso {{#if llena}}llena{{/if}} {{#if ultima}}ultima{{/if}}" data-action="uso" data-objeto="equipo.{{@../index}}" data-n="{{i}}" aria-label="Uso {{i}}{{#if llena}} disponible{{else}} gastado{{/if}}" {{#if ultima}}data-tooltip="El último uso explota: +1 dado"{{/if}}></button>{{/each}}</span>
+              {{#if bono}}<span class="er-req">({{mas}}{{req}})</span>{{/if}}{{#if nota}}<span class="er-req">({{nota}})</span>{{/if}}</div>
+          {{/each}}
+          <div class="er-obj er-obj-botin"><span class="er-obj-nombre">Botín:</span>
+            <input type="text" name="system.botin.nombre" value="{{system.botin.nombre}}" placeholder="lo saqueado" aria-label="Botín" {{disabled (not editable)}}>
+            {{#if system.botin.nombre}}<span class="er-usos">{{#each botin.cajas}}<button type="button" class="er-uso {{#if llena}}llena{{/if}} {{#if ultima}}ultima{{/if}}" data-action="uso" data-objeto="botin" data-n="{{i}}" aria-label="Uso {{i}} del botín"></button>{{/each}}</span>
+            +<input type="number" class="er-num" name="system.botin.bono" value="{{system.botin.bono}}" min="0" max="5" aria-label="Dados de bonificación del botín" {{disabled (not editable)}}>
+            <input type="text" name="system.botin.req" value="{{system.botin.req}}" placeholder="requisito del +" aria-label="Requisito del botín" {{disabled (not editable)}}>{{/if}}</div>
+        </div>
+      </section>
+
+      <section class="tab {{#if (eq pestana 'poderes')}}active{{/if}}" data-group="ataud" data-tab="poderes">
+        <span class="er-cinta">Habilidades</span>
+        {{#each habilidades}}{{> pod lista="habilidades"}}{{/each}}
+        <span class="er-cinta">Mejoras</span> <small class="er-susurro">una por cada Übermensch que mates</small>
+        {{#each mejoras}}{{> pod lista="mejoras" mejora=true}}{{/each}}
+      </section>
+
+      <section class="tab {{#if (eq pestana 'heridas')}}active{{/if}}" data-group="ataud" data-tab="heridas">
+        <span class="er-cinta">Lesiones</span> <small class="er-susurro">curar una cuesta {{costeCurar}} de Sangre</small>
+        {{#each columnas}}
+          <div class="er-col-les"><span class="er-rango">{{rango}}</span>
+            {{#each casillas}}<span class="er-lesion {{#if marcada}}marcada{{/if}}"><button type="button" class="er-marca" data-action="lesion" data-lesion="{{ruta}}" aria-pressed="{{marcada}}" aria-label="{{nombre}}"></button><b>{{nombre}}</b>{{#if efecto}} <small>({{efecto}})</small>{{/if}}{{#if marcada}}{{#if ../../editable}}<button type="button" class="er-icono" data-action="curar" data-lesion="{{ruta}}" data-tooltip="Curar: {{../../costeCurar}} de Sangre" aria-label="Curar {{nombre}}" {{disabled (not ../../puedeCurar)}}><i class="fa-solid fa-kit-medical" inert></i></button>{{/if}}{{/if}}</span>{{/each}}
+          </div>
+        {{/each}}
+        <div class="er-gesto-flujo"><span class="er-cinta">Último gesto</span>
+          <input type="text" name="system.ultimoGesto" value="{{system.ultimoGesto}}" aria-label="Último gesto de resistencia" {{disabled (not editable)}}>
+          <button type="button" class="er-chip rojo" data-action="gesto" {{disabled (not system.muerto)}} data-tooltip="Solo con las seis lesiones marcadas"><span>Tirar</span><b>8D6</b></button></div>
+        <label class="er-casilla-flujo"><input type="checkbox" name="system.flashback" {{checked system.flashback}} {{disabled (not editable)}}> Flashback usado esta sesión</label>
+      </section>
+
+      <section class="tab {{#if (eq pestana 'dosier')}}active{{/if}}" data-group="ataud" data-tab="dosier">
+        {{#if system.insignia}}<span class="er-sello">{{system.insignia}}</span>{{/if}}
+        <p class="er-concepto">{{system.concepto}}</p>
+        {{#if editable}}<p><button type="button" class="er-chip-mini" data-action="clasica"><i class="fa-solid fa-pen" inert></i> editar la ficha</button> <button type="button" class="er-chip-mini" data-action="retrato"><i class="fa-solid fa-crop-simple" inert></i> encuadrar el retrato</button></p>{{/if}}
+        <span class="er-cinta">Notas</span>
+        <div class="er-notas-ataud">{{#if editable}}<prose-mirror name="system.notas" value="{{system.notas}}" toggled compact>{{{notas}}}</prose-mirror>{{else}}{{{notas}}}{{/if}}</div>
+      </section>
+    </div>
+  </section>
+</div>

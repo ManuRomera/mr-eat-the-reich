@@ -4,7 +4,7 @@ import { ApplicationV2, diagnostico } from "../compat.mjs";
 import { ConMemoria } from "../memoria.mjs";
 
 const existe = async src => { try { return (await fetch(src, { method: "HEAD", cache: "no-store" })).ok; } catch { return false; } };
-const IMAGENES = ["libro/portada.webp", "libro/mapa.webp", "libro/iryna.webp", "libro/flint.webp", "retratos/iryna.webp", "retratos/werhund.webp"];
+const IMAGENES = ["libro/portada.webp", "libro/mapa.webp", "libro/iryna.webp", "libro/flint.webp", "retratos/iryna.webp", "retratos/werhund.webp", "libro/pag-50.webp", "escenas/sirena.webp", "amenazas/patrulla.webp", "audio/musica/accion.ogg", "audio/sfx/sello.ogg"];
 
 export async function informe() {
   const faltan = (await Promise.all(IMAGENES.map(async r => [r, await existe(`${ARTE}/${r}`)]))).filter(([, ok]) => !ok).map(([r]) => r);
@@ -12,9 +12,11 @@ export async function informe() {
   const m = mision();
   const comprobaciones = [
     { ok: Boolean(pack?.index.size), texto: `Compendio de la misión: ${pack?.index.size ?? 0} aventura(s)` },
-    { ok: !faltan.length, texto: faltan.length ? `Faltan imágenes (se sacan de tu PDF con «npm run arte»): ${faltan.join(", ")}` : "Imágenes del manual en su sitio" },
+    { ok: !faltan.length, texto: faltan.length ? `Faltan archivos (los de libro/ y retratos/ se sacan de tu PDF con «npm run arte»): ${faltan.join(", ")}` : "Imágenes, escenas y audio en su sitio" },
     { ok: vampiros().length > 0, texto: `Vampiros en el mundo: ${vampiros().length}`, aviso: true },
     { ok: game.actors.some(a => a.type === "amenaza"), texto: `Amenazas en el mundo: ${game.actors.filter(a => a.type === "amenaza").length}`, aviso: true },
+    { ok: game.scenes.filter(s => s.getFlag(ID, "escena")).length >= 20, texto: `Escenas de la misión en el mundo: ${game.scenes.filter(s => s.getFlag(ID, "escena")).length}/20`, aviso: true },
+    { ok: Boolean(game.modules.get("mr-direccion")?.active), texto: game.modules.get("mr-direccion")?.active ? "MR- Dirección activo: la misión está en su barra" : "MR- Dirección no está activo (opcional)", aviso: true },
     { ok: Boolean(game.users.activeGM), texto: game.users.activeGM ? "Hay un GM conectado" : "No hay GM conectado: no se pueden gastar éxitos ni mover la misión", aviso: true }
   ];
   const datos = { ...diagnostico(), mundo: game.world.id, usuario: { gm: game.user.isGM }, mision: m, dado3d: Boolean(game.dice3d),

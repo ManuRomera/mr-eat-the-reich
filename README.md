@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://github.com/ManuRomera"><img alt="Manu Romera · Digital RPG Design" src="https://raw.githubusercontent.com/ManuRomera/ManuRomera/main/badges/mr-firma.svg" height="28"></a>
-  <img alt="Versión 0.1.1" src="https://img.shields.io/badge/versi%C3%B3n-0.1.1-d81557?style=for-the-badge&labelColor=10132b">
+  <img alt="Versión 0.2.0" src="https://img.shields.io/badge/versi%C3%B3n-0.2.0-d81557?style=for-the-badge&labelColor=10132b">
   <img alt="Foundry VTT 13 y 14" src="https://img.shields.io/badge/Foundry_VTT-13_%E2%80%93_14-ff3d8b?style=for-the-badge&labelColor=10132b">
   <img alt="Repositorio privado, uso personal" src="https://img.shields.io/badge/uso-privado-1f6f78?style=for-the-badge&labelColor=10132b">
   <img alt="En español" src="https://img.shields.io/badge/idioma-espa%C3%B1ol-f2c230?style=for-the-badge&labelColor=10132b">
@@ -17,12 +17,24 @@ No está publicado: lee [NOTICE.md](NOTICE.md) antes de compartirlo con nadie.
 
 ## Qué hace
 
-- **Hoja de vampiro.** Pulsa un atributo para tirar. Casillas de uso del equipo (la gris es el último uso: explota y da un dado más), botín, Sangre, habilidades, mejoras que se desbloquean, lesiones con su penalización aplicada (atributos que cambian, «no puedes usar los +»…) y el último gesto de resistencia. Botón **Editar** para crear vampiros propios.
-- **Panel de misión** (directorio de Actores o controles de escena). Objetivos, Amenazas, turnos y ronda. Carga cualquiera de las 19 localizaciones de París con su objetivo y sus enemigos, o arrastra amenazas. **Fin de ronda** aplica los refuerzos.
-- **La tirada, en una tarjeta.** El resultado va estampado en grande (los éxitos), con los dados debajo. Tu reserva contra los dados de ataque del GM (la amenaza mayor + 1 por cada otra). Cada éxito se gasta pulsando su dado: Objetivo, Amenaza, Defensa, Sangre o un ESPECIAL con los seises; el Desafío se descuenta solo. Los dados de bonificación (+) y el flashback se tiran desde la tarjeta. Al terminar el turno, los ataques sin defender tiran y marcan la lesión, y derriban si toca.
+- **La hoja es un ataúd abierto.** La ventana no es un rectángulo: son la tapa, con el vampiro a cuerpo entero, y la caja, con la hoja dentro y el texto ceñido a su forma. Cuatro pestañas (Acción, Poderes, Heridas, Dosier), forro del color de cada personaje y la letra que se encoge sola si algo no cabe. El tamaño se ajusta a la pantalla (o se fija en Ajustes). La ficha rectangular sigue ahí para editar («editar la ficha» en Dosier) y como alternativa en *Hoja → Ficha clásica*.
+- **Marcas punk.** Nada de cajitas perfectas: casillas torcidas y X a rotulador rojo sangre que se salen del hueco para usos gastados, lesiones y casillas; vistos para las mejoras, gotas y salpicones para la Sangre, nombres tachados. Se generan con `npm run punk`.
+- **Panel de misión** (directorio de Actores o controles de escena). Objetivos, Amenazas, turnos y ronda. Carga cualquiera de las 19 localizaciones con su objetivo y sus enemigos, o arrastra amenazas. **Fin de ronda** aplica los refuerzos. Desde ahí también se pone la música.
+- **La tirada, en una tarjeta.** El resultado va estampado en grande, con los dados debajo. Cada éxito se gasta pulsando su dado: Objetivo, Amenaza, Defensa, Sangre o un ESPECIAL con los seises; el Desafío se descuenta solo. Los dados de bonificación (+) y el flashback se tiran desde la tarjeta. Al terminar el turno, los ataques sin defender tiran y marcan la lesión, y derriban si toca.
+- **París en 20 escenas.** El mapa del manual con una calavera por localización: **doble clic** y vas a su decorado a pantalla completa (16:9); Mayús + doble clic abre su diario. En cada decorado, tres notas: volver al mapa, leer el resumen y **la página del manual** de ese sitio.
+- **Banda sonora de música clásica** contra tanto punk: 18 piezas de dominio público (Paganini, Saint-Saëns, Grieg, Músorgski, Wagner en la Ópera, Offenbach, Chopin, Satie, Holst, Chaikovski…), una por escena y por estado de ánimo, en bucle sin costura. Y **efectos**: el golpe del resultado, críticos, lesiones, derribos, sorbos de sangre, la sirena de los refuerzos y los ataúdes cayendo.
+- **MR- Dirección** (opcional, recomendado): el sistema le entrega la misión entera —escenas, lectura, música con fundido cruzado, nueve motivos, efectos, reparto de enemigos, un hito por Übermensch y el reloj «Hasta el amanecer».
 - **Reglas propias de los enemigos** automatizadas: «Solo», Anatema (Vampirjäger), Aura de desgracia (Rust-Witch), Sin dolor y Sin sangre (Einherjar), garras del Werhund, despliegue rápido de los paracaidistas.
-- **Compendio «La misión».** Los seis vampiros, 15 amenazas, reglas resumidas, localizaciones, tablas de flashback y el mapa de París con notas. Se importa solo en un mundo vacío.
-- **Lo de siempre:** ventanas con memoria, accesibilidad en la cabecera (tamaño, modo oscuro, alto contraste, fuente legible, sin movimiento), encuadre de retratos, lupa, seguridad en la sesión (líneas, velos, Pausa, Velo y Tarjeta X anónimos), diagnóstico y créditos en Ajustes.
+- **Lo de siempre:** ventanas con memoria, accesibilidad en la cabecera (tamaño, modo oscuro, alto contraste, fuente legible, sin movimiento), encuadre de retratos, lupa, seguridad en la sesión, diagnóstico y créditos en Ajustes.
+
+## De dónde sale cada cosa
+
+| Qué | Origen | ¿En el repo? |
+|---|---|---|
+| Retratos, mapa y páginas del manual (`assets/libro`, `assets/retratos`) | Tu PDF, con `npm run arte` | No (copyright de Will Kirkby y RR&D) |
+| Decorados de las 19 localizaciones y 11 amenazas (`assets/escenas`, `assets/amenazas`) | Generados con Codex para este sistema, sin usar el arte del libro como referencia; firmados con la marca MR | Sí |
+| Música (`assets/audio/musica`) | Grabaciones de dominio público o CC0 de Wikimedia Commons; ver `assets/audio/CREDITOS.md` | Sí |
+| Efectos (`assets/audio/sfx`) | Sintetizados con `tools/audio.py sfx` | Sí |
 
 ## Ponerlo en marcha
 

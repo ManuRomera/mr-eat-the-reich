@@ -6,7 +6,9 @@
 <title>Arnés · MR- Eat the Reich</title>
 <link rel="stylesheet" href="http://localhost:30022/css/foundry2.css">
 <link rel="stylesheet" href="http://localhost:30022/fonts/fontawesome/css/all.min.css">
-<link rel="stylesheet" href="../styles/mr-eat-the-reich.css?v=3">
+<link rel="stylesheet" href="../styles/mr-eat-the-reich.css?v=4">
+<link rel="stylesheet" href="../styles/punk.css?v=4">
+<link rel="stylesheet" href="../styles/ataud.css?v=4">
 <style>
   html, body { overflow: auto !important; height: auto !important; position: static !important; background: #2a2d45 !important; }
   body { padding: 20px; display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
@@ -33,7 +35,7 @@ const { htmlTirada } = await import("../module/tirada.mjs");
 
 for (const c of new URLSearchParams(location.search).keys()) document.body.classList.add(`er-${c}`);
 Handlebars.registerHelper({
-  checked: v => (v ? "checked" : ""), disabled: v => (v ? "disabled" : ""), not: v => !v,
+  eq: (a, b) => a === b, checked: v => (v ? "checked" : ""), disabled: v => (v ? "disabled" : ""), not: v => !v,
   selectOptions: (op, { hash }) => new Handlebars.SafeString(Object.entries(op).map(([k, n]) => `<option value="${k}" ${String(k) === String(hash.selected) ? "selected" : ""}>${n}</option>`).join(""))
 });
 const plantilla = async ruta => Handlebars.compile(await (await fetch(`../templates/${ruta}`)).text());
@@ -52,7 +54,7 @@ const ventana = (titulo, clases, html, ancho, alto) => {
 function contextoVampiro(v, editando) {
   const s = structuredClone(v);
   Object.assign(s, { sangre: 4, botin: { nombre: "Subfusil", usos: 2, max: 3, bono: 1, req: "flanquear" }, notas: "", flashback: false });
-  s.equipo[0].usos = 1; s.equipo[2].usos = 0; s.mejoras = s.mejoras.map((m, i) => ({ ...m, activa: i === 0 }));
+  s.equipo[0].usos = 1; if (s.equipo[2]) s.equipo[2].usos = 0; s.mejoras = s.mejoras.map((m, i) => ({ ...m, activa: i === 0 }));
   s.lesiones[0][0].marcada = s.lesiones[0][1].marcada = s.lesiones[1][0].marcada = true;
   s.efectivos = R.atributosEfectivos(s.atributos, s.lesiones); s.bloqueos = [...R.bloqueos(s.lesiones)];
   const cajas = o => Array.from({ length: o.max }, (_, i) => ({ i: i + 1, llena: i >= o.max - o.usos, ultima: i === o.max - 1 && o.max > 1 }));
@@ -68,6 +70,18 @@ function contextoVampiro(v, editando) {
   };
 }
 const quien = new URLSearchParams(location.search).get("pj") ?? "iryna";
+const { marcoSVG } = await import("../module/hojas.mjs");
+const FORROS = { iryna: "#ff4f93", nicole: "#ff8a3c", cosgrave: "#3fd0b4", chuck: "#6fd45c", astrid: "#ffa3c4", flint: "#35b8a0" };
+const ha = await plantilla("hojas/ataud.hbs");
+const pest = new URLSearchParams(location.search).get("tab") ?? "accion";
+for (const k of (new URLSearchParams(location.search).get("ataudes") ?? quien).split(",")) {
+  const v = VAMPIROS.find(x => x.clave === k), c = contextoVampiro(v, false);
+  const w = ventana(v.nombre, "er-hoja er-hoja-vampiro er-hoja-ataud", ha({ ...c, pestana: pest, pestanas: ["accion", "poderes", "heridas", "dosier"].map(id => ({ id, nombre: { accion: "Acción", poderes: "Poderes", heridas: "Heridas", dosier: "Dosier" }[id], activa: id === pest })), forro: FORROS[k], marcoCaja: marcoSVG(620, 880), marcoTapa: marcoSVG(500, 780) }), 1090, 920);
+  w.style.height = "920px";
+  const forro = w.querySelector(".er-forro"); let f = 1;
+  while (forro.scrollHeight > forro.clientHeight + 1 && f > 0.72) forro.style.setProperty("--er-ajuste", (f -= 0.03));
+  w.dataset.ajuste = f.toFixed(2);
+}
 const hv = await plantilla("hojas/vampiro.hbs");
 ventana(quien, "er-hoja er-hoja-vampiro", hv(contextoVampiro(VAMPIROS.find(v => v.clave === quien), false)), 820, 860);
 ventana("Edición", "er-hoja er-hoja-vampiro", hv(contextoVampiro(VAMPIROS[1], true)), 820, 860);

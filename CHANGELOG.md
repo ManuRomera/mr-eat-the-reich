@@ -1,5 +1,14 @@
 # Cambios
 
+## 0.2.0 · 12-11-2026 (uso privado)
+
+- **Hoja-ataúd**: la ficha de vampiro es una ventana con forma de ataúd abierto (tapa con el personaje, caja con la hoja; texto ceñido a la forma). La ficha rectangular queda para editar.
+- **Marcas punk**: casillas torcidas, X a rotulador que se salen, vistos, gotas de sangre y tachones en vez de casillas perfectas.
+- **20 escenas**: decorado 16:9 de cada localización, enlazado desde las calaveras del mapa (doble clic), con notas de vuelta, lectura y página del manual.
+- **Banda sonora de música clásica** (18 piezas libres, una por escena y por estado de ánimo) y nueve efectos de sonido.
+- **MR- Dirección**: paquete de la misión (escenas, música, motivos, efectos, reparto, hitos y reloj).
+- Imagen propia para las 11 amenazas que no tenían.
+
 ## 0.1.1 · 12-11-2026 (uso privado, repositorio privado)
 
 - Modo oscuro: las ventanas del sistema (diarios, diálogos, fichas) usan ahora el tema oscuro de Foundry cuando está activo en Accesibilidad; antes se forzaba el claro y el diario quedaba con letra crema sobre papel claro.

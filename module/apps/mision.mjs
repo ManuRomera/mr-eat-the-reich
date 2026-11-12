@@ -8,6 +8,7 @@ import { ConMemoria } from "../memoria.mjs";
 import { pintarRetratos } from "../retrato.mjs";
 import { refuerzos, reservaAtaque } from "../reglas.mjs";
 import { AMENAZAS, LOCALIZACIONES, PREMIOS_SECUNDARIO } from "../datos.mjs";
+import { sonar, musica, pistaSonando, catalogoMusica, escenaDe } from "../escenas.mjs";
 
 const esc = t => foundry.utils.escapeHTML(String(t ?? ""));
 const CAMPOS_AMENAZA = ["desafio", "revive", "crece", "uber", "umbral", "anatema", "garras", "sinDolor", "sinSangre", "refuerzoValor", "rasgos"];
@@ -32,6 +33,7 @@ async function aviso(titulo, html) {
 export async function cargarLocalizacion(clave) {
   const l = LOCALIZACIONES.find(x => x.clave === clave);
   if (!l || !game.user.isGM) return;
+  if (!mision().escena) sonar("ataud");   // la primera escena de la noche: caen los ataúdes
   await cambiarMision(m => {
     m.escena = l.nombre; m.ronda = 1; m.actuaron = [];
     m.objetivos = [fichaObjetivo(l.objetivo), ...l.secundarios.map(s => fichaObjetivo(s, true))];
@@ -54,6 +56,7 @@ export async function finDeRonda() {
     const r = refuerzos(m.amenazas, d6);
     m.amenazas = r.amenazas; parte = r.parte; m.ronda += 1; m.actuaron = []; ronda = m.ronda;
   });
+  if (parte.length) sonar("sirena", 0.5);
   await aviso(`Refuerzos · empieza la ronda ${ronda}`, `<ul class="er-tc-reparto">${parte.map(p => `<li>${esc(p)}</li>`).join("") || "<li>Nadie a la vista.</li>"}</ul>${bruja ? `<p class="er-tc-nota"><b>Maldición del óxido:</b> elige un vampiro; una pieza de su equipo, al azar, queda inservible.</p>` : ""}`);
 }
 
@@ -63,7 +66,7 @@ export class PanelMision extends ConMemoria(HandlebarsApplicationMixin(Applicati
     id: "er-mision", classes: [ID, "er-mision"], position: { width: 540, height: 680 },
     window: { title: "Misión", icon: "fa-solid fa-crosshairs", resizable: true },
     actions: { mas: PanelMision.#ajustar, menos: PanelMision.#ajustar, quitar: PanelMision.#quitar, objetivo: PanelMision.#objetivo, amenaza: PanelMision.#amenaza,
-      cargar: PanelMision.#cargar, ronda: PanelMision.#ronda, limpiar: PanelMision.#limpiar, turno: PanelMision.#turno, abrir: PanelMision.#abrir }
+      cargar: PanelMision.#cargar, musica: PanelMision.#musica, silencio: PanelMision.#silencio, irEscena: PanelMision.#irEscena, ronda: PanelMision.#ronda, limpiar: PanelMision.#limpiar, turno: PanelMision.#turno, abrir: PanelMision.#abrir }
   };
   static PARTS = { cuerpo: { template: `${RUTA}/templates/apps/mision.hbs`, scrollable: [".er-mision-cuerpo"] } };
   static SCROLL_MEMORIA = [".er-mision-cuerpo"];
@@ -75,6 +78,7 @@ export class PanelMision extends ConMemoria(HandlebarsApplicationMixin(Applicati
     const sectores = [3, 2, 1].map(s => ({ nombre: `Sector ${s}`, lugares: LOCALIZACIONES.filter(l => l.sector === s) }));
     const mundo = game.actors.filter(a => a.type === "amenaza" && !AMENAZAS.some(x => x.clave === a.getFlag(ID, "clave")));
     return {
+      pistas: catalogoMusica(), sonando: pistaSonando(), hayEscena: Boolean(LOCALIZACIONES.find(l => l.nombre === m.escena)),
       esGM: game.user.isGM, m, sectores, ataque: ataque.dados, premios: PREMIOS_SECUNDARIO,
       objetivos: m.objetivos.map(o => ({ ...o, hecho: o.valor <= 0 })),
       amenazas: m.amenazas.map(a => ({ ...a, caida: a.valor <= 0, solo: !a.revive && !a.crece })),
@@ -112,6 +116,9 @@ export class PanelMision extends ConMemoria(HandlebarsApplicationMixin(Applicati
   }
   static #cargar() { const v = this.element.querySelector("select[name=lugar]")?.value; if (v) return cargarLocalizacion(v); }
   static #ronda() { return finDeRonda(); }
+  static async #musica() { await musica(this.element.querySelector("select[name=pista]")?.value); this.render(); }
+  static async #silencio() { await musica(""); this.render(); }
+  static #irEscena() { const l = LOCALIZACIONES.find(x => x.nombre === mision().escena); return escenaDe(l?.clave)?.view(); }
   static async #limpiar() {
     const ok = await DialogV2.confirm({ window: { title: "Escena nueva", icon: "fa-solid fa-broom" }, content: "<p>Se quitan los Objetivos y las Amenazas de la escena actual. Los vampiros siguen adelante.</p>", yes: { label: "Escena nueva", icon: "fa-solid fa-broom" }, no: { label: "Cancelar" }, rejectClose: false });
     if (ok) return cambiarMision(m => Object.assign(m, { escena: "", ronda: 1, objetivos: [], amenazas: [], actuaron: [] }));

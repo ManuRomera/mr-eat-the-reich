@@ -199,6 +199,7 @@
     "flags": {
      "mr-eat-the-reich": {
       "clave": "iryna",
+      "forro": "#ff4f93",
       "retrato": {
        "x": 0.47,
        "y": 0.27,
@@ -209,7 +210,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -427,6 +428,7 @@
     "flags": {
      "mr-eat-the-reich": {
       "clave": "nicole",
+      "forro": "#ff8a3c",
       "retrato": {
        "x": 0.38,
        "y": 0.28,
@@ -437,7 +439,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -646,6 +648,7 @@
     "flags": {
      "mr-eat-the-reich": {
       "clave": "cosgrave",
+      "forro": "#3fd0b4",
       "retrato": {
        "x": 0.45,
        "y": 0.24,
@@ -656,7 +659,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -852,6 +855,7 @@
     "flags": {
      "mr-eat-the-reich": {
       "clave": "chuck",
+      "forro": "#6fd45c",
       "retrato": {
        "x": 0.37,
        "y": 0.27,
@@ -862,7 +866,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -1071,6 +1075,7 @@
     "flags": {
      "mr-eat-the-reich": {
       "clave": "astrid",
+      "forro": "#ffa3c4",
       "retrato": {
        "x": 0.4,
        "y": 0.24,
@@ -1081,7 +1086,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -1271,6 +1276,7 @@
     "flags": {
      "mr-eat-the-reich": {
       "clave": "flint",
+      "forro": "#35b8a0",
       "retrato": {
        "x": 0.5,
        "y": 0.6,
@@ -1281,7 +1287,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -1293,7 +1299,7 @@
     "_id": "1f3af430d21704df",
     "name": "Patrulla policial",
     "type": "amenaza",
-    "img": "icons/svg/skull.svg",
+    "img": "systems/mr-eat-the-reich/assets/amenazas/patrulla.webp",
     "folder": "8446d0aa331cc493",
     "sort": 0,
     "system": {
@@ -1323,7 +1329,7 @@
      "width": 1,
      "height": 1,
      "texture": {
-      "src": "icons/svg/skull.svg",
+      "src": "systems/mr-eat-the-reich/assets/amenazas/patrulla-token.webp",
       "fit": "cover"
      }
     },
@@ -1338,7 +1344,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -1350,7 +1356,7 @@
     "_id": "2e7513d7431c7e2c",
     "name": "Escuadrón de infantería",
     "type": "amenaza",
-    "img": "icons/svg/skull.svg",
+    "img": "systems/mr-eat-the-reich/assets/amenazas/infanteria.webp",
     "folder": "8446d0aa331cc493",
     "sort": 100,
     "system": {
@@ -1380,7 +1386,7 @@
      "width": 1,
      "height": 1,
      "texture": {
-      "src": "icons/svg/skull.svg",
+      "src": "systems/mr-eat-the-reich/assets/amenazas/infanteria-token.webp",
       "fit": "cover"
      }
     },
@@ -1395,7 +1401,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -1407,7 +1413,7 @@
     "_id": "bd4a8b220fe30dc8",
     "name": "Vehículo blindado",
     "type": "amenaza",
-    "img": "icons/svg/skull.svg",
+    "img": "systems/mr-eat-the-reich/assets/amenazas/blindado.webp",
     "folder": "8446d0aa331cc493",
     "sort": 200,
     "system": {
@@ -1437,7 +1443,7 @@
      "width": 1,
      "height": 1,
      "texture": {
-      "src": "icons/svg/skull.svg",
+      "src": "systems/mr-eat-the-reich/assets/amenazas/blindado-token.webp",
       "fit": "cover"
      }
     },
@@ -1452,7 +1458,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -1464,7 +1470,7 @@
     "_id": "9a29c06018d47e77",
     "name": "Infantería blindada",
     "type": "amenaza",
-    "img": "icons/svg/skull.svg",
+    "img": "systems/mr-eat-the-reich/assets/amenazas/infanteria-blindada.webp",
     "folder": "8446d0aa331cc493",
     "sort": 300,
     "system": {
@@ -1494,7 +1500,7 @@
      "width": 1,
      "height": 1,
      "texture": {
-      "src": "icons/svg/skull.svg",
+      "src": "systems/mr-eat-the-reich/assets/amenazas/infanteria-blindada-token.webp",
       "fit": "cover"
      }
     },
@@ -1509,7 +1515,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -1521,7 +1527,7 @@
     "_id": "f816f24086da54fb",
     "name": "Escuadrón de motoristas",
     "type": "amenaza",
-    "img": "icons/svg/skull.svg",
+    "img": "systems/mr-eat-the-reich/assets/amenazas/motoristas.webp",
     "folder": "8446d0aa331cc493",
     "sort": 400,
     "system": {
@@ -1551,7 +1557,7 @@
      "width": 1,
      "height": 1,
      "texture": {
-      "src": "icons/svg/skull.svg",
+      "src": "systems/mr-eat-the-reich/assets/amenazas/motoristas-token.webp",
       "fit": "cover"
      }
     },
@@ -1566,7 +1572,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -1578,7 +1584,7 @@
     "_id": "53ad02f2216b4274",
     "name": "Equipo de francotiradores",
     "type": "amenaza",
-    "img": "icons/svg/skull.svg",
+    "img": "systems/mr-eat-the-reich/assets/amenazas/francotiradores.webp",
     "folder": "8446d0aa331cc493",
     "sort": 500,
     "system": {
@@ -1608,7 +1614,7 @@
      "width": 1,
      "height": 1,
      "texture": {
-      "src": "icons/svg/skull.svg",
+      "src": "systems/mr-eat-the-reich/assets/amenazas/francotiradores-token.webp",
       "fit": "cover"
      }
     },
@@ -1623,7 +1629,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -1635,7 +1641,7 @@
     "_id": "14a3434292834bcd",
     "name": "Escuadrón de paracaidistas",
     "type": "amenaza",
-    "img": "icons/svg/skull.svg",
+    "img": "systems/mr-eat-the-reich/assets/amenazas/paracaidistas.webp",
     "folder": "8446d0aa331cc493",
     "sort": 600,
     "system": {
@@ -1665,7 +1671,7 @@
      "width": 1,
      "height": 1,
      "texture": {
-      "src": "icons/svg/skull.svg",
+      "src": "systems/mr-eat-the-reich/assets/amenazas/paracaidistas-token.webp",
       "fit": "cover"
      }
     },
@@ -1680,7 +1686,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -1692,7 +1698,7 @@
     "_id": "51ec8f5001ac384e",
     "name": "Tanque",
     "type": "amenaza",
-    "img": "icons/svg/skull.svg",
+    "img": "systems/mr-eat-the-reich/assets/amenazas/tanque.webp",
     "folder": "8446d0aa331cc493",
     "sort": 700,
     "system": {
@@ -1722,7 +1728,7 @@
      "width": 1,
      "height": 1,
      "texture": {
-      "src": "icons/svg/skull.svg",
+      "src": "systems/mr-eat-the-reich/assets/amenazas/tanque-token.webp",
       "fit": "cover"
      }
     },
@@ -1737,7 +1743,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -1799,7 +1805,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -1811,7 +1817,7 @@
     "_id": "e6a1b25264a78f9d",
     "name": "Brigada quema-arte",
     "type": "amenaza",
-    "img": "icons/svg/skull.svg",
+    "img": "systems/mr-eat-the-reich/assets/amenazas/quema-arte.webp",
     "folder": "8446d0aa331cc493",
     "sort": 900,
     "system": {
@@ -1841,7 +1847,7 @@
      "width": 1,
      "height": 1,
      "texture": {
-      "src": "icons/svg/skull.svg",
+      "src": "systems/mr-eat-the-reich/assets/amenazas/quema-arte-token.webp",
       "fit": "cover"
      }
     },
@@ -1856,7 +1862,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -1868,7 +1874,7 @@
     "_id": "515841733095391e",
     "name": "Einherjar",
     "type": "amenaza",
-    "img": "icons/svg/skull.svg",
+    "img": "systems/mr-eat-the-reich/assets/amenazas/einherjar.webp",
     "folder": "8446d0aa331cc493",
     "sort": 1000,
     "system": {
@@ -1898,7 +1904,7 @@
      "width": 1,
      "height": 1,
      "texture": {
-      "src": "icons/svg/skull.svg",
+      "src": "systems/mr-eat-the-reich/assets/amenazas/einherjar-token.webp",
       "fit": "cover"
      }
     },
@@ -1913,7 +1919,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -1925,7 +1931,7 @@
     "_id": "6c772a90c3041568",
     "name": "Stahlsoldat",
     "type": "amenaza",
-    "img": "icons/svg/skull.svg",
+    "img": "systems/mr-eat-the-reich/assets/amenazas/stahlsoldat.webp",
     "folder": "2cf4545586d0fcde",
     "sort": 1100,
     "system": {
@@ -1955,7 +1961,7 @@
      "width": 1,
      "height": 1,
      "texture": {
-      "src": "icons/svg/skull.svg",
+      "src": "systems/mr-eat-the-reich/assets/amenazas/stahlsoldat-token.webp",
       "fit": "cover"
      }
     },
@@ -1970,7 +1976,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -2032,7 +2038,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -2094,7 +2100,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -2156,7 +2162,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -2258,7 +2264,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -2289,6 +2295,60 @@
       "flags": {}
      },
      {
+      "_id": "da05b9671bcb720b",
+      "name": "Manual · la misión (p. 42)",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 20,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-42.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 42"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "7e0655fa1b614e80",
+      "name": "Manual · el avance (p. 43)",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 40,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-43.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 43"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "ad8851ceb8eae33b",
+      "name": "Manual · enemigos comunes (p. 61)",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 60,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-61.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 61"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
       "_id": "30608c47900bb3da",
       "name": "Plaza de la Sirena",
       "type": "text",
@@ -2299,7 +2359,25 @@
       "sort": 100,
       "text": {
        "format": 1,
-       "content": "<p><em>Sector 3 · manual, p. 50.</em></p><p>Barrio elegante de bistrós y boutiques alrededor de una fuente.</p>\n  <p><strong>Objetivo:</strong> Salir de la zona de caída y ponerse a cubierto (6)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.1f3af430d21704df]{Patrulla policial} ×2</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Plaza de la Sirena</strong> → Cargar.</p>"
+       "content": "<p><em>Sector 3 · manual, p. 50.</em></p><p>Barrio elegante de bistrós y boutiques alrededor de una fuente.</p>\n  <p><strong>Objetivo:</strong> Salir de la zona de caída y ponerse a cubierto (6)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.1f3af430d21704df]{Patrulla policial} ×2</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Plaza de la Sirena</strong> → Cargar. La página siguiente es la del manual. Escena: @UUID[Scene.bdf88054905819cd]{Plaza de la Sirena}.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "3ef4eb0bdcc087e6",
+      "name": "Plaza de la Sirena · manual p. 50",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 110.00000000000001,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-50.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 50"
       },
       "ownership": {
        "default": -1
@@ -2317,7 +2395,25 @@
       "sort": 200,
       "text": {
        "format": 1,
-       "content": "<p><em>Sector 3 · manual, p. 50.</em></p><p>Varias plantas de género alemán, escaleras mecánicas y dependientes a la carrera.</p>\n  <p><strong>Objetivo:</strong> Encontrar la salida del laberinto de plantas (6)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.2e7513d7431c7e2c]{Escuadrón de infantería} — os busca</li><li>@UUID[Actor.bd4a8b220fe30dc8]{Vehículo blindado} — espera fuera</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Los grandes almacenes</strong> → Cargar.</p>"
+       "content": "<p><em>Sector 3 · manual, p. 50.</em></p><p>Varias plantas de género alemán, escaleras mecánicas y dependientes a la carrera.</p>\n  <p><strong>Objetivo:</strong> Encontrar la salida del laberinto de plantas (6)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.2e7513d7431c7e2c]{Escuadrón de infantería} — os busca</li><li>@UUID[Actor.bd4a8b220fe30dc8]{Vehículo blindado} — espera fuera</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Los grandes almacenes</strong> → Cargar. La página siguiente es la del manual. Escena: @UUID[Scene.b5cf363e2e808d5f]{Los grandes almacenes}.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "bdc447a2b759735e",
+      "name": "Los grandes almacenes · manual p. 50",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 210,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-50.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 50"
       },
       "ownership": {
        "default": -1
@@ -2335,7 +2431,25 @@
       "sort": 300,
       "text": {
        "format": 1,
-       "content": "<p><em>Sector 3 · manual, p. 50.</em></p><p>Camposanto nuevo, solo para alemanes, en pleno funeral militar con salva de honor.</p>\n  <p><strong>Objetivo:</strong> Arruinar el funeral (6)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.2e7513d7431c7e2c]{Escuadrón de infantería} — pillados por sorpresa, pero armados</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Cementerio</strong> → Cargar.</p>"
+       "content": "<p><em>Sector 3 · manual, p. 50.</em></p><p>Camposanto nuevo, solo para alemanes, en pleno funeral militar con salva de honor.</p>\n  <p><strong>Objetivo:</strong> Arruinar el funeral (6)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.2e7513d7431c7e2c]{Escuadrón de infantería} — pillados por sorpresa, pero armados</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Cementerio</strong> → Cargar. La página siguiente es la del manual. Escena: @UUID[Scene.e8fec91adaf21dad]{Cementerio}.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "57c0738fcb418106",
+      "name": "Cementerio · manual p. 50",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 310,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-50.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 50"
       },
       "ownership": {
        "default": -1
@@ -2353,7 +2467,25 @@
       "sort": 400,
       "text": {
        "format": 1,
-       "content": "<p><em>Sector 3 · manual, p. 51.</em></p><p>Hotel de lujo para las familias del mando; el bar del sexto piso tiene uno de los últimos pianos de cola de París.</p>\n  <p><strong>Objetivo:</strong> Hacer una entrada como es debido (6)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.1f3af430d21704df]{Oficiales tomando una copa} ×2 (como Patrulla policial)</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Hôtel L'Étoile</strong> → Cargar.</p>"
+       "content": "<p><em>Sector 3 · manual, p. 51.</em></p><p>Hotel de lujo para las familias del mando; el bar del sexto piso tiene uno de los últimos pianos de cola de París.</p>\n  <p><strong>Objetivo:</strong> Hacer una entrada como es debido (6)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.1f3af430d21704df]{Oficiales tomando una copa} ×2 (como Patrulla policial)</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Hôtel L'Étoile</strong> → Cargar. La página siguiente es la del manual. Escena: @UUID[Scene.49e5c215b8b3d93f]{Hôtel L'Étoile}.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "6e7e1db5664339bc",
+      "name": "Hôtel L'Étoile · manual p. 51",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 409.99999999999994,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-51.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 51"
       },
       "ownership": {
        "default": -1
@@ -2371,7 +2503,25 @@
       "sort": 500,
       "text": {
        "format": 1,
-       "content": "<p><em>Sector 3 · manual, p. 51.</em></p><p>Entrada a túneles y criptas olvidadas: buen sitio para perderse de vista, malo para orientarse.</p>\n  <p><strong>Objetivo:</strong> Entrar en el laberinto subterráneo (y salir) (6, Desafío 1)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.9a29c06018d47e77]{Infantería blindada} — muy asustados</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Mausoleo</strong> → Cargar.</p>"
+       "content": "<p><em>Sector 3 · manual, p. 51.</em></p><p>Entrada a túneles y criptas olvidadas: buen sitio para perderse de vista, malo para orientarse.</p>\n  <p><strong>Objetivo:</strong> Entrar en el laberinto subterráneo (y salir) (6, Desafío 1)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.9a29c06018d47e77]{Infantería blindada} — muy asustados</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Mausoleo</strong> → Cargar. La página siguiente es la del manual. Escena: @UUID[Scene.20c43ed6765873bf]{Mausoleo}.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "f14a6b9953b9460b",
+      "name": "Mausoleo · manual p. 51",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 509.99999999999994,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-51.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 51"
       },
       "ownership": {
        "default": -1
@@ -2389,7 +2539,25 @@
       "sort": 600,
       "text": {
        "format": 1,
-       "content": "<p><em>Sector 3 · manual, p. 51.</em></p><p>Vidrieras, bancos de roble y un gran altar. El suelo sagrado no hace nada a los vampiros; las balas que entran por las ventanas, sí.</p>\n  <p><strong>Objetivo:</strong> Abrir un hueco en el cerco y salir (8)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.2e7513d7431c7e2c]{Escuadrón de infantería} ×2</li><li>@UUID[Actor.53ad02f2216b4274]{Equipo de francotiradores} — en el edificio de enfrente</li></ul>\n  <p><strong>Botín:</strong></p><ul><li>Una cruz especialmente grande (++saltar vallas)</li></ul>\n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Catedral de Saint-Médard</strong> → Cargar.</p>"
+       "content": "<p><em>Sector 3 · manual, p. 51.</em></p><p>Vidrieras, bancos de roble y un gran altar. El suelo sagrado no hace nada a los vampiros; las balas que entran por las ventanas, sí.</p>\n  <p><strong>Objetivo:</strong> Abrir un hueco en el cerco y salir (8)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.2e7513d7431c7e2c]{Escuadrón de infantería} ×2</li><li>@UUID[Actor.53ad02f2216b4274]{Equipo de francotiradores} — en el edificio de enfrente</li></ul>\n  <p><strong>Botín:</strong></p><ul><li>Una cruz especialmente grande (++saltar vallas)</li></ul>\n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Catedral de Saint-Médard</strong> → Cargar. La página siguiente es la del manual. Escena: @UUID[Scene.c8d8625ca2463012]{Catedral de Saint-Médard}.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "497556ff14dfc16b",
+      "name": "Catedral de Saint-Médard · manual p. 51",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 610,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-51.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 51"
       },
       "ownership": {
        "default": -1
@@ -2407,7 +2575,43 @@
       "sort": 2100,
       "text": {
        "format": 1,
-       "content": "<p><em>Sector 2 · manual, p. 52.</em></p><p>Sala de exposiciones con pilas experimentales, aleaciones nuevas y una plataforma de armas de cuatro patas, apagada.</p>\n  <p><strong>Objetivo:</strong> Asaltar el pabellón y salir por el otro lado (9)</p>\n  <p><strong>Objetivos secundarios:</strong></p><ul><li>Arreglar la plataforma de armas (5). Da acceso, sin ocupar botín, a: Plataforma de armas cuadrúpeda (+ignorar el fuego enemigo) y Torreta de microondas (+++antitanque).</li></ul>\n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.6c772a90c3041568]{Stahlsoldat}</li></ul>\n  <p><strong>Botín:</strong></p><ul><li>Prototipo de lanzarrayos (++++bien calibrado antes de disparar)</li><li>Bidón de combustible experimental (++sobre algo inflamable)</li></ul>\n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Palacio de la Tecnología Alemana</strong> → Cargar.</p>"
+       "content": "<p><em>Sector 2 · manual, p. 52.</em></p><p>Sala de exposiciones con pilas experimentales, aleaciones nuevas y una plataforma de armas de cuatro patas, apagada.</p>\n  <p><strong>Objetivo:</strong> Asaltar el pabellón y salir por el otro lado (9)</p>\n  <p><strong>Objetivos secundarios:</strong></p><ul><li>Arreglar la plataforma de armas (5). Da acceso, sin ocupar botín, a: Plataforma de armas cuadrúpeda (+ignorar el fuego enemigo) y Torreta de microondas (+++antitanque).</li></ul>\n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.6c772a90c3041568]{Stahlsoldat}</li></ul>\n  <p><strong>Botín:</strong></p><ul><li>Prototipo de lanzarrayos (++++bien calibrado antes de disparar)</li><li>Bidón de combustible experimental (++sobre algo inflamable)</li></ul>\n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Palacio de la Tecnología Alemana</strong> → Cargar. La página siguiente es la del manual. Escena: @UUID[Scene.a0e4bc5ecd94fc9f]{Palacio de la Tecnología Alemana}.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "292d8d4993b04884",
+      "name": "Palacio de la Tecnología Alemana · manual p. 52",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 2110,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-52.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 52"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "3d86db6a7fe955d3",
+      "name": "Palacio de la Tecnología Alemana · manual p. 53",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 2120,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-53.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 53"
       },
       "ownership": {
        "default": -1
@@ -2425,7 +2629,25 @@
       "sort": 2200,
       "text": {
        "format": 1,
-       "content": "<p><em>Sector 2 · manual, p. 53.</em></p><p>No circulan trenes, pero los túneles llegan a casi cualquier parte… y bajo tierra es fácil acabar acorralado.</p>\n  <p><strong>Objetivo:</strong> Atajar por los túneles del metro (10)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.9a29c06018d47e77]{Infantería blindada} ×2 — buscan vampiros</li><li>@UUID[Actor.f816f24086da54fb]{Escuadrón de motoristas} — si ponéis un tren en marcha</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Estación de metro</strong> → Cargar.</p>"
+       "content": "<p><em>Sector 2 · manual, p. 53.</em></p><p>No circulan trenes, pero los túneles llegan a casi cualquier parte… y bajo tierra es fácil acabar acorralado.</p>\n  <p><strong>Objetivo:</strong> Atajar por los túneles del metro (10)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.9a29c06018d47e77]{Infantería blindada} ×2 — buscan vampiros</li><li>@UUID[Actor.f816f24086da54fb]{Escuadrón de motoristas} — si ponéis un tren en marcha</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Estación de metro</strong> → Cargar. La página siguiente es la del manual. Escena: @UUID[Scene.2f9cfec6e3d74378]{Estación de metro}.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "f53345b8045e27ff",
+      "name": "Estación de metro · manual p. 53",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 2210,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-53.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 53"
       },
       "ownership": {
        "default": -1
@@ -2443,7 +2665,25 @@
       "sort": 2300,
       "text": {
        "format": 1,
-       "content": "<p><em>Sector 2 · manual, p. 54.</em></p><p>Coches caros de diplomáticos y expatriados: aguantan poco, corren mucho.</p>\n  <p><strong>Objetivo:</strong> Robar algo llamativo y salir pitando (8)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.2e7513d7431c7e2c]{Infantería en vehículo blindado} (como Escuadrón de infantería) — en persecución</li><li>@UUID[Actor.53ad02f2216b4274]{Equipo de francotiradores} — en una azotea</li></ul>\n  <p><strong>Botín:</strong></p><ul><li>Deportivo italiano descapotable (++maniobras)</li><li>Berlina alemana de importación (++volantazos)</li><li>Cacharro francés (++pasar desapercibido)</li></ul>\n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Garaje de coches de lujo</strong> → Cargar.</p>"
+       "content": "<p><em>Sector 2 · manual, p. 54.</em></p><p>Coches caros de diplomáticos y expatriados: aguantan poco, corren mucho.</p>\n  <p><strong>Objetivo:</strong> Robar algo llamativo y salir pitando (8)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.2e7513d7431c7e2c]{Infantería en vehículo blindado} (como Escuadrón de infantería) — en persecución</li><li>@UUID[Actor.53ad02f2216b4274]{Equipo de francotiradores} — en una azotea</li></ul>\n  <p><strong>Botín:</strong></p><ul><li>Deportivo italiano descapotable (++maniobras)</li><li>Berlina alemana de importación (++volantazos)</li><li>Cacharro francés (++pasar desapercibido)</li></ul>\n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Garaje de coches de lujo</strong> → Cargar. La página siguiente es la del manual. Escena: @UUID[Scene.ddfe9b6a9fd0a48f]{Garaje de coches de lujo}.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "50f8d1c0cfaf2e0e",
+      "name": "Garaje de coches de lujo · manual p. 54",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 2310,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-54.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 54"
       },
       "ownership": {
        "default": -1
@@ -2461,7 +2701,25 @@
       "sort": 2400,
       "text": {
        "format": 1,
-       "content": "<p><em>Sector 2 · manual, p. 54.</em></p><p>Bar de sótanos encadenados y humo; escondite de la Resistencia, avisada de vuestra llegada.</p>\n  <p><strong>Objetivo:</strong> Despistar a los nazis escondiéndose en el bar (6)</p>\n  <p><strong>Objetivos secundarios:</strong></p><ul><li>Hacer equipo con la Resistencia (4). Da acceso, sin ocupar botín, a: Escuadrón guerrillero (+maniobra de flanqueo).</li></ul>\n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.1f3af430d21704df]{Patrulla policial} ×2</li><li>@UUID[Actor.2e7513d7431c7e2c]{Infantería en vehículo blindado} (como Escuadrón de infantería) — llega de camino</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>El Cerdo Negro</strong> → Cargar.</p>"
+       "content": "<p><em>Sector 2 · manual, p. 54.</em></p><p>Bar de sótanos encadenados y humo; escondite de la Resistencia, avisada de vuestra llegada.</p>\n  <p><strong>Objetivo:</strong> Despistar a los nazis escondiéndose en el bar (6)</p>\n  <p><strong>Objetivos secundarios:</strong></p><ul><li>Hacer equipo con la Resistencia (4). Da acceso, sin ocupar botín, a: Escuadrón guerrillero (+maniobra de flanqueo).</li></ul>\n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.1f3af430d21704df]{Patrulla policial} ×2</li><li>@UUID[Actor.2e7513d7431c7e2c]{Infantería en vehículo blindado} (como Escuadrón de infantería) — llega de camino</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>El Cerdo Negro</strong> → Cargar. La página siguiente es la del manual. Escena: @UUID[Scene.385fa63a97b2e5e1]{El Cerdo Negro}.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "7c1805dd1851b3b6",
+      "name": "El Cerdo Negro · manual p. 54",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 2410,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-54.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 54"
       },
       "ownership": {
        "default": -1
@@ -2479,7 +2737,25 @@
       "sort": 2500,
       "text": {
        "format": 1,
-       "content": "<p><em>Sector 2 · manual, p. 55.</em></p><p>Mil años de armas en vitrinas polvorientas… que un brujo nazi acaba de animar.</p>\n  <p><strong>Objetivo:</strong> Cruzar el museo antes de que os desborden los no-muertos (8, Desafío 1)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.515841733095391e]{Einherjar}</li><li>@UUID[Actor.1f3af430d21704df]{Guardias del museo} (como Patrulla policial)</li></ul>\n  <p><strong>Botín:</strong></p><ul><li>Arco largo, una obra maestra (++asesino silencioso)</li><li>Cañón cargado que aún funciona (+++objetivo inmóvil)</li><li>Momia guerrera traidora (+vendaje bien prieto)</li><li>El caballo no-muerto de Napoleón (+pisotear)</li></ul>\n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Museo de la Guerra Europea</strong> → Cargar.</p>"
+       "content": "<p><em>Sector 2 · manual, p. 55.</em></p><p>Mil años de armas en vitrinas polvorientas… que un brujo nazi acaba de animar.</p>\n  <p><strong>Objetivo:</strong> Cruzar el museo antes de que os desborden los no-muertos (8, Desafío 1)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.515841733095391e]{Einherjar}</li><li>@UUID[Actor.1f3af430d21704df]{Guardias del museo} (como Patrulla policial)</li></ul>\n  <p><strong>Botín:</strong></p><ul><li>Arco largo, una obra maestra (++asesino silencioso)</li><li>Cañón cargado que aún funciona (+++objetivo inmóvil)</li><li>Momia guerrera traidora (+vendaje bien prieto)</li><li>El caballo no-muerto de Napoleón (+pisotear)</li></ul>\n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Museo de la Guerra Europea</strong> → Cargar. La página siguiente es la del manual. Escena: @UUID[Scene.4ee841887ecfea5d]{Museo de la Guerra Europea}.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "e10359b53ab7cdbd",
+      "name": "Museo de la Guerra Europea · manual p. 55",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 2510,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-55.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 55"
       },
       "ownership": {
        "default": -1
@@ -2497,7 +2773,25 @@
       "sort": 2600,
       "text": {
        "format": 1,
-       "content": "<p><em>Sector 2 · manual, p. 56.</em></p><p>Feria de luces con la tercera noria más grande de Europa, encendida y sin nadie al mando.</p>\n  <p><strong>Objetivo:</strong> Cruzar la feria que se derrumba, perseguidos por la bruja (10, Desafío 1)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.46340b4b068254c1]{Rust-Witch} — os echa la noria encima</li><li>@UUID[Actor.1f3af430d21704df]{Tripulación del tanque} (como Patrulla policial) — lo han abandonado</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Parque de atracciones</strong> → Cargar.</p>"
+       "content": "<p><em>Sector 2 · manual, p. 56.</em></p><p>Feria de luces con la tercera noria más grande de Europa, encendida y sin nadie al mando.</p>\n  <p><strong>Objetivo:</strong> Cruzar la feria que se derrumba, perseguidos por la bruja (10, Desafío 1)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.46340b4b068254c1]{Rust-Witch} — os echa la noria encima</li><li>@UUID[Actor.1f3af430d21704df]{Tripulación del tanque} (como Patrulla policial) — lo han abandonado</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Parque de atracciones</strong> → Cargar. La página siguiente es la del manual. Escena: @UUID[Scene.1ab5279ba93edde6]{Parque de atracciones}.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "4e07155deff8cfe9",
+      "name": "Parque de atracciones · manual p. 56",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 2610,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-56.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 56"
       },
       "ownership": {
        "default": -1
@@ -2515,7 +2809,25 @@
       "sort": 2700,
       "text": {
        "format": 1,
-       "content": "<p><em>Sector 2 · manual, p. 58.</em></p><p>Arte «degenerado» mal colgado y, esta noche, la mayor quema de cuadros que se recuerda.</p>\n  <p><strong>Objetivo:</strong> Atravesar la galería rápido y con violencia (8)</p>\n  <p><strong>Objetivos secundarios:</strong></p><ul><li>Localizar un Van Gogh perdido (o algo así) (4). Sin ventaja mecánica: tenéis un Van Gogh.</li></ul>\n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.2e7513d7431c7e2c]{Infantería en vehículo blindado} (como Escuadrón de infantería) — revientan la pared</li><li>@UUID[Actor.e6a1b25264a78f9d]{Brigada quema-arte}</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Galería de arte censurado</strong> → Cargar.</p>"
+       "content": "<p><em>Sector 2 · manual, p. 58.</em></p><p>Arte «degenerado» mal colgado y, esta noche, la mayor quema de cuadros que se recuerda.</p>\n  <p><strong>Objetivo:</strong> Atravesar la galería rápido y con violencia (8)</p>\n  <p><strong>Objetivos secundarios:</strong></p><ul><li>Localizar un Van Gogh perdido (o algo así) (4). Sin ventaja mecánica: tenéis un Van Gogh.</li></ul>\n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.2e7513d7431c7e2c]{Infantería en vehículo blindado} (como Escuadrón de infantería) — revientan la pared</li><li>@UUID[Actor.e6a1b25264a78f9d]{Brigada quema-arte}</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Galería de arte censurado</strong> → Cargar. La página siguiente es la del manual. Escena: @UUID[Scene.94d69482668efbe3]{Galería de arte censurado}.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "84a9003a15aac876",
+      "name": "Galería de arte censurado · manual p. 58",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 2710,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-58.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 58"
       },
       "ownership": {
        "default": -1
@@ -2533,7 +2845,43 @@
       "sort": 2800,
       "text": {
        "format": 1,
-       "content": "<p><em>Sector 2 · manual, p. 58.</em></p><p>Wagner a medio segundo acto, puertas cerradas y un galán de cine que ejecuta a alguien del público por cada nota fallada.</p>\n  <p><strong>Objetivo:</strong> Correr por los pasillos hacia Hitler sin hacer caso al Übermensch (4)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.37a2fa96cf1aa896]{Dämonenblut}</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>La Ópera</strong> → Cargar.</p>"
+       "content": "<p><em>Sector 2 · manual, p. 58.</em></p><p>Wagner a medio segundo acto, puertas cerradas y un galán de cine que ejecuta a alguien del público por cada nota fallada.</p>\n  <p><strong>Objetivo:</strong> Correr por los pasillos hacia Hitler sin hacer caso al Übermensch (4)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.37a2fa96cf1aa896]{Dämonenblut}</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>La Ópera</strong> → Cargar. La página siguiente es la del manual. Escena: @UUID[Scene.569d75a8159457f7]{La Ópera}.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "4e2de457ec0a15d5",
+      "name": "La Ópera · manual p. 58",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 2810,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-58.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 58"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "078df0e76170dcd8",
+      "name": "La Ópera · manual p. 59",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 2820,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-59.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 59"
       },
       "ownership": {
        "default": -1
@@ -2551,7 +2899,25 @@
       "sort": 4100,
       "text": {
        "format": 1,
-       "content": "<p><em>Sector 1 · manual, p. 62.</em></p><p>Semiorugas, coches de mando y todoterrenos de los oficiales.</p>\n  <p><strong>Objetivo:</strong> Atravesar el aparcamiento (8)</p>\n  <p><strong>Objetivos secundarios:</strong></p><ul><li>Asaltar el depósito de municiones (4). Cada jugador recupera todos los usos de sus armas de fuego, granadas y similares.</li></ul>\n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.f816f24086da54fb]{Escuadrón de motoristas} — a toda velocidad entre coberturas</li><li>@UUID[Actor.2e7513d7431c7e2c]{Escuadrón de infantería} — de guardia</li><li>@UUID[Actor.51ec8f5001ac384e]{Tanque} — sale del hangar cuando cae un enemigo</li></ul>\n  <p><strong>Botín:</strong></p><ul><li>El Volkswagen negro blindado de tus sueños (++ametralladoras frontales)</li></ul>\n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Depósito de armas y vehículos</strong> → Cargar.</p>"
+       "content": "<p><em>Sector 1 · manual, p. 62.</em></p><p>Semiorugas, coches de mando y todoterrenos de los oficiales.</p>\n  <p><strong>Objetivo:</strong> Atravesar el aparcamiento (8)</p>\n  <p><strong>Objetivos secundarios:</strong></p><ul><li>Asaltar el depósito de municiones (4). Cada jugador recupera todos los usos de sus armas de fuego, granadas y similares.</li></ul>\n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.f816f24086da54fb]{Escuadrón de motoristas} — a toda velocidad entre coberturas</li><li>@UUID[Actor.2e7513d7431c7e2c]{Escuadrón de infantería} — de guardia</li><li>@UUID[Actor.51ec8f5001ac384e]{Tanque} — sale del hangar cuando cae un enemigo</li></ul>\n  <p><strong>Botín:</strong></p><ul><li>El Volkswagen negro blindado de tus sueños (++ametralladoras frontales)</li></ul>\n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Depósito de armas y vehículos</strong> → Cargar. La página siguiente es la del manual. Escena: @UUID[Scene.5a4edaca145792f2]{Depósito de armas y vehículos}.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "5146fd4182d2d257",
+      "name": "Depósito de armas y vehículos · manual p. 62",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 4110,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-62.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 62"
       },
       "ownership": {
        "default": -1
@@ -2569,7 +2935,25 @@
       "sort": 4200,
       "text": {
        "format": 1,
-       "content": "<p><em>Sector 1 · manual, p. 62.</em></p><p>Una postal austriaca al pie de la torre, con el alto mando de banquete. Mucha cobertura para vosotros… y para los tiradores.</p>\n  <p><strong>Objetivo:</strong> Guerra relámpago en la fiesta del jardín (8)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.2e7513d7431c7e2c]{Oficiales borrachos} (como Escuadrón de infantería)</li><li>@UUID[Actor.53ad02f2216b4274]{Equipo de francotiradores} ×2</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Jardín temático nazi</strong> → Cargar.</p>"
+       "content": "<p><em>Sector 1 · manual, p. 62.</em></p><p>Una postal austriaca al pie de la torre, con el alto mando de banquete. Mucha cobertura para vosotros… y para los tiradores.</p>\n  <p><strong>Objetivo:</strong> Guerra relámpago en la fiesta del jardín (8)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.2e7513d7431c7e2c]{Oficiales borrachos} (como Escuadrón de infantería)</li><li>@UUID[Actor.53ad02f2216b4274]{Equipo de francotiradores} ×2</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Jardín temático nazi</strong> → Cargar. La página siguiente es la del manual. Escena: @UUID[Scene.60b33009976fd29c]{Jardín temático nazi}.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "0fe4c4d3091f5bec",
+      "name": "Jardín temático nazi · manual p. 62",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 4210,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-62.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 62"
       },
       "ownership": {
        "default": -1
@@ -2587,7 +2971,25 @@
       "sort": 4300,
       "text": {
        "format": 1,
-       "content": "<p><em>Sector 1 · manual, p. 63.</em></p><p>Ascensores, focos y antenas de última tecnología alemana. Arriba, amarrado, el zepelín.</p>\n  <p><strong>Objetivo:</strong> Subir a lo alto de la Torre Eiffel (8, Desafío 1)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.9a29c06018d47e77]{Infantería blindada} — os esperan</li><li>@UUID[Actor.14a3434292834bcd]{Escuadrón de paracaidistas} — caen arriba y por los lados</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>La Torre Eiffel</strong> → Cargar.</p>"
+       "content": "<p><em>Sector 1 · manual, p. 63.</em></p><p>Ascensores, focos y antenas de última tecnología alemana. Arriba, amarrado, el zepelín.</p>\n  <p><strong>Objetivo:</strong> Subir a lo alto de la Torre Eiffel (8, Desafío 1)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.9a29c06018d47e77]{Infantería blindada} — os esperan</li><li>@UUID[Actor.14a3434292834bcd]{Escuadrón de paracaidistas} — caen arriba y por los lados</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>La Torre Eiffel</strong> → Cargar. La página siguiente es la del manual. Escena: @UUID[Scene.814895418823eb25]{La Torre Eiffel}.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "db343120c8c78ca7",
+      "name": "La Torre Eiffel · manual p. 63",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 4310,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-63.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 63"
       },
       "ownership": {
        "default": -1
@@ -2605,7 +3007,43 @@
       "sort": 4400,
       "text": {
        "format": 1,
-       "content": "<p><em>Sector 1 · manual, p. 63.</em></p><p>Mármol, seda, oro y caoba en el aire, cuadros sin mérito y tesoros saqueados.</p>\n  <p><strong>Objetivo:</strong> Llegar a la sala de transmisión de Hitler (6, Desafío 1)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.3f651156219a4a7c]{Escuadra de Vampirjäger}</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>El zepelín del Führer</strong> → Cargar.</p>"
+       "content": "<p><em>Sector 1 · manual, p. 63.</em></p><p>Mármol, seda, oro y caoba en el aire, cuadros sin mérito y tesoros saqueados.</p>\n  <p><strong>Objetivo:</strong> Llegar a la sala de transmisión de Hitler (6, Desafío 1)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.3f651156219a4a7c]{Escuadra de Vampirjäger}</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>El zepelín del Führer</strong> → Cargar. La página siguiente es la del manual. Escena: @UUID[Scene.14bcef2ab04a647a]{El zepelín del Führer}.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "f4b6f6bfbabf4872",
+      "name": "El zepelín del Führer · manual p. 63",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 4410,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-63.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 63"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "24884ad0be467fef",
+      "name": "El zepelín del Führer · manual p. 64",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 4420,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-64.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 64"
       },
       "ownership": {
        "default": -1
@@ -2623,7 +3061,43 @@
       "sort": 4500,
       "text": {
        "format": 1,
-       "content": "<p><em>Sector 1 · manual, p. 64.</em></p><p>Decorado de pancartas, atril y brasero para retransmitir en directo vuestra muerte. Si el Werhund cae, Hitler queda a vuestra merced. Hitler no habla: no tiene voz.</p>\n  <p><strong>Objetivo:</strong> Acabar con el Werhund (10, Desafío 1)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.5cf6cd8e4f6bd4f1]{Werhund}</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Sala de transmisión de Hitler</strong> → Cargar.</p>"
+       "content": "<p><em>Sector 1 · manual, p. 64.</em></p><p>Decorado de pancartas, atril y brasero para retransmitir en directo vuestra muerte. Si el Werhund cae, Hitler queda a vuestra merced. Hitler no habla: no tiene voz.</p>\n  <p><strong>Objetivo:</strong> Acabar con el Werhund (10, Desafío 1)</p>\n  \n  <p><strong>Enemigos:</strong></p><ul><li>@UUID[Actor.5cf6cd8e4f6bd4f1]{Werhund}</li></ul>\n  \n  <p class=\"er-pista\">Panel de misión → Preparar la escena → <strong>Sala de transmisión de Hitler</strong> → Cargar. La página siguiente es la del manual. Escena: @UUID[Scene.63295d1f80bb6f41]{Sala de transmisión de Hitler}.</p>"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "18ee7a8b83a8c57d",
+      "name": "Sala de transmisión de Hitler · manual p. 64",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 4510,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-64.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 64"
+      },
+      "ownership": {
+       "default": -1
+      },
+      "flags": {}
+     },
+     {
+      "_id": "16dd8f247ea0f2de",
+      "name": "Sala de transmisión de Hitler · manual p. 61",
+      "type": "image",
+      "title": {
+       "show": true,
+       "level": 3
+      },
+      "sort": 4520,
+      "src": "systems/mr-eat-the-reich/assets/libro/pag-61.webp",
+      "image": {
+       "caption": "Eat the Reich, p. 61"
       },
       "ownership": {
        "default": -1
@@ -2644,7 +3118,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -2688,7 +3162,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -2699,6 +3173,38 @@
   ],
   "scenes": [
    {
+    "padding": 0,
+    "backgroundColor": "#0c1026",
+    "grid": {
+     "type": 0,
+     "size": 100,
+     "distance": 1,
+     "units": ""
+    },
+    "tokenVision": false,
+    "fog": {
+     "exploration": false
+    },
+    "drawings": [],
+    "lights": [],
+    "sounds": [],
+    "templates": [],
+    "walls": [],
+    "regions": [],
+    "tokens": [],
+    "ownership": {
+     "default": 0
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.2.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    },
     "_id": "1cf836a742cd2f37",
     "name": "París, 1943",
     "folder": null,
@@ -2712,27 +3218,12 @@
     "thumb": "systems/mr-eat-the-reich/assets/libro/mapa-thumb.webp",
     "width": 4000,
     "height": 2473,
-    "padding": 0,
-    "backgroundColor": "#0c1026",
-    "grid": {
-     "type": 0,
-     "size": 100,
-     "distance": 1,
-     "units": ""
-    },
-    "tokenVision": false,
-    "fog": {
-     "exploration": false
-    },
     "initial": {
      "x": 2000,
      "y": 1236.5,
      "scale": 0.35
     },
     "tiles": [],
-    "tokens": [],
-    "drawings": [],
-    "lights": [],
     "notes": [
      {
       "_id": "2bd0eda880c203ce",
@@ -2753,7 +3244,11 @@
       "textAnchor": 1,
       "textColor": "#ffffff",
       "global": true,
-      "flags": {}
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "sirena"
+       }
+      }
      },
      {
       "_id": "8ac2b5f3109456f8",
@@ -2774,7 +3269,11 @@
       "textAnchor": 1,
       "textColor": "#ffffff",
       "global": true,
-      "flags": {}
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "almacenes"
+       }
+      }
      },
      {
       "_id": "a2ff0edcff2a97ed",
@@ -2795,7 +3294,11 @@
       "textAnchor": 1,
       "textColor": "#ffffff",
       "global": true,
-      "flags": {}
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "cementerio"
+       }
+      }
      },
      {
       "_id": "e9dc887916d03646",
@@ -2816,7 +3319,11 @@
       "textAnchor": 1,
       "textColor": "#ffffff",
       "global": true,
-      "flags": {}
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "hotel"
+       }
+      }
      },
      {
       "_id": "a8779dc24a83566a",
@@ -2837,7 +3344,11 @@
       "textAnchor": 1,
       "textColor": "#ffffff",
       "global": true,
-      "flags": {}
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "mausoleo"
+       }
+      }
      },
      {
       "_id": "f39344c0088c457a",
@@ -2858,7 +3369,11 @@
       "textAnchor": 1,
       "textColor": "#ffffff",
       "global": true,
-      "flags": {}
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "catedral"
+       }
+      }
      },
      {
       "_id": "d93750868a72d1d1",
@@ -2879,7 +3394,11 @@
       "textAnchor": 1,
       "textColor": "#ffffff",
       "global": true,
-      "flags": {}
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "palacio"
+       }
+      }
      },
      {
       "_id": "d8b0440b81ef35a1",
@@ -2900,7 +3419,11 @@
       "textAnchor": 1,
       "textColor": "#ffffff",
       "global": true,
-      "flags": {}
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "metro"
+       }
+      }
      },
      {
       "_id": "2b18c48936d57d8f",
@@ -2921,7 +3444,11 @@
       "textAnchor": 1,
       "textColor": "#ffffff",
       "global": true,
-      "flags": {}
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "garaje"
+       }
+      }
      },
      {
       "_id": "3af5fc2729534fe7",
@@ -2942,7 +3469,11 @@
       "textAnchor": 1,
       "textColor": "#ffffff",
       "global": true,
-      "flags": {}
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "cerdo-negro"
+       }
+      }
      },
      {
       "_id": "a4fb2257115be5bf",
@@ -2963,7 +3494,11 @@
       "textAnchor": 1,
       "textColor": "#ffffff",
       "global": true,
-      "flags": {}
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "museo"
+       }
+      }
      },
      {
       "_id": "031846063c67a95e",
@@ -2984,7 +3519,11 @@
       "textAnchor": 1,
       "textColor": "#ffffff",
       "global": true,
-      "flags": {}
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "parque"
+       }
+      }
      },
      {
       "_id": "7177516cfd932ede",
@@ -3005,7 +3544,11 @@
       "textAnchor": 1,
       "textColor": "#ffffff",
       "global": true,
-      "flags": {}
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "galeria"
+       }
+      }
      },
      {
       "_id": "20c0a50e8460583a",
@@ -3026,7 +3569,11 @@
       "textAnchor": 1,
       "textColor": "#ffffff",
       "global": true,
-      "flags": {}
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "opera"
+       }
+      }
      },
      {
       "_id": "8231161046bb6540",
@@ -3047,7 +3594,11 @@
       "textAnchor": 1,
       "textColor": "#ffffff",
       "global": true,
-      "flags": {}
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "deposito"
+       }
+      }
      },
      {
       "_id": "50f49fd37ce249db",
@@ -3068,7 +3619,11 @@
       "textAnchor": 1,
       "textColor": "#ffffff",
       "global": true,
-      "flags": {}
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "jardin"
+       }
+      }
      },
      {
       "_id": "0ee3eab074cce06b",
@@ -3089,7 +3644,11 @@
       "textAnchor": 1,
       "textColor": "#ffffff",
       "global": true,
-      "flags": {}
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "torre"
+       }
+      }
      },
      {
       "_id": "e4f8d1b61ef27f3f",
@@ -3110,30 +3669,3047 @@
       "textAnchor": 1,
       "textColor": "#ffffff",
       "global": true,
-      "flags": {}
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "zepelin"
+       }
+      }
+     },
+     {
+      "_id": "d0d2087bae323c08",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "d08775e304183ce7",
+      "x": 1156,
+      "y": 601,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/skull.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 60,
+      "text": "Sala de transmisión de Hitler",
+      "fontFamily": "Signika",
+      "fontSize": 40,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "transmision"
+       }
+      }
      }
     ],
-    "sounds": [],
-    "templates": [],
-    "walls": [],
-    "regions": [],
-    "ownership": {
-     "default": 0
-    },
+    "journal": "7ef6926cd48a2fd4",
+    "playlist": "7f3bee911bc773d9",
+    "playlistSound": "b8e07ddf690794e5",
     "flags": {
      "mr-eat-the-reich": {
       "escena": "paris"
      }
+    }
+   },
+   {
+    "padding": 0,
+    "backgroundColor": "#0c1026",
+    "grid": {
+     "type": 0,
+     "size": 100,
+     "distance": 1,
+     "units": ""
+    },
+    "tokenVision": false,
+    "fog": {
+     "exploration": false
+    },
+    "drawings": [],
+    "lights": [],
+    "sounds": [],
+    "templates": [],
+    "walls": [],
+    "regions": [],
+    "tokens": [],
+    "ownership": {
+     "default": 0
     },
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
      "compendiumSource": null,
      "duplicateSource": null
+    },
+    "_id": "bdf88054905819cd",
+    "name": "Plaza de la Sirena",
+    "folder": "6353886e8fe0f58d",
+    "sort": 100,
+    "navigation": false,
+    "navOrder": 1,
+    "navName": "Plaza de la Sirena",
+    "background": {
+     "src": "systems/mr-eat-the-reich/assets/escenas/sirena.webp"
+    },
+    "thumb": "systems/mr-eat-the-reich/assets/escenas/sirena-thumb.webp",
+    "width": 1920,
+    "height": 1080,
+    "initial": {
+     "x": 960,
+     "y": 540,
+     "scale": 0.6
+    },
+    "journal": "7ef6926cd48a2fd4",
+    "journalEntryPage": "30608c47900bb3da",
+    "playlist": "7f3bee911bc773d9",
+    "playlistSound": "b8e07ddf690794e5",
+    "notes": [
+     {
+      "_id": "0c7e69c5e592e424",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": null,
+      "x": 90,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/city.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Volver al mapa de París",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "paris"
+       }
+      }
+     },
+     {
+      "_id": "bf78df7dc3769b67",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "30608c47900bb3da",
+      "x": 190,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/book.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Leer: Plaza de la Sirena",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "080e9c7aed61bc4e",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "3ef4eb0bdcc087e6",
+      "x": 290,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/eye.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "El manual (p. 50)",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     }
+    ],
+    "tiles": [
+     {
+      "_id": "a742addb0ae9b4c1",
+      "texture": {
+       "src": "systems/mr-eat-the-reich/assets/marca/mr-marca.webm",
+       "scaleX": 1,
+       "scaleY": 1,
+       "tint": "#ffffff",
+       "fit": "fill"
+      },
+      "x": 1788,
+      "y": 968,
+      "width": 121,
+      "height": 101,
+      "elevation": 0,
+      "sort": 10,
+      "rotation": 0,
+      "alpha": 1,
+      "hidden": false,
+      "locked": true,
+      "video": {
+       "loop": true,
+       "autoplay": true,
+       "volume": 0
+      },
+      "flags": {}
+     }
+    ],
+    "flags": {
+     "mr-eat-the-reich": {
+      "escena": "sirena"
+     }
+    }
+   },
+   {
+    "padding": 0,
+    "backgroundColor": "#0c1026",
+    "grid": {
+     "type": 0,
+     "size": 100,
+     "distance": 1,
+     "units": ""
+    },
+    "tokenVision": false,
+    "fog": {
+     "exploration": false
+    },
+    "drawings": [],
+    "lights": [],
+    "sounds": [],
+    "templates": [],
+    "walls": [],
+    "regions": [],
+    "tokens": [],
+    "ownership": {
+     "default": 0
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.2.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    },
+    "_id": "b5cf363e2e808d5f",
+    "name": "Los grandes almacenes",
+    "folder": "6353886e8fe0f58d",
+    "sort": 200,
+    "navigation": false,
+    "navOrder": 2,
+    "navName": "Los grandes almacenes",
+    "background": {
+     "src": "systems/mr-eat-the-reich/assets/escenas/almacenes.webp"
+    },
+    "thumb": "systems/mr-eat-the-reich/assets/escenas/almacenes-thumb.webp",
+    "width": 1920,
+    "height": 1080,
+    "initial": {
+     "x": 960,
+     "y": 540,
+     "scale": 0.6
+    },
+    "journal": "7ef6926cd48a2fd4",
+    "journalEntryPage": "bcb06a377158aff7",
+    "playlist": "7f3bee911bc773d9",
+    "playlistSound": "10d81b7310a68e4b",
+    "notes": [
+     {
+      "_id": "d5654acf9bf9a820",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": null,
+      "x": 90,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/city.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Volver al mapa de París",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "paris"
+       }
+      }
+     },
+     {
+      "_id": "4c0e0c8f4bc86fa3",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "bcb06a377158aff7",
+      "x": 190,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/book.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Leer: Los grandes almacenes",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "d006940e093d1d2f",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "bdc447a2b759735e",
+      "x": 290,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/eye.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "El manual (p. 50)",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     }
+    ],
+    "tiles": [
+     {
+      "_id": "7bc083a76bc78355",
+      "texture": {
+       "src": "systems/mr-eat-the-reich/assets/marca/mr-marca.webm",
+       "scaleX": 1,
+       "scaleY": 1,
+       "tint": "#ffffff",
+       "fit": "fill"
+      },
+      "x": 1788,
+      "y": 968,
+      "width": 121,
+      "height": 101,
+      "elevation": 0,
+      "sort": 10,
+      "rotation": 0,
+      "alpha": 1,
+      "hidden": false,
+      "locked": true,
+      "video": {
+       "loop": true,
+       "autoplay": true,
+       "volume": 0
+      },
+      "flags": {}
+     }
+    ],
+    "flags": {
+     "mr-eat-the-reich": {
+      "escena": "almacenes"
+     }
+    }
+   },
+   {
+    "padding": 0,
+    "backgroundColor": "#0c1026",
+    "grid": {
+     "type": 0,
+     "size": 100,
+     "distance": 1,
+     "units": ""
+    },
+    "tokenVision": false,
+    "fog": {
+     "exploration": false
+    },
+    "drawings": [],
+    "lights": [],
+    "sounds": [],
+    "templates": [],
+    "walls": [],
+    "regions": [],
+    "tokens": [],
+    "ownership": {
+     "default": 0
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.2.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    },
+    "_id": "e8fec91adaf21dad",
+    "name": "Cementerio",
+    "folder": "6353886e8fe0f58d",
+    "sort": 300,
+    "navigation": false,
+    "navOrder": 3,
+    "navName": "Cementerio",
+    "background": {
+     "src": "systems/mr-eat-the-reich/assets/escenas/cementerio.webp"
+    },
+    "thumb": "systems/mr-eat-the-reich/assets/escenas/cementerio-thumb.webp",
+    "width": 1920,
+    "height": 1080,
+    "initial": {
+     "x": 960,
+     "y": 540,
+     "scale": 0.6
+    },
+    "journal": "7ef6926cd48a2fd4",
+    "journalEntryPage": "3f71d903e5e46ada",
+    "playlist": "7f3bee911bc773d9",
+    "playlistSound": "a81cc5b61d74e023",
+    "notes": [
+     {
+      "_id": "c21921f653410e15",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": null,
+      "x": 90,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/city.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Volver al mapa de París",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "paris"
+       }
+      }
+     },
+     {
+      "_id": "87af4430acde57fc",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "3f71d903e5e46ada",
+      "x": 190,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/book.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Leer: Cementerio",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "783dc54f568676ce",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "57c0738fcb418106",
+      "x": 290,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/eye.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "El manual (p. 50)",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     }
+    ],
+    "tiles": [
+     {
+      "_id": "cf6af4f196501f8a",
+      "texture": {
+       "src": "systems/mr-eat-the-reich/assets/marca/mr-marca.webm",
+       "scaleX": 1,
+       "scaleY": 1,
+       "tint": "#ffffff",
+       "fit": "fill"
+      },
+      "x": 1788,
+      "y": 968,
+      "width": 121,
+      "height": 101,
+      "elevation": 0,
+      "sort": 10,
+      "rotation": 0,
+      "alpha": 1,
+      "hidden": false,
+      "locked": true,
+      "video": {
+       "loop": true,
+       "autoplay": true,
+       "volume": 0
+      },
+      "flags": {}
+     }
+    ],
+    "flags": {
+     "mr-eat-the-reich": {
+      "escena": "cementerio"
+     }
+    }
+   },
+   {
+    "padding": 0,
+    "backgroundColor": "#0c1026",
+    "grid": {
+     "type": 0,
+     "size": 100,
+     "distance": 1,
+     "units": ""
+    },
+    "tokenVision": false,
+    "fog": {
+     "exploration": false
+    },
+    "drawings": [],
+    "lights": [],
+    "sounds": [],
+    "templates": [],
+    "walls": [],
+    "regions": [],
+    "tokens": [],
+    "ownership": {
+     "default": 0
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.2.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    },
+    "_id": "49e5c215b8b3d93f",
+    "name": "Hôtel L'Étoile",
+    "folder": "6353886e8fe0f58d",
+    "sort": 400,
+    "navigation": false,
+    "navOrder": 4,
+    "navName": "Hôtel L'Étoile",
+    "background": {
+     "src": "systems/mr-eat-the-reich/assets/escenas/hotel.webp"
+    },
+    "thumb": "systems/mr-eat-the-reich/assets/escenas/hotel-thumb.webp",
+    "width": 1920,
+    "height": 1080,
+    "initial": {
+     "x": 960,
+     "y": 540,
+     "scale": 0.6
+    },
+    "journal": "7ef6926cd48a2fd4",
+    "journalEntryPage": "33c0da4f077e0edc",
+    "playlist": "7f3bee911bc773d9",
+    "playlistSound": "30a7c49859f60cab",
+    "notes": [
+     {
+      "_id": "79b13b20450bc13b",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": null,
+      "x": 90,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/city.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Volver al mapa de París",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "paris"
+       }
+      }
+     },
+     {
+      "_id": "b97c8206df38dd18",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "33c0da4f077e0edc",
+      "x": 190,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/book.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Leer: Hôtel L'Étoile",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "4a518fb21405ff3b",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "6e7e1db5664339bc",
+      "x": 290,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/eye.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "El manual (p. 51)",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     }
+    ],
+    "tiles": [
+     {
+      "_id": "dd3622b157d19267",
+      "texture": {
+       "src": "systems/mr-eat-the-reich/assets/marca/mr-marca.webm",
+       "scaleX": 1,
+       "scaleY": 1,
+       "tint": "#ffffff",
+       "fit": "fill"
+      },
+      "x": 1788,
+      "y": 968,
+      "width": 121,
+      "height": 101,
+      "elevation": 0,
+      "sort": 10,
+      "rotation": 0,
+      "alpha": 1,
+      "hidden": false,
+      "locked": true,
+      "video": {
+       "loop": true,
+       "autoplay": true,
+       "volume": 0
+      },
+      "flags": {}
+     }
+    ],
+    "flags": {
+     "mr-eat-the-reich": {
+      "escena": "hotel"
+     }
+    }
+   },
+   {
+    "padding": 0,
+    "backgroundColor": "#0c1026",
+    "grid": {
+     "type": 0,
+     "size": 100,
+     "distance": 1,
+     "units": ""
+    },
+    "tokenVision": false,
+    "fog": {
+     "exploration": false
+    },
+    "drawings": [],
+    "lights": [],
+    "sounds": [],
+    "templates": [],
+    "walls": [],
+    "regions": [],
+    "tokens": [],
+    "ownership": {
+     "default": 0
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.2.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    },
+    "_id": "20c43ed6765873bf",
+    "name": "Mausoleo",
+    "folder": "6353886e8fe0f58d",
+    "sort": 500,
+    "navigation": false,
+    "navOrder": 5,
+    "navName": "Mausoleo",
+    "background": {
+     "src": "systems/mr-eat-the-reich/assets/escenas/mausoleo.webp"
+    },
+    "thumb": "systems/mr-eat-the-reich/assets/escenas/mausoleo-thumb.webp",
+    "width": 1920,
+    "height": 1080,
+    "initial": {
+     "x": 960,
+     "y": 540,
+     "scale": 0.6
+    },
+    "journal": "7ef6926cd48a2fd4",
+    "journalEntryPage": "7ce948764237abd0",
+    "playlist": "7f3bee911bc773d9",
+    "playlistSound": "4b4b899b979f05d5",
+    "notes": [
+     {
+      "_id": "a9a299d2ea93ec54",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": null,
+      "x": 90,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/city.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Volver al mapa de París",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "paris"
+       }
+      }
+     },
+     {
+      "_id": "8042eee15525d37b",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "7ce948764237abd0",
+      "x": 190,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/book.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Leer: Mausoleo",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "3d6cfca23d3543cd",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "f14a6b9953b9460b",
+      "x": 290,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/eye.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "El manual (p. 51)",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     }
+    ],
+    "tiles": [
+     {
+      "_id": "8489347c75e443b6",
+      "texture": {
+       "src": "systems/mr-eat-the-reich/assets/marca/mr-marca.webm",
+       "scaleX": 1,
+       "scaleY": 1,
+       "tint": "#ffffff",
+       "fit": "fill"
+      },
+      "x": 1788,
+      "y": 968,
+      "width": 121,
+      "height": 101,
+      "elevation": 0,
+      "sort": 10,
+      "rotation": 0,
+      "alpha": 1,
+      "hidden": false,
+      "locked": true,
+      "video": {
+       "loop": true,
+       "autoplay": true,
+       "volume": 0
+      },
+      "flags": {}
+     }
+    ],
+    "flags": {
+     "mr-eat-the-reich": {
+      "escena": "mausoleo"
+     }
+    }
+   },
+   {
+    "padding": 0,
+    "backgroundColor": "#0c1026",
+    "grid": {
+     "type": 0,
+     "size": 100,
+     "distance": 1,
+     "units": ""
+    },
+    "tokenVision": false,
+    "fog": {
+     "exploration": false
+    },
+    "drawings": [],
+    "lights": [],
+    "sounds": [],
+    "templates": [],
+    "walls": [],
+    "regions": [],
+    "tokens": [],
+    "ownership": {
+     "default": 0
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.2.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    },
+    "_id": "c8d8625ca2463012",
+    "name": "Catedral de Saint-Médard",
+    "folder": "6353886e8fe0f58d",
+    "sort": 600,
+    "navigation": false,
+    "navOrder": 6,
+    "navName": "Catedral de Saint-Médard",
+    "background": {
+     "src": "systems/mr-eat-the-reich/assets/escenas/catedral.webp"
+    },
+    "thumb": "systems/mr-eat-the-reich/assets/escenas/catedral-thumb.webp",
+    "width": 1920,
+    "height": 1080,
+    "initial": {
+     "x": 960,
+     "y": 540,
+     "scale": 0.6
+    },
+    "journal": "7ef6926cd48a2fd4",
+    "journalEntryPage": "496b9aed76b5f78e",
+    "playlist": "7f3bee911bc773d9",
+    "playlistSound": "5b515e00b30b1de8",
+    "notes": [
+     {
+      "_id": "a5b2803c79a58f7e",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": null,
+      "x": 90,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/city.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Volver al mapa de París",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "paris"
+       }
+      }
+     },
+     {
+      "_id": "3da3f69e69ea46f8",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "496b9aed76b5f78e",
+      "x": 190,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/book.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Leer: Catedral de Saint-Médard",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "2e66475ec473ac57",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "497556ff14dfc16b",
+      "x": 290,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/eye.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "El manual (p. 51)",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     }
+    ],
+    "tiles": [
+     {
+      "_id": "dbc24687f5bf23a3",
+      "texture": {
+       "src": "systems/mr-eat-the-reich/assets/marca/mr-marca.webm",
+       "scaleX": 1,
+       "scaleY": 1,
+       "tint": "#ffffff",
+       "fit": "fill"
+      },
+      "x": 1788,
+      "y": 968,
+      "width": 121,
+      "height": 101,
+      "elevation": 0,
+      "sort": 10,
+      "rotation": 0,
+      "alpha": 1,
+      "hidden": false,
+      "locked": true,
+      "video": {
+       "loop": true,
+       "autoplay": true,
+       "volume": 0
+      },
+      "flags": {}
+     }
+    ],
+    "flags": {
+     "mr-eat-the-reich": {
+      "escena": "catedral"
+     }
+    }
+   },
+   {
+    "padding": 0,
+    "backgroundColor": "#0c1026",
+    "grid": {
+     "type": 0,
+     "size": 100,
+     "distance": 1,
+     "units": ""
+    },
+    "tokenVision": false,
+    "fog": {
+     "exploration": false
+    },
+    "drawings": [],
+    "lights": [],
+    "sounds": [],
+    "templates": [],
+    "walls": [],
+    "regions": [],
+    "tokens": [],
+    "ownership": {
+     "default": 0
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.2.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    },
+    "_id": "a0e4bc5ecd94fc9f",
+    "name": "Palacio de la Tecnología Alemana",
+    "folder": "42fcbec578171b38",
+    "sort": 700,
+    "navigation": false,
+    "navOrder": 7,
+    "navName": "Palacio de la Tecnología Alemana",
+    "background": {
+     "src": "systems/mr-eat-the-reich/assets/escenas/palacio.webp"
+    },
+    "thumb": "systems/mr-eat-the-reich/assets/escenas/palacio-thumb.webp",
+    "width": 1920,
+    "height": 1080,
+    "initial": {
+     "x": 960,
+     "y": 540,
+     "scale": 0.6
+    },
+    "journal": "7ef6926cd48a2fd4",
+    "journalEntryPage": "5a7dab2e0518678b",
+    "playlist": "7f3bee911bc773d9",
+    "playlistSound": "6e3a9fa3ad5adb40",
+    "notes": [
+     {
+      "_id": "39742ffa71b591eb",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": null,
+      "x": 90,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/city.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Volver al mapa de París",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "paris"
+       }
+      }
+     },
+     {
+      "_id": "d5d8d0e1553bb3c2",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "5a7dab2e0518678b",
+      "x": 190,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/book.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Leer: Palacio de la Tecnología Alemana",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "9d2028c2128ac61a",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "292d8d4993b04884",
+      "x": 290,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/eye.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "El manual (p. 52)",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     }
+    ],
+    "tiles": [
+     {
+      "_id": "6433ec6d802a3663",
+      "texture": {
+       "src": "systems/mr-eat-the-reich/assets/marca/mr-marca.webm",
+       "scaleX": 1,
+       "scaleY": 1,
+       "tint": "#ffffff",
+       "fit": "fill"
+      },
+      "x": 1788,
+      "y": 968,
+      "width": 121,
+      "height": 101,
+      "elevation": 0,
+      "sort": 10,
+      "rotation": 0,
+      "alpha": 1,
+      "hidden": false,
+      "locked": true,
+      "video": {
+       "loop": true,
+       "autoplay": true,
+       "volume": 0
+      },
+      "flags": {}
+     }
+    ],
+    "flags": {
+     "mr-eat-the-reich": {
+      "escena": "palacio"
+     }
+    }
+   },
+   {
+    "padding": 0,
+    "backgroundColor": "#0c1026",
+    "grid": {
+     "type": 0,
+     "size": 100,
+     "distance": 1,
+     "units": ""
+    },
+    "tokenVision": false,
+    "fog": {
+     "exploration": false
+    },
+    "drawings": [],
+    "lights": [],
+    "sounds": [],
+    "templates": [],
+    "walls": [],
+    "regions": [],
+    "tokens": [],
+    "ownership": {
+     "default": 0
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.2.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    },
+    "_id": "2f9cfec6e3d74378",
+    "name": "Estación de metro",
+    "folder": "42fcbec578171b38",
+    "sort": 800,
+    "navigation": false,
+    "navOrder": 8,
+    "navName": "Estación de metro",
+    "background": {
+     "src": "systems/mr-eat-the-reich/assets/escenas/metro.webp"
+    },
+    "thumb": "systems/mr-eat-the-reich/assets/escenas/metro-thumb.webp",
+    "width": 1920,
+    "height": 1080,
+    "initial": {
+     "x": 960,
+     "y": 540,
+     "scale": 0.6
+    },
+    "journal": "7ef6926cd48a2fd4",
+    "journalEntryPage": "12ae8d9a8c0a7ad2",
+    "playlist": "7f3bee911bc773d9",
+    "playlistSound": "92fdd119bf41a122",
+    "notes": [
+     {
+      "_id": "38a9ac0786a63e7f",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": null,
+      "x": 90,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/city.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Volver al mapa de París",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "paris"
+       }
+      }
+     },
+     {
+      "_id": "bc1d2b3452181ee5",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "12ae8d9a8c0a7ad2",
+      "x": 190,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/book.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Leer: Estación de metro",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "b8584974d9ae1037",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "f53345b8045e27ff",
+      "x": 290,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/eye.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "El manual (p. 53)",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     }
+    ],
+    "tiles": [
+     {
+      "_id": "e3a9ba4c07054ecd",
+      "texture": {
+       "src": "systems/mr-eat-the-reich/assets/marca/mr-marca.webm",
+       "scaleX": 1,
+       "scaleY": 1,
+       "tint": "#ffffff",
+       "fit": "fill"
+      },
+      "x": 1788,
+      "y": 968,
+      "width": 121,
+      "height": 101,
+      "elevation": 0,
+      "sort": 10,
+      "rotation": 0,
+      "alpha": 1,
+      "hidden": false,
+      "locked": true,
+      "video": {
+       "loop": true,
+       "autoplay": true,
+       "volume": 0
+      },
+      "flags": {}
+     }
+    ],
+    "flags": {
+     "mr-eat-the-reich": {
+      "escena": "metro"
+     }
+    }
+   },
+   {
+    "padding": 0,
+    "backgroundColor": "#0c1026",
+    "grid": {
+     "type": 0,
+     "size": 100,
+     "distance": 1,
+     "units": ""
+    },
+    "tokenVision": false,
+    "fog": {
+     "exploration": false
+    },
+    "drawings": [],
+    "lights": [],
+    "sounds": [],
+    "templates": [],
+    "walls": [],
+    "regions": [],
+    "tokens": [],
+    "ownership": {
+     "default": 0
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.2.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    },
+    "_id": "ddfe9b6a9fd0a48f",
+    "name": "Garaje de coches de lujo",
+    "folder": "42fcbec578171b38",
+    "sort": 900,
+    "navigation": false,
+    "navOrder": 9,
+    "navName": "Garaje de coches de lujo",
+    "background": {
+     "src": "systems/mr-eat-the-reich/assets/escenas/garaje.webp"
+    },
+    "thumb": "systems/mr-eat-the-reich/assets/escenas/garaje-thumb.webp",
+    "width": 1920,
+    "height": 1080,
+    "initial": {
+     "x": 960,
+     "y": 540,
+     "scale": 0.6
+    },
+    "journal": "7ef6926cd48a2fd4",
+    "journalEntryPage": "35bcd46ba04a897f",
+    "playlist": "7f3bee911bc773d9",
+    "playlistSound": "9d0ff172b2132c5a",
+    "notes": [
+     {
+      "_id": "0bffcc1daaee9dff",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": null,
+      "x": 90,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/city.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Volver al mapa de París",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "paris"
+       }
+      }
+     },
+     {
+      "_id": "16966d3d6ebbd92b",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "35bcd46ba04a897f",
+      "x": 190,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/book.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Leer: Garaje de coches de lujo",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "035def5f8e9f9ab7",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "50f8d1c0cfaf2e0e",
+      "x": 290,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/eye.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "El manual (p. 54)",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     }
+    ],
+    "tiles": [
+     {
+      "_id": "aa56f1ffdd9f0fa5",
+      "texture": {
+       "src": "systems/mr-eat-the-reich/assets/marca/mr-marca.webm",
+       "scaleX": 1,
+       "scaleY": 1,
+       "tint": "#ffffff",
+       "fit": "fill"
+      },
+      "x": 1788,
+      "y": 968,
+      "width": 121,
+      "height": 101,
+      "elevation": 0,
+      "sort": 10,
+      "rotation": 0,
+      "alpha": 1,
+      "hidden": false,
+      "locked": true,
+      "video": {
+       "loop": true,
+       "autoplay": true,
+       "volume": 0
+      },
+      "flags": {}
+     }
+    ],
+    "flags": {
+     "mr-eat-the-reich": {
+      "escena": "garaje"
+     }
+    }
+   },
+   {
+    "padding": 0,
+    "backgroundColor": "#0c1026",
+    "grid": {
+     "type": 0,
+     "size": 100,
+     "distance": 1,
+     "units": ""
+    },
+    "tokenVision": false,
+    "fog": {
+     "exploration": false
+    },
+    "drawings": [],
+    "lights": [],
+    "sounds": [],
+    "templates": [],
+    "walls": [],
+    "regions": [],
+    "tokens": [],
+    "ownership": {
+     "default": 0
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.2.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    },
+    "_id": "385fa63a97b2e5e1",
+    "name": "El Cerdo Negro",
+    "folder": "42fcbec578171b38",
+    "sort": 1000,
+    "navigation": false,
+    "navOrder": 10,
+    "navName": "El Cerdo Negro",
+    "background": {
+     "src": "systems/mr-eat-the-reich/assets/escenas/cerdo-negro.webp"
+    },
+    "thumb": "systems/mr-eat-the-reich/assets/escenas/cerdo-negro-thumb.webp",
+    "width": 1920,
+    "height": 1080,
+    "initial": {
+     "x": 960,
+     "y": 540,
+     "scale": 0.6
+    },
+    "journal": "7ef6926cd48a2fd4",
+    "journalEntryPage": "5fe3efec2c687cf5",
+    "playlist": "7f3bee911bc773d9",
+    "playlistSound": "e2873257ec16b4a4",
+    "notes": [
+     {
+      "_id": "2fdf13868cb9c646",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": null,
+      "x": 90,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/city.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Volver al mapa de París",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "paris"
+       }
+      }
+     },
+     {
+      "_id": "c7d2d34078da9379",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "5fe3efec2c687cf5",
+      "x": 190,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/book.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Leer: El Cerdo Negro",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "eeefc2ca008326a3",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "7c1805dd1851b3b6",
+      "x": 290,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/eye.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "El manual (p. 54)",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     }
+    ],
+    "tiles": [
+     {
+      "_id": "ba2b84fcab9bc2b6",
+      "texture": {
+       "src": "systems/mr-eat-the-reich/assets/marca/mr-marca.webm",
+       "scaleX": 1,
+       "scaleY": 1,
+       "tint": "#ffffff",
+       "fit": "fill"
+      },
+      "x": 1788,
+      "y": 968,
+      "width": 121,
+      "height": 101,
+      "elevation": 0,
+      "sort": 10,
+      "rotation": 0,
+      "alpha": 1,
+      "hidden": false,
+      "locked": true,
+      "video": {
+       "loop": true,
+       "autoplay": true,
+       "volume": 0
+      },
+      "flags": {}
+     }
+    ],
+    "flags": {
+     "mr-eat-the-reich": {
+      "escena": "cerdo-negro"
+     }
+    }
+   },
+   {
+    "padding": 0,
+    "backgroundColor": "#0c1026",
+    "grid": {
+     "type": 0,
+     "size": 100,
+     "distance": 1,
+     "units": ""
+    },
+    "tokenVision": false,
+    "fog": {
+     "exploration": false
+    },
+    "drawings": [],
+    "lights": [],
+    "sounds": [],
+    "templates": [],
+    "walls": [],
+    "regions": [],
+    "tokens": [],
+    "ownership": {
+     "default": 0
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.2.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    },
+    "_id": "4ee841887ecfea5d",
+    "name": "Museo de la Guerra Europea",
+    "folder": "42fcbec578171b38",
+    "sort": 1100,
+    "navigation": false,
+    "navOrder": 11,
+    "navName": "Museo de la Guerra Europea",
+    "background": {
+     "src": "systems/mr-eat-the-reich/assets/escenas/museo.webp"
+    },
+    "thumb": "systems/mr-eat-the-reich/assets/escenas/museo-thumb.webp",
+    "width": 1920,
+    "height": 1080,
+    "initial": {
+     "x": 960,
+     "y": 540,
+     "scale": 0.6
+    },
+    "journal": "7ef6926cd48a2fd4",
+    "journalEntryPage": "05f0579174e841d9",
+    "playlist": "7f3bee911bc773d9",
+    "playlistSound": "6a70dcaf4550ee65",
+    "notes": [
+     {
+      "_id": "9f874c14e17790be",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": null,
+      "x": 90,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/city.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Volver al mapa de París",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "paris"
+       }
+      }
+     },
+     {
+      "_id": "b15f4e278145a805",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "05f0579174e841d9",
+      "x": 190,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/book.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Leer: Museo de la Guerra Europea",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "03e894096c417862",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "e10359b53ab7cdbd",
+      "x": 290,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/eye.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "El manual (p. 55)",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     }
+    ],
+    "tiles": [
+     {
+      "_id": "530f7011944eb891",
+      "texture": {
+       "src": "systems/mr-eat-the-reich/assets/marca/mr-marca.webm",
+       "scaleX": 1,
+       "scaleY": 1,
+       "tint": "#ffffff",
+       "fit": "fill"
+      },
+      "x": 1788,
+      "y": 968,
+      "width": 121,
+      "height": 101,
+      "elevation": 0,
+      "sort": 10,
+      "rotation": 0,
+      "alpha": 1,
+      "hidden": false,
+      "locked": true,
+      "video": {
+       "loop": true,
+       "autoplay": true,
+       "volume": 0
+      },
+      "flags": {}
+     }
+    ],
+    "flags": {
+     "mr-eat-the-reich": {
+      "escena": "museo"
+     }
+    }
+   },
+   {
+    "padding": 0,
+    "backgroundColor": "#0c1026",
+    "grid": {
+     "type": 0,
+     "size": 100,
+     "distance": 1,
+     "units": ""
+    },
+    "tokenVision": false,
+    "fog": {
+     "exploration": false
+    },
+    "drawings": [],
+    "lights": [],
+    "sounds": [],
+    "templates": [],
+    "walls": [],
+    "regions": [],
+    "tokens": [],
+    "ownership": {
+     "default": 0
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.2.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    },
+    "_id": "1ab5279ba93edde6",
+    "name": "Parque de atracciones",
+    "folder": "42fcbec578171b38",
+    "sort": 1200,
+    "navigation": false,
+    "navOrder": 12,
+    "navName": "Parque de atracciones",
+    "background": {
+     "src": "systems/mr-eat-the-reich/assets/escenas/parque.webp"
+    },
+    "thumb": "systems/mr-eat-the-reich/assets/escenas/parque-thumb.webp",
+    "width": 1920,
+    "height": 1080,
+    "initial": {
+     "x": 960,
+     "y": 540,
+     "scale": 0.6
+    },
+    "journal": "7ef6926cd48a2fd4",
+    "journalEntryPage": "7ab5174ed22726f3",
+    "playlist": "7f3bee911bc773d9",
+    "playlistSound": "6d56f86d50a6070c",
+    "notes": [
+     {
+      "_id": "d5bc7eed4a061380",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": null,
+      "x": 90,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/city.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Volver al mapa de París",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "paris"
+       }
+      }
+     },
+     {
+      "_id": "0e98961b23200b94",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "7ab5174ed22726f3",
+      "x": 190,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/book.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Leer: Parque de atracciones",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "c4d290178b94a4c1",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "4e07155deff8cfe9",
+      "x": 290,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/eye.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "El manual (p. 56)",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     }
+    ],
+    "tiles": [
+     {
+      "_id": "f3b6876ab05b4250",
+      "texture": {
+       "src": "systems/mr-eat-the-reich/assets/marca/mr-marca.webm",
+       "scaleX": 1,
+       "scaleY": 1,
+       "tint": "#ffffff",
+       "fit": "fill"
+      },
+      "x": 1788,
+      "y": 968,
+      "width": 121,
+      "height": 101,
+      "elevation": 0,
+      "sort": 10,
+      "rotation": 0,
+      "alpha": 1,
+      "hidden": false,
+      "locked": true,
+      "video": {
+       "loop": true,
+       "autoplay": true,
+       "volume": 0
+      },
+      "flags": {}
+     }
+    ],
+    "flags": {
+     "mr-eat-the-reich": {
+      "escena": "parque"
+     }
+    }
+   },
+   {
+    "padding": 0,
+    "backgroundColor": "#0c1026",
+    "grid": {
+     "type": 0,
+     "size": 100,
+     "distance": 1,
+     "units": ""
+    },
+    "tokenVision": false,
+    "fog": {
+     "exploration": false
+    },
+    "drawings": [],
+    "lights": [],
+    "sounds": [],
+    "templates": [],
+    "walls": [],
+    "regions": [],
+    "tokens": [],
+    "ownership": {
+     "default": 0
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.2.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    },
+    "_id": "94d69482668efbe3",
+    "name": "Galería de arte censurado",
+    "folder": "42fcbec578171b38",
+    "sort": 1300,
+    "navigation": false,
+    "navOrder": 13,
+    "navName": "Galería de arte censurado",
+    "background": {
+     "src": "systems/mr-eat-the-reich/assets/escenas/galeria.webp"
+    },
+    "thumb": "systems/mr-eat-the-reich/assets/escenas/galeria-thumb.webp",
+    "width": 1920,
+    "height": 1080,
+    "initial": {
+     "x": 960,
+     "y": 540,
+     "scale": 0.6
+    },
+    "journal": "7ef6926cd48a2fd4",
+    "journalEntryPage": "82b8fb855c49be58",
+    "playlist": "7f3bee911bc773d9",
+    "playlistSound": "46c8be964bad9921",
+    "notes": [
+     {
+      "_id": "5718c5df540a0700",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": null,
+      "x": 90,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/city.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Volver al mapa de París",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "paris"
+       }
+      }
+     },
+     {
+      "_id": "f3a6bc6103253422",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "82b8fb855c49be58",
+      "x": 190,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/book.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Leer: Galería de arte censurado",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "dd498284ab94056a",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "84a9003a15aac876",
+      "x": 290,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/eye.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "El manual (p. 58)",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     }
+    ],
+    "tiles": [
+     {
+      "_id": "6078ff7a08f5e590",
+      "texture": {
+       "src": "systems/mr-eat-the-reich/assets/marca/mr-marca.webm",
+       "scaleX": 1,
+       "scaleY": 1,
+       "tint": "#ffffff",
+       "fit": "fill"
+      },
+      "x": 1788,
+      "y": 968,
+      "width": 121,
+      "height": 101,
+      "elevation": 0,
+      "sort": 10,
+      "rotation": 0,
+      "alpha": 1,
+      "hidden": false,
+      "locked": true,
+      "video": {
+       "loop": true,
+       "autoplay": true,
+       "volume": 0
+      },
+      "flags": {}
+     }
+    ],
+    "flags": {
+     "mr-eat-the-reich": {
+      "escena": "galeria"
+     }
+    }
+   },
+   {
+    "padding": 0,
+    "backgroundColor": "#0c1026",
+    "grid": {
+     "type": 0,
+     "size": 100,
+     "distance": 1,
+     "units": ""
+    },
+    "tokenVision": false,
+    "fog": {
+     "exploration": false
+    },
+    "drawings": [],
+    "lights": [],
+    "sounds": [],
+    "templates": [],
+    "walls": [],
+    "regions": [],
+    "tokens": [],
+    "ownership": {
+     "default": 0
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.2.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    },
+    "_id": "569d75a8159457f7",
+    "name": "La Ópera",
+    "folder": "42fcbec578171b38",
+    "sort": 1400,
+    "navigation": false,
+    "navOrder": 14,
+    "navName": "La Ópera",
+    "background": {
+     "src": "systems/mr-eat-the-reich/assets/escenas/opera.webp"
+    },
+    "thumb": "systems/mr-eat-the-reich/assets/escenas/opera-thumb.webp",
+    "width": 1920,
+    "height": 1080,
+    "initial": {
+     "x": 960,
+     "y": 540,
+     "scale": 0.6
+    },
+    "journal": "7ef6926cd48a2fd4",
+    "journalEntryPage": "9450ee80605d8ca9",
+    "playlist": "7f3bee911bc773d9",
+    "playlistSound": "3e4b8afd8fe10280",
+    "notes": [
+     {
+      "_id": "b977030a6528f050",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": null,
+      "x": 90,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/city.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Volver al mapa de París",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "paris"
+       }
+      }
+     },
+     {
+      "_id": "d438ba8df5b03215",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "9450ee80605d8ca9",
+      "x": 190,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/book.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Leer: La Ópera",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "03475c2f8a8fcd81",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "4e2de457ec0a15d5",
+      "x": 290,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/eye.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "El manual (p. 58)",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     }
+    ],
+    "tiles": [
+     {
+      "_id": "b3addcd22b3f5275",
+      "texture": {
+       "src": "systems/mr-eat-the-reich/assets/marca/mr-marca.webm",
+       "scaleX": 1,
+       "scaleY": 1,
+       "tint": "#ffffff",
+       "fit": "fill"
+      },
+      "x": 1788,
+      "y": 968,
+      "width": 121,
+      "height": 101,
+      "elevation": 0,
+      "sort": 10,
+      "rotation": 0,
+      "alpha": 1,
+      "hidden": false,
+      "locked": true,
+      "video": {
+       "loop": true,
+       "autoplay": true,
+       "volume": 0
+      },
+      "flags": {}
+     }
+    ],
+    "flags": {
+     "mr-eat-the-reich": {
+      "escena": "opera"
+     }
+    }
+   },
+   {
+    "padding": 0,
+    "backgroundColor": "#0c1026",
+    "grid": {
+     "type": 0,
+     "size": 100,
+     "distance": 1,
+     "units": ""
+    },
+    "tokenVision": false,
+    "fog": {
+     "exploration": false
+    },
+    "drawings": [],
+    "lights": [],
+    "sounds": [],
+    "templates": [],
+    "walls": [],
+    "regions": [],
+    "tokens": [],
+    "ownership": {
+     "default": 0
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.2.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    },
+    "_id": "5a4edaca145792f2",
+    "name": "Depósito de armas y vehículos",
+    "folder": "89843fe9af6692b7",
+    "sort": 1500,
+    "navigation": false,
+    "navOrder": 15,
+    "navName": "Depósito de armas y vehículos",
+    "background": {
+     "src": "systems/mr-eat-the-reich/assets/escenas/deposito.webp"
+    },
+    "thumb": "systems/mr-eat-the-reich/assets/escenas/deposito-thumb.webp",
+    "width": 1920,
+    "height": 1080,
+    "initial": {
+     "x": 960,
+     "y": 540,
+     "scale": 0.6
+    },
+    "journal": "7ef6926cd48a2fd4",
+    "journalEntryPage": "557501e4faf4d9d7",
+    "playlist": "7f3bee911bc773d9",
+    "playlistSound": "6e3a9fa3ad5adb40",
+    "notes": [
+     {
+      "_id": "8fff1f62e692bab1",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": null,
+      "x": 90,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/city.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Volver al mapa de París",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "paris"
+       }
+      }
+     },
+     {
+      "_id": "243941fb514df524",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "557501e4faf4d9d7",
+      "x": 190,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/book.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Leer: Depósito de armas y vehículos",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "83c43d25b87a0c9e",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "5146fd4182d2d257",
+      "x": 290,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/eye.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "El manual (p. 62)",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     }
+    ],
+    "tiles": [
+     {
+      "_id": "371b298e4af0bd06",
+      "texture": {
+       "src": "systems/mr-eat-the-reich/assets/marca/mr-marca.webm",
+       "scaleX": 1,
+       "scaleY": 1,
+       "tint": "#ffffff",
+       "fit": "fill"
+      },
+      "x": 1788,
+      "y": 968,
+      "width": 121,
+      "height": 101,
+      "elevation": 0,
+      "sort": 10,
+      "rotation": 0,
+      "alpha": 1,
+      "hidden": false,
+      "locked": true,
+      "video": {
+       "loop": true,
+       "autoplay": true,
+       "volume": 0
+      },
+      "flags": {}
+     }
+    ],
+    "flags": {
+     "mr-eat-the-reich": {
+      "escena": "deposito"
+     }
+    }
+   },
+   {
+    "padding": 0,
+    "backgroundColor": "#0c1026",
+    "grid": {
+     "type": 0,
+     "size": 100,
+     "distance": 1,
+     "units": ""
+    },
+    "tokenVision": false,
+    "fog": {
+     "exploration": false
+    },
+    "drawings": [],
+    "lights": [],
+    "sounds": [],
+    "templates": [],
+    "walls": [],
+    "regions": [],
+    "tokens": [],
+    "ownership": {
+     "default": 0
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.2.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    },
+    "_id": "60b33009976fd29c",
+    "name": "Jardín temático nazi",
+    "folder": "89843fe9af6692b7",
+    "sort": 1600,
+    "navigation": false,
+    "navOrder": 16,
+    "navName": "Jardín temático nazi",
+    "background": {
+     "src": "systems/mr-eat-the-reich/assets/escenas/jardin.webp"
+    },
+    "thumb": "systems/mr-eat-the-reich/assets/escenas/jardin-thumb.webp",
+    "width": 1920,
+    "height": 1080,
+    "initial": {
+     "x": 960,
+     "y": 540,
+     "scale": 0.6
+    },
+    "journal": "7ef6926cd48a2fd4",
+    "journalEntryPage": "39c3955900a720d3",
+    "playlist": "7f3bee911bc773d9",
+    "playlistSound": "58550e2e34ddaf65",
+    "notes": [
+     {
+      "_id": "3a62a386e6148369",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": null,
+      "x": 90,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/city.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Volver al mapa de París",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "paris"
+       }
+      }
+     },
+     {
+      "_id": "d6632d6573ba3a88",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "39c3955900a720d3",
+      "x": 190,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/book.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Leer: Jardín temático nazi",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "df48cf545b56bf95",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "0fe4c4d3091f5bec",
+      "x": 290,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/eye.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "El manual (p. 62)",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     }
+    ],
+    "tiles": [
+     {
+      "_id": "b8d99e01988b863d",
+      "texture": {
+       "src": "systems/mr-eat-the-reich/assets/marca/mr-marca.webm",
+       "scaleX": 1,
+       "scaleY": 1,
+       "tint": "#ffffff",
+       "fit": "fill"
+      },
+      "x": 1788,
+      "y": 968,
+      "width": 121,
+      "height": 101,
+      "elevation": 0,
+      "sort": 10,
+      "rotation": 0,
+      "alpha": 1,
+      "hidden": false,
+      "locked": true,
+      "video": {
+       "loop": true,
+       "autoplay": true,
+       "volume": 0
+      },
+      "flags": {}
+     }
+    ],
+    "flags": {
+     "mr-eat-the-reich": {
+      "escena": "jardin"
+     }
+    }
+   },
+   {
+    "padding": 0,
+    "backgroundColor": "#0c1026",
+    "grid": {
+     "type": 0,
+     "size": 100,
+     "distance": 1,
+     "units": ""
+    },
+    "tokenVision": false,
+    "fog": {
+     "exploration": false
+    },
+    "drawings": [],
+    "lights": [],
+    "sounds": [],
+    "templates": [],
+    "walls": [],
+    "regions": [],
+    "tokens": [],
+    "ownership": {
+     "default": 0
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.2.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    },
+    "_id": "814895418823eb25",
+    "name": "La Torre Eiffel",
+    "folder": "89843fe9af6692b7",
+    "sort": 1700,
+    "navigation": false,
+    "navOrder": 17,
+    "navName": "La Torre Eiffel",
+    "background": {
+     "src": "systems/mr-eat-the-reich/assets/escenas/torre.webp"
+    },
+    "thumb": "systems/mr-eat-the-reich/assets/escenas/torre-thumb.webp",
+    "width": 1920,
+    "height": 1080,
+    "initial": {
+     "x": 960,
+     "y": 540,
+     "scale": 0.6
+    },
+    "journal": "7ef6926cd48a2fd4",
+    "journalEntryPage": "06e4929bdc039019",
+    "playlist": "7f3bee911bc773d9",
+    "playlistSound": "1d219d39b31ac342",
+    "notes": [
+     {
+      "_id": "f4e10dcb5f0a92c5",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": null,
+      "x": 90,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/city.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Volver al mapa de París",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "paris"
+       }
+      }
+     },
+     {
+      "_id": "23e80e801eff2f13",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "06e4929bdc039019",
+      "x": 190,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/book.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Leer: La Torre Eiffel",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "14ae10ea14aab4d8",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "db343120c8c78ca7",
+      "x": 290,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/eye.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "El manual (p. 63)",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     }
+    ],
+    "tiles": [
+     {
+      "_id": "7fa7bf11e29fcfcf",
+      "texture": {
+       "src": "systems/mr-eat-the-reich/assets/marca/mr-marca.webm",
+       "scaleX": 1,
+       "scaleY": 1,
+       "tint": "#ffffff",
+       "fit": "fill"
+      },
+      "x": 1788,
+      "y": 968,
+      "width": 121,
+      "height": 101,
+      "elevation": 0,
+      "sort": 10,
+      "rotation": 0,
+      "alpha": 1,
+      "hidden": false,
+      "locked": true,
+      "video": {
+       "loop": true,
+       "autoplay": true,
+       "volume": 0
+      },
+      "flags": {}
+     }
+    ],
+    "flags": {
+     "mr-eat-the-reich": {
+      "escena": "torre"
+     }
+    }
+   },
+   {
+    "padding": 0,
+    "backgroundColor": "#0c1026",
+    "grid": {
+     "type": 0,
+     "size": 100,
+     "distance": 1,
+     "units": ""
+    },
+    "tokenVision": false,
+    "fog": {
+     "exploration": false
+    },
+    "drawings": [],
+    "lights": [],
+    "sounds": [],
+    "templates": [],
+    "walls": [],
+    "regions": [],
+    "tokens": [],
+    "ownership": {
+     "default": 0
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.2.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    },
+    "_id": "14bcef2ab04a647a",
+    "name": "El zepelín del Führer",
+    "folder": "89843fe9af6692b7",
+    "sort": 1800,
+    "navigation": false,
+    "navOrder": 18,
+    "navName": "El zepelín del Führer",
+    "background": {
+     "src": "systems/mr-eat-the-reich/assets/escenas/zepelin.webp"
+    },
+    "thumb": "systems/mr-eat-the-reich/assets/escenas/zepelin-thumb.webp",
+    "width": 1920,
+    "height": 1080,
+    "initial": {
+     "x": 960,
+     "y": 540,
+     "scale": 0.6
+    },
+    "journal": "7ef6926cd48a2fd4",
+    "journalEntryPage": "d87fceea89617504",
+    "playlist": "7f3bee911bc773d9",
+    "playlistSound": "10d81b7310a68e4b",
+    "notes": [
+     {
+      "_id": "e0700ba87855399b",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": null,
+      "x": 90,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/city.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Volver al mapa de París",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "paris"
+       }
+      }
+     },
+     {
+      "_id": "da5157aeeca04e20",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "d87fceea89617504",
+      "x": 190,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/book.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Leer: El zepelín del Führer",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "18e32212fa82d90d",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "f4b6f6bfbabf4872",
+      "x": 290,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/eye.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "El manual (p. 63)",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     }
+    ],
+    "tiles": [
+     {
+      "_id": "dd5e63b86b1f4f0a",
+      "texture": {
+       "src": "systems/mr-eat-the-reich/assets/marca/mr-marca.webm",
+       "scaleX": 1,
+       "scaleY": 1,
+       "tint": "#ffffff",
+       "fit": "fill"
+      },
+      "x": 1788,
+      "y": 968,
+      "width": 121,
+      "height": 101,
+      "elevation": 0,
+      "sort": 10,
+      "rotation": 0,
+      "alpha": 1,
+      "hidden": false,
+      "locked": true,
+      "video": {
+       "loop": true,
+       "autoplay": true,
+       "volume": 0
+      },
+      "flags": {}
+     }
+    ],
+    "flags": {
+     "mr-eat-the-reich": {
+      "escena": "zepelin"
+     }
+    }
+   },
+   {
+    "padding": 0,
+    "backgroundColor": "#0c1026",
+    "grid": {
+     "type": 0,
+     "size": 100,
+     "distance": 1,
+     "units": ""
+    },
+    "tokenVision": false,
+    "fog": {
+     "exploration": false
+    },
+    "drawings": [],
+    "lights": [],
+    "sounds": [],
+    "templates": [],
+    "walls": [],
+    "regions": [],
+    "tokens": [],
+    "ownership": {
+     "default": 0
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.2.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    },
+    "_id": "63295d1f80bb6f41",
+    "name": "Sala de transmisión de Hitler",
+    "folder": "89843fe9af6692b7",
+    "sort": 1900,
+    "navigation": false,
+    "navOrder": 19,
+    "navName": "Sala de transmisión de Hitler",
+    "background": {
+     "src": "systems/mr-eat-the-reich/assets/escenas/transmision.webp"
+    },
+    "thumb": "systems/mr-eat-the-reich/assets/escenas/transmision-thumb.webp",
+    "width": 1920,
+    "height": 1080,
+    "initial": {
+     "x": 960,
+     "y": 540,
+     "scale": 0.6
+    },
+    "journal": "7ef6926cd48a2fd4",
+    "journalEntryPage": "d08775e304183ce7",
+    "playlist": "7f3bee911bc773d9",
+    "playlistSound": "46d7f39026c62472",
+    "notes": [
+     {
+      "_id": "0287fec911e885bc",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": null,
+      "x": 90,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/city.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Volver al mapa de París",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {
+       "mr-eat-the-reich": {
+        "ir": "paris"
+       }
+      }
+     },
+     {
+      "_id": "18c92e740099f1cb",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "d08775e304183ce7",
+      "x": 190,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/book.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "Leer: Sala de transmisión de Hitler",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     },
+     {
+      "_id": "6b619383baf4f1b3",
+      "entryId": "7ef6926cd48a2fd4",
+      "pageId": "18ee7a8b83a8c57d",
+      "x": 290,
+      "y": 90,
+      "elevation": 0,
+      "sort": 0,
+      "texture": {
+       "src": "icons/svg/eye.svg",
+       "tint": "#ffffff"
+      },
+      "iconSize": 48,
+      "text": "El manual (p. 64)",
+      "fontFamily": "Signika",
+      "fontSize": 28,
+      "textAnchor": 1,
+      "textColor": "#ffffff",
+      "global": true,
+      "flags": {}
+     }
+    ],
+    "tiles": [
+     {
+      "_id": "cd5290e38e960886",
+      "texture": {
+       "src": "systems/mr-eat-the-reich/assets/marca/mr-marca.webm",
+       "scaleX": 1,
+       "scaleY": 1,
+       "tint": "#ffffff",
+       "fit": "fill"
+      },
+      "x": 1788,
+      "y": 968,
+      "width": 121,
+      "height": 101,
+      "elevation": 0,
+      "sort": 10,
+      "rotation": 0,
+      "alpha": 1,
+      "hidden": false,
+      "locked": true,
+      "video": {
+       "loop": true,
+       "autoplay": true,
+       "volume": 0
+      },
+      "flags": {}
+     }
+    ],
+    "flags": {
+     "mr-eat-the-reich": {
+      "escena": "transmision"
+     }
     }
    }
   ],
@@ -3247,7 +6823,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -3364,7 +6940,7 @@
     "_stats": {
      "coreVersion": "13.351",
      "systemId": "mr-eat-the-reich",
-     "systemVersion": "0.1.1",
+     "systemVersion": "0.2.0",
      "createdTime": 0,
      "modifiedTime": 0,
      "lastModifiedBy": null,
@@ -3375,7 +6951,557 @@
   ],
   "macros": [],
   "cards": [],
-  "playlists": [],
+  "playlists": [
+   {
+    "_id": "7f3bee911bc773d9",
+    "name": "Eat the Reich · Banda sonora (música clásica)",
+    "description": "Dominio público. Créditos en assets/audio/CREDITOS.md.",
+    "channel": "music",
+    "mode": -1,
+    "playing": false,
+    "fade": 2500,
+    "folder": null,
+    "sorting": "a",
+    "sort": 0,
+    "sounds": [
+     {
+      "_id": "b8e07ddf690794e5",
+      "name": "París de noche — Claro de luna · Debussy",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/musica/noche.ogg",
+      "channel": "music",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": true,
+      "volume": 0.55,
+      "fade": 2500,
+      "sort": 0,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "noche"
+       }
+      }
+     },
+     {
+      "_id": "1d219d39b31ac342",
+      "name": "Acción — Capricho n.º 24 · Paganini",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/musica/accion.ogg",
+      "channel": "music",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": true,
+      "volume": 0.55,
+      "fade": 2500,
+      "sort": 100,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "accion"
+       }
+      }
+     },
+     {
+      "_id": "9d0ff172b2132c5a",
+      "name": "Persecución — Guillermo Tell (final) · Rossini",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/musica/persecucion.ogg",
+      "channel": "music",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": true,
+      "volume": 0.55,
+      "fade": 2500,
+      "sort": 200,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "persecucion"
+       }
+      }
+     },
+     {
+      "_id": "92fdd119bf41a122",
+      "name": "Sigilo — En la gruta del rey de la montaña · Grieg",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/musica/sigilo.ogg",
+      "channel": "music",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": true,
+      "volume": 0.55,
+      "fade": 2500,
+      "sort": 300,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "sigilo"
+       }
+      }
+     },
+     {
+      "_id": "e2873257ec16b4a4",
+      "name": "Misterio e investigación — Gnossienne n.º 1 · Satie",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/musica/misterio.ogg",
+      "channel": "music",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": true,
+      "volume": 0.55,
+      "fade": 2500,
+      "sort": 400,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "misterio"
+       }
+      }
+     },
+     {
+      "_id": "6d56f86d50a6070c",
+      "name": "Miedo — Una noche en el monte Pelado · Músorgski",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/musica/miedo.ogg",
+      "channel": "music",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": true,
+      "volume": 0.55,
+      "fade": 2500,
+      "sort": 500,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "miedo"
+       }
+      }
+     },
+     {
+      "_id": "46c8be964bad9921",
+      "name": "Sorpresa — Sinfonía n.º 5 · Beethoven",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/musica/sorpresa.ogg",
+      "channel": "music",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": true,
+      "volume": 0.55,
+      "fade": 2500,
+      "sort": 600,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "sorpresa"
+       }
+      }
+     },
+     {
+      "_id": "6e3a9fa3ad5adb40",
+      "name": "Guerra — Marte · Holst",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/musica/guerra.ogg",
+      "channel": "music",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": true,
+      "volume": 0.55,
+      "fade": 2500,
+      "sort": 700,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "guerra"
+       }
+      }
+     },
+     {
+      "_id": "6a70dcaf4550ee65",
+      "name": "Los vampiros — Danse macabre · Saint-Saëns",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/musica/vampiros.ogg",
+      "channel": "music",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": true,
+      "volume": 0.55,
+      "fade": 2500,
+      "sort": 800,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "vampiros"
+       }
+      }
+     },
+     {
+      "_id": "30a7c49859f60cab",
+      "name": "Calma — Gymnopédie n.º 1 · Satie",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/musica/calma.ogg",
+      "channel": "music",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": true,
+      "volume": 0.55,
+      "fade": 2500,
+      "sort": 900,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "calma"
+       }
+      }
+     },
+     {
+      "_id": "58550e2e34ddaf65",
+      "name": "Fiesta — Galop infernal (cancán) · Offenbach",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/musica/fiesta.ogg",
+      "channel": "music",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": true,
+      "volume": 0.55,
+      "fade": 2500,
+      "sort": 1000,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "fiesta"
+       }
+      }
+     },
+     {
+      "_id": "a81cc5b61d74e023",
+      "name": "Funeral — Marcha fúnebre · Chopin",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/musica/funeral.ogg",
+      "channel": "music",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": true,
+      "volume": 0.55,
+      "fade": 2500,
+      "sort": 1100,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "funeral"
+       }
+      }
+     },
+     {
+      "_id": "4b4b899b979f05d5",
+      "name": "La cripta — «Pequeña» fuga en sol menor · Bach",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/musica/cripta.ogg",
+      "channel": "music",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": true,
+      "volume": 0.55,
+      "fade": 2500,
+      "sort": 1200,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "cripta"
+       }
+      }
+     },
+     {
+      "_id": "5b515e00b30b1de8",
+      "name": "La catedral — Dies iræ del Réquiem · Mozart",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/musica/catedral.ogg",
+      "channel": "music",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": true,
+      "volume": 0.55,
+      "fade": 2500,
+      "sort": 1300,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "catedral"
+       }
+      }
+     },
+     {
+      "_id": "3e4b8afd8fe10280",
+      "name": "La Ópera — Cabalgata de las valquirias · Wagner",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/musica/opera.ogg",
+      "channel": "music",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": true,
+      "volume": 0.55,
+      "fade": 2500,
+      "sort": 1400,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "opera"
+       }
+      }
+     },
+     {
+      "_id": "10d81b7310a68e4b",
+      "name": "El zepelín — El Danubio azul · Strauss",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/musica/zepelin.ogg",
+      "channel": "music",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": true,
+      "volume": 0.55,
+      "fade": 2500,
+      "sort": 1500,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "zepelin"
+       }
+      }
+     },
+     {
+      "_id": "46d7f39026c62472",
+      "name": "Clímax — Obertura 1812 · Chaikovski",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/musica/climax.ogg",
+      "channel": "music",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": true,
+      "volume": 0.55,
+      "fade": 2500,
+      "sort": 1600,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "climax"
+       }
+      }
+     },
+     {
+      "_id": "9126aaf7e53b8e49",
+      "name": "Último gesto — Lacrimosa del Réquiem · Mozart",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/musica/muerte.ogg",
+      "channel": "music",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": true,
+      "volume": 0.55,
+      "fade": 2500,
+      "sort": 1700,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "muerte"
+       }
+      }
+     }
+    ],
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "musica"
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.2.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   },
+   {
+    "_id": "6e59e848d615f1ef",
+    "name": "Eat the Reich · Efectos",
+    "description": "Sintetizados para el sistema.",
+    "channel": "interface",
+    "mode": -1,
+    "playing": false,
+    "folder": null,
+    "sorting": "a",
+    "sort": 1,
+    "sounds": [
+     {
+      "_id": "f15ad33b7c4ed539",
+      "name": "Resultado",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/sfx/sello.ogg",
+      "channel": "interface",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": false,
+      "volume": 0.7,
+      "fade": 0,
+      "sort": 0,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "sello"
+       }
+      }
+     },
+     {
+      "_id": "842604fb6b939dc7",
+      "name": "Crítico",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/sfx/critico.ogg",
+      "channel": "interface",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": false,
+      "volume": 0.7,
+      "fade": 0,
+      "sort": 100,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "critico"
+       }
+      }
+     },
+     {
+      "_id": "b76f7f90406cccbd",
+      "name": "Lesión",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/sfx/lesion.ogg",
+      "channel": "interface",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": false,
+      "volume": 0.7,
+      "fade": 0,
+      "sort": 200,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "lesion"
+       }
+      }
+     },
+     {
+      "_id": "841174da6845ff86",
+      "name": "Derribo",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/sfx/derribo.ogg",
+      "channel": "interface",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": false,
+      "volume": 0.7,
+      "fade": 0,
+      "sort": 300,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "derribo"
+       }
+      }
+     },
+     {
+      "_id": "8f70aa6d5deebc5c",
+      "name": "Sangre",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/sfx/sangre.ogg",
+      "channel": "interface",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": false,
+      "volume": 0.7,
+      "fade": 0,
+      "sort": 400,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "sangre"
+       }
+      }
+     },
+     {
+      "_id": "ec089b7f9c359089",
+      "name": "Refuerzos",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/sfx/sirena.ogg",
+      "channel": "interface",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": false,
+      "volume": 0.7,
+      "fade": 0,
+      "sort": 500,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "sirena"
+       }
+      }
+     },
+     {
+      "_id": "c42bb33ddf35cdcf",
+      "name": "Caen los ataúdes",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/sfx/ataud.ogg",
+      "channel": "interface",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": false,
+      "volume": 0.7,
+      "fade": 0,
+      "sort": 600,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "ataud"
+       }
+      }
+     },
+     {
+      "_id": "6ef637b86c9f2b09",
+      "name": "Objetivo cumplido",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/sfx/objetivo.ogg",
+      "channel": "interface",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": false,
+      "volume": 0.7,
+      "fade": 0,
+      "sort": 700,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "objetivo"
+       }
+      }
+     },
+     {
+      "_id": "51a36b096fd8c747",
+      "name": "Flashback",
+      "description": "",
+      "path": "systems/mr-eat-the-reich/assets/audio/sfx/flashback.ogg",
+      "channel": "interface",
+      "playing": false,
+      "pausedTime": null,
+      "repeat": false,
+      "volume": 0.7,
+      "fade": 0,
+      "sort": 800,
+      "flags": {
+       "mr-eat-the-reich": {
+        "clave": "flashback"
+       }
+      }
+     }
+    ],
+    "ownership": {
+     "default": 0
+    },
+    "flags": {
+     "mr-eat-the-reich": {
+      "clave": "sfx"
+     }
+    },
+    "_stats": {
+     "coreVersion": "13.351",
+     "systemId": "mr-eat-the-reich",
+     "systemVersion": "0.2.0",
+     "createdTime": 0,
+     "modifiedTime": 0,
+     "lastModifiedBy": null,
+     "compendiumSource": null,
+     "duplicateSource": null
+    }
+   }
+  ],
   "folders": [
    {
     "_id": "c6137cd307e63588",
@@ -3409,18 +7535,51 @@
     "folder": null,
     "description": "",
     "flags": {}
+   },
+   {
+    "_id": "6353886e8fe0f58d",
+    "name": "Sector 3 · La caída",
+    "type": "Scene",
+    "color": "#1f6f78",
+    "sorting": "m",
+    "sort": 1,
+    "folder": null,
+    "description": "",
+    "flags": {}
+   },
+   {
+    "_id": "42fcbec578171b38",
+    "name": "Sector 2 · El asalto",
+    "type": "Scene",
+    "color": "#5a2a7a",
+    "sorting": "m",
+    "sort": 2,
+    "folder": null,
+    "description": "",
+    "flags": {}
+   },
+   {
+    "_id": "89843fe9af6692b7",
+    "name": "Sector 1 · La torre",
+    "type": "Scene",
+    "color": "#b3124b",
+    "sorting": "m",
+    "sort": 3,
+    "folder": null,
+    "description": "",
+    "flags": {}
    }
   ],
   "sort": 0,
   "flags": {
    "mr-eat-the-reich": {
-    "version": "0.1.1"
+    "version": "0.2.0"
    }
   },
   "_stats": {
    "coreVersion": "13.351",
    "systemId": "mr-eat-the-reich",
-   "systemVersion": "0.1.1",
+   "systemVersion": "0.2.0",
    "createdTime": 0,
    "modifiedTime": 0,
    "lastModifiedBy": null,

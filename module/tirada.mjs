@@ -7,6 +7,7 @@
 import { ID, mision, cambiarMision, pedir, operacion, nuevoId, vampiros } from "./mesa.mjs";
 import { DialogV2, aplicarModo, alRenderizarMensaje } from "./compat.mjs";
 import { pintarRetratos } from "./retrato.mjs";
+import { sonar } from "./escenas.mjs";
 import * as R from "./reglas.mjs";
 import { ATRIBUTOS, BLOQUEOS, FLASHBACK } from "./datos.mjs";
 
@@ -94,6 +95,7 @@ export async function tirar(actor, { atributo = "", amenaza = "", equipo = [], b
   const datos = { content: `<div class="er-tirada"></div>`, speaker: ChatMessage.getSpeaker({ actor }), rolls: rG ? [rJ, rG] : [rJ], sound: CONFIG.sounds.dice, flags: { [ID]: { tirada } } };
   aplicarModo(datos);
   const mensaje = await ChatMessage.create(datos);
+  sonar(tirada.dados.some(d => d.c === 6) ? "critico" : "sello");
   pedir("tiradaHecha", { mensaje: mensaje.id });
   return mensaje;
 }
@@ -228,7 +230,7 @@ export function escucharTiradas() {
         texto = `${o.nombre}: ${r.absorbe ? `el Desafío absorbe ${r.absorbe}; ` : ""}${ex - r.absorbe ? `−${ex - r.absorbe} → ${o.valor}` : "sin efecto"}`;
         if (o.valor === 0) {
           if (datos.tipo === "amenaza") { o.ataque = 0; texto += o.revive ? ". ¡Rechazada! (volverá con refuerzos)" : ". ¡Destruida!"; }
-          else texto += o.secundario ? ". ¡Secundario cumplido! Elige recompensa." : ". ¡Objetivo cumplido!";
+          else { texto += o.secundario ? ". ¡Secundario cumplido! Elige recompensa." : ". ¡Objetivo cumplido!"; sonar("objetivo"); }
         }
       });
       if (!texto) return;
@@ -237,7 +239,7 @@ export function escucharTiradas() {
     } else if (datos.tipo === "sangre") {
       const antes = actor.system.sangre, ahora = Math.min(R.SANGRE_MAX, antes + ex);
       await actor.update({ "system.sangre": ahora });
-      nombre = "Sangre"; texto = `Bebe sangre: +${ahora - antes} (tiene ${ahora})`;
+      nombre = "Sangre"; texto = `Bebe sangre: +${ahora - antes} (tiene ${ahora})`; sonar("sangre", 0.6);
     } else if (datos.tipo === "especial" && d.c === 6) {
       const e = t.especiales.find(x => x.nombre === datos.nombre);
       nombre = e?.nombre || "ESPECIAL"; texto = e ? `ESPECIAL · ${e.nombre}: ${e.texto}` : "ESPECIAL (aplicadlo en el Panel de misión)";
@@ -268,6 +270,7 @@ export function escucharTiradas() {
     t.flashback = { contexto: FLASHBACK.contexto[(await d6()) - 1], pregunta: FLASHBACK.preguntas[(await d6()) - 1].replace("[personaje]", quienSale) };
     t.dados = caras(roll).map(c => ({ c, origen: "", destino: null }));
     for (const b of t.bonos) b.hecho = false;
+    sonar("flashback");
     await actor.update({ "system.flashback": true });
     await guardar(msg, t);
   });
@@ -284,6 +287,7 @@ export function escucharTiradas() {
       const l = R.marcarLesion(actor.toObject().system.lesiones, dado, derribado || t.gm.garras);
       await actor.update({ "system.lesiones": l.lesiones, "system.derribado": derribado || actor.system.derribado });
       r.lesion = { d6: dado, marcadas: l.marcadas, derribado, muerto: l.muerto };
+      sonar(derribado ? "derribo" : "lesion");
     }
     await cambiarMision(m => {
       if (!t.ultimo && !m.actuaron.includes(actor.id)) m.actuaron.push(actor.id);

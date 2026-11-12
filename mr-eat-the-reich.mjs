@@ -2,7 +2,7 @@
 import { ApplicationV2, DocumentSheetConfig, anadirHerramienta, diagnostico } from "./module/compat.mjs";
 import { ID, registrarAjustes, escucharSocket, mision, cambiarMision } from "./module/mesa.mjs";
 import { MODELOS } from "./module/modelos.mjs";
-import { HojaVampiro, HojaAmenaza } from "./module/hojas.mjs";
+import { HojaVampiro, HojaAtaud, HojaAmenaza } from "./module/hojas.mjs";
 import { PanelMision, registrarMision, cargarLocalizacion, finDeRonda } from "./module/apps/mision.mjs";
 import { escucharTiradas, dialogoTirada, tirar, ultimoGesto } from "./module/tirada.mjs";
 import { registrarAccesibilidad, temaVentana } from "./module/accesibilidad.mjs";
@@ -11,11 +11,14 @@ import { PanelSeguridad, registrarSeguridad } from "./module/apps/seguridad.mjs"
 import { PanelDiagnostico } from "./module/apps/diagnostico.mjs";
 import { registrarLupa } from "./module/lupa.mjs";
 import { registrarInicio, importarAventura } from "./module/inicio.mjs";
+import { registrarEscenas, sonar, musica } from "./module/escenas.mjs";
+import { registrarDireccionMR } from "./module/direccion-mr.mjs";
 
 Hooks.once("init", () => {
   Object.assign(CONFIG.Actor.dataModels, MODELOS);
   CONFIG.Actor.typeLabels = { vampiro: "Vampiro", amenaza: "Amenaza" };
-  DocumentSheetConfig.registerSheet(Actor, ID, HojaVampiro, { types: ["vampiro"], makeDefault: true, label: "Eat the Reich · Vampiro" });
+  DocumentSheetConfig.registerSheet(Actor, ID, HojaAtaud, { types: ["vampiro"], makeDefault: true, label: "Eat the Reich · Ataúd" });
+  DocumentSheetConfig.registerSheet(Actor, ID, HojaVampiro, { types: ["vampiro"], makeDefault: false, label: "Eat the Reich · Ficha clásica (rectangular, con edición)" });
   DocumentSheetConfig.registerSheet(Actor, ID, HojaAmenaza, { types: ["amenaza"], makeDefault: true, label: "Eat the Reich · Amenaza" });
 
   registrarAjustes();
@@ -24,6 +27,8 @@ Hooks.once("init", () => {
   registrarSeguridad();
   registrarMision();
   registrarInicio();
+  registrarEscenas();
+  registrarDireccionMR();
   game.settings.registerMenu(ID, "diagnosticoMenu", {
     name: "Diagnóstico", label: "Comprobar el sistema",
     hint: "Comprueba el compendio, las imágenes y el estado de la misión, y deja un informe copiable.",
@@ -33,7 +38,7 @@ Hooks.once("init", () => {
 
   game.mrEatTheReich = {
     abrirMision: () => PanelMision.abrir(), abrirSeguridad: () => PanelSeguridad.abrir(), abrirDiagnostico: () => PanelDiagnostico.abrir(),
-    dialogoTirada, tirar, ultimoGesto, mision, cambiarMision, cargarLocalizacion, finDeRonda, importarAventura, diagnostico
+    dialogoTirada, tirar, ultimoGesto, mision, cambiarMision, cargarLocalizacion, finDeRonda, importarAventura, diagnostico, sonar, musica
   };
 });
 

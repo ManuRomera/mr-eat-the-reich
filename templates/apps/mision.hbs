@@ -68,6 +68,13 @@
       <div class="er-linea"><button type="button" class="er-boton er-boton-suave" data-action="objetivo"><i class="fa-solid fa-plus" inert></i> Objetivo</button>
         <button type="button" class="er-boton er-boton-suave" data-action="objetivo" data-secundario="1"><i class="fa-solid fa-plus" inert></i> Secundario</button></div>
       <p class="er-tenue">También puedes arrastrar aquí una amenaza desde el directorio de actores.</p>
+      {{#if hayEscena}}<div class="er-linea"><button type="button" class="er-boton er-boton-suave" data-action="irEscena"><i class="fa-solid fa-panorama" inert></i> Ver el decorado de esta escena</button></div>{{/if}}
+    </details>
+    <details data-memoria="musica"><summary>Música clásica</summary>
+      <div class="er-linea"><select name="pista" aria-label="Pista">{{#each pistas}}<option value="{{id}}" {{#if (eq id ../sonando)}}selected{{/if}}>{{titulo}} — {{obra}}</option>{{/each}}</select>
+        <button type="button" class="er-icono" data-action="musica" data-tooltip="Poner esta pista" aria-label="Poner esta pista"><i class="fa-solid fa-play" inert></i></button>
+        <button type="button" class="er-icono" data-action="silencio" data-tooltip="Silencio" aria-label="Parar la música"><i class="fa-solid fa-stop" inert></i></button></div>
+      <p class="er-tenue">Cada escena trae su pieza y suena sola al activarla. Con el módulo MR- Dirección tienes fundido cruzado y los motivos en su barra.</p>
     </details>
   </footer>
   {{/if}}

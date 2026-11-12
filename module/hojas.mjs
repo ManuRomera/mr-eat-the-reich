@@ -112,6 +112,89 @@ export class HojaVampiro extends HojaBase {
   }
 }
 
+/* ───────────── La hoja-ataúd ───────────── */
+
+/** Hexágono de ataúd como fracciones del ancho y del alto. */
+const HEX = [[0.27, 0], [0.73, 0], [1, 0.21], [0.79, 1], [0.21, 1], [0, 0.21]];
+const GROSOR = 22;
+const hex = (w, h, t = 0) => HEX.map(([x, y]) => [t + x * (w - 2 * t), t + y * (h - 2 * t)]);
+
+/** Marco de acero remachado: el hexágono exterior menos el interior, con remaches a lo largo de cada lado. */
+export function marcoSVG(w, h) {
+  const fuera = hex(w, h), dentro = hex(w, h, GROSOR), medio = hex(w, h, GROSOR / 2);
+  const d = pts => `M${pts.map(p => p.map(n => n.toFixed(1)).join(" ")).join(" L")} Z`;
+  let remaches = "";
+  medio.forEach((a, i) => {
+    const b = medio[(i + 1) % medio.length], largo = Math.hypot(b[0] - a[0], b[1] - a[1]), n = Math.max(2, Math.round(largo / 52));
+    for (let k = 0; k < n; k++) {
+      const f = (k + 0.5) / n, x = a[0] + (b[0] - a[0]) * f, y = a[1] + (b[1] - a[1]) * f;
+      remaches += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4.2" fill="url(#er-remache)"/><circle cx="${(x - 1.2).toFixed(1)}" cy="${(y - 1.2).toFixed(1)}" r="1.3" fill="#cfd3ee" opacity=".7"/>`;
+    }
+  });
+  return `<svg class="er-marco" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" aria-hidden="true" focusable="false">
+    <defs><linearGradient id="er-acero" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b4066"/><stop offset=".35" stop-color="#0d0f22"/><stop offset=".6" stop-color="#2c3052"/><stop offset="1" stop-color="#07081a"/></linearGradient>
+    <radialGradient id="er-remache"><stop offset="0" stop-color="#8f94b8"/><stop offset="1" stop-color="#15172e"/></radialGradient></defs>
+    <path d="${d(fuera)} ${d(dentro)}" fill="url(#er-acero)" fill-rule="evenodd" stroke="#05060f" stroke-width="2"/>
+    <path d="${d(dentro)}" fill="none" stroke="#ff3d8b" stroke-width="1.5" opacity=".8"/>${remaches}</svg>`;
+}
+
+const ANCHO = 1090, ALTO = 920, CAJA = [620, 880], TAPA = [500, 780];
+const PESTANAS = { accion: "Acción", poderes: "Poderes", heridas: "Heridas", dosier: "Dosier" };
+
+/**
+ * La hoja de vampiro por defecto: un ataúd abierto. La ventana no tiene marco ni fondo; lo que se ve (y lo que recibe el ratón)
+ * son la tapa, con el personaje a cuerpo entero, y la caja, con la hoja dentro. El texto se ciñe a la forma con `shape-outside`.
+ */
+export class HojaAtaud extends HojaVampiro {
+  static DEFAULT_OPTIONS = {
+    classes: ["er-hoja-ataud"], position: { width: ANCHO, height: ALTO }, window: { resizable: false },
+    actions: { clasica: HojaAtaud.#clasica }
+  };
+  static PARTS = { hoja: { template: `${RUTA}/templates/hojas/ataud.hbs` } };
+  static CAMPOS_MEMORIA = ["left", "top"];
+  static SCROLL_MEMORIA = [];
+
+  async _prepareContext(options) {
+    const c = await super._prepareContext(options);
+    this.tabGroups.ataud ??= "accion";
+    const pestana = this.tabGroups.ataud;
+    return {
+      ...c, pestana, pestanas: Object.entries(PESTANAS).map(([id, nombre]) => ({ id, nombre, activa: id === pestana })),
+      forro: this.document.getFlag(ID, "forro") || "#ff4f93", marcoCaja: marcoSVG(...CAJA), marcoTapa: marcoSVG(...TAPA)
+    };
+  }
+
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+    // Tamaño: el elegido en Ajustes, o el que quepa en esta pantalla.
+    const elegido = Number(game.settings.get(ID, "escalaAtaud")) || 0;
+    const escala = elegido || Math.min(1, (window.innerHeight - 8) / ALTO, (window.innerWidth - 8) / ANCHO);
+    if (Math.abs((this.position.scale ?? 1) - escala) > 0.005) this.setPosition({ scale: escala });
+    this.ajustar();
+  }
+
+  changeTab(tab, group, opciones) {
+    super.changeTab(tab, group, opciones);
+    this.ajustar();
+  }
+
+  /** Si lo de una pestaña no cabe en el ataúd, se encoge la letra poco a poco hasta que quepa (nunca por debajo del 72 %). */
+  ajustar() {
+    const forro = this.element?.querySelector(".er-forro");
+    if (!forro) return;
+    let f = 1;
+    forro.style.setProperty("--er-ajuste", f);
+    while (forro.scrollHeight > forro.clientHeight + 1 && f > 0.72) forro.style.setProperty("--er-ajuste", (f -= 0.03));
+  }
+
+  /** La ficha rectangular de siempre, en modo edición: para crear o retocar vampiros. */
+  static #clasica() {
+    const hoja = new HojaVampiro({ document: this.document });
+    hoja.editando = true;
+    hoja.render({ force: true });
+  }
+}
+
 export class HojaAmenaza extends HojaBase {
   static DEFAULT_OPTIONS = { classes: ["er-hoja-amenaza"], position: { width: 520, height: 640 }, actions: { aMision: HojaAmenaza.#aMision } };
   static PARTS = { hoja: { template: `${RUTA}/templates/hojas/amenaza.hbs`, scrollable: [".er-hoja-cuerpo"] } };

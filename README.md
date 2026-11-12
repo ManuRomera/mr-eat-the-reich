@@ -1,5 +1,13 @@
 <p align="center">
+  <img src="docs/img/banner.webp" alt="MR- Eat the Reich · sistema no oficial de uso privado para Foundry VTT" width="100%">
+</p>
+
+<p align="center">
   <a href="https://github.com/ManuRomera"><img alt="Manu Romera · Digital RPG Design" src="https://raw.githubusercontent.com/ManuRomera/ManuRomera/main/badges/mr-firma.svg" height="28"></a>
+  <img alt="Versión 0.1.1" src="https://img.shields.io/badge/versi%C3%B3n-0.1.1-d81557?style=for-the-badge&labelColor=10132b">
+  <img alt="Foundry VTT 13 y 14" src="https://img.shields.io/badge/Foundry_VTT-13_%E2%80%93_14-ff3d8b?style=for-the-badge&labelColor=10132b">
+  <img alt="Repositorio privado, uso personal" src="https://img.shields.io/badge/uso-privado-1f6f78?style=for-the-badge&labelColor=10132b">
+  <img alt="En español" src="https://img.shields.io/badge/idioma-espa%C3%B1ol-f2c230?style=for-the-badge&labelColor=10132b">
 </p>
 
 # MR- Eat the Reich
@@ -11,7 +19,7 @@ No está publicado: lee [NOTICE.md](NOTICE.md) antes de compartirlo con nadie.
 
 - **Hoja de vampiro.** Pulsa un atributo para tirar. Casillas de uso del equipo (la gris es el último uso: explota y da un dado más), botín, Sangre, habilidades, mejoras que se desbloquean, lesiones con su penalización aplicada (atributos que cambian, «no puedes usar los +»…) y el último gesto de resistencia. Botón **Editar** para crear vampiros propios.
 - **Panel de misión** (directorio de Actores o controles de escena). Objetivos, Amenazas, turnos y ronda. Carga cualquiera de las 19 localizaciones de París con su objetivo y sus enemigos, o arrastra amenazas. **Fin de ronda** aplica los refuerzos.
-- **La tirada, en una tarjeta.** Tu reserva contra los dados de ataque del GM (la amenaza mayor + 1 por cada otra). Cada éxito se gasta pulsando su dado: Objetivo, Amenaza, Defensa, Sangre o un ESPECIAL con los seises; el Desafío se descuenta solo. Los dados de bonificación (+) y el flashback se tiran desde la tarjeta. Al terminar el turno, los ataques sin defender tiran y marcan la lesión, y derriban si toca.
+- **La tirada, en una tarjeta.** El resultado va estampado en grande (los éxitos), con los dados debajo. Tu reserva contra los dados de ataque del GM (la amenaza mayor + 1 por cada otra). Cada éxito se gasta pulsando su dado: Objetivo, Amenaza, Defensa, Sangre o un ESPECIAL con los seises; el Desafío se descuenta solo. Los dados de bonificación (+) y el flashback se tiran desde la tarjeta. Al terminar el turno, los ataques sin defender tiran y marcan la lesión, y derriban si toca.
 - **Reglas propias de los enemigos** automatizadas: «Solo», Anatema (Vampirjäger), Aura de desgracia (Rust-Witch), Sin dolor y Sin sangre (Einherjar), garras del Werhund, despliegue rápido de los paracaidistas.
 - **Compendio «La misión».** Los seis vampiros, 15 amenazas, reglas resumidas, localizaciones, tablas de flashback y el mapa de París con notas. Se importa solo en un mundo vacío.
 - **Lo de siempre:** ventanas con memoria, accesibilidad en la cabecera (tamaño, modo oscuro, alto contraste, fuente legible, sin movimiento), encuadre de retratos, lupa, seguridad en la sesión (líneas, velos, Pausa, Velo y Tarjeta X anónimos), diagnóstico y créditos en Ajustes.

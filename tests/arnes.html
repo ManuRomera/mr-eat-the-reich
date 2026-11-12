@@ -39,7 +39,7 @@ Handlebars.registerHelper({
 const plantilla = async ruta => Handlebars.compile(await (await fetch(`../templates/${ruta}`)).text());
 const ventana = (titulo, clases, html, ancho, alto) => {
   const d = document.createElement("div");
-  d.className = `application mr-eat-the-reich themed theme-light ${clases}`;
+  d.className = `application mr-eat-the-reich themed ${new URLSearchParams(location.search).has('oscuro') ? 'theme-dark' : 'theme-light'} ${clases}`;
   d.style.cssText = `width:${ancho}px;${new URLSearchParams(location.search).has('alto') ? `height:${alto}px` : 'height:auto'}`;
   d.innerHTML = `<header class="window-header"><i class="window-icon fa-fw fa-solid fa-user"></i><h1 class="window-title">${titulo}</h1>
     <button type="button" class="header-control icon fa-solid fa-universal-access er-a11y-boton"></button><button type="button" class="header-control icon fa-solid fa-xmark" data-action="close"></button></header>
@@ -84,6 +84,11 @@ const m = { escena: l.nombre, ronda: 2, objetivos: [{ id: "o1", ...l.objetivo, v
 ventana("Misión", "er-mision", (await plantilla("apps/mision.hbs"))({ esGM: true, m, objetivos: m.objetivos, amenazas: m.amenazas, ataque: R.reservaAtaque(m.amenazas).dados, premios: PREMIOS_SECUNDARIO,
   sectores: [3, 2, 1].map(s => ({ nombre: `Sector ${s}`, lugares: LOCALIZACIONES.filter(x => x.sector === s) })), catalogo: AMENAZAS.map(a => ({ v: a.clave, n: `${a.nombre} (${a.valor}/${a.ataque})` })),
   vampiros: VAMPIROS.map((v, i) => ({ id: v.clave, nombre: v.nombre, img: `${RUTA}/assets/retratos/${v.clave}.webp`, sangre: i * 2, actuo: i < 2, derribado: i === 5, muerto: false })), rondaHecha: false }), 540, 720);
+
+/* Diario (estructura de Foundry) y diálogo de tirada */
+ventana("París · La misión y sus localizaciones", "er-diario sheet journal-entry", `<div class="journal-entry-content" style="height:100%;display:flex"><nav class="journal-sidebar" style="width:200px;padding:8px"><ol class="directory-list"><li class="level1 active"><a>Cómo va la misión</a></li><li class="level2"><a>Plaza de la Sirena</a></li></ol></nav><div class="journal-entry-pages" style="flex:1;padding:10px"><article class="journal-entry-page text level1"><header class="journal-page-header"><h1>Cómo va la misión</h1></header><section class="journal-page-content"><h2>Los ataúdes</h2><p><em>Manual, pp. 42-49.</em></p><ol><li><strong>El avance.</strong> Ellos eligen por dónde.</li></ol><p>Enlace: <a class="content-link"><i class="fa-solid fa-user"></i> Rust-Witch</a></p><p class="er-pista">Panel de misión → Cargar.</p></section></article></div></div>`, 700, 300);
+ventana("Iryna · preparar la tirada", "er-dialogo", `<div class="er-dialogo-cuerpo"><ul class="er-avisos"><li>No puedes usar los +</li></ul><label class="er-campo"><span>Atributo</span><select><option>Disparo · 3 dados</option></select></label><fieldset><legend>Equipo (+1 dado y gasta un uso)</legend><label class="er-casilla-texto"><input type="checkbox"><span>Rifle de caza exquisito<small>5/5 usos · +posición elevada</small></span></label><label class="er-casilla-texto"><input type="checkbox" disabled><span>Runas explosivas<small>0/3 usos</small></span></label></fieldset><label class="er-campo"><span>Dados extra</span><input type="number" value="0"></label><div class="er-fila-botones"><button class="er-boton er-boton-suave">Cancelar</button><button class="er-boton">Tirar</button></div></div>`, 460, 380);
+ventana("Seguridad en la sesión", "er-dialogo er-seguridad", `<div class="er-dialogo-cuerpo"><p class="er-nota">Si algo incomoda, se cambia sin explicaciones.</p><div class="er-senales"><button class="er-boton er-senal"><i class="fa-solid fa-pause"></i> Pausa</button><button class="er-boton er-senal"><i class="fa-solid fa-eye-slash"></i> Velo</button><button class="er-boton er-senal"><i class="fa-solid fa-xmark"></i> Tarjeta X</button></div><section class="er-acuerdos"><h3>Líneas</h3><ul><li>Agresión sexual</li></ul><textarea rows="2">Agresión sexual</textarea></section></div>`, 460, 380);
 
 /* Tarjetas de chat */
 const chat = document.createElement("div"); chat.className = "chat"; document.body.append(chat);

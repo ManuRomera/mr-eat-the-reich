@@ -1,0 +1,73 @@
+[
+ {
+  "src": "tools/fondo-banner.png",
+  "focus": 0.5,
+  "accent": [
+   216,
+   21,
+   87
+  ],
+  "kicker": "F.A.N.G. · Comandos vampiro · París, 1943",
+  "title": [
+   "EAT THE",
+   "REICH"
+  ],
+  "subtitle": [
+   "Sistema no oficial de uso privado"
+  ],
+  "upper_subtitle": true,
+  "subtitle_track": 0.008,
+  "tagline": [
+   "Havoc Engine · Foundry VTT 13–14 · Castellano"
+  ],
+  "fonts": {
+   "kicker": [
+    "/System/Library/Fonts/Avenir Next Condensed.ttc",
+    2
+   ],
+   "title": [
+    "/System/Library/Fonts/Supplemental/DIN Condensed Bold.ttf",
+    0
+   ],
+   "subtitle": [
+    "/System/Library/Fonts/Avenir Next Condensed.ttc",
+    2
+   ],
+   "tagline": [
+    "/System/Library/Fonts/Avenir Next.ttc",
+    5
+   ]
+  },
+  "colors": {
+   "kicker": [
+    242,
+    194,
+    48
+   ],
+   "title": [
+    243,
+    239,
+    230
+   ],
+   "subtitle": [
+    255,
+    61,
+    139
+   ],
+   "tagline": [
+    214,
+    220,
+    222
+   ]
+  },
+  "title_max": 0.29,
+  "title_track": 0.02,
+  "title_lead": 0.86,
+  "out": "docs/img/banner.webp",
+  "size": [
+   1600,
+   560
+  ],
+  "veil": 0.62
+ }
+]

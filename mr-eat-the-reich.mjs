@@ -5,7 +5,7 @@ import { MODELOS } from "./module/modelos.mjs";
 import { HojaVampiro, HojaAmenaza } from "./module/hojas.mjs";
 import { PanelMision, registrarMision, cargarLocalizacion, finDeRonda } from "./module/apps/mision.mjs";
 import { escucharTiradas, dialogoTirada, tirar, ultimoGesto } from "./module/tirada.mjs";
-import { registrarAccesibilidad } from "./module/accesibilidad.mjs";
+import { registrarAccesibilidad, temaVentana } from "./module/accesibilidad.mjs";
 import { pintarRetratos, repintarRetratos } from "./module/retrato.mjs";
 import { PanelSeguridad, registrarSeguridad } from "./module/apps/seguridad.mjs";
 import { PanelDiagnostico } from "./module/apps/diagnostico.mjs";
@@ -72,12 +72,8 @@ Hooks.on("renderJournalEntrySheet", app => {
   if (app.document.getFlag(ID, "clave") || app.document.pack?.startsWith(`${ID}.`)) app.element.classList.add(ID, "er-diario");
 });
 
-/** Papel de expediente: las ventanas del sistema usan por dentro el tema claro de Foundry (el modo oscuro propio está en Accesibilidad). */
-Hooks.on("renderApplicationV2", app => {
-  if (!app.element?.classList.contains(ID)) return;
-  app.element.classList.add("themed", "theme-light");
-  app.element.classList.remove("theme-dark");
-});
+/** Las ventanas del sistema siguen el modo claro/oscuro elegido en Accesibilidad. */
+Hooks.on("renderApplicationV2", app => { if (app.element?.classList.contains(ID)) temaVentana(app.element); });
 
 Hooks.on("getSceneControlButtons", controles => {
   anadirHerramienta(controles, "tokens", { name: "erMision", title: "Panel de misión", icon: "fa-solid fa-crosshairs", onChange: () => PanelMision.abrir() });

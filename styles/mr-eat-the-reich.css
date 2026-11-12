@@ -185,14 +185,21 @@
 .er-tc-cab div { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 .er-tc-cab strong { font-family: var(--er-rotulo); font-size: 1.25em; letter-spacing: .08em; text-transform: uppercase; }
 .er-tc-cab span { font-size: .9em; opacity: .9; }
-.er-tc-total { font-family: var(--er-rotulo); font-size: 2em; line-height: 1; color: var(--er-neon); }
 .er-tc.ultimo .er-tc-cab { background: var(--er-sangre); border-bottom-color: var(--er-noche); }
-.er-tc.ultimo .er-tc-total { color: #fff; }
 .mr-eat-the-reich :is(b, strong), .er-tc :is(b, strong) { font-weight: 700; }
+/* El resultado, a lo grande: cinta de expediente con el número estampado */
+.er-res { display: flex; align-items: center; gap: 14px; margin: 2px 0 6px; padding: 2px 0; }
+.er-res-n { flex: none; min-width: 1.1em; padding: 0 .12em; text-align: center; font-family: var(--er-rotulo); font-weight: 700; font-size: 74px; line-height: .95;
+  color: #fff; background: var(--er-sangre); border: 3px solid var(--er-noche); box-shadow: 5px 5px 0 var(--er-noche); transform: rotate(-3deg); letter-spacing: -.02em; }
+.er-res-l { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
+.er-res-l b { font-family: var(--er-rotulo); font-size: 30px; line-height: 1; letter-spacing: .12em; color: #fff; background: var(--er-noche); padding: 2px 12px 3px; transform: rotate(1deg); clip-path: polygon(0 0, 100% 0, 96% 100%, 3% 100%); }
+.er-res-l small { font-family: var(--er-texto); font-size: .95em; color: var(--er-sangre); text-transform: uppercase; letter-spacing: .08em; }
+.er-tc.ultimo .er-res-n { background: var(--er-noche); border-color: var(--er-sangre); box-shadow: 5px 5px 0 var(--er-sangre); }
+.er-tc.ultimo .er-res-l b { background: var(--er-sangre); }
 .er-tc-usa, .er-tc-nota { font-size: .9em; color: var(--er-tenue); }
 .er-tc-flash { margin: 6px 0; padding: 4px 8px; border-left: 4px solid var(--er-cinta); background: var(--er-campo); font-style: normal; }
 .er-dados { display: flex; flex-wrap: wrap; gap: 5px; margin: 6px 0; }
-.er-tc .er-dado { width: 34px; height: 34px; min-height: 0; padding: 0; display: inline-grid; place-items: center; font-family: var(--er-rotulo); font-size: 20px; font-weight: 700; line-height: 1; border: 2px solid var(--er-tinta); border-radius: 5px; background: var(--er-campo); color: var(--er-tinta); }
+.er-tc .er-dado { width: 40px; height: 40px; min-height: 0; padding: 0; display: inline-grid; place-items: center; font-family: var(--er-rotulo); font-size: 24px; font-weight: 700; line-height: 1; border: 2px solid var(--er-tinta); border-radius: 5px; background: var(--er-campo); color: var(--er-tinta); }
 .er-tc button.er-dado:not(:disabled) { cursor: pointer; }
 .er-tc button.er-dado:not(:disabled):hover { transform: translateY(-2px) rotate(-4deg); }
 .er-tc .er-dado.exito { background: var(--er-noche); color: #fff; border-color: var(--er-noche); }
@@ -203,7 +210,7 @@
 .er-tc .er-dado:disabled { opacity: 1; } .er-tc .er-dado.fallo:disabled { opacity: .38; }
 .er-tc-gm { border-top: 1px dashed var(--er-tenue); padding-top: 4px; }
 .er-tc-gm > span:first-child { font-family: var(--er-rotulo); text-transform: uppercase; letter-spacing: .06em; font-size: .9em; }
-.er-dados.gm .er-dado { width: 26px; height: 26px; font-size: 15px; border-radius: 3px; }
+.er-dados.gm .er-dado { width: 30px; height: 30px; font-size: 18px; border-radius: 3px; }
 .er-dados.gm .er-dado.exito { background: var(--er-tinta); color: var(--er-papel); border-color: var(--er-tinta); }
 .er-tc-quedan { display: block; } .er-tc-quedan.peligro b { color: var(--er-sangre); font-size: 1.2em; }
 .er-tc-reparto { list-style: none; margin: 6px 0; padding: 0; } .er-tc-reparto li { padding: 1px 0; } .er-tc-reparto i { color: var(--er-cinta); width: 16px; }
@@ -263,6 +270,12 @@ body.er-oscuro {
   --er-noche: #070817; --er-noche-2: #0f1130; --er-cinta: #49b9c4; --er-sangre: #ff3d8b;
 }
 body.er-oscuro .er-fila.uber { background: #3a1730; }
+body.er-oscuro .er-tc .er-dado.exito { background: #0c0e26; border-color: var(--er-linea); }
+body.er-oscuro .er-tc .er-dado.critico { border-color: var(--er-neon); }
+body.er-oscuro .er-res-l b, body.er-oscuro .er-res-n { border-color: var(--er-linea); }
+body.er-oscuro .er-cab-texto h1 { background: #0c0e26; }
+body.er-oscuro .er-diario .journal-entry-page :is(h1, h2, h3, p, li, em, strong) { color: var(--er-tinta); }
+body.er-oscuro .er-diario .journal-entry-content { background: var(--er-papel); }
 body.er-oscuro .mr-eat-the-reich :is(.er-atr b, .er-boton-suave) { color: var(--er-tinta); }
 body.er-contraste { --er-tenue: var(--er-tinta); --er-papel: #ffffff; --er-papel-2: #ffffff; --er-campo: #ffffff; --er-tinta: #000000; --er-sangre: #b00040; --er-cinta: #005560; }
 body.er-contraste.er-oscuro { --er-papel: #000000; --er-papel-2: #000000; --er-campo: #000000; --er-tinta: #ffffff; --er-sangre: #ff6aa6; --er-cinta: #7fe6f0; }

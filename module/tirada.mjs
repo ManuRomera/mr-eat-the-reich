@@ -114,32 +114,31 @@ export function htmlTirada(mensaje, t) {
     const dentro = d.destino ? `<i class="fa-solid ${ICONO[d.destino.tipo]}" inert></i>` : d.c;
     return `<button type="button" class="er-dado ${clase}${d.origen ? " bono" : ""}" data-dado="${i}" ${!ex || d.destino || !mio ? "disabled" : ""} data-tooltip="${esc(titulo)}" aria-label="Dado ${d.c}. ${esc(titulo)}">${dentro}</button>`;
   };
-  const libres = t.dados.reduce((sum, d) => sum + (d.destino ? 0 : R.exitosDado(d.c, t.umbral)), 0);
   const total = R.totalExitos(t.dados.map(d => d.c), t.umbral);
   const quedan = Math.max(0, t.gm.exitos - t.defensa);
-  const unos = t.dados.filter(d => d.c === 1).length;
+  const crit = t.dados.filter(d => d.c >= 6).length;
   const repartos = t.dados.filter(d => d.destino).map(d => `<li><i class="fa-solid ${ICONO[d.destino.tipo]}" inert></i> ${esc(d.destino.texto)}</li>`).join("");
   const puedeFlashback = mio && !t.flashback && !t.ultimo && total <= 2 && !actor.system.flashback && !t.dados.some(d => d.destino);
   const r = t.resultado;
   return `<div class="er-tc ${t.ultimo ? "ultimo" : ""} ${t.cerrada ? "cerrada" : ""}">
     <header class="er-tc-cab"><img src="${esc(actor?.img ?? "icons/svg/mystery-man.svg")}" data-retrato="${t.actor}" data-lupa alt="">
       <div><strong>${esc(actor?.name ?? "¿?")}</strong><span>${esc(t.atributo)} · ${t.dados.length} dados${t.umbral > 4 ? ` · éxito con ${t.umbral}+` : ""}</span></div>
-      <b class="er-tc-total" data-tooltip="Éxitos totales">${total}</b></header>
+    </header>
+    <div class="er-res" role="status" aria-label="${total} éxitos"><b class="er-res-n">${total}</b><span class="er-res-l"><b>${total === 1 ? "ÉXITO" : "ÉXITOS"}</b>${crit ? `<small>${crit} crítico${crit > 1 ? "s" : ""}</small>` : ""}</span></div>
     ${t.usados.length ? `<p class="er-tc-usa"><i class="fa-solid fa-toolbox" inert></i> ${t.usados.map(esc).join(" · ")}</p>` : ""}
     ${t.flashback ? `<blockquote class="er-tc-flash"><b>Flashback.</b> ${esc(t.flashback.contexto)}. ${esc(t.flashback.pregunta)}</blockquote>` : ""}
     <div class="er-dados" role="group" aria-label="Dados del jugador">${t.dados.map(dado).join("")}</div>
-    ${unos ? `<p class="er-tc-nota">Has sacado ${unos} «1».</p>` : ""}
-    ${t.gm.caras.length ? `<div class="er-tc-gm"><span>Ataque · ${esc(t.gm.nombre)}${t.gm.otras ? ` (+${t.gm.otras} por otras amenazas)` : ""}</span>
+    ${t.gm.caras.length ? `<div class="er-tc-gm"><span>Ataque · ${esc(t.gm.nombre)}</span>
       <div class="er-dados gm">${t.gm.caras.map(c => `<span class="er-dado ${c >= 4 ? "exito" : "fallo"}">${c}</span>`).join("")}</div>
       <span class="er-tc-quedan ${quedan ? "peligro" : ""}">${t.gm.exitos} ataque${t.gm.exitos === 1 ? "" : "s"}${t.defensa ? ` − ${t.defensa} defendidos` : ""} → <b>${quedan}</b> sin defender</span></div>`
-    : (t.ultimo ? "" : `<p class="er-tc-nota">No hay amenazas en juego: nadie os dispara.</p>`)}
+    : ""}
     ${repartos ? `<ul class="er-tc-reparto">${repartos}</ul>` : ""}
     ${t.notas.length ? `<p class="er-tc-nota">${t.notas.map(esc).join(" ")}</p>` : ""}
     ${t.sinBonos ? `<p class="er-tc-nota">Por su lesión no puede usar los +.</p>` : ""}
     ${mio ? `<div class="er-tc-botones">
       ${t.bonos.map((b, k) => (b.hecho ? "" : `<button type="button" class="er-boton er-boton-suave" data-er="bono" data-k="${k}" data-tooltip="Si tu descripción cumple «${esc(b.req)}»"><i class="fa-solid fa-plus" inert></i> ${esc(b.nombre)}: ${b.n}d6 (${esc(b.req)})</button>`)).join("")}
       ${puedeFlashback ? `<button type="button" class="er-boton er-boton-suave" data-er="flashback"><i class="fa-solid fa-clock-rotate-left" inert></i> Flashback: +2 dados y repetir</button>` : ""}
-      <button type="button" class="er-boton" data-er="cerrar"><i class="fa-solid fa-flag-checkered" inert></i> Terminar el turno${libres ? ` (${libres} sin gastar)` : ""}</button></div>` : ""}
+      <button type="button" class="er-boton" data-er="cerrar"><i class="fa-solid fa-flag-checkered" inert></i> Terminar el turno</button></div>` : ""}
     ${r ? `<div class="er-tc-fin ${r.lesion ? "herida" : "ilesa"}">${r.lesion
       ? `<b>${r.quedan} ataque${r.quedan > 1 ? "s" : ""} sin defender.</b> Lesión (${r.lesion.d6}): ${r.lesion.marcadas.map(esc).join(" y ") || "ninguna casilla libre"}.${r.lesion.derribado ? " <b>¡Derribado!</b> Fuera de combate hasta que lo rescaten." : ""}${r.lesion.muerto ? " <b>Las seis lesiones marcadas: es la hora del último gesto.</b>" : ""}`
       : (t.ultimo ? "Y así cae. Describid el sacrificio." : "Turno terminado sin un rasguño.")}${r.sube ? ` <i>${esc(r.sube)}</i>` : ""}</div>` : ""}

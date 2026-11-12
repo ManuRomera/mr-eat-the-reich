@@ -17,6 +17,15 @@ const CAJAS = [
   ["a11yAyuda", "Ayuda inmediata", "Los textos de ayuda aparecen al instante al pasar el ratón."]
 ];
 
+/** Las ventanas del sistema siguen el modo oscuro propio: tema oscuro de Foundry si está activo, claro si no (así sus campos, listas y editores casan con nuestros colores). */
+export function temaVentana(el) {
+  if (!el) return;
+  const oscuro = document.body.classList.contains("er-oscuro");
+  el.classList.add("themed");
+  el.classList.toggle("theme-light", !oscuro);
+  el.classList.toggle("theme-dark", oscuro);
+}
+
 export function aplicarAccesibilidad() {
   const g = k => game.settings.get(ID, k);
   document.documentElement.style.setProperty("--er-escala", String(g("a11yEscala") / 100));
@@ -24,6 +33,7 @@ export function aplicarAccesibilidad() {
   document.body.classList.toggle("er-contraste", g("a11yContraste"));
   document.body.classList.toggle("er-legible", g("a11yLegible"));
   document.body.classList.toggle("er-sin-movimiento", g("a11yMovimiento"));
+  for (const app of foundry.applications.instances.values()) if (app.element?.classList.contains(ID)) temaVentana(app.element);
   const tip = game.tooltip?.constructor;
   if (tip) tip.TOOLTIP_ACTIVATION_MS = g("a11yAyuda") ? 60 : 500;
 }

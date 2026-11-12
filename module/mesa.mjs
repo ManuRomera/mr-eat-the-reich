@@ -10,7 +10,7 @@ export const SOCKET = `system.${ID}`;
 export const RUTA = `systems/${ID}`;
 export const ARTE = `${RUTA}/assets`;
 
-export const MISION_INICIAL = { escena: "", ronda: 1, objetivos: [], amenazas: [], actuaron: [] };
+export const MISION_INICIAL = { escena: "", ronda: 1, objetivos: [], amenazas: [], actuaron: [], turno: "", fuera: [] };
 
 class RestablecerVentanas extends ApplicationV2 {
   async render() {

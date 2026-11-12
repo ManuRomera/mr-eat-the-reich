@@ -18,12 +18,15 @@
   <section aria-label="Turnos">
     <div class="er-turnos">
       {{#each vampiros}}
-        <button type="button" class="er-turno {{#if actuo}}actuo{{/if}} {{#if derribado}}derribado{{/if}} {{#if muerto}}muerto{{/if}}" data-action="turno" data-id="{{id}}"
-          data-tooltip="{{nombre}}{{#if actuo}}: ya ha actuado{{else}}: le toca{{/if}}{{#if derribado}} · derribado{{/if}}" aria-pressed="{{actuo}}" aria-label="{{nombre}}">
+        <button type="button" class="er-turno {{#if turno}}turno{{/if}} {{#if actuo}}actuo{{/if}} {{#if fuera}}fuera{{/if}} {{#if derribado}}derribado{{/if}} {{#if muerto}}muerto{{/if}}" data-action="turno" data-id="{{id}}"
+          data-tooltip="{{nombre}}{{#if turno}}: es su turno{{else}}{{#if fuera}}: fuera de escena{{else}}{{#if actuo}}: ya ha actuado{{else}}: aún no ha actuado{{/if}}{{/if}}{{/if}}{{#if derribado}} · derribado{{/if}}" aria-pressed="{{turno}}" aria-label="{{nombre}}">
           <img src="{{img}}" data-retrato="{{id}}" alt=""><span class="er-turno-sangre"><i class="fa-solid fa-droplet" inert></i>{{sangre}}</span>
         </button>
       {{else}}<p class="er-tenue">Aún no hay vampiros en el mundo.</p>{{/each}}
     </div>
+    {{#if enTurno}}<p class="er-turno-rotulo"><span class="er-cinta">Turno de {{enTurno}}</span></p>{{/if}}
+    {{#if tiradores.length}}<div class="er-fila-botones">{{#each tiradores}}<button type="button" class="er-boton {{#if turno}}er-boton-fuerte{{/if}}" data-action="tirarDesde" data-id="{{id}}"><i class="fa-solid fa-dice" inert></i> Tirar · {{nombre}}</button>{{/each}}</div>{{/if}}
+    {{#if esGM}}<p class="er-tenue">Clic: dar el turno y anunciarlo · Mayús + clic: ya actuó · Clic derecho: entra o sale de la escena. Los enemigos no tienen turno: atacan en el de cada vampiro.</p>{{/if}}
   </section>
 
   <section aria-label="Objetivos">

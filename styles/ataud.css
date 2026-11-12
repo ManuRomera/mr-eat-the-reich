@@ -127,3 +127,63 @@ body.er-contraste.er-oscuro .er-forro { background: #000; --tinta-forro: #fff; }
 body.er-contraste.er-oscuro .er-forro :is(.er-chip-mini, .er-pestanas a, input) { background: #000; }
 body.er-sin-movimiento .er-ataud * { transform: none !important; transition: none !important; }
 body.er-sin-movimiento .er-tapa-giro { transform: rotate(-5deg) !important; }
+
+/* ───────── Diálogo de tirada: mismo forro, mismas cintas ───────── */
+.mr-eat-the-reich.application.er-tirada-dlg { --forro: #ff4f93; --tinta-forro: #17152a; border: 0; border-radius: 0; background: #05060f; box-shadow: 0 0 0 3px #05060f, 0 0 0 5px var(--er-neon), 0 16px 40px rgba(0, 0, 0, .7); }
+.mr-eat-the-reich.application.er-tirada-dlg > .window-header { background: #05060f; border-bottom: 3px solid var(--er-sangre); }
+.mr-eat-the-reich.application.er-tirada-dlg .window-content {
+  padding: 14px 16px 12px; color: var(--tinta-forro); font-size: calc(15px * var(--er-escala)); text-align: center;
+  background: radial-gradient(circle at 50% 0, rgba(255, 255, 255, .28), transparent 60%), repeating-linear-gradient(60deg, transparent 0 46px, rgba(0, 0, 0, .10) 46px 48px), repeating-linear-gradient(-60deg, transparent 0 46px, rgba(0, 0, 0, .10) 46px 48px), radial-gradient(circle, rgba(0, 0, 0, .13) 1px, transparent 1.6px) 0 0 / 7px 7px, var(--forro);
+}
+.er-dt h2.er-nombre-cinta { display: inline-block; border: 0; font-size: 2em; margin: 0 0 8px; }
+.er-dt-atrs { margin: 0 0 8px; }
+.er-dt .er-dt-atr { cursor: pointer; }
+.er-dt .er-dt-atr input { position: absolute; opacity: 0; width: 0; height: 0; }
+.er-dt .er-dt-atr:has(input:checked) { background: var(--er-sangre); border-color: var(--er-sangre); transform: scale(1.1) rotate(-2deg); box-shadow: 4px 4px 0 #05060f; }
+.er-dt .er-dt-atr.libre:has(input:checked) { background: var(--er-cinta); border-color: var(--er-cinta); }
+.er-dt .er-dt-atr:has(input:focus-visible) { outline: 3px solid #fff; outline-offset: 2px; }
+.er-dt-bloque { margin: 8px 0 0; text-align: left; }
+.er-dt-bloque select, .er-dt-extra input { background: rgba(255, 255, 255, .6) !important; color: var(--tinta-forro) !important; border: 0 !important; border-bottom: 2px solid var(--tinta-forro) !important; border-radius: 0 !important; font-family: var(--er-texto); }
+.er-dt-bloque select { width: calc(100% - 96px); vertical-align: middle; }
+.er-dt-extra input { width: 70px; text-align: center; vertical-align: middle; }
+.er-dt-op { display: flex; align-items: center; gap: 10px; margin: 5px 0 0; padding: 4px 8px; cursor: pointer; background: rgba(255, 255, 255, .34); border-left: 5px solid #05060f; }
+.er-dt-op:nth-child(2n) { transform: rotate(.5deg); } .er-dt-op:nth-child(2n+1) { transform: rotate(-.4deg); }
+.er-dt-op:hover { background: rgba(255, 255, 255, .6); }
+.er-dt-op:has(input:checked) { background: #05060f; color: #fff; border-left-color: var(--er-sangre); }
+.er-dt-op:has(input:disabled) { opacity: .45; cursor: default; }
+.er-dt-op b { text-transform: uppercase; letter-spacing: .03em; } .er-dt-op small { display: block; opacity: .85; }
+.er-tirada-dlg .form-footer { margin-top: 12px; }
+.mr-eat-the-reich.er-tirada-dlg .form-footer button[data-action="tirar"] { height: auto; min-height: 54px; font-family: var(--er-rotulo); font-weight: 700; font-size: 28px; letter-spacing: .12em; text-transform: uppercase; color: #fff; background: var(--er-sangre); border: 3px solid #05060f; border-radius: 0; box-shadow: 6px 6px 0 #05060f; transform: rotate(-1deg); cursor: pointer; }
+.mr-eat-the-reich.er-tirada-dlg .form-footer button[data-action="tirar"]:hover { transform: rotate(1deg) scale(1.03); background: #05060f; border-color: var(--er-sangre); }
+
+/* Misión: turno en curso y vampiros fuera de escena */
+.mr-eat-the-reich .er-turno.turno { border-color: var(--er-oro); box-shadow: 0 0 0 3px var(--er-oro), 0 0 18px var(--er-oro); transform: scale(1.18); z-index: 1; }
+.mr-eat-the-reich .er-turno.fuera { opacity: .32; border-style: dotted; box-shadow: none; filter: grayscale(1); }
+.er-turno-rotulo { margin: 8px 0 0; }
+.er-turno-aviso .er-res-n { background: var(--er-noche); border-color: var(--er-sangre); }
+
+/* ───────── Modo oscuro en el ataúd y en el diálogo: primero se lee, después se luce ─────────
+   El forro pasa a noche; el color del personaje queda en cintas, bordes y fichas. Texto crema, marcas en rojo vivo. */
+body.er-oscuro :is(.er-forro, .mr-eat-the-reich.application.er-tirada-dlg .window-content) {
+  --tinta-forro: #f1ead6;
+  background: radial-gradient(circle at 50% 18%, color-mix(in srgb, var(--forro) 26%, transparent), transparent 62%), repeating-linear-gradient(60deg, transparent 0 46px, rgba(255, 255, 255, .05) 46px 48px), repeating-linear-gradient(-60deg, transparent 0 46px, rgba(255, 255, 255, .05) 46px 48px), #10122a;
+}
+body.er-oscuro :is(.er-forro, .er-dt) :is(.er-cinta, .er-nombre-cinta, .er-rango, .er-poder-nombre, .er-avisos-linea span) { background: var(--forro); color: #05060f; }
+body.er-oscuro :is(.er-forro, .er-dt) .er-pod.especial .er-poder-nombre { background: #ff5c7a; color: #05060f; }
+body.er-oscuro :is(.er-forro, .er-dt) .er-avisos-linea span::before { color: #05060f; }
+body.er-oscuro .mr-eat-the-reich :is(.er-forro, .er-dt) .er-chip { background: #05060f; border-color: var(--forro); color: #f1ead6; }
+body.er-oscuro .mr-eat-the-reich :is(.er-forro, .er-dt) .er-chip b { background: var(--forro); color: #05060f; }
+body.er-oscuro .mr-eat-the-reich :is(.er-forro, .er-dt) .er-chip:hover, body.er-oscuro .mr-eat-the-reich .er-dt .er-dt-atr:has(input:checked) { background: var(--forro); color: #05060f; border-color: #f1ead6; }
+body.er-oscuro .mr-eat-the-reich .er-dt .er-dt-atr:has(input:checked) b { background: #05060f; color: #f1ead6; }
+body.er-oscuro .mr-eat-the-reich .er-pestanas a { color: #f1ead6; background: transparent; border-color: #f1ead6; }
+body.er-oscuro .mr-eat-the-reich .er-pestanas a.active { background: var(--forro); color: #05060f; border-color: var(--forro); }
+body.er-oscuro .er-forro :is(input[type="text"], input[type="number"]), body.er-oscuro .er-dt-bloque select, body.er-oscuro .er-dt-extra input { background: rgba(255, 255, 255, .1) !important; color: #f1ead6 !important; border-bottom-color: var(--forro) !important; }
+body.er-oscuro .er-dt-bloque select option { background: #10122a; color: #f1ead6; }
+body.er-oscuro .mr-eat-the-reich .er-chip-mini { color: #f1ead6; background: transparent; border-color: #f1ead6; }
+body.er-oscuro .er-forro .er-sello { color: var(--forro); border-color: var(--forro); }
+body.er-oscuro .er-forro .er-gota { color: #f1ead6; } body.er-oscuro .er-forro .er-gota.llena { color: #fff; }
+body.er-oscuro .er-notas-ataud prose-mirror { background: rgba(255, 255, 255, .08); border-color: var(--forro); color: #f1ead6; }
+body.er-oscuro .er-dt-op { background: rgba(255, 255, 255, .07); border-left-color: var(--forro); }
+body.er-oscuro .er-dt-op:hover { background: rgba(255, 255, 255, .14); }
+body.er-oscuro .er-dt-op:has(input:checked) { background: var(--forro); color: #05060f; border-left-color: #f1ead6; }
+body.er-oscuro .er-grito { background: #ff2d55; color: #05060f; }

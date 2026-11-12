@@ -75,7 +75,7 @@ export class HojaVampiro extends HojaBase {
     };
   }
 
-  static #tirar(ev, b) { return dialogoTirada(this.document, b.dataset.atributo ?? ""); }
+  static #tirar(ev, b) { return dialogoTirada(this.document, b.dataset.atributo ?? "", true); }
   /** Pulsar la gota n deja la Sangre en n; pulsar la última llena, la vacía. */
   static #sangre(ev, b) {
     if (!this.isEditable) return;

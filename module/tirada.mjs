@@ -18,35 +18,51 @@ const caras = roll => roll.dice.flatMap(d => d.results.map(r => r.result));
 
 /* ───────────── Diálogo ───────────── */
 
-export async function dialogoTirada(actor, atributo = "") {
+export async function dialogoTirada(actor, atributo = "", libre = false) {
   if (!actor?.isOwner) return;
   const s = actor.system, m = mision(), bloq = new Set(s.bloqueos);
   if (s.muerto) return ui.notifications.warn(`${actor.name} ha caído. Solo queda su último gesto.`);
-  const casilla = (name, titulo, detalle, off = false) => `<label class="er-casilla-texto"><input type="checkbox" name="${name}" ${off ? "disabled" : ""}><span>${esc(titulo)}<small>${esc(detalle)}</small></span></label>`;
+  const opcion = (name, titulo, detalle, dados, off = false) => `<label class="er-dt-op"><input type="checkbox" name="${name}" data-dados="${dados}" ${off ? "disabled" : ""}><span><b>${esc(titulo)}</b><small>${esc(detalle)}</small></span></label>`;
   const vivas = R.activas(m.amenazas);
   const mayor = R.reservaAtaque(m.amenazas).amenaza;
-  const objetos = s.equipo.map((e, i) => (!e.dado ? "" : casilla(`eq.${i}`, e.nombre, `${e.usos}/${e.max} usos${e.usos === 1 && e.max > 1 ? " · último uso: +1 dado" : ""}${e.bono ? ` · ${mas(e.bono)}${e.req}` : ""}`, e.usos < 1))).join("");
-  const botin = s.botin.nombre ? casilla("botin", `Botín: ${s.botin.nombre}`, `${s.botin.usos}/${s.botin.max} usos${s.botin.bono ? ` · ${mas(s.botin.bono)}${s.botin.req}` : ""}`, s.botin.usos < 1) : "";
-  const poderes = (lista, pre) => lista.map((h, i) => (h.tipo !== "sangre" || !h.activa ? "" : casilla(`${pre}.${i}`, h.nombre, `${h.coste} de Sangre${h.bono ? ` · ${mas(h.bono)}${h.req}` : ""} · ${h.texto}`, bloq.has("gastar") || s.sangre < h.coste))).join("");
-  const avisos = [...bloq].map(b => `<li>${esc(BLOQUEOS[b] ?? b)}</li>`).join("");
-  const content = `<div class="er-dialogo-cuerpo">
-    ${avisos ? `<ul class="er-avisos">${avisos}</ul>` : ""}
-    <label class="er-campo"><span>Atributo</span><select name="atributo">
-      ${Object.entries(ATRIBUTOS).map(([k, n]) => `<option value="${k}" ${k === atributo ? "selected" : ""}>${n} · ${s.efectivos[k]} dados</option>`).join("")}
-      <option value="">Ninguno encaja · 2 dados</option></select></label>
-    <label class="er-campo"><span>Amenaza a la que te enfrentas</span><select name="amenaza">
-      ${vivas.length ? vivas.map(a => `<option value="${a.id}" ${a.id === mayor?.id ? "selected" : ""}>${esc(a.nombre)} · Ataque ${a.ataque}</option>`).join("") : `<option value="">Ninguna en juego: el GM no tira</option>`}</select></label>
-    ${objetos || botin ? `<fieldset><legend>Equipo (+1 dado y gasta un uso)</legend>${objetos}${botin}</fieldset>` : ""}
-    <fieldset><legend>Habilidades (+1 dado, cuestan Sangre: tienes ${s.sangre})</legend>${poderes(s.habilidades, "hab")}${poderes(s.mejoras, "mej") || ""}</fieldset>
-    <label class="er-campo"><span>Dados extra</span><input type="number" name="extra" value="0" min="-5" max="10" step="1"></label>
+  const elegido = atributo in ATRIBUTOS ? atributo : (libre ? "" : Object.keys(ATRIBUTOS)[0]);
+  const fichas = [...Object.entries(ATRIBUTOS).map(([k, n]) => [k, n, s.efectivos[k]]), ["", "Otra cosa", 2]]
+    .map(([k, n, v]) => `<label class="er-chip er-dt-atr${k ? "" : " libre"}"><input type="radio" name="atributo" value="${k}" data-dados="${v}" ${k === elegido ? "checked" : ""}><span>${n}</span><b>${v}</b></label>`).join("");
+  const objetos = s.equipo.map((e, i) => (!e.dado ? "" : opcion(`eq.${i}`, e.nombre, `${e.usos}/${e.max} usos${e.usos === 1 && e.max > 1 ? " · último uso: explota, +1 dado" : ""}${e.bono ? ` · ${mas(e.bono)}${e.req}` : ""}`, R.dadosObjeto(e), e.usos < 1))).join("");
+  const botin = s.botin.nombre ? opcion("botin", `Botín: ${s.botin.nombre}`, `${s.botin.usos}/${s.botin.max} usos${s.botin.bono ? ` · ${mas(s.botin.bono)}${s.botin.req}` : ""}`, R.dadosObjeto(s.botin), s.botin.usos < 1) : "";
+  const poderes = (lista, pre) => lista.map((h, i) => (h.tipo !== "sangre" || !h.activa ? "" : opcion(`${pre}.${i}`, h.nombre, `${h.coste} de Sangre${h.bono ? ` · ${mas(h.bono)}${h.req}` : ""}`, 1, bloq.has("gastar") || s.sangre < h.coste))).join("");
+  const habs = poderes(s.habilidades, "hab") + poderes(s.mejoras, "mej");
+  const avisos = [...bloq].map(b => `<span>${esc(BLOQUEOS[b] ?? b)}</span>`).join("");
+  const content = `<div class="er-dt">
+    <h2 class="er-nombre-cinta">¿Qué haces?</h2>
+    ${avisos ? `<p class="er-avisos-linea">${avisos}</p>` : ""}
+    <div class="er-dt-atrs" role="radiogroup" aria-label="Atributo">${fichas}</div>
+    <div class="er-dt-bloque"><span class="er-cinta">Contra</span>
+      <select name="amenaza" aria-label="Amenaza a la que te enfrentas">${vivas.length ? vivas.map(a => `<option value="${a.id}" ${a.id === mayor?.id ? "selected" : ""}>${esc(a.nombre)} · Ataque ${a.ataque}</option>`).join("") : `<option value="">Nadie os dispara: el GM no tira</option>`}</select></div>
+    ${objetos || botin ? `<div class="er-dt-bloque"><span class="er-cinta">Equipo</span> <small class="er-susurro">+1 dado, gasta un uso</small>${objetos}${botin}</div>` : ""}
+    ${habs ? `<div class="er-dt-bloque"><span class="er-cinta">Habilidades</span> <small class="er-susurro">+1 dado · tienes ${s.sangre} de Sangre</small>${habs}</div>` : ""}
+    <div class="er-dt-bloque er-dt-extra"><span class="er-cinta">Dados extra</span> <input type="number" name="extra" value="0" min="-5" max="10" step="1" aria-label="Dados extra"></div>
   </div>`;
   const datos = await DialogV2.wait({
-    window: { title: `${actor.name} · preparar la tirada`, icon: "fa-solid fa-dice" }, classes: [ID, "er-dialogo"], position: { width: 460 }, content, rejectClose: false,
-    buttons: [{ action: "tirar", label: "Tirar", icon: "fa-solid fa-dice", default: true, callback: (ev, boton) => new foundry.applications.ux.FormDataExtended(boton.form).object }]
+    window: { title: `${actor.name} · preparar la tirada`, icon: "fa-solid fa-dice" }, classes: [ID, "er-dialogo", "er-tirada-dlg"], position: { width: 500 }, content, rejectClose: false,
+    buttons: [{ action: "tirar", label: "Tirar", icon: "fa-solid fa-dice", default: true, callback: (ev, boton) => new foundry.applications.ux.FormDataExtended(boton.form).object }],
+    // El botón dice cuántos dados vas a tirar, y la ventana lleva el color del forro del personaje.
+    render: (ev, dialogo) => {
+      const el = dialogo?.element ?? ev?.target?.element ?? dialogo;
+      if (!(el instanceof HTMLElement)) return;
+      el.style.setProperty("--forro", actor.getFlag(ID, "forro") || "#ff4f93");
+      const contar = () => {
+        let n = Number(el.querySelector('input[name="atributo"]:checked')?.dataset.dados ?? 2) + (Number(el.querySelector('input[name="extra"]')?.value) || 0);
+        for (const c of el.querySelectorAll(".er-dt-op input:checked")) n += Number(c.dataset.dados) || 0;
+        const rotulo = el.querySelector('button[data-action="tirar"] span') ?? el.querySelector('button[data-action="tirar"]');
+        if (rotulo) rotulo.textContent = `Tirar ${Math.max(1, n)}d6`;
+      };
+      el.addEventListener("change", contar); el.addEventListener("input", contar); contar();
+    }
   });
   if (!datos || typeof datos !== "object") return;
   const marcados = pre => Object.entries(datos).filter(([k, v]) => v && k.startsWith(`${pre}.`)).map(([k]) => Number(k.split(".")[1]));
-  return tirar(actor, { atributo: datos.atributo, amenaza: datos.amenaza, equipo: marcados("eq"), botin: Boolean(datos.botin), habilidades: marcados("hab"), mejoras: marcados("mej"), extra: Number(datos.extra) || 0 });
+  return tirar(actor, { atributo: datos.atributo ?? "", amenaza: datos.amenaza, equipo: marcados("eq"), botin: Boolean(datos.botin), habilidades: marcados("hab"), mejoras: marcados("mej"), extra: Number(datos.extra) || 0 });
 }
 
 /* ───────────── Tirar ───────────── */
@@ -291,6 +307,7 @@ export function escucharTiradas() {
     }
     await cambiarMision(m => {
       if (!t.ultimo && !m.actuaron.includes(actor.id)) m.actuaron.push(actor.id);
+      if (m.turno === actor.id) m.turno = "";
       const a = m.amenazas.find(x => x.id === t.gm.amenaza);
       if (a && a.valor > 0 && t.gm.caras.length && t.gm.exitos === 0 && a.crece) { a.ataque += 1; r.sube = `${a.nombre} no ha acertado ni una: su Ataque sube a ${a.ataque}.`; }
       if (r.lesion?.derribado && !r.lesion.muerto) m.objetivos.push({ id: nuevoId(), nombre: `Rescatar a ${actor.name}`, valor: 3, max: 3, desafio: 0, secundario: true, premio: `${actor.name} vuelve al combate.`, rescate: actor.id });

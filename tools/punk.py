@@ -35,12 +35,12 @@ CSS = f"""/* GENERADO por tools/punk.py — no editar a mano. Marcas punk: casil
 :root {{
 {juego(TINTA, ROJO)}}}
 /* Dentro del ataúd (forro de color) la sangre es seca, más oscura, para que se lea sobre rosa o naranja. */
-.er-forro {{
+:is(.er-forro, .er-dt) {{
 {juego(TINTA, SECA)}}}
 body.er-oscuro {{
 {juego(CREMA, "#ff2d55", "rgba(241,234,214,.25)")}}}
-body.er-oscuro .er-forro {{
-{juego(TINTA, SECA)}}}
+body.er-oscuro :is(.er-forro, .er-dt) {{
+{juego(CREMA, "#ff2d55", "rgba(241,234,214,.25)")}}}
 
 /* Casillas de verificación: fuera la cajita perfecta de Foundry */
 .mr-eat-the-reich input[type="checkbox"] {{ appearance: none; -webkit-appearance: none; width: 28px; height: 28px; margin: -4px 0; padding: 0; border: 0; border-radius: 0; flex: none; cursor: pointer;
@@ -81,6 +81,7 @@ body.er-oscuro .er-forro {{
 
 body.er-sin-movimiento .mr-eat-the-reich :is(.er-uso, .er-gota, .er-marca, input[type="checkbox"]) {{ transform: none; }}
 """
+CSS += f"""\n/* Opción marcada del diálogo de tirada: sobre negro, casilla crema y X roja viva (y al revés en modo oscuro) */\n.er-dt-op:has(input:checked) {{\n{juego(CREMA, "#ff2d55")}}}\nbody.er-oscuro .er-dt-op:has(input:checked) {{\n{juego(TINTA, SECA)}}}\n"""
 destino = os.path.join(os.path.dirname(__file__), "..", "styles", "punk.css")
 open(destino, "w").write(CSS)
 print("punk.css", len(CSS) // 1024, "KB")

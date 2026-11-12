@@ -1,5 +1,11 @@
 # Cambios
 
+## 0.3.0 · 12-11-2026
+
+- **Diálogo de tirada rediseñado** al estilo de la hoja: forro del color del personaje, atributos como fichas, equipo y habilidades como tiras que se tachan, y un botón grande que dice cuántos dados vas a tirar.
+- **Modo oscuro también en la hoja-ataúd y en el diálogo**: el forro pasa a noche, el color del personaje queda en cintas y bordes, texto crema y marcas en rojo vivo.
+- **Panel de misión**: dar el turno a un vampiro lo anuncia en el chat (quién le dispara y con cuántos dados, qué hay en juego y quién va después); retrato resaltado de quien actúa; clic derecho para sacar o meter vampiros en la escena; botón «Tirar» para cada jugador (y para quien dirige, con el vampiro en turno). Al terminar el turno se cierra solo.
+
 ## 0.2.4 · 12-11-2026 (para enseñar a la editorial)
 
 - La prioridad de MR- Dirección sobre la música vale también para mundos importados con versiones anteriores, sin reimportar.

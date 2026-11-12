@@ -120,5 +120,9 @@ for (const t of tarjetas) { const d = document.createElement("div"); d.innerHTML
 const menu = document.createElement("div"); menu.className = "mr-eat-the-reich er-menu";
 menu.innerHTML = `<p>Gastar este crítico (2 éxitos) en…</p><button><i class="fa-solid fa-bullseye"></i> Objetivo: Cruzar el museo (5, Desafío 1)</button><button><i class="fa-solid fa-skull"></i> Atacar: Einherjar (4)</button><button><i class="fa-solid fa-shield"></i> Defenderse (quedan 2 ataques)</button><button><i class="fa-solid fa-star"></i> ESPECIAL · Tiro certero</button>`;
 chat.append(menu);
+// Para capturas: ?solo=ataud|clasica|mision|chat deja solo esa pieza; ?fondo=<escena> pone un decorado detrás.
+const P = new URLSearchParams(location.search), SOLO = { ataud: ".er-hoja-ataud", clasica: ".er-hoja-vampiro:not(.er-hoja-ataud)", mision: ".er-mision, .chat", chat: ".chat" }[P.get("solo")];
+if (SOLO) { let visto = false; for (const el of [...document.body.children]) { if (!el.matches(".application, .chat")) continue; if (!el.matches(SOLO) || (P.get("solo") === "clasica" && visto)) el.remove(); else visto = true; } document.body.style.justifyContent = "center"; }
+if (P.get("fondo")) document.body.style.cssText += `;background:#0c1026 url(${RUTA}/assets/escenas/${P.get("fondo")}.webp) center/cover fixed !important;min-height:100vh`;
 document.title = "Arnés listo";
 </script>

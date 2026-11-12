@@ -2,19 +2,56 @@
   "id": "mr-eat-the-reich",
   "title": "MR- Eat the Reich",
   "description": "Sistema no oficial, de uso privado, para jugar a EAT THE REICH (Grant Howitt y Will Kirkby; Rowan, Rook and Decard) en Foundry VTT: hoja de vampiro, amenazas, Panel de misión con Objetivos, Amenazas y refuerzos, y la tirada del Havoc Engine en una sola tarjeta (reparto de éxitos dado a dado, dados de bonificación, flashback y lesiones). No está afiliado a Rowan, Rook and Decard ni a Will Kirkby.",
-  "version": "0.2.0",
-  "compatibility": { "minimum": "13", "verified": "13.351", "maximum": "14" },
+  "version": "0.2.1",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13.351",
+    "maximum": "14"
+  },
   "authors": [
-    { "name": "Manu Romera", "url": "https://github.com/ManuRomera", "flags": { "role": "Diseño e implementación para Foundry" } },
-    { "name": "Anthropic Claude", "flags": { "role": "Asistencia de desarrollo" } }
+    {
+      "name": "Manu Romera",
+      "url": "https://github.com/ManuRomera",
+      "flags": {
+        "role": "Diseño e implementación para Foundry"
+      }
+    },
+    {
+      "name": "Anthropic Claude",
+      "flags": {
+        "role": "Asistencia de desarrollo"
+      }
+    }
   ],
-  "esmodules": ["mr-eat-the-reich.mjs", "module/mr-credits.mjs"],
-  "styles": ["styles/mr-eat-the-reich.css", "styles/punk.css", "styles/ataud.css"],
-  "languages": [{ "lang": "es", "name": "Español", "path": "lang/es.json" }],
+  "esmodules": [
+    "mr-eat-the-reich.mjs",
+    "module/mr-credits.mjs"
+  ],
+  "styles": [
+    "styles/mr-eat-the-reich.css",
+    "styles/punk.css",
+    "styles/ataud.css"
+  ],
+  "languages": [
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json"
+    }
+  ],
   "documentTypes": {
     "Actor": {
-      "vampiro": { "htmlFields": ["notas"] },
-      "amenaza": { "htmlFields": ["rasgos", "notas"] }
+      "vampiro": {
+        "htmlFields": [
+          "notas"
+        ]
+      },
+      "amenaza": {
+        "htmlFields": [
+          "rasgos",
+          "notas"
+        ]
+      }
     }
   },
   "packs": [
@@ -24,14 +61,55 @@
       "path": "packs/aventura",
       "type": "Adventure",
       "system": "mr-eat-the-reich",
-      "ownership": { "PLAYER": "NONE", "ASSISTANT": "OWNER" }
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
     }
   ],
   "socket": true,
-  "grid": { "distance": 1, "units": "" },
+  "grid": {
+    "distance": 1,
+    "units": ""
+  },
   "primaryTokenAttribute": "",
-  "background": "systems/mr-eat-the-reich/assets/libro/portada.webp",
-  "relationships": { "recommends": [{ "id": "mr-direccion", "type": "module", "manifest": "https://github.com/ManuRomera/mr-direccion/releases/latest/download/module.json", "reason": "Barra de dirección: escenas, música con fundido cruzado, motivos, efectos y reparto de enemigos" }] },
-  "flags": { "hotReload": { "extensions": ["css", "hbs", "json"], "paths": ["styles", "templates", "lang"] } },
-  "license": "NOTICE.md"
+  "background": "systems/mr-eat-the-reich/assets/marca/portada.webp",
+  "relationships": {
+    "recommends": [
+      {
+        "id": "mr-direccion",
+        "type": "module",
+        "manifest": "https://github.com/ManuRomera/mr-direccion/releases/latest/download/module.json",
+        "reason": "Barra de dirección: escenas, música con fundido cruzado, motivos, efectos y reparto de enemigos"
+      }
+    ]
+  },
+  "flags": {
+    "hotReload": {
+      "extensions": [
+        "css",
+        "hbs",
+        "json"
+      ],
+      "paths": [
+        "styles",
+        "templates",
+        "lang"
+      ]
+    }
+  },
+  "license": "NOTICE.md",
+  "media": [
+    {
+      "type": "setup",
+      "url": "systems/mr-eat-the-reich/assets/marca/portada.webp",
+      "thumbnail": "systems/mr-eat-the-reich/assets/marca/portada.webp"
+    }
+  ],
+  "url": "https://github.com/ManuRomera/mr-eat-the-reich",
+  "bugs": "https://github.com/ManuRomera/mr-eat-the-reich/issues",
+  "manifest": "https://github.com/ManuRomera/mr-eat-the-reich/releases/latest/download/system.json",
+  "download": "https://github.com/ManuRomera/mr-eat-the-reich/releases/latest/download/mr-eat-the-reich.zip",
+  "readme": "https://github.com/ManuRomera/mr-eat-the-reich#readme",
+  "changelog": "https://github.com/ManuRomera/mr-eat-the-reich/blob/main/CHANGELOG.md"
 }

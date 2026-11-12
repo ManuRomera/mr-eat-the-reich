@@ -1,0 +1,40 @@
+name: Publicar
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: write
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - name: La etiqueta coincide con el manifiesto
+        run: test "v$(node -p "require('./system.json').version")" = "$GITHUB_REF_NAME"
+      - run: npm test
+      - name: Compilar el compendio
+        run: node scripts/gen-aventura.mjs && node scripts/build.mjs
+      - name: Empaquetar
+        run: |
+          node scripts/zip.mjs
+          cp system.json dist/system.json
+          # Sin el compendio no hay misión; sin decorados ni música, las escenas salen vacías y mudas.
+          unzip -l dist/mr-eat-the-reich.zip | grep -q "packs/aventura"
+          unzip -l dist/mr-eat-the-reich.zip | grep -q "assets/escenas/sirena.webp"
+          unzip -l dist/mr-eat-the-reich.zip | grep -q "assets/audio/musica/accion.ogg"
+          unzip -l dist/mr-eat-the-reich.zip | grep -q "content/direccion-es.json"
+          unzip -l dist/mr-eat-the-reich.zip | tail -1
+      - name: Notas de la versión
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          awk -v v="## $version" 'index($0, v)==1{p=1;next} /^## /{p=0} p' CHANGELOG.md > dist/notas.md
+          test -s dist/notas.md || echo "Versión $version." > dist/notas.md
+      - name: Publicar release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/mr-eat-the-reich.zip dist/system.json --title "MR- Eat the Reich $GITHUB_REF_NAME" --notes-file dist/notas.md

@@ -1,5 +1,10 @@
 # Cambios
 
+## 0.2.1 · 12-11-2026 (uso privado)
+
+- Repositorio al estilo de la casa: portada con arte propio, capturas, release con zip y manifiesto, y publicación por etiqueta.
+- Portada del sistema propia (ya no depende del PDF).
+
 ## 0.2.0 · 12-11-2026 (uso privado)
 
 - **Hoja-ataúd**: la ficha de vampiro es una ventana con forma de ataúd abierto (tapa con el personaje, caja con la hoja; texto ceñido a la forma). La ficha rectangular queda para editar.

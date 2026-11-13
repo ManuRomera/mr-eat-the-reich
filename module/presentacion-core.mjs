@@ -7,10 +7,12 @@ export const PERSONAJES = Object.freeze([
   { id: "astrid", nombre: "Astrid", titulo: "La depredadora ancestral", color: "#bed879" },
   { id: "flint", nombre: "Flint", titulo: "Lo que acecha bajo el mundo", color: "#ba64bf" }
 ]);
-export const ESTADO_INICIAL = Object.freeze({ escena: "", anterior: "", personaje: "", activa: false, revision: 0 });
+export const TIEMPOS = Object.freeze({ entrada: 1500, apertura: 2800, cierre: 2600, fundido: 1100 });
+export const ESTADO_INICIAL = Object.freeze({ fase: "sala", instante: 0, escena: "", anterior: "", personaje: "", activa: false, revision: 0 });
 export function estadoSeguro(raw = {}) {
   raw ??= {};
-  return { escena: typeof raw.escena === "string" ? raw.escena : "",
+  return { fase: ["sala", "entrada", "abriendo", "abierto", "cerrando", "salida"].includes(raw.fase) ? raw.fase : (raw.personaje ? "abierto" : "sala"),
+    instante: Number.isFinite(raw.instante) ? raw.instante : 0, escena: typeof raw.escena === "string" ? raw.escena : "",
     anterior: typeof raw.anterior === "string" ? raw.anterior : "",
     personaje: PERSONAJES.some(p => p.id === raw.personaje) ? raw.personaje : "",
     activa: raw.activa === true, revision: Number.isSafeInteger(raw.revision) && raw.revision >= 0 ? raw.revision : 0 };
@@ -36,6 +38,6 @@ export function reparto(actors, users, scope = "mr-eat-the-reich") {
 export const claveSonido = estado => estadoSeguro(estado).personaje || "sala";
 export function bloquearMusica(escenaActiva, playlist, cambios, scope = "mr-eat-the-reich") {
   if (!escenaActiva?.flags?.[scope]?.presentacion || cambios?.playing !== true) return false;
-  if (playlist?.flags?.[scope]?.clave === "presentacion") return false;
+  if (["presentacion", "sfx"].includes(playlist?.flags?.[scope]?.clave) || playlist?.channel === "interface") return false;
   return true;
 }

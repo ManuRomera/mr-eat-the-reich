@@ -1,8 +1,8 @@
-# Actualización 0.5.0
+# Actualización 0.6.0
 
 En la pantalla inicial de Foundry, entra en **Sistemas de juego → MR- Eat the Reich → Actualizar**. El manifiesto estable enlaza con la última versión publicada y su ZIP. Después abre el mundo y recarga los clientes.
 
-Abre **Configuración → Eat the Reich → Presentación de jugadores**. Encontrarás instrucciones en **docs/PRESENTACION.md** y la selección musical por acontecimiento en **docs/GUIA_MUSICAL.md**. No es necesario reimportar la aventura.
+Los mundos nuevos comienzan en la sala de despliegue. En un mundo ya iniciado, abre **Configuración → Eat the Reich → Presentación de jugadores**. Encontrarás instrucciones en **docs/PRESENTACION.md** y la selección musical por acontecimiento en **docs/GUIA_MUSICAL.md**. No es necesario reimportar la aventura.
 
 <p align="center">
   <img src="docs/img/banner.webp" alt="MR- Eat the Reich · sistema no oficial de uso privado para Foundry VTT" width="100%">
@@ -10,7 +10,7 @@ Abre **Configuración → Eat the Reich → Presentación de jugadores**. Encont
 
 <p align="center">
   <a href="https://github.com/ManuRomera"><img alt="Manu Romera · Digital RPG Design" src="https://raw.githubusercontent.com/ManuRomera/ManuRomera/main/badges/mr-firma.svg" height="28"></a>
-  <a href="https://github.com/ManuRomera/mr-eat-the-reich/releases/latest"><img alt="Versión 0.5.0" src="https://img.shields.io/badge/versi%C3%B3n-0.5.0-d81557?style=for-the-badge&labelColor=10132b"></a>
+  <a href="https://github.com/ManuRomera/mr-eat-the-reich/releases/latest"><img alt="Versión 0.6.0" src="https://img.shields.io/badge/versi%C3%B3n-0.6.0-d81557?style=for-the-badge&labelColor=10132b"></a>
   <img alt="Foundry VTT 13 y 14" src="https://img.shields.io/badge/Foundry_VTT-13_%E2%80%93_14-ff3d8b?style=for-the-badge&labelColor=10132b">
   <img alt="Repositorio privado, uso personal" src="https://img.shields.io/badge/uso-privado-1f6f78?style=for-the-badge&labelColor=10132b">
   <img alt="En español" src="https://img.shields.io/badge/idioma-espa%C3%B1ol-f2c230?style=for-the-badge&labelColor=10132b">
@@ -65,7 +65,7 @@ No se coloca ningún ataúd automáticamente en el mapa ni en los decorados. El 
 
 ## Música de escena y temas de los protagonistas
 
-La banda sonora incluye **30 grabaciones**: temas de las 20 localizaciones, alternativas para siete cambios de situación, una sala de presentación y apoyos para maquinaria de guerra y último gesto. Cada selección responde a los acontecimientos del manual: persecución, funeral, refugio de la Resistencia, transformación demoníaca o asalto. La ópera emplea un fragmento vocal de Wagner. Los nueve efectos originales se conservan.
+La banda sonora incluye **30 grabaciones**: temas de las 20 localizaciones, alternativas para siete cambios de situación, una sala de presentación y apoyos para maquinaria de guerra y último gesto. Cada selección responde a los acontecimientos del manual: persecución, funeral, refugio de la Resistencia, transformación demoníaca o asalto. La ópera emplea un fragmento vocal de Wagner. Los efectos anteriores se sustituyen por 29 efectos de foley y armas; véase [docs/EFECTOS.md](docs/EFECTOS.md).
 
 Las fuentes, autores y licencias CC BY 4.0 y CC BY-SA 3.0 se detallan en [assets/audio/CREDITOS.md](assets/audio/CREDITOS.md) y en **Configurar ajustes → MR- Eat the Reich → Créditos**. El audio está incluido y no necesita conexión durante la partida. Se ha ajustado su sonoridad y suavizado el reinicio con un fundido; no se garantiza un bucle musical perfecto.
 
@@ -84,7 +84,7 @@ Pulsa un nombre para activar su tema. Vuelve a pulsarlo para recuperar el fondo 
 
 ## Actualizar la instalación existente
 
-Cierra el mundo y, en la pantalla inicial de Foundry, abre **Sistemas de juego → MR- Eat the Reich → Actualizar**. La versión debe cambiar a **0.5.0**. Abre el mundo y recarga los navegadores; la presentación, la música y el atrezo se actualizan sin reimportar la aventura. Se conservan personajes, diarios y posiciones de tokens, además de listas musicales externas y fondos personalizados fuera de los recursos del sistema.
+Cierra el mundo y, en la pantalla inicial de Foundry, abre **Sistemas de juego → MR- Eat the Reich → Actualizar**. La versión debe cambiar a **0.6.0**. Abre el mundo y recarga los navegadores; la presentación, la música y el atrezo se actualizan sin reimportar la aventura. Se conservan personajes, diarios y posiciones de tokens, además de listas musicales externas y fondos personalizados fuera de los recursos del sistema.
 
 Manifiesto estable para instalar o vincular el sistema:
 

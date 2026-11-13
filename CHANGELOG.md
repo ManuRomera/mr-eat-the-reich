@@ -1,5 +1,14 @@
 # Cambios
 
+## 0.6.0 · 13-11-2026
+
+- Restaurados los motivos generales y los seis temas de personaje en todas las escenas. Reparación de catálogos guardados, sin sobrescribir recursos externos del director.
+- Sustituidos los nueve efectos anteriores y ampliados a 29: disparos del equipo de los seis vampiros, explosivos, armas blancas, murciélago, enjambre y compuertas; fuentes CC0 documentadas.
+- Presentación con ataúd metálico frontal, retrato recortado dentro de su silueta y tapa visible al quedarse abierta. Apertura de 2,8 s; cierre de 2,6 s antes del fundido de 1,1 s.
+- Panel y botón de presentación con papel, tipografía y cintas del sistema.
+- Los mundos nuevos entran en la sala de despliegue tras importar la aventura por primera vez. Se conserva la escena actual de los mundos ya iniciados.
+- Pruebas de recuperación de motivos, actualización de efectos, secuencia de fases, primera importación y verificación visual de la presentación en navegador.
+
 ## 0.5.0 · Presentación del escuadrón y partitura por escenas
 
 - Sala oscura con cinco ataúdes completos en una máquina de lanzamiento.

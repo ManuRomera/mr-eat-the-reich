@@ -4,8 +4,8 @@
 2. Asigna cada vampiro a su jugador mediante **Configurar propiedad**, o elige su personaje en la configuración del usuario.
 3. En **Configuración → Eat the Reich → Presentación de jugadores**, o en el icono de identificación de los controles de escena, abre el panel.
 4. Pulsa **Entrar en la sala**. Todos verán cinco ataúdes metálicos enteros en una máquina de lanzamiento oscura y sonará The Complex.
-5. Pulsa el nombre del jugador: aparece en primer plano la ilustración original del personaje dentro de su ataúd, con apertura animada y su canción.
-6. **Siguiente** desvanece la imagen y recupera la sala y su música. Selecciona al siguiente jugador cuando estés preparado.
+5. Pulsa el nombre del jugador: aparece en primer plano la ilustración original recortada dentro del ataúd metálico, cerrado en primer plano. La tapa tarda 2,8 segundos en abrirse y permanece visible junto al personaje. Su canción acompaña la presentación.
+6. **Siguiente** y **Entrar en la sala** cierran primero la compuerta durante 2,6 segundos y después desvanecen el conjunto durante 1,1 segundos, recuperando la sala y su música. Selecciona al siguiente jugador cuando estés preparado.
 7. **Salir de la presentación** detiene esta lista y activa la escena que había antes, o la primera escena disponible si se entró directamente desde la navegación. También puedes activar otra escena con normalidad.
 
 La sala muestra cinco ataúdes, como se pidió. El panel ofrece los seis vampiros del manual para que puedas utilizar cualquier reparto de cinco; quien no tenga propietario aparece con el nombre de su personaje. Los nombres de jugadores no se incrustan en las imágenes: se leen de los usuarios y pueden cambiarse sin regenerar arte.
@@ -29,3 +29,5 @@ await game.mrEatTheReich.terminarPresentacion();
 Son acciones independientes: usa solo la llamada que necesites en cada macro.
 
 Las seis imágenes de primer plano son las originales de Will Kirkby ya incluidas en tu sistema. No se redibujan ni se cambian sus rasgos. La sala de lanzamiento es arte nuevo. Este paquete mantiene el uso privado y los avisos del sistema.
+
+Los mundos nuevos activan esta escena tras la primera importación automática. Una actualización no cambia por sorpresa la escena activa de un mundo que ya se estaba jugando.

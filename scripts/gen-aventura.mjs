@@ -140,7 +140,7 @@ const sonido = (lista, clave, nombre, ruta, extra = {}) => ({ _id: uid(`son-${li
 const playlists = [
   { _id: uid("lista-musica"), name: "Eat the Reich · Música de escena", description: "Partitura por situaciones del manual. Créditos y licencias en assets/audio/CREDITOS.md.", channel: "music", mode: -1, playing: false, fade: 2500, folder: null, sorting: "a", sort: 0,
     sounds: Object.entries(PISTAS).filter(([k]) => hay(k)).map(([k, [titulo, obra]], i) => sonido("musica", k, `${titulo} — ${obra}`, audioDe(k), { sort: i * 100, repeat: !AUDIO[k].personaje })), ownership: { default: 0 }, flags: { [ID]: { clave: "musica" } }, _stats: STATS },
-  { _id: uid("lista-sfx"), name: "Eat the Reich · Efectos", description: "Sintetizados para el sistema.", channel: "interface", mode: -1, playing: false, folder: null, sorting: "a", sort: 1,
+  { _id: uid("lista-sfx"), name: "Eat the Reich · Efectos", description: "Foley y disparos CC0. Fuentes en assets/audio/CREDITOS.md.", channel: "interface", mode: -1, playing: false, folder: null, sorting: "a", sort: 1,
     sounds: Object.entries(EFECTOS).map(([k, [nombre]], i) => sonido("sfx", k, nombre, `${R}/audio/sfx/${k}.ogg`, { sort: i * 100, volume: 0.7 })), ownership: { default: 0 }, flags: { [ID]: { clave: "sfx" } }, _stats: STATS }
 ];
 const musicaDe = clave => ({ playlist: playlists[0]._id, playlistSound: uid(`son-musica-${pista(MUSICA_LUGAR[clave])}`) });
@@ -175,7 +175,7 @@ const scenes = [
 /* ───────── Paquete para MR- Dirección ───────── */
 // El JSON versionado conserva la selección contextual de motivos de cada localización.
 const curado = JSON.parse(await fs.readFile("content/direccion-es.json", "utf8"));
-const src = (carpeta, k) => ({ src: carpeta === "musica" ? audioDe(k) : `${R}/audio/${carpeta}/${k}.ogg` });
+const src = (carpeta, k) => ({ src: carpeta === "musica" ? audioDe(k) : `${R}/audio/${carpeta}/${k}.ogg?v=${manifiesto.version}` });
 const direccion = {
   schema: 1, id: ID, title: "Eat the Reich · La misión", version: manifiesto.version, author: "Manu Romera", license: "Uso privado",
   settings: {

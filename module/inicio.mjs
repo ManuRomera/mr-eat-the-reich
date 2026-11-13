@@ -1,6 +1,7 @@
 /** Instalación del contenido: en un mundo vacío, el GM activo importa la misión la primera vez; después, desde Configuración. */
 import { ID } from "./mesa.mjs";
 import { DialogV2 } from "./compat.mjs";
+import { iniciarPresentacion, abrirPresentacion } from "./presentacion.mjs";
 import { actualizarContenido } from "./contenido.mjs";
 
 const PACK = `${ID}.aventura`;
@@ -26,7 +27,8 @@ export async function importarAventura({ confirmar = false } = {}) {
   await (await pack.getDocuments())[0].import({ dialog: false });
   await actualizarContenido();
   await game.settings.set(ID, "importada", true);
-  await game.scenes.find(s => s.getFlag(ID, "escena") === "paris")?.activate();
+  await iniciarPresentacion();
+  abrirPresentacion();
   return true;
 }
 

@@ -1,11 +1,13 @@
 /** Comprobación de migraciones sin servidor: node tests/contenido.mjs */
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
-import { AUDIO, MUSICA_LUGAR, TEMAS_PERSONAJE, MOTIVOS_LUGAR, VERSION_CONTENIDO } from "../module/banda-sonora-datos.mjs";
+import { AUDIO, MUSICA_LUGAR, TEMAS_PERSONAJE, MOTIVOS, MOTIVOS_LUGAR, VERSION_CONTENIDO } from "../module/banda-sonora-datos.mjs";
+import { EFECTOS } from "../module/efectos-datos.mjs";
+import { repararCatalogo } from "../module/direccion-contenido.mjs";
 const ID = "mr-eat-the-reich", RUTA = `systems/${ID}`;
 const code = (await fs.readFile(new URL("../module/contenido.mjs", import.meta.url), "utf8")).replace(/^import .*;\n/gm, "");
 const mod = await import(`data:text/javascript;base64,${Buffer.from(
-  `const ID=${JSON.stringify(ID)}, RUTA=${JSON.stringify(RUTA)}, AUDIO=${JSON.stringify(AUDIO)}, MUSICA_LUGAR=${JSON.stringify(MUSICA_LUGAR)}, TEMAS_PERSONAJE=${JSON.stringify(TEMAS_PERSONAJE)}, MOTIVOS_LUGAR=${JSON.stringify(MOTIVOS_LUGAR)}, asegurarPresentacion=async()=>{} , VERSION_CONTENIDO=${JSON.stringify(VERSION_CONTENIDO)};\n${code}`
+  `const repararCatalogo=${repararCatalogo.toString()}; const EFECTOS=${JSON.stringify(EFECTOS)}, MOTIVOS=${JSON.stringify(MOTIVOS)}; const ID=${JSON.stringify(ID)}, RUTA=${JSON.stringify(RUTA)}, AUDIO=${JSON.stringify(AUDIO)}, MUSICA_LUGAR=${JSON.stringify(MUSICA_LUGAR)}, TEMAS_PERSONAJE=${JSON.stringify(TEMAS_PERSONAJE)}, MOTIVOS_LUGAR=${JSON.stringify(MOTIVOS_LUGAR)}, asegurarPresentacion=async()=>{} , VERSION_CONTENIDO=${JSON.stringify(VERSION_CONTENIDO)};\n${code}`
 ).toString("base64")}`);
 let writes = 0, nextId = 0, tokenCount = 0;
 const settings = new Map([["mr-direccion.global", { motifs: [
@@ -41,9 +43,13 @@ const list = { id: "list", sounds: Object.keys(AUDIO).slice(0, 18).map(key => ({
   async createEmbeddedDocuments(type, docs) { for (const d of docs) { writes++; this.sounds.push({ ...d, id: `s${++nextId}`, getFlag: () => d.flags[ID].clave }); } },
   async stopAll() { for (const s of this.sounds) s.playing = false; }
 };
+const fxList = { ...list, id: "fx", getFlag: () => "sfx", sounds: [
+ {id:"old-fx",name:"Old",path:`${RUTA}/assets/audio/sfx/sello.ogg`,repeat:true,getFlag:()=>"sello"},
+ {id:"custom-fx",name:"User",path:"worlds/custom/effect.wav",repeat:false,getFlag:()=>"critico"}
+] };
 globalThis.foundry = { utils: { deepClone: structuredClone } };
 globalThis.game = { user: { isGM: true }, users: { activeGM: { isSelf: true } },
-  i18n: { localize: k => k }, actors: [], folders: [], scenes, playlists: [list],
+  i18n: { localize: k => k }, actors: [], folders: [], scenes, playlists: [list,fxList],
   modules: new Map([["mr-direccion", { active: true, api: {} }]]),
   settings: { get: (s, k) => settings.get(`${s}.${k}`), set: async (s, k, v) => { writes++; settings.set(`${s}.${k}`, v); } }
 };
@@ -54,6 +60,10 @@ globalThis.ui = { notifications: { warn() {}, error() {} } };
 
 await Promise.all([mod.actualizarContenido(), mod.actualizarContenido()]);
 assert.equal(list.sounds.length, 36);
+assert.equal(fxList.sounds.length,Object.keys(EFECTOS).length);
+assert(fxList.sounds[0].path.endsWith(`?v=${VERSION_CONTENIDO}`));assert.equal(fxList.sounds[0].repeat,false);
+assert.equal(fxList.sounds[1].path,"worlds/custom/effect.wav");
+assert.equal(settings.get("mr-direccion.global").effects.length,Object.keys(EFECTOS).length);
 assert.equal(game.actors.length, 1);
 assert.equal(game.actors[0].type, "objeto");
 assert.equal(game.actors[0].prototypeToken.sight.enabled, false);

@@ -2,7 +2,7 @@
   "id": "mr-eat-the-reich",
   "title": "MR- Eat the Reich",
   "description": "Sistema no oficial, de uso privado, para jugar a EAT THE REICH (Grant Howitt y Will Kirkby; Rowan, Rook and Decard) en Foundry VTT: hoja de vampiro, amenazas, Panel de misión con Objetivos, Amenazas y refuerzos, y la tirada del Havoc Engine en una sola tarjeta (reparto de éxitos dado a dado, dados de bonificación, flashback y lesiones). No está afiliado a Rowan, Rook and Decard ni a Will Kirkby.",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "compatibility": {
     "minimum": "13",
     "verified": "13.351",
@@ -122,7 +122,7 @@
   "url": "https://github.com/ManuRomera/mr-eat-the-reich",
   "bugs": "https://github.com/ManuRomera/mr-eat-the-reich/issues",
   "manifest": "https://github.com/ManuRomera/mr-eat-the-reich/releases/latest/download/system.json",
-  "download": "https://github.com/ManuRomera/mr-eat-the-reich/releases/download/v0.5.0/mr-eat-the-reich.zip",
+  "download": "https://github.com/ManuRomera/mr-eat-the-reich/releases/download/v0.6.0/mr-eat-the-reich.zip",
   "readme": "https://github.com/ManuRomera/mr-eat-the-reich#readme",
   "changelog": "https://github.com/ManuRomera/mr-eat-the-reich/blob/main/CHANGELOG.md"
 }

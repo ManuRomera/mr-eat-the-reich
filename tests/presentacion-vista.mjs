@@ -9,7 +9,7 @@ class Element {
 const doc={createElement:t=>new Element(t),body:new Element('body')};const v=crearVistaPresentacion(doc,'systems/mr-eat-the-reich');
 const roster=[{id:'iryna',jugador:'Ana <&>'},{id:'flint',jugador:'Carlos'}];
 v.render({personaje:'iryna'},roster,true);assert(v.root.classes.has('is-character'));assert.equal(v.root.find('er-pres-jugador').textContent,'Ana <&>');assert.equal(v.root.find('er-pres-original').src,'systems/mr-eat-the-reich/assets/libro/iryna.webp');
-v.render({personaje:'flint'},roster,true);v.render({personaje:''},roster,true);await new Promise(r=>setTimeout(r,290));assert(!v.root.classes.has('is-character'),'Siguiente cancela cualquier apertura pendiente');
+v.render({personaje:'iryna',fase:'cerrando'},roster,true);assert(v.root.classes.has('is-character'));assert(!v.root.classes.has('is-open'));assert.equal(v.root.find('er-pres-original').src,'systems/mr-eat-the-reich/assets/libro/iryna.webp');v.render({personaje:'iryna',fase:'salida'},roster,true);assert(v.root.classes.has('is-leaving'));v.render({personaje:''},roster,true);assert(!v.root.classes.has('is-character'),'Siguiente cancela cualquier apertura pendiente');
 v.render({personaje:'flint'},roster,true);assert.equal(v.root.find('er-pres-nombre').textContent,'Flint');
 v.render({personaje:'flint'},roster,false);assert(!v.root.classes.has('is-visible'));assert(!doc.body.classes.has('er-presentacion-exclusiva'));
 v.render({personaje:'iryna'},roster,true);assert(v.root.classes.has('is-character'),'Una conexión tardía recupera el personaje compartido');

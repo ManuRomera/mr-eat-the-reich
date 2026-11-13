@@ -1,4 +1,4 @@
-# Banda sonora · Eat the Reich 0.5.0
+# Banda sonora · Eat the Reich 0.6.0
 
 Selección por situaciones de la aventura, cotejada con el manual español (páginas impresas 42–64). Música local: no requiere servicios de streaming.
 
@@ -48,4 +48,29 @@ La adaptación de **Die Walküre · Hojotoho** se distribuye bajo **CC BY-SA 3.0
 - flint: **Born Below the World**, aportado por el director. Se conserva el MP3 original sin modificar.
 - astrid: **The Taiga Inside My Heart**, aportado por el director. Se conserva el MP3 original sin modificar.
 
-Estos seis temas no reciben una licencia abierta por incluirlos aquí. Efectos de sonido: síntesis original del sistema. Ilustraciones originales de los personajes: Will Kirkby; avisos en NOTICE.md.
+Estos seis temas no reciben una licencia abierta por incluirlos aquí. Efectos de sonido: foley y grabaciones CC0; detalle más abajo. Ilustraciones originales de los personajes: Will Kirkby; avisos en NOTICE.md.
+
+
+## Efectos de sonido · 0.6.0
+
+Se han reemplazado los nueve efectos de síntesis y ampliado el catálogo a **29 efectos**. Fuentes de grabación y foley bajo CC0 1.0:
+
+- **kyles — enfield**. [Fuente](https://freesound.org/people/kyles/sounds/450850/). [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+- **Gammelsmurfen778 — murcielago**. [Fuente](https://freesound.org/people/Gammelsmurfen778/sounds/546823/). [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+- **Mihacappy — puerta-abrir**. [Fuente](https://freesound.org/people/Mihacappy/sounds/828132/). [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+- **Mihacappy — puerta-cerrar**. [Fuente](https://freesound.org/people/Mihacappy/sounds/828134/). [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+- **qubodup — ametralladora**. [Fuente](https://freesound.org/people/qubodup/sounds/239138/). [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+- **Nox_Sound — revolver**. [Fuente](https://freesound.org/people/Nox_Sound/sounds/541818/). [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+- **Kodack — explosion**. [Fuente](https://freesound.org/people/Kodack/sounds/258195/). [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+- **Mihacappy — sirena**. [Fuente](https://freesound.org/people/Mihacappy/sounds/837342/). [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+- **unfa — granada**. [Fuente](https://freesound.org/people/unfa/sounds/609587/). [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+- **leonelmail — cuerpo**. [Fuente](https://freesound.org/people/leonelmail/sounds/504626/). [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+- **Tabasco — gunshots**. [Fuente](https://opengameart.org/content/gunshot-sounds). [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+- **Mihacappy — sello**. [Fuente](https://freesound.org/people/Mihacappy/sounds/814248/). [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+- **LucasDuff — carne**. [Fuente](https://freesound.org/people/LucasDuff/sounds/555066/). [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+- **qubodup — aire**. [Fuente](https://freesound.org/people/qubodup/sounds/60012/). [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+- **OwlStorm — beber**. [Fuente](https://freesound.org/people/OwlStorm/sounds/320139/). [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+
+Fuentes de Freesound: copia pública HQ MP3; OpenGameArt: WAV originales. Recortes, mezcla y cambios de velocidad indicados por cada combinación. M3: ráfaga diseñada con cuatro detonaciones grabadas a una cadencia aproximada de 450 disparos/min; no es una grabación identificada de un M3. Las armas mágicas, humo, incendiarias y lanzacohetes son diseños a partir de foley y explosiones, no grabaciones de esos objetos. No se usa síntesis de pitidos.
+
+Procesado: recorte, mezcla, cambios de velocidad, nivel de pico moderado y conversión a Ogg Opus a 48 kHz / 128 kbps. Los archivos de personaje no se han modificado. Detalle reproducible por efecto en EFECTOS-FUENTES.json.

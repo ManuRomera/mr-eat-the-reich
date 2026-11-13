@@ -1,4 +1,4 @@
-# Partitura de la misión · 0.5.0
+# Partitura de la misión · 0.6.0
 
 La selección parte de lo que sucede en cada lugar, no solo del nombre o de un género uniforme. El tono del manual es violencia pulp, extravagancia y liberación catártica. Las páginas son las impresas en el manual español aportado por el director.
 
@@ -31,7 +31,7 @@ La selección parte de lo que sucede en cada lugar, no solo del nombre o de un g
 
 ## Uso durante la partida
 
-Con MR Dirección, entra en la localización y abre **Motivos**. En las siete escenas con cambio dramático aparecen sus alternativas junto a los seis temas de los personajes. Los nombres describen el acontecimiento: funeral, tren, transformación, ataque… Un motivo se activa al pulsarlo; al pulsarlo otra vez MR Dirección recupera el tema base de la escena.
+Con MR Dirección, entra en la localización y abre **Motivos**. Desde 0.6.0 todas las escenas vuelven a ofrecer los motivos generales, las alternativas de situación y los seis temas de personaje. Los nombres describen el acontecimiento: funeral, tren, transformación, ataque… Un motivo se activa al pulsarlo; al pulsarlo otra vez MR Dirección recupera el tema base de la escena.
 
 Sin MR Dirección, cada escena activa su pista nativa. Las alternativas están en **Panel de misión → Música de escena** y en la lista de reproducción de la misión. Se activan a mano: el sistema no puede saber cuándo un personaje rompe el ventanal o cuándo un antagonista se transforma.
 

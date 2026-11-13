@@ -1,9 +1,9 @@
 <section class="er-pres-panel">
   <header><small>F.A.N.G. · PREPARACIÓN DEL ASALTO</small><h2>Sala de despliegue</h2><p>Presenta al escuadrón antes del lanzamiento.</p></header>
-  <button type="button" data-action="iniciar"><i class="fa-solid fa-door-open" inert></i> Entrar en la sala</button>
-  <div class="er-pres-estado">{{#if enSala}}La presentación controla la música para toda la mesa.{{else}}Listo para activar la escena y su tema.{{/if}}</div>
-  <div class="er-pres-reparto">{{#each filas}}<button type="button" data-action="personaje" data-personaje="{{id}}" class="er-pres-elegir {{#if seleccionada}}is-selected{{/if}}" aria-pressed="{{seleccionada}}" title="Presentar a {{nombre}} y reproducir su canción"><img src="{{img}}" alt=""/><span><strong>{{boton}}</strong><small>{{nombre}}{{#unless jugador}} · sin jugador asignado{{/unless}}</small></span></button>{{/each}}</div>
-  <div class="er-pres-acciones"><button class="er-pres-siguiente" type="button" data-action="siguiente"><i class="fa-solid fa-forward-step" inert></i> Siguiente</button><button type="button" data-action="terminar">Salir de la presentación</button></div>
-  <p>«Siguiente» desvanece al personaje y recupera los cinco ataúdes y la música de la sala. Los nombres se toman de la propiedad de cada vampiro o del personaje asignado a cada usuario.</p>
+  <button type="button" class="er-boton" data-action="iniciar" {{#if ocupado}}disabled{{/if}}><i class="fa-solid fa-door-open" inert></i> Entrar en la sala</button>
+  <div class="er-pres-estado">{{#if enSala}}{{faseTexto}}. La presentación controla la música.{{else}}Listo para activar la escena y su tema.{{/if}}</div>
+  <div class="er-pres-reparto">{{#each filas}}<button type="button" data-action="personaje" data-personaje="{{id}}" {{#if ../ocupado}}disabled{{/if}} class="er-boton er-pres-elegir {{#if seleccionada}}is-selected{{/if}}" aria-pressed="{{seleccionada}}" title="Presentar a {{nombre}} y reproducir su canción"><img src="{{img}}" alt=""/><span><strong>{{boton}}</strong><small>{{nombre}}{{#unless jugador}} · sin jugador asignado{{/unless}}</small></span></button>{{/each}}</div>
+  <div class="er-pres-acciones"><button class="er-boton er-pres-siguiente" type="button" data-action="siguiente" {{#if ocupado}}disabled{{/if}}><i class="fa-solid fa-forward-step" inert></i> Siguiente</button><button type="button" class="er-boton er-boton-suave" data-action="terminar">Salir de la presentación</button></div>
+  <p>«Siguiente» cierra la compuerta y desvanece el ataúd y recupera los cinco ataúdes y la música de la sala. Los nombres se toman de la propiedad de cada vampiro o del personaje asignado a cada usuario.</p>
   <label>Volumen <input type="range" data-er-pres-volumen min="0" max="100" value="{{volumen}}" aria-label="Volumen de la presentación"/> {{volumen}}%</label>
 </section>

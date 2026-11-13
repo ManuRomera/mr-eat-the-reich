@@ -6,6 +6,7 @@
  */
 import { ID, RUTA } from "./mesa.mjs";
 import { PISTAS } from "./datos.mjs";
+import { VERSION_CONTENIDO } from "./banda-sonora-datos.mjs";
 
 const AUDIO = `${RUTA}/assets/audio`;
 export const escenaDe = clave => game.scenes.find(s => s.getFlag(ID, "escena") === clave);
@@ -14,7 +15,7 @@ export const escenaDe = clave => game.scenes.find(s => s.getFlag(ID, "escena") =
 export function sonar(clave, volumen = 0.7) {
   try {
     if (!game.settings.get(ID, "sonidos")) return;
-    foundry.audio.AudioHelper.play({ src: `${AUDIO}/sfx/${clave}.ogg`, volume: volumen, autoplay: true, loop: false }, true);
+    foundry.audio.AudioHelper.play({ src: `${AUDIO}/sfx/${clave}.ogg?v=${VERSION_CONTENIDO}`, volume: volumen, autoplay: true, loop: false }, true);
   } catch (e) { console.warn(`${ID} | no se pudo reproducir «${clave}»`, e); }
 }
 

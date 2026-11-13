@@ -248,4 +248,4 @@ export const BOTIN_EJEMPLOS = ["Subfusil (+flanquear)", "Rifle (+largo alcance)"
 
 /** La música se mantiene separada de los datos de reglas. */
 export { PISTAS, MOTIVOS, MUSICA_LUGAR, TEMAS_PERSONAJE } from "./banda-sonora-datos.mjs";
-export const EFECTOS = { sello: ["Resultado", "stamp"], critico: ["Crítico", "star"], lesion: ["Lesión", "bone"], derribo: ["Derribo", "explosion"], sangre: ["Sangre", "droplet"], sirena: ["Refuerzos", "bullhorn"], ataud: ["Caen los ataúdes", "box"], objetivo: ["Objetivo cumplido", "flag-checkered"], flashback: ["Flashback", "clock-rotate-left"] };
+export { EFECTOS } from "./efectos-datos.mjs";

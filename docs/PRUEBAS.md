@@ -1,4 +1,4 @@
-# Validación de la versión 0.5.0
+# Validación de la versión 0.6.0
 
 - Sintaxis de todos los módulos JavaScript: correcta.
 - `node tests/contenido.mjs`: migración idempotente de 36 pistas, conservación de música externa, fondos y atrezo; ningún token se coloca automáticamente.
@@ -8,4 +8,7 @@
 - Huellas de las 30 grabaciones procesadas verificadas. Los seis MP3 coinciden byte a byte con los aportados por el director y los que estaban instalados.
 - Instalador probado sobre una copia temporal: copia de seguridad, bloqueo de cambios propios antes de copiar, verificación final e instalación repetida sin cambios; archivos de packs y worlds intactos.
 
-Estas son pruebas de código, archivos y simulación. No se ha arrancado una sesión real ni se ha hecho una prueba visual o multicliente en Foundry. Conviene comprobar la presentación desde una ventana de jugador tras instalarla y ajustar el volumen a las voces de la mesa.
+Estas son pruebas de código, archivos y simulación. Se ha verificado la presentación en un navegador: ataúd cerrado, puerta abierta persistente, recorte hexagonal, ilustraciones de Iryna y Flint, cierre y fundido. No se ha probado una sesión multicliente dentro de Foundry. Conviene comprobar la presentación desde una ventana de jugador tras instalarla y ajustar el volumen a las voces de la mesa.
+
+- Pruebas nuevas: recuperación de motivos ausentes o sin pista, conservación de elecciones externas, entrada en la presentación en la primera importación y orden cerrado → apertura → abierto → cierre → fundido.
+- Las 29 pistas de efectos se decodifican y coinciden con sus huellas.

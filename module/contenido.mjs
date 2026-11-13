@@ -1,6 +1,9 @@
 /** Actualización no destructiva de música, decorado y atrezo; nunca reimporta la misión. */
 import { ID, RUTA } from "./mesa.mjs";
-import { AUDIO, MUSICA_LUGAR, TEMAS_PERSONAJE, MOTIVOS_LUGAR, VERSION_CONTENIDO } from "./banda-sonora-datos.mjs";
+import { AUDIO, MUSICA_LUGAR, TEMAS_PERSONAJE, MOTIVOS, VERSION_CONTENIDO } from "./banda-sonora-datos.mjs";
+
+import { EFECTOS } from "./efectos-datos.mjs";
+import { repararCatalogo } from "./direccion-contenido.mjs";
 
 import { asegurarPresentacion } from "./presentacion.mjs";
 
@@ -25,6 +28,7 @@ async function actualizar() {
   const lista = game.playlists.find(p => p.getFlag(ID, "clave") === "musica");
   if (!lista) return; // En un mundo vacío debe terminar primero la importación.
   await actualizarAudio(lista);
+  await actualizarEfectos();
   await actualizarDireccion();
   await actualizarPlaza();
   await asegurarAtaud();
@@ -73,19 +77,31 @@ async function actualizarAudio(lista) {
   if (manda && lista.sounds.some(s => s.playing)) await lista.stopAll();
 }
 
+async function actualizarEfectos() {
+  const lista = game.playlists.find(p => p.getFlag(ID, "clave") === "sfx");
+  if (!lista) return;
+  const nuevas = [], cambios = [];
+  for (const [clave, [label]] of Object.entries(EFECTOS)) {
+    const path = versionada(`assets/audio/sfx/${clave}.ogg`);
+    const s = lista.sounds.find(s => s.getFlag(ID, "clave") === clave);
+    if (!s) nuevas.push({ name: label, path, repeat: false, volume: .55, fade: 0, flags: { [ID]: { clave } } });
+    else if (s.path?.startsWith(`${RUTA}/assets/audio/sfx/`) && (s.path !== path || s.name !== label || s.repeat))
+      cambios.push({ _id: s.id, name: label, path, repeat: false, fade: 0 });
+  }
+  if (nuevas.length) await lista.createEmbeddedDocuments("PlaylistSound", nuevas);
+  if (cambios.length) await lista.updateEmbeddedDocuments("PlaylistSound", cambios);
+}
+
 async function actualizarDireccion() {
   if (!game.modules.get(DIR)?.active) return;
-  const global = game.settings.get(DIR, "global");
-  if (global?.motifs?.length) {
-    let cambia = false;
-    const motifs = global.motifs.map(m => {
-      if (!AUDIO[m.id] || !gestionada(m.music?.src)) return m;
-      const label = AUDIO[m.id].titulo;
-      if (m.music.src === fuente(m.id) && m.label === label) return m;
-      cambia = true; return { ...m, label, music: { src: fuente(m.id) } };
-    });
-    if (cambia) await game.settings.set(DIR, "global", { ...global, motifs });
-  }
+  const global = game.settings.get(DIR, "global") ?? {};
+  const motivos = [...Object.entries(MOTIVOS).map(([id, icon]) => ({ id, label: AUDIO[id].titulo, icon, music: { src: fuente(id) } })),
+    ...TEMAS_PERSONAJE.map(t => ({ ...t, music: { src: fuente(t.id) } }))];
+  const efectos = Object.entries(EFECTOS).map(([id, [label, icon]]) => ({ id, label, icon,
+    sound: { src: versionada(`assets/audio/sfx/${id}.ogg`) } }));
+  const nextGlobal = { ...global, motifs: repararCatalogo(global.motifs ?? [], motivos),
+    effects: repararCatalogo(global.effects ?? [], efectos, "sound") };
+  if (JSON.stringify(global) !== JSON.stringify(nextGlobal)) await game.settings.set(DIR, "global", nextGlobal);
   for (const escena of game.scenes) {
     const clave = escena.getFlag(ID, "escena"), pista = MUSICA_LUGAR[clave];
     const config = escena.getFlag(DIR, "config");
@@ -95,10 +111,10 @@ async function actualizarDireccion() {
     if (gestionada(next.music?.src) && next.music.src !== fuente(pista)) {
       next.music = { src: fuente(pista) }; cambia = true;
     }
-    // Las listas explícitas antiguas también deben ofrecer los seis temas nuevos.
+    // Las listas explícitas de 0.5.0 recuperan el catálogo completo.
     if (Array.isArray(next.motifs)) {
       const ids = new Set(next.motifs);
-      for (const id of [...TEMAS_PERSONAJE.map(t => t.id), ...(MOTIVOS_LUGAR[clave] ?? [])]) if (!ids.has(id)) {
+      for (const id of motivos.map(t => t.id)) if (!ids.has(id)) {
         next.motifs.push(id); ids.add(id); cambia = true;
       }
     }

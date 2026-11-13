@@ -2,7 +2,8 @@
 import { ID, RUTA } from "./mesa.mjs";
 import { ApplicationV2, HandlebarsApplicationMixin } from "./compat.mjs";
 import { AUDIO, VERSION_CONTENIDO } from "./banda-sonora-datos.mjs";
-import { PERSONAJES, ESTADO_INICIAL, estadoSeguro, siguienteEstado, reparto, claveSonido, bloquearMusica } from "./presentacion-core.mjs";
+import { PERSONAJES, ESTADO_INICIAL, TIEMPOS, estadoSeguro, siguienteEstado, reparto, claveSonido, bloquearMusica } from "./presentacion-core.mjs";
+import { sonar } from "./escenas.mjs";
 import { crearVistaPresentacion } from "./presentacion-vista.mjs";
 
 const versionada = ruta => `${RUTA}/${ruta}?v=${VERSION_CONTENIDO}`;
@@ -13,7 +14,9 @@ export const presentacionActiva = () => game.scenes.active?.getFlag(ID, "present
 export const estadoPresentacion = () => estadoSeguro(game.settings.get(ID, "presentacionEstado"));
 const roster = () => reparto(game.actors.contents, game.users.contents);
 let preparando = null, cola = Promise.resolve(), activando = false, vista = null, saliendo = false;
-let control = null;
+let control = null, generacion = 0;
+const vigente = turno => turno === generacion && presentacionActiva() && activoGM();
+const esperar = ms => new Promise(resolve => setTimeout(resolve, ms));
 const enqueue = fn => (cola = cola.catch(() => {}).then(fn));
 const fallo = e => { console.error(`${ID} | Presentación`, e); ui.notifications.error("No se pudo completar la presentación. Puedes reintentarlo desde su panel."); };
 
@@ -57,12 +60,12 @@ async function preparar() {
 }
 
 async function publicar(patch) {
-  await game.settings.set(ID, "presentacionEstado", siguienteEstado(estadoPresentacion(), patch));
+  await game.settings.set(ID, "presentacionEstado", siguienteEstado(estadoPresentacion(), { ...patch, instante: Date.now() }));
 }
 
 async function pararExterna() {
   for (const p of game.playlists) {
-    if (p.id === lista()?.id) continue;
+    if (p.id === lista()?.id || p.flags?.[ID]?.clave === "sfx" || p.channel === "interface") continue;
     for (const s of p.sounds) {
       if (!s.playing || s.flags?.["mr-direccion"]?.ch === "fx") continue;
       await p.stopSound(s);
@@ -80,6 +83,21 @@ async function tocar(clave) {
   await Promise.all([sonido.playing ? Promise.resolve() : pl.playSound(sonido), ...otros.map(s => pl.stopSound(s))]);
 }
 
+async function cerrarActual() {
+  const turno = generacion;
+  if (!vigente(turno)) return false;
+  if (!estadoPresentacion().personaje) return true;
+  await publicar({ fase: "cerrando" }); sonar("ataud-cerrar", .45);
+  await esperar(TIEMPOS.cierre);
+  if (!vigente(turno)) return false;
+  await publicar({ fase: "salida" });
+  await tocar("sala");
+  await esperar(TIEMPOS.fundido);
+  if (!vigente(turno)) return false;
+  await publicar({ personaje: "", fase: "sala" });
+  return true;
+}
+
 async function entrar(personaje = "") {
   const escena = await asegurarPresentacion();
   if (!escena) return;
@@ -88,10 +106,25 @@ async function entrar(personaje = "") {
     anterior = game.scenes.active?.id ?? "";
     activando = true;
     try { await escena.activate(); } finally { activando = false; }
-  }
+    await publicar({ escena: escena.id, anterior, personaje: "", activa: true, fase: "sala" });
+  } else if (!await cerrarActual()) return;
+  const turno = generacion;
   await pararExterna();
-  await publicar({ escena: escena.id, anterior, personaje, activa: true });
-  await tocar(personaje || "sala");
+  if (!vigente(turno)) return;
+  if (!personaje) {
+    await publicar({ escena: escena.id, anterior, personaje: "", activa: true, fase: "sala" });
+    await tocar("sala"); return;
+  }
+  await publicar({ escena: escena.id, anterior, personaje, activa: true, fase: "entrada" });
+  await tocar(personaje);
+  await esperar(TIEMPOS.entrada);
+  if (!vigente(turno)) return;
+  await publicar({ fase: "abriendo" });
+  if (!vigente(turno)) return;
+  sonar("ataud-abrir", .45);
+  await esperar(TIEMPOS.apertura);
+  if (!vigente(turno)) return;
+  await publicar({ fase: "abierto" });
 }
 
 export function iniciarPresentacion() {
@@ -106,13 +139,15 @@ export function presentarPersonaje(clave) {
 }
 export function siguientePresentacion() {
   if (!activoGM() || !presentacionActiva()) return Promise.resolve();
-  return enqueue(async () => { await publicar({ personaje: "", activa: true }); await tocar("sala"); }).catch(fallo);
+  return enqueue(async () => { if (!await cerrarActual()) return; await publicar({ personaje: "", activa: true, fase: "sala" }); await tocar("sala"); }).catch(fallo);
 }
 export function terminarPresentacion() {
-  if (!activoGM()) return Promise.resolve();
+  if (!activoGM() || !presentacionActiva()) return Promise.resolve();
   return enqueue(async () => {
+    if (!presentacionActiva()) return;
     const anterior = game.scenes.get(estadoPresentacion().anterior) ?? game.scenes.find(s => !s.getFlag(ID, "presentacion"));
-    await publicar({ personaje: "", activa: false });
+    if (presentacionActiva() && !await cerrarActual()) return;
+    await publicar({ personaje: "", activa: false, fase: "sala" });
     await lista()?.stopAll();
     if (anterior && !anterior.getFlag(ID, "presentacion")) {
       saliendo = true;
@@ -136,7 +171,9 @@ class PanelPresentacion extends HandlebarsApplicationMixin(ApplicationV2) {
   static PARTS = { contenido: { template: `${RUTA}/templates/apps/presentacion.hbs` } };
   async _prepareContext() {
     const s = estadoPresentacion();
-    return { filas: roster().map(p => ({ ...p, seleccionada: s.personaje === p.id, img: `${RUTA}/assets/retratos/${p.id}.webp` })),
+    const ocupado = !["sala", "abierto"].includes(s.fase);
+    const faseTexto = ({ entrada: "Ataúd cerrado · preparando apertura", abriendo: "Abriendo compuerta…", abierto: "Personaje presentado · compuerta abierta", cerrando: "Cerrando compuerta…", salida: "Recuperando la sala…", sala: "Sala de despliegue lista" })[s.fase];
+    return { ocupado, faseTexto, filas: roster().map(p => ({ ...p, seleccionada: s.personaje === p.id, img: `${RUTA}/assets/retratos/${p.id}.webp` })),
       enSala: presentacionActiva(), personaje: s.personaje, volumen: Math.round((Number(game.settings.get(ID, "presentacionVolumen")) || 0) * 100) };
   }
   async _onRender(context, options) {
@@ -172,7 +209,8 @@ export function registrarPresentacion() {
       await asegurarPresentacion(); await pararExterna();
       const s = estadoPresentacion(), escena = escenaPresentacion();
       const personaje = s.activa && s.escena === escena.id ? s.personaje : "";
-      if (!s.activa || s.escena !== escena.id) await publicar({ escena: escena.id, personaje, activa: true });
+      if (!s.activa || s.escena !== escena.id) await publicar({ escena: escena.id, personaje, activa: true, fase: personaje ? "abierto" : "sala" });
+      else if (personaje && s.fase !== "abierto") await publicar({ fase: "abierto" });
       await tocar(personaje || "sala");
     }).catch(fallo);
   });
@@ -189,10 +227,11 @@ export function registrarPresentacion() {
   });
   Hooks.on("updateScene", (escena, cambios) => {
     if (!activoGM() || cambios.active !== true || activando) return;
+    generacion++; // Abandonar la escena cancela una apertura/cierre que siguiera esperando.
     if (escena.getFlag(ID, "presentacion")) {
-      enqueue(async () => { await pararExterna(); await publicar({ escena: escena.id, personaje: "", activa: true }); await tocar("sala"); }).catch(fallo);
+      enqueue(async () => { await pararExterna(); await publicar({ escena: escena.id, personaje: "", activa: true, fase: "sala" }); await tocar("sala"); }).catch(fallo);
     } else {
-      enqueue(async () => { if (!estadoPresentacion().activa) return; await publicar({ activa: false, personaje: "" }); await lista()?.stopAll(); }).catch(fallo);
+      (async () => { if (!estadoPresentacion().activa) return; await publicar({ activa: false, personaje: "", fase: "sala" }); await lista()?.stopAll(); })().catch(fallo);
     }
   });
 }

@@ -1,0 +1,374 @@
+{
+  "version": "0.6.0",
+  "license": "CC0 1.0",
+  "sources": [
+    {
+      "key": "enfield",
+      "url": "https://freesound.org/people/kyles/sounds/450850/",
+      "download": "https://cdn.freesound.org/previews/450/450850_612689-hq.mp3",
+      "author": "kyles",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "key": "murcielago",
+      "url": "https://freesound.org/people/Gammelsmurfen778/sounds/546823/",
+      "download": "https://cdn.freesound.org/previews/546/546823_8947290-hq.mp3",
+      "author": "Gammelsmurfen778",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "key": "puerta-abrir",
+      "url": "https://freesound.org/people/Mihacappy/sounds/828132/",
+      "download": "https://cdn.freesound.org/previews/828/828132_10594370-hq.mp3",
+      "author": "Mihacappy",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "key": "puerta-cerrar",
+      "url": "https://freesound.org/people/Mihacappy/sounds/828134/",
+      "download": "https://cdn.freesound.org/previews/828/828134_10594370-hq.mp3",
+      "author": "Mihacappy",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "key": "ametralladora",
+      "url": "https://freesound.org/people/qubodup/sounds/239138/",
+      "download": "https://cdn.freesound.org/previews/239/239138_71257-hq.mp3",
+      "author": "qubodup",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "key": "revolver",
+      "url": "https://freesound.org/people/Nox_Sound/sounds/541818/",
+      "download": "https://cdn.freesound.org/previews/541/541818_9250976-hq.mp3",
+      "author": "Nox_Sound",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "key": "explosion",
+      "url": "https://freesound.org/people/Kodack/sounds/258195/",
+      "download": "https://cdn.freesound.org/previews/258/258195_2276808-hq.mp3",
+      "author": "Kodack",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "key": "sirena",
+      "url": "https://freesound.org/people/Mihacappy/sounds/837342/",
+      "download": "https://cdn.freesound.org/previews/837/837342_10594370-hq.mp3",
+      "author": "Mihacappy",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "key": "granada",
+      "author": "unfa",
+      "url": "https://freesound.org/people/unfa/sounds/609587/",
+      "download": "https://cdn.freesound.org/previews/609/609587_1038806-hq.mp3",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "key": "cuerpo",
+      "author": "leonelmail",
+      "url": "https://freesound.org/people/leonelmail/sounds/504626/",
+      "download": "https://cdn.freesound.org/previews/504/504626_4437257-hq.mp3",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "key": "gunshots",
+      "author": "Tabasco",
+      "url": "https://opengameart.org/content/gunshot-sounds",
+      "download": "https://opengameart.org/sites/default/files/sounds.zip",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "key": "sello",
+      "author": "Mihacappy",
+      "url": "https://freesound.org/people/Mihacappy/sounds/814248/",
+      "download": "https://cdn.freesound.org/previews/814/814248_10594370-hq.mp3",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "key": "carne",
+      "author": "LucasDuff",
+      "url": "https://freesound.org/people/LucasDuff/sounds/555066/",
+      "download": "https://cdn.freesound.org/previews/555/555066_8272463-hq.mp3",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "key": "aire",
+      "author": "qubodup",
+      "url": "https://freesound.org/people/qubodup/sounds/60012/",
+      "download": "https://cdn.freesound.org/previews/60/60012_71257-hq.mp3",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "key": "beber",
+      "author": "OwlStorm",
+      "url": "https://freesound.org/people/OwlStorm/sounds/320139/",
+      "download": "https://cdn.freesound.org/previews/320/320139_140737-hq.mp3",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  ],
+  "effects": [
+    {
+      "id": "sello",
+      "duration": 0.5,
+      "sources": [
+        "sello"
+      ],
+      "sha256": "453c8988c383ce38b9d3582f223eb6d2a29af85d452dc55a3d1a0fb93ebf9a9e"
+    },
+    {
+      "id": "critico",
+      "duration": 1.55,
+      "sources": [
+        "carne",
+        "cuerpo"
+      ],
+      "sha256": "23441f8b11e821cdc6830a856f0b62ece30b1c5409fb214179a5a7a00b583908"
+    },
+    {
+      "id": "lesion",
+      "duration": 0.65,
+      "sources": [
+        "carne"
+      ],
+      "sha256": "cf9fc1c7d72e0af0e65f20740d33404b15bdfacf5bed3140ab1b391e6ff807f7"
+    },
+    {
+      "id": "derribo",
+      "duration": 1.5,
+      "sources": [
+        "cuerpo"
+      ],
+      "sha256": "02e226c758841e97ad0413cff2755aad0cd5e0da651e25a29e27ceb17f0d5a19"
+    },
+    {
+      "id": "sangre",
+      "duration": 1.55,
+      "sources": [
+        "beber",
+        "carne"
+      ],
+      "sha256": "19925e7ab95674537be7cd2484a669d9a9316b494095f8178b996ae4a10ca2fe"
+    },
+    {
+      "id": "sirena",
+      "duration": 7.0,
+      "sources": [
+        "sirena"
+      ],
+      "sha256": "1ea63fb9aaba2d0ccd04c569f984e88bafd63b6833645a84eaf14754ae023533"
+    },
+    {
+      "id": "ataud",
+      "duration": 2.939,
+      "sources": [
+        "puerta-cerrar",
+        "cuerpo",
+        "explosion"
+      ],
+      "sha256": "37c3dd091486aff4164519395c02236b13d6c9c91391918d3ba649903779f8a7"
+    },
+    {
+      "id": "objetivo",
+      "duration": 0.775,
+      "sources": [
+        "puerta-cerrar"
+      ],
+      "sha256": "6e5fdf82769bb5275e7004866e16244790de4e2f798d36bf4104e3f0073ecd6c"
+    },
+    {
+      "id": "flashback",
+      "duration": 1.55,
+      "sources": [
+        "aire",
+        "murcielago"
+      ],
+      "sha256": "a516be89507ee9cead0a89559d0fd6c17a16d9bf23f7c85de6c8b8ffa4dd679a"
+    },
+    {
+      "id": "rifle-caza",
+      "duration": 1.7,
+      "sources": [
+        "gunshots"
+      ],
+      "sha256": "0f324f41e655d2066a0eb047fcca86ccbaadd476e9813f365b3d25982a3332fc"
+    },
+    {
+      "id": "lee-enfield",
+      "duration": 2.29,
+      "sources": [
+        "enfield"
+      ],
+      "sha256": "c3ed3dccb656d868803aa58b06599861c2ad930987dd9028e22610fdd50025c7"
+    },
+    {
+      "id": "m3",
+      "duration": 1.649,
+      "sources": [
+        "gunshots"
+      ],
+      "sha256": "e090632a2e849f7ec0a151756213528fb7ff5d7101c09d5ce234cdf4fc1d7562"
+    },
+    {
+      "id": "revolver",
+      "duration": 0.88,
+      "sources": [
+        "revolver"
+      ],
+      "sha256": "2587c11768ae31007828df55867472738c086bc20a5a408f0f42000e6da896cb"
+    },
+    {
+      "id": "revolver-doble",
+      "duration": 1.19,
+      "sources": [
+        "revolver"
+      ],
+      "sha256": "5695734986658fdebbff6d1586ffaccd5e24d8a0cb8627a03f103cfc4c3856ab"
+    },
+    {
+      "id": "escopeta",
+      "duration": 0.698,
+      "sources": [
+        "gunshots"
+      ],
+      "sha256": "edcac93283bdff40537048805ae1d4ad3e187fdb6c44188878996ac055f801a1"
+    },
+    {
+      "id": "ametralladora",
+      "duration": 2.13,
+      "sources": [
+        "ametralladora"
+      ],
+      "sha256": "dd4ce338f399d44ca513dc7e04660f75d42373ed50743fe3d063467a00c889cd"
+    },
+    {
+      "id": "granada",
+      "duration": 3.0,
+      "sources": [
+        "granada"
+      ],
+      "sha256": "e46aee134a1f2f078582b718b2e23e5079d2c080bad06e2dbe79cc86245279d5"
+    },
+    {
+      "id": "dinamita",
+      "duration": 3.25,
+      "sources": [
+        "explosion",
+        "puerta-cerrar"
+      ],
+      "sha256": "dd9407c1ed085868061120dd70a5a77fc009d302b325e0acc87436e324113223"
+    },
+    {
+      "id": "lanzacohetes",
+      "duration": 3.32,
+      "sources": [
+        "aire",
+        "explosion"
+      ],
+      "sha256": "fe7e3905be25680512ead8532628a9dfc72d978f4caf515370b74faa35d64455"
+    },
+    {
+      "id": "humo",
+      "duration": 0.978,
+      "sources": [
+        "aire"
+      ],
+      "sha256": "4d6e085abaf85d7af9bd7f3fd8f1b5ca35ae8fa8328d770345c9646116fcd2c3"
+    },
+    {
+      "id": "incendiaria",
+      "duration": 2.057,
+      "sources": [
+        "aire",
+        "puerta-cerrar",
+        "explosion"
+      ],
+      "sha256": "221f23bec59beada58d00f2471272128f9322f7fcaa0a3d6cea9f6aaaa0601f9"
+    },
+    {
+      "id": "sable",
+      "duration": 0.995,
+      "sources": [
+        "aire",
+        "puerta-cerrar"
+      ],
+      "sha256": "179cb87141a4142f62d03b63c6f632404e659a1959a70e7edb2ec7acfdaeee7a"
+    },
+    {
+      "id": "garra",
+      "duration": 0.79,
+      "sources": [
+        "aire",
+        "carne"
+      ],
+      "sha256": "ec1f73b4d3be15dffa2f1219a8b9e352b72f3a15fbf67bc06dc7e23f8d3953f4"
+    },
+    {
+      "id": "lanza",
+      "duration": 1.74,
+      "sources": [
+        "aire",
+        "cuerpo"
+      ],
+      "sha256": "f6999d732b3fd5893d99846d19630d74776f2e0a61ccd3217601e7d781e8b5b4"
+    },
+    {
+      "id": "runas",
+      "duration": 2.921,
+      "sources": [
+        "aire",
+        "explosion"
+      ],
+      "sha256": "2f93cabcbb7154712e1884ad1228ca241e8ce9b5bdc94797ef9f6ad914d31346"
+    },
+    {
+      "id": "murcielago",
+      "duration": 2.8,
+      "sources": [
+        "murcielago"
+      ],
+      "sha256": "6cf1fda01da6f1de506124a9ea5a8683cf47c09b73bc64925ae8f2f61bead4da"
+    },
+    {
+      "id": "enjambre",
+      "duration": 3.391,
+      "sources": [
+        "murcielago"
+      ],
+      "sha256": "54b947a3493aeb8a4c61553d4cdc0a086c7141e53f991bec7d011e5a531a9693"
+    },
+    {
+      "id": "ataud-abrir",
+      "duration": 2.738,
+      "sources": [
+        "puerta-abrir"
+      ],
+      "sha256": "9baffca28f55eed5e9c2a5ee250c40793cbdabcbe49e691467b5731d0100128c"
+    },
+    {
+      "id": "ataud-cerrar",
+      "duration": 2.593,
+      "sources": [
+        "puerta-cerrar"
+      ],
+      "sha256": "e2d7b626243d57db8012646cb26b273cdb4159353a658211069cc264b0ec2e68"
+    }
+  ],
+  "notes": "Fuentes de Freesound: copia pública HQ MP3; OpenGameArt: WAV originales. Recortes, mezcla y cambios de velocidad indicados por cada combinación. M3: ráfaga diseñada con cuatro detonaciones grabadas a una cadencia aproximada de 450 disparos/min; no es una grabación identificada de un M3. Las armas mágicas, humo, incendiarias y lanzacohetes son diseños a partir de foley y explosiones, no grabaciones de esos objetos. No se usa síntesis de pitidos."
+}

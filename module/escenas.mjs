@@ -5,7 +5,8 @@
  *  - efectos de sonido del sistema y la partitura por situaciones del manual cuando no la lleva MR- Dirección.
  */
 import { ID, RUTA } from "./mesa.mjs";
-import { PISTAS } from "./datos.mjs";
+import { PISTAS, LOCALIZACIONES, AMENAZAS } from "./datos.mjs";
+import { mision, vampiros } from "./mesa.mjs";
 import { VERSION_CONTENIDO } from "./banda-sonora-datos.mjs";
 
 const AUDIO = `${RUTA}/assets/audio`;
@@ -34,7 +35,46 @@ export const pistaSonando = () => lista()?.sounds.find(s => s.playing)?.getFlag(
 /** Las pistas que hay de verdad en la lista importada (con su obra). */
 export const catalogoMusica = () => (lista()?.sounds.contents ?? []).sort((a, b) => a.sort - b.sort).map(s => { const id = s.getFlag(ID, "clave"); return { id, titulo: PISTAS[id]?.[0] ?? s.name, obra: PISTAS[id]?.[1] ?? "" }; });
 
+/**
+ * Tablón del mapa de París: sobre las dos notas amarillas del mapa se escribe, con datos vivos, el nombre de la campaña (la pequeña)
+ * y el escuadrón con sus jugadores, retratos y el avance (la grande). Va dentro de #hud, que Foundry mueve y escala con el mapa.
+ */
+const NOTAS = { campana: [150, 232, 1010, 300], equipo: [2390, 270, 1240, 700] };   // x, y, ancho, alto en píxeles del mapa (4000 × 2473)
+export function pintarTablon() {
+  document.getElementById("er-tablon")?.remove();
+  const hud = document.getElementById("hud");
+  if (!hud || !globalThis.canvas?.ready || canvas.scene?.getFlag(ID, "escena") !== "paris") return;
+  const esc = t => foundry.utils.escapeHTML(String(t ?? ""));
+  const m = mision(), d = canvas.dimensions, k = d.sceneWidth / 4000;
+  const caja = ([x, y, w, h]) => `left:${x}px;top:${y}px;width:${w}px;height:${h}px`;
+  const filas = vampiros().map(v => {
+    const duenos = game.users.filter(u => !u.isGM && v.testUserPermission(u, "OWNER")).map(u => u.name);
+    const heridas = v.system.lesiones.flat().filter(l => l.marcada).length;
+    const estado = v.system.muerto ? "ha caído" : v.system.derribado ? "derribado" : `sangre ${v.system.sangre}${heridas ? ` · ${heridas} lesión${heridas > 1 ? "es" : ""}` : ""}`;
+    return `<div class="er-tb-fila ${v.system.muerto ? "caido" : ""}"><img src="${esc(v.prototypeToken?.texture?.src || v.img)}" alt=""><div><b>${esc(v.name)}</b><span>${esc(duenos.join(", ") || "sin jugador")}</span><i>${esc(estado)}</i></div></div>`;
+  }).join("");
+  const visitadas = LOCALIZACIONES.filter(l => (m.visitadas ?? []).includes(l.clave));
+  const actual = LOCALIZACIONES.find(l => l.nombre === m.escena);
+  const frente = actual?.sector ?? (visitadas.length ? Math.min(...visitadas.map(l => l.sector)) : 0);
+  const sectores = [3, 2, 1].map(s => `<span class="${frente && s > frente ? "hecho" : s === frente ? "ahora" : ""}">Sector ${s}</span>`).join("");
+  const uber = AMENAZAS.filter(a => a.uber).length;
+  const t = document.createElement("div");
+  t.id = "er-tablon";
+  t.style.cssText = `left:${d.sceneX}px;top:${d.sceneY}px;width:4000px;height:2473px;transform-origin:0 0;transform:scale(${k})`;
+  t.innerHTML = `<div class="er-tb er-tb-campana" style="${caja(NOTAS.campana)}"><small>Operación</small><b>${esc(game.settings.get(ID, "campana") || game.world.title)}</b></div>
+    <div class="er-tb er-tb-equipo" style="${caja(NOTAS.equipo)}"><h3>Escuadrón F.A.N.G.</h3><div class="er-tb-lista">${filas || "<span>Aún no hay vampiros.</span>"}</div>
+      <div class="er-tb-avance"><div class="er-tb-sectores">${sectores}</div>
+        ${actual ? `Ahora: <b>${esc(actual.nombre)}</b> · ronda ${m.ronda}<br>` : ""}Localizaciones: <b>${visitadas.length}</b> · Übermenschen caídos: <b>${(m.caidos ?? []).length}/${uber}</b></div></div>`;
+  hud.append(t);
+}
+
 export function registrarEscenas() {
+  // El contenedor #hud se vuelve a pintar al cargar el lienzo: se repinta el tablón después, y cada vez que Foundry lo rehace.
+  Hooks.on("canvasReady", () => { pintarTablon(); setTimeout(pintarTablon, 400); setTimeout(pintarTablon, 1600); });
+  Hooks.on("renderHeadsUpDisplayContainer", () => setTimeout(pintarTablon, 0));
+  Hooks.on("eatthereich.mision", () => pintarTablon());
+  for (const h of ["updateActor", "createActor", "deleteActor", "updateUser"]) Hooks.on(h, () => pintarTablon());
+
   game.settings.register(ID, "sonidos", {
     name: "Efectos de sonido", hint: "El golpe del resultado, los críticos, las lesiones, la sirena de los refuerzos… Para toda la mesa.",
     scope: "world", config: true, type: Boolean, default: true

@@ -10,7 +10,7 @@ export const SOCKET = `system.${ID}`;
 export const RUTA = `systems/${ID}`;
 export const ARTE = `${RUTA}/assets`;
 
-export const MISION_INICIAL = { escena: "", ronda: 1, objetivos: [], amenazas: [], actuaron: [], turno: "", fuera: [] };
+export const MISION_INICIAL = { escena: "", ronda: 1, objetivos: [], amenazas: [], actuaron: [], turno: "", fuera: [], visitadas: [], caidos: [] };
 
 class RestablecerVentanas extends ApplicationV2 {
   async render() {
@@ -31,6 +31,10 @@ export function registrarAjustes() {
     name: "Ataques sin defender que derriban",
     hint: "El manual dice 3 en la página de reglas y en la hoja de referencia, y 4 en el apartado de bajas. Elige el que use tu mesa.",
     scope: "world", config: true, type: Number, default: 3, choices: { 3: "3 ataques", 4: "4 ataques" }
+  });
+  game.settings.register(ID, "campana", {
+    name: "Nombre de la campaña", hint: "Sale en la nota amarilla pequeña del mapa de París. Vacío = el título del mundo.",
+    scope: "world", config: true, type: String, default: "", onChange: () => Hooks.callAll("eatthereich.mision", mision())
   });
   game.settings.register(ID, "escalaAtaud", {
     name: "Tamaño de la hoja-ataúd",

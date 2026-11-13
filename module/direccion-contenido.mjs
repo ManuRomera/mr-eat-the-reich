@@ -13,3 +13,12 @@ export function repararCatalogo(actual = [], esperado = [], campo = "music") {
   for (const d of esperado) if (!vistos.has(d.id)) items.push(d);
   return items;
 }
+
+/**
+ * Poda: quita del catálogo guardado los efectos del sistema que ya no van a la barra. Solo toca los que siguen apuntando
+ * al audio del propio sistema; lo que el director haya reasignado a un recurso suyo se queda.
+ */
+export function podarCatalogo(actual = [], retirados = [], campo = "sound") {
+  const fuera = new Set(retirados);
+  return actual.filter(x => !(fuera.has(x?.id) && (!x[campo]?.src || x[campo].src.startsWith("systems/mr-eat-the-reich/assets/audio/"))));
+}

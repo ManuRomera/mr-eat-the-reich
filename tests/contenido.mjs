@@ -2,12 +2,12 @@
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import { AUDIO, MUSICA_LUGAR, TEMAS_PERSONAJE, MOTIVOS, MOTIVOS_LUGAR, VERSION_CONTENIDO } from "../module/banda-sonora-datos.mjs";
-import { EFECTOS } from "../module/efectos-datos.mjs";
-import { repararCatalogo } from "../module/direccion-contenido.mjs";
+import { EFECTOS, EFECTOS_BARRA } from "../module/efectos-datos.mjs";
+import { repararCatalogo, podarCatalogo } from "../module/direccion-contenido.mjs";
 const ID = "mr-eat-the-reich", RUTA = `systems/${ID}`;
 const code = (await fs.readFile(new URL("../module/contenido.mjs", import.meta.url), "utf8")).replace(/^import .*;\n/gm, "");
 const mod = await import(`data:text/javascript;base64,${Buffer.from(
-  `const repararCatalogo=${repararCatalogo.toString()}; const EFECTOS=${JSON.stringify(EFECTOS)}, MOTIVOS=${JSON.stringify(MOTIVOS)}; const ID=${JSON.stringify(ID)}, RUTA=${JSON.stringify(RUTA)}, AUDIO=${JSON.stringify(AUDIO)}, MUSICA_LUGAR=${JSON.stringify(MUSICA_LUGAR)}, TEMAS_PERSONAJE=${JSON.stringify(TEMAS_PERSONAJE)}, MOTIVOS_LUGAR=${JSON.stringify(MOTIVOS_LUGAR)}, asegurarPresentacion=async()=>{} , VERSION_CONTENIDO=${JSON.stringify(VERSION_CONTENIDO)};\n${code}`
+  `const repararCatalogo=${repararCatalogo.toString()}; const podarCatalogo=${podarCatalogo.toString()}; const EFECTOS_BARRA=${JSON.stringify(EFECTOS_BARRA)}; const EFECTOS=${JSON.stringify(EFECTOS)}, MOTIVOS=${JSON.stringify(MOTIVOS)}; const ID=${JSON.stringify(ID)}, RUTA=${JSON.stringify(RUTA)}, AUDIO=${JSON.stringify(AUDIO)}, MUSICA_LUGAR=${JSON.stringify(MUSICA_LUGAR)}, TEMAS_PERSONAJE=${JSON.stringify(TEMAS_PERSONAJE)}, MOTIVOS_LUGAR=${JSON.stringify(MOTIVOS_LUGAR)}, asegurarPresentacion=async()=>{} , VERSION_CONTENIDO=${JSON.stringify(VERSION_CONTENIDO)};\n${code}`
 ).toString("base64")}`);
 let writes = 0, nextId = 0, tokenCount = 0;
 const settings = new Map([["mr-direccion.global", { motifs: [
@@ -63,7 +63,9 @@ assert.equal(list.sounds.length, 36);
 assert.equal(fxList.sounds.length,Object.keys(EFECTOS).length);
 assert(fxList.sounds[0].path.endsWith(`?v=${VERSION_CONTENIDO}`));assert.equal(fxList.sounds[0].repeat,false);
 assert.equal(fxList.sounds[1].path,"worlds/custom/effect.wav");
-assert.equal(settings.get("mr-direccion.global").effects.length,Object.keys(EFECTOS).length);
+// A la barra de MR- Dirección solo van los efectos elegidos (antes iban los 29).
+assert.deepEqual(settings.get("mr-direccion.global").effects.map(e=>e.id).sort(),Object.keys(EFECTOS_BARRA).sort());
+assert(settings.get("mr-direccion.global").effects.every(e=>e.label===EFECTOS_BARRA[e.id]));
 assert.equal(game.actors.length, 1);
 assert.equal(game.actors[0].type, "objeto");
 assert.equal(game.actors[0].prototypeToken.sight.enabled, false);

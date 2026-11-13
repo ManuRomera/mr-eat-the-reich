@@ -8,6 +8,7 @@ import { ID, mision, cambiarMision, pedir, operacion, nuevoId, vampiros } from "
 import { DialogV2, aplicarModo, alRenderizarMensaje } from "./compat.mjs";
 import { pintarRetratos } from "./retrato.mjs";
 import { sonar } from "./escenas.mjs";
+import { sonidoDe } from "./efectos-datos.mjs";
 import * as R from "./reglas.mjs";
 import { ATRIBUTOS, BLOQUEOS, FLASHBACK } from "./datos.mjs";
 
@@ -112,6 +113,9 @@ export async function tirar(actor, { atributo = "", amenaza = "", equipo = [], b
   aplicarModo(datos);
   const mensaje = await ChatMessage.create(datos);
   sonar(tirada.dados.some(d => d.c === 6) ? "critico" : "sello");
+  // El primer cacharro o poder usado pone su sonido (rifle, sable, enjambre…), un instante después del golpe del resultado.
+  const arma = usados.map(sonidoDe).find(Boolean);
+  if (arma) setTimeout(() => sonar(arma, 0.6), 350);
   pedir("tiradaHecha", { mensaje: mensaje.id });
   return mensaje;
 }
@@ -245,7 +249,7 @@ export function escucharTiradas() {
         nombre = o.nombre;
         texto = `${o.nombre}: ${r.absorbe ? `el Desafío absorbe ${r.absorbe}; ` : ""}${ex - r.absorbe ? `−${ex - r.absorbe} → ${o.valor}` : "sin efecto"}`;
         if (o.valor === 0) {
-          if (datos.tipo === "amenaza") { o.ataque = 0; texto += o.revive ? ". ¡Rechazada! (volverá con refuerzos)" : ". ¡Destruida!"; }
+          if (datos.tipo === "amenaza") { o.ataque = 0; if (o.uber && !m.caidos.includes(o.nombre)) m.caidos.push(o.nombre); texto += o.revive ? ". ¡Rechazada! (volverá con refuerzos)" : ". ¡Destruida!"; }
           else { texto += o.secundario ? ". ¡Secundario cumplido! Elige recompensa." : ". ¡Objetivo cumplido!"; sonar("objetivo"); }
         }
       });

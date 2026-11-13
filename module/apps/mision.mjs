@@ -37,6 +37,7 @@ export async function cargarLocalizacion(clave) {
   if (!mision().escena) sonar("ataud");   // la primera escena de la noche: caen los ataúdes
   await cambiarMision(m => {
     m.escena = l.nombre; m.ronda = 1; m.actuaron = []; m.turno = "";
+    if (!m.visitadas.includes(l.clave)) m.visitadas.push(l.clave);
     m.objetivos = [fichaObjetivo(l.objetivo), ...l.secundarios.map(s => fichaObjetivo(s, true))];
     m.amenazas = l.enemigos.flatMap(e => Array.from({ length: e.n }, () => fichaAmenaza({ clave: e.clave, alias: e.alias, nota: e.nota }))).filter(Boolean);
     // Las repetidas se numeran: «Patrulla policial 1», «Patrulla policial 2».

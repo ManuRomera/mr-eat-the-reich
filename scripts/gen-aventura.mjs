@@ -4,6 +4,7 @@
  * Los textos son resúmenes propios con remisión a la página del manual; no se copia el libro.
  */
 import fs from "node:fs/promises";
+import { EFECTOS_BARRA } from "../module/efectos-datos.mjs";
 import { existsSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { VAMPIROS, AMENAZAS, LOCALIZACIONES, FLASHBACK, PREMIOS_SECUNDARIO, BOTIN_EJEMPLOS, ATRIBUTOS, AYUDA_ATRIBUTOS, PISTAS, MOTIVOS, MUSICA_LUGAR, EFECTOS } from "../module/datos.mjs";
@@ -181,7 +182,7 @@ const direccion = {
   settings: {
     fade: 3.5,
     motifs: Object.entries(MOTIVOS).filter(([k]) => hay(k)).map(([k, icon]) => ({ id: k, label: curado.settings?.motifs?.find(m => m.id === k)?.label ?? PISTAS[k][0], icon, music: src("musica", k) })).concat(TEMAS_PERSONAJE.map(t => ({ ...t, music: src("musica", t.id) }))),
-    effects: Object.entries(EFECTOS).map(([k, [label, icon]]) => ({ id: k, label, icon, sound: src("sfx", k) })),
+    effects: Object.entries(EFECTOS_BARRA).map(([k, label]) => ({ id: k, label, icon: EFECTOS[k][1], sound: src("sfx", k) })),
     markers: { milestones: AMENAZAS.filter(a => a.uber).map(a => ({ id: a.clave, label: `${a.nombre} ha caído`, public: true })), clocks: [{ id: "amanecer", label: "Hasta el amanecer", segments: 6, public: true, announce: true, phrases: ["La noche se acaba."] }] }
   },
   scenes: [{ clave: "paris", nombre: "París, 1943", pagina: uid("pag-estructura"), enemigos: [], thumb: `${R}/libro/mapa-thumb.webp` },

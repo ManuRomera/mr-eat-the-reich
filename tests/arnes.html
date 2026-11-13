@@ -23,7 +23,7 @@ const clase = class { static DEFAULT_OPTIONS = {}; };
 globalThis.foundry = {
   applications: { api: { ApplicationV2: clase, HandlebarsApplicationMixin: B => B, DialogV2: clase }, sheets: { ActorSheetV2: clase }, apps: { DocumentSheetConfig: clase },
     handlebars: { renderTemplate() {}, loadTemplates() {} }, ux: { TextEditor: { implementation: {} } }, instances: new Map() },
-  utils: { escapeHTML: t => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;"), deepClone: structuredClone, randomID: () => Math.random().toString(36).slice(2, 10), mergeObject: (a, b) => ({ ...a, ...b }) }
+  utils: { escapeHTML: t => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;"), deepClone: x => structuredClone(x), randomID: () => Math.random().toString(36).slice(2, 10), mergeObject: (a, b) => ({ ...a, ...b }) }
 };
 globalThis.Hooks = { on() {}, once() {}, callAll() {} };
 const { VAMPIROS, AMENAZAS, LOCALIZACIONES, ATRIBUTOS, AYUDA_ATRIBUTOS, BLOQUEOS, PREMIOS_SECUNDARIO } = await import("../module/datos.mjs");
@@ -130,6 +130,21 @@ for (const t of tarjetas) { const d = document.createElement("div"); d.innerHTML
 const menu = document.createElement("div"); menu.className = "mr-eat-the-reich er-menu";
 menu.innerHTML = `<p>Gastar este crítico (2 éxitos) en…</p><button><i class="fa-solid fa-bullseye"></i> Objetivo: Cruzar el museo (5, Desafío 1)</button><button><i class="fa-solid fa-skull"></i> Atacar: Einherjar (4)</button><button><i class="fa-solid fa-shield"></i> Defenderse (quedan 2 ataques)</button><button><i class="fa-solid fa-star"></i> ESPECIAL · Tiro certero</button>`;
 chat.append(menu);
+// Tablón del mapa: ?tablon pinta el mapa de París con las dos notas rellenas por el código real (escenas.mjs).
+if (new URLSearchParams(location.search).has("tablon")) {
+  for (const el of [...document.body.children]) if (el.matches(".application, .chat")) el.remove();
+  const esc = 0.36, hud = document.createElement("div"); hud.id = "hud";
+  hud.style.cssText = `position:relative;width:4000px;height:2473px;transform:scale(${esc});transform-origin:0 0;background:url(${RUTA}/assets/libro/mapa.webp) 0 0/100% 100%;margin-bottom:-1580px`;
+  document.body.style.display = "block"; document.body.append(hud);
+  globalThis.canvas = { ready: true, scene: { getFlag: () => "paris" }, dimensions: { sceneWidth: 4000, sceneX: 0, sceneY: 0 } };
+  const lesion = n => [[{ marcada: n > 0 }, { marcada: n > 1 }], [{ marcada: false }, { marcada: false }], [{ marcada: false }, { marcada: false }]];
+  const vs = VAMPIROS.map((v, i) => ({ id: v.clave, name: v.nombre, type: "vampiro", img: "", prototypeToken: { texture: { src: `${RUTA}/assets/retratos/${v.clave}.webp` } }, testUserPermission: u => u.i === i, system: { sangre: i * 2, lesiones: lesion(i % 3), muerto: i === 5, derribado: i === 3 } }));
+  game.actors.filter = f => vs.filter(f);
+  game.users = { filter: f => ["Marta", "Íñigo", "Laura", "Pau", "Edu"].map((name, i) => ({ name, i, isGM: false })).filter(f) };
+  game.world = { title: "Beberse a Hitler" };
+  game.settings.get = (_, k) => (k === "mision" ? { escena: "Museo de la Guerra Europea", ronda: 2, visitadas: ["sirena", "catedral", "museo"], caidos: ["Stahlsoldat"] } : k === "campana" ? "" : {});
+  (await import("../module/escenas.mjs")).pintarTablon();
+}
 // Para capturas: ?solo=ataud|clasica|mision|chat deja solo esa pieza; ?fondo=<escena> pone un decorado detrás.
 const P = new URLSearchParams(location.search), SOLO = { ataud: ".er-hoja-ataud", clasica: ".er-hoja-vampiro:not(.er-hoja-ataud)", mision: ".er-mision, .chat", chat: ".chat", dialogo: ".er-tirada-dlg, .er-hoja-ataud" }[P.get("solo")];
 if (SOLO) { let visto = false; for (const el of [...document.body.children]) { if (!el.matches(".application, .chat")) continue; if (!el.matches(SOLO) || (P.get("solo") === "clasica" && visto)) el.remove(); else visto = true; } document.body.style.justifyContent = "center"; }

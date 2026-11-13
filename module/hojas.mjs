@@ -1,5 +1,5 @@
 /** Hojas V2 con memoria: vampiro (expediente de F.A.N.G.) y amenaza. */
-import { ActorSheetV2, HandlebarsApplicationMixin, enriquecer } from "./compat.mjs";
+import { ActorSheetV2, HandlebarsApplicationMixin, DialogV2, enriquecer } from "./compat.mjs";
 import { ConMemoria } from "./memoria.mjs";
 import { ID, RUTA, pedir } from "./mesa.mjs";
 import { EditorRetrato, pintarRetratos } from "./retrato.mjs";
@@ -53,7 +53,7 @@ export class HojaVampiro extends HojaBase {
     classes: ["er-hoja-vampiro"], position: { width: 820, height: 860 },
     actions: {
       tirar: HojaVampiro.#tirar, sangre: HojaVampiro.#sangre, uso: HojaVampiro.#uso, lesion: HojaVampiro.#lesion, curar: HojaVampiro.#curar,
-      gesto: HojaVampiro.#gesto, anadir: HojaVampiro.#anadir, quitar: HojaVampiro.#quitar, rescatar: HojaVampiro.#rescatar
+      gesto: HojaVampiro.#gesto, objeto: HojaVampiro.#objeto, soltar: HojaVampiro.#soltar, soltarBotin: HojaVampiro.#soltarBotin, anadir: HojaVampiro.#anadir, quitar: HojaVampiro.#quitar, rescatar: HojaVampiro.#rescatar
     }
   };
   static PARTS = { hoja: { template: `${RUTA}/templates/hojas/vampiro.hbs`, scrollable: [".er-hoja-cuerpo"] } };
@@ -102,6 +102,40 @@ export class HojaVampiro extends HojaBase {
     ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor: a }), content: `<p class="er-aviso"><i class="fa-solid fa-droplet"></i> Gasta ${COSTE_CURAR} de Sangre y se cura: <b>${foundry.utils.escapeHTML(l.nombre)}</b>.</p>` });
   }
   static #gesto() { if (this.isEditable) return ultimoGesto(this.document); }
+
+  /** Inventario: coger un cacharro nuevo (sin `data-i`) o cambiar uno que ya llevas. Hay que definirlo: usos, dados de bonificación y cuándo se ganan. */
+  static async #objeto(ev, b) {
+    if (!this.isEditable) return;
+    const esc = t => foundry.utils.escapeHTML(String(t ?? ""));
+    const lista = this.document.toObject().system.equipo, i = b.dataset.i === undefined ? -1 : Number(b.dataset.i);
+    const o = lista[i] ?? { ...OBJETO_NUEVO, nombre: "" };
+    const actor = this.document;
+    const datos = await DialogV2.wait({
+      window: { title: i < 0 ? "Coger un cacharro" : `Cambiar: ${o.nombre}`, icon: "fa-solid fa-toolbox" }, classes: [ID, "er-dialogo", "er-tirada-dlg"], position: { width: 470 }, rejectClose: false,
+      content: `<div class="er-dt"><h2 class="er-nombre-cinta">${i < 0 ? "¿Qué has cogido?" : "Cacharro"}</h2>
+        <div class="er-dt-bloque"><span class="er-cinta">Nombre</span> <input type="text" name="nombre" value="${esc(o.nombre)}" placeholder="Subfusil, coche de lujo, cañón…" autofocus></div>
+        <div class="er-dt-bloque"><span class="er-cinta">Usos</span> <input type="number" name="max" value="${o.max}" min="1" max="9"> <small class="er-susurro">el botín suele traer 3; el último uso explota: +1 dado</small></div>
+        <div class="er-dt-bloque"><span class="er-cinta">Dados +</span> <input type="number" name="bono" value="${o.bono}" min="0" max="5"> <small class="er-susurro">los que ganas si cumples el requisito</small></div>
+        <div class="er-dt-bloque"><span class="er-cinta">Cuando…</span> <input type="text" name="req" value="${esc(o.req)}" placeholder="flanquear, espacios cerrados, a quemarropa…"></div>
+        <div class="er-dt-bloque"><span class="er-cinta">Nota</span> <input type="text" name="nota" value="${esc(o.nota)}" placeholder="opcional"></div></div>`,
+      buttons: [{ action: "guardar", label: i < 0 ? "Me lo quedo" : "Guardar", icon: "fa-solid fa-hand-back-fist", default: true, callback: (e, boton) => new foundry.applications.ux.FormDataExtended(boton.form).object }],
+      render: (e, dialogo) => { const el = dialogo?.element ?? dialogo; if (el instanceof HTMLElement) el.style.setProperty("--forro", actor.getFlag(ID, "forro") || "#ff4f93"); }
+    });
+    if (!datos || typeof datos !== "object" || !String(datos.nombre ?? "").trim()) return;
+    const max = Math.min(9, Math.max(1, Number(datos.max) || 3));
+    const nuevo = { ...o, nombre: String(datos.nombre).trim(), max, usos: i < 0 || max !== o.max ? max : Math.min(o.usos, max), bono: Math.min(5, Math.max(0, Number(datos.bono) || 0)), req: String(datos.req ?? "").trim(), nota: String(datos.nota ?? "").trim() };
+    if (i < 0) lista.push(nuevo); else lista[i] = nuevo;
+    return actor.update({ "system.equipo": lista });
+  }
+  /** Deshacerse de un cacharro (gastado o no): nunca es automático. */
+  static async #soltar(ev, b) {
+    if (!this.isEditable) return;
+    const lista = this.document.toObject().system.equipo, i = Number(b.dataset.i), o = lista[i];
+    if (!o) return;
+    const ok = await DialogV2.confirm({ window: { title: "Tirar el cacharro", icon: "fa-solid fa-trash" }, content: `<p>¿Te deshaces de <b>${foundry.utils.escapeHTML(o.nombre)}</b>? Desaparece de la hoja.</p>`, yes: { label: "Tirarlo", icon: "fa-solid fa-trash" }, no: { label: "Me lo quedo" }, rejectClose: false });
+    if (ok) return this.document.update({ "system.equipo": lista.filter((_, k) => k !== i) });
+  }
+  static #soltarBotin() { if (this.isEditable) return this.document.update({ "system.botin.nombre": "", "system.botin.usos": 3, "system.botin.max": 3 }); }
   static #rescatar() { return this.document.update({ "system.derribado": false }); }
   static #anadir(ev, b) {
     const lista = b.dataset.lista;

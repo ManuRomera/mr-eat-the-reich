@@ -2,8 +2,8 @@
 import { ID, RUTA } from "./mesa.mjs";
 import { AUDIO, MUSICA_LUGAR, TEMAS_PERSONAJE, MOTIVOS, VERSION_CONTENIDO } from "./banda-sonora-datos.mjs";
 
-import { EFECTOS } from "./efectos-datos.mjs";
-import { repararCatalogo } from "./direccion-contenido.mjs";
+import { EFECTOS, EFECTOS_BARRA } from "./efectos-datos.mjs";
+import { repararCatalogo, podarCatalogo } from "./direccion-contenido.mjs";
 
 import { asegurarPresentacion } from "./presentacion.mjs";
 
@@ -97,10 +97,12 @@ async function actualizarDireccion() {
   const global = game.settings.get(DIR, "global") ?? {};
   const motivos = [...Object.entries(MOTIVOS).map(([id, icon]) => ({ id, label: AUDIO[id].titulo, icon, music: { src: fuente(id) } })),
     ...TEMAS_PERSONAJE.map(t => ({ ...t, music: { src: fuente(t.id) } }))];
-  const efectos = Object.entries(EFECTOS).map(([id, [label, icon]]) => ({ id, label, icon,
+  // A la barra van solo unos pocos efectos; el resto se retira del catálogo guardado (salvo lo que el director haya reasignado).
+  const efectos = Object.entries(EFECTOS_BARRA).map(([id, label]) => ({ id, label, icon: EFECTOS[id][1],
     sound: { src: versionada(`assets/audio/sfx/${id}.ogg`) } }));
+  const retirados = Object.keys(EFECTOS).filter(id => !(id in EFECTOS_BARRA));
   const nextGlobal = { ...global, motifs: repararCatalogo(global.motifs ?? [], motivos),
-    effects: repararCatalogo(global.effects ?? [], efectos, "sound") };
+    effects: repararCatalogo(podarCatalogo(global.effects ?? [], retirados), efectos, "sound").map(e => (e.id in EFECTOS_BARRA && e.sound?.src?.startsWith(`${RUTA}/assets/audio/sfx/`) ? { ...e, label: EFECTOS_BARRA[e.id] } : e)) };
   if (JSON.stringify(global) !== JSON.stringify(nextGlobal)) await game.settings.set(DIR, "global", nextGlobal);
   for (const escena of game.scenes) {
     const clave = escena.getFlag(ID, "escena"), pista = MUSICA_LUGAR[clave];

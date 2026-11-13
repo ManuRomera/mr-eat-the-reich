@@ -2,7 +2,7 @@
   "schema": 1,
   "id": "mr-eat-the-reich",
   "title": "Eat the Reich · La misión",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "author": "Manu Romera",
   "license": "Uso privado",
   "settings": {
@@ -13,7 +13,7 @@
         "label": "Acción",
         "icon": "bolt",
         "music": {
-          "src": "systems/mr-eat-the-reich/assets/audio/musica/accion.ogg?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/musica/accion.ogg?v=0.7.0"
         }
       },
       {
@@ -21,7 +21,7 @@
         "label": "Persecución",
         "icon": "person-running",
         "music": {
-          "src": "systems/mr-eat-the-reich/assets/audio/musica/persecucion.ogg?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/musica/persecucion.ogg?v=0.7.0"
         }
       },
       {
@@ -29,7 +29,7 @@
         "label": "Sigilo",
         "icon": "user-ninja",
         "music": {
-          "src": "systems/mr-eat-the-reich/assets/audio/musica/sigilo.ogg?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/musica/sigilo.ogg?v=0.7.0"
         }
       },
       {
@@ -37,7 +37,7 @@
         "label": "Misterio",
         "icon": "magnifying-glass",
         "music": {
-          "src": "systems/mr-eat-the-reich/assets/audio/musica/misterio.ogg?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/musica/misterio.ogg?v=0.7.0"
         }
       },
       {
@@ -45,7 +45,7 @@
         "label": "Horror",
         "icon": "ghost",
         "music": {
-          "src": "systems/mr-eat-the-reich/assets/audio/musica/miedo.ogg?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/musica/miedo.ogg?v=0.7.0"
         }
       },
       {
@@ -53,7 +53,7 @@
         "label": "Sorpresa",
         "icon": "burst",
         "music": {
-          "src": "systems/mr-eat-the-reich/assets/audio/musica/sorpresa.ogg?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/musica/sorpresa.ogg?v=0.7.0"
         }
       },
       {
@@ -61,7 +61,7 @@
         "label": "Maquinaria de guerra",
         "icon": "explosion",
         "music": {
-          "src": "systems/mr-eat-the-reich/assets/audio/musica/guerra.ogg?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/musica/guerra.ogg?v=0.7.0"
         }
       },
       {
@@ -69,7 +69,7 @@
         "label": "Calma",
         "icon": "moon",
         "music": {
-          "src": "systems/mr-eat-the-reich/assets/audio/musica/calma.ogg?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/musica/calma.ogg?v=0.7.0"
         }
       },
       {
@@ -77,7 +77,7 @@
         "label": "Último gesto",
         "icon": "skull",
         "music": {
-          "src": "systems/mr-eat-the-reich/assets/audio/musica/muerte.ogg?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/musica/muerte.ogg?v=0.7.0"
         }
       },
       {
@@ -85,7 +85,7 @@
         "label": "Sirena · cafés antes del impacto",
         "icon": "masks-theater",
         "music": {
-          "src": "systems/mr-eat-the-reich/assets/audio/musica/amb-sirena.ogg?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/musica/amb-sirena.ogg?v=0.7.0"
         }
       },
       {
@@ -93,7 +93,7 @@
         "label": "Cementerio · funeral militar",
         "icon": "masks-theater",
         "music": {
-          "src": "systems/mr-eat-the-reich/assets/audio/musica/amb-funeral.ogg?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/musica/amb-funeral.ogg?v=0.7.0"
         }
       },
       {
@@ -101,7 +101,7 @@
         "label": "Hotel · entrada por la ventana",
         "icon": "bolt",
         "music": {
-          "src": "systems/mr-eat-the-reich/assets/audio/musica/combate-hotel.ogg?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/musica/combate-hotel.ogg?v=0.7.0"
         }
       },
       {
@@ -109,7 +109,7 @@
         "label": "Metro · persecución del tren",
         "icon": "bolt",
         "music": {
-          "src": "systems/mr-eat-the-reich/assets/audio/musica/carrera-metro.ogg?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/musica/carrera-metro.ogg?v=0.7.0"
         }
       },
       {
@@ -117,7 +117,7 @@
         "label": "Parque · Rust-Witch al ataque",
         "icon": "bolt",
         "music": {
-          "src": "systems/mr-eat-the-reich/assets/audio/musica/combate-parque.ogg?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/musica/combate-parque.ogg?v=0.7.0"
         }
       },
       {
@@ -125,7 +125,7 @@
         "label": "Ópera · transformación demoníaca",
         "icon": "bolt",
         "music": {
-          "src": "systems/mr-eat-the-reich/assets/audio/musica/combate-opera.ogg?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/musica/combate-opera.ogg?v=0.7.0"
         }
       },
       {
@@ -133,7 +133,7 @@
         "label": "Jardín · reventar la fiesta",
         "icon": "bolt",
         "music": {
-          "src": "systems/mr-eat-the-reich/assets/audio/musica/combate-jardin.ogg?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/musica/combate-jardin.ogg?v=0.7.0"
         }
       },
       {
@@ -141,7 +141,7 @@
         "label": "Iryna",
         "icon": "crown",
         "music": {
-          "src": "systems/mr-eat-the-reich/assets/audio/personajes/iryna.mp3?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/personajes/iryna.mp3?v=0.7.0"
         }
       },
       {
@@ -149,7 +149,7 @@
         "label": "Chuck",
         "icon": "hand-fist",
         "music": {
-          "src": "systems/mr-eat-the-reich/assets/audio/personajes/chuck.mp3?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/personajes/chuck.mp3?v=0.7.0"
         }
       },
       {
@@ -157,7 +157,7 @@
         "label": "Cosgrave",
         "icon": "coins",
         "music": {
-          "src": "systems/mr-eat-the-reich/assets/audio/personajes/cosgrave.mp3?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/personajes/cosgrave.mp3?v=0.7.0"
         }
       },
       {
@@ -165,7 +165,7 @@
         "label": "Nicole",
         "icon": "bolt",
         "music": {
-          "src": "systems/mr-eat-the-reich/assets/audio/personajes/nicole.mp3?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/personajes/nicole.mp3?v=0.7.0"
         }
       },
       {
@@ -173,7 +173,7 @@
         "label": "Flint",
         "icon": "hammer",
         "music": {
-          "src": "systems/mr-eat-the-reich/assets/audio/personajes/flint.mp3?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/personajes/flint.mp3?v=0.7.0"
         }
       },
       {
@@ -181,241 +181,57 @@
         "label": "Astrid",
         "icon": "snowflake",
         "music": {
-          "src": "systems/mr-eat-the-reich/assets/audio/personajes/astrid.mp3?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/personajes/astrid.mp3?v=0.7.0"
         }
       }
     ],
     "effects": [
       {
-        "id": "sello",
-        "label": "Sello de expediente",
-        "icon": "stamp",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/sello.ogg?v=0.6.0"
-        }
-      },
-      {
-        "id": "critico",
-        "label": "Impacto contundente",
-        "icon": "burst",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/critico.ogg?v=0.6.0"
-        }
-      },
-      {
-        "id": "lesion",
-        "label": "Herida · impacto orgánico",
-        "icon": "bone",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/lesion.ogg?v=0.6.0"
-        }
-      },
-      {
-        "id": "derribo",
-        "label": "Cuerpo al suelo",
-        "icon": "person-falling",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/derribo.ogg?v=0.6.0"
-        }
-      },
-      {
-        "id": "sangre",
-        "label": "Alimentarse · mordisco y sangre",
-        "icon": "droplet",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/sangre.ogg?v=0.6.0"
-        }
-      },
-      {
         "id": "sirena",
-        "label": "Alarma antiaérea · refuerzos",
+        "label": "Alarma",
         "icon": "bullhorn",
         "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/sirena.ogg?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/sfx/sirena.ogg?v=0.7.0"
         }
       },
       {
         "id": "ataud",
-        "label": "Ataúd · impacto de despliegue",
+        "label": "Impacto de ataúd",
         "icon": "box",
         "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/ataud.ogg?v=0.6.0"
-        }
-      },
-      {
-        "id": "objetivo",
-        "label": "Objetivo · cerrojo metálico",
-        "icon": "flag-checkered",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/objetivo.ogg?v=0.6.0"
-        }
-      },
-      {
-        "id": "flashback",
-        "label": "Flashback · transición oscura",
-        "icon": "clock-rotate-left",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/flashback.ogg?v=0.6.0"
-        }
-      },
-      {
-        "id": "rifle-caza",
-        "label": "Iryna · rifle de caza",
-        "icon": "crosshairs",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/rifle-caza.ogg?v=0.6.0"
-        }
-      },
-      {
-        "id": "lee-enfield",
-        "label": "Nicole · Lee-Enfield",
-        "icon": "crosshairs",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/lee-enfield.ogg?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/sfx/ataud.ogg?v=0.7.0"
         }
       },
       {
         "id": "m3",
-        "label": "Nicole · M3 · ráfaga corta",
+        "label": "Disparos",
         "icon": "gun",
         "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/m3.ogg?v=0.6.0"
-        }
-      },
-      {
-        "id": "revolver",
-        "label": "Chuck · revólver",
-        "icon": "gun",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/revolver.ogg?v=0.6.0"
-        }
-      },
-      {
-        "id": "revolver-doble",
-        "label": "Chuck · Betsy y María",
-        "icon": "gun",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/revolver-doble.ogg?v=0.6.0"
-        }
-      },
-      {
-        "id": "escopeta",
-        "label": "Cosgrave · escopeta recortada",
-        "icon": "gun",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/escopeta.ogg?v=0.6.0"
-        }
-      },
-      {
-        "id": "ametralladora",
-        "label": "Astrid · ametralladora",
-        "icon": "jet-fighter",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/ametralladora.ogg?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/sfx/m3.ogg?v=0.7.0"
         }
       },
       {
         "id": "granada",
-        "label": "Astrid · granada de fragmentación",
+        "label": "Explosión",
         "icon": "bomb",
         "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/granada.ogg?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/sfx/granada.ogg?v=0.7.0"
         }
       },
       {
-        "id": "dinamita",
-        "label": "Nicole · dinamita",
-        "icon": "explosion",
+        "id": "sangre",
+        "label": "Mordisco",
+        "icon": "droplet",
         "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/dinamita.ogg?v=0.6.0"
-        }
-      },
-      {
-        "id": "lanzacohetes",
-        "label": "Nicole · lanzacohetes",
-        "icon": "rocket",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/lanzacohetes.ogg?v=0.6.0"
-        }
-      },
-      {
-        "id": "humo",
-        "label": "Nicole · granada de humo",
-        "icon": "cloud",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/humo.ogg?v=0.6.0"
-        }
-      },
-      {
-        "id": "incendiaria",
-        "label": "Nicole · bomba incendiaria",
-        "icon": "fire",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/incendiaria.ogg?v=0.6.0"
-        }
-      },
-      {
-        "id": "sable",
-        "label": "Iryna / Cosgrave · filo de acero",
-        "icon": "khanda",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/sable.ogg?v=0.6.0"
-        }
-      },
-      {
-        "id": "garra",
-        "label": "Flint · garras de acero",
-        "icon": "hand-fist",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/garra.ogg?v=0.6.0"
-        }
-      },
-      {
-        "id": "lanza",
-        "label": "Astrid · lanza",
-        "icon": "location-arrow",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/lanza.ogg?v=0.6.0"
-        }
-      },
-      {
-        "id": "runas",
-        "label": "Iryna · runas explosivas",
-        "icon": "fire-flame-curved",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/runas.ogg?v=0.6.0"
-        }
-      },
-      {
-        "id": "murcielago",
-        "label": "Murciélago · aleteo cercano",
-        "icon": "wind",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/murcielago.ogg?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/sfx/sangre.ogg?v=0.7.0"
         }
       },
       {
         "id": "enjambre",
-        "label": "Murciélagos · enjambre",
+        "label": "Murciélagos",
         "icon": "wind",
         "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/enjambre.ogg?v=0.6.0"
-        }
-      },
-      {
-        "id": "ataud-abrir",
-        "label": "Ataúd · abrir compuerta",
-        "icon": "door-open",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/ataud-abrir.ogg?v=0.6.0"
-        }
-      },
-      {
-        "id": "ataud-cerrar",
-        "label": "Ataúd · cerrar compuerta",
-        "icon": "door-closed",
-        "sound": {
-          "src": "systems/mr-eat-the-reich/assets/audio/sfx/ataud-cerrar.ogg?v=0.6.0"
+          "src": "systems/mr-eat-the-reich/assets/audio/sfx/enjambre.ogg?v=0.7.0"
         }
       }
     ],
@@ -471,7 +287,7 @@
         "uuid": "JournalEntry.7ef6926cd48a2fd4.JournalEntryPage.d358d8e964ae9e9b"
       },
       "music": {
-        "src": "systems/mr-eat-the-reich/assets/audio/musica/noche.ogg?v=0.6.0"
+        "src": "systems/mr-eat-the-reich/assets/audio/musica/noche.ogg?v=0.7.0"
       },
       "motifs": null,
       "cues": [],
@@ -498,7 +314,7 @@
         "uuid": "JournalEntry.7ef6926cd48a2fd4.JournalEntryPage.30608c47900bb3da"
       },
       "music": {
-        "src": "systems/mr-eat-the-reich/assets/audio/musica/sirena.ogg?v=0.6.0"
+        "src": "systems/mr-eat-the-reich/assets/audio/musica/sirena.ogg?v=0.7.0"
       },
       "motifs": null,
       "cues": [],
@@ -533,7 +349,7 @@
         "uuid": "JournalEntry.7ef6926cd48a2fd4.JournalEntryPage.bcb06a377158aff7"
       },
       "music": {
-        "src": "systems/mr-eat-the-reich/assets/audio/musica/almacenes.ogg?v=0.6.0"
+        "src": "systems/mr-eat-the-reich/assets/audio/musica/almacenes.ogg?v=0.7.0"
       },
       "motifs": null,
       "cues": [],
@@ -574,7 +390,7 @@
         "uuid": "JournalEntry.7ef6926cd48a2fd4.JournalEntryPage.3f71d903e5e46ada"
       },
       "music": {
-        "src": "systems/mr-eat-the-reich/assets/audio/musica/funeral.ogg?v=0.6.0"
+        "src": "systems/mr-eat-the-reich/assets/audio/musica/funeral.ogg?v=0.7.0"
       },
       "motifs": null,
       "cues": [],
@@ -609,7 +425,7 @@
         "uuid": "JournalEntry.7ef6926cd48a2fd4.JournalEntryPage.33c0da4f077e0edc"
       },
       "music": {
-        "src": "systems/mr-eat-the-reich/assets/audio/musica/calma.ogg?v=0.6.0"
+        "src": "systems/mr-eat-the-reich/assets/audio/musica/calma.ogg?v=0.7.0"
       },
       "motifs": null,
       "cues": [],
@@ -644,7 +460,7 @@
         "uuid": "JournalEntry.7ef6926cd48a2fd4.JournalEntryPage.7ce948764237abd0"
       },
       "music": {
-        "src": "systems/mr-eat-the-reich/assets/audio/musica/cripta.ogg?v=0.6.0"
+        "src": "systems/mr-eat-the-reich/assets/audio/musica/cripta.ogg?v=0.7.0"
       },
       "motifs": null,
       "cues": [],
@@ -679,7 +495,7 @@
         "uuid": "JournalEntry.7ef6926cd48a2fd4.JournalEntryPage.496b9aed76b5f78e"
       },
       "music": {
-        "src": "systems/mr-eat-the-reich/assets/audio/musica/catedral.ogg?v=0.6.0"
+        "src": "systems/mr-eat-the-reich/assets/audio/musica/catedral.ogg?v=0.7.0"
       },
       "motifs": null,
       "cues": [],
@@ -720,7 +536,7 @@
         "uuid": "JournalEntry.7ef6926cd48a2fd4.JournalEntryPage.5a7dab2e0518678b"
       },
       "music": {
-        "src": "systems/mr-eat-the-reich/assets/audio/musica/palacio.ogg?v=0.6.0"
+        "src": "systems/mr-eat-the-reich/assets/audio/musica/palacio.ogg?v=0.7.0"
       },
       "motifs": null,
       "cues": [],
@@ -755,7 +571,7 @@
         "uuid": "JournalEntry.7ef6926cd48a2fd4.JournalEntryPage.12ae8d9a8c0a7ad2"
       },
       "music": {
-        "src": "systems/mr-eat-the-reich/assets/audio/musica/sigilo.ogg?v=0.6.0"
+        "src": "systems/mr-eat-the-reich/assets/audio/musica/sigilo.ogg?v=0.7.0"
       },
       "motifs": null,
       "cues": [],
@@ -796,7 +612,7 @@
         "uuid": "JournalEntry.7ef6926cd48a2fd4.JournalEntryPage.35bcd46ba04a897f"
       },
       "music": {
-        "src": "systems/mr-eat-the-reich/assets/audio/musica/persecucion.ogg?v=0.6.0"
+        "src": "systems/mr-eat-the-reich/assets/audio/musica/persecucion.ogg?v=0.7.0"
       },
       "motifs": null,
       "cues": [],
@@ -837,7 +653,7 @@
         "uuid": "JournalEntry.7ef6926cd48a2fd4.JournalEntryPage.5fe3efec2c687cf5"
       },
       "music": {
-        "src": "systems/mr-eat-the-reich/assets/audio/musica/misterio.ogg?v=0.6.0"
+        "src": "systems/mr-eat-the-reich/assets/audio/musica/misterio.ogg?v=0.7.0"
       },
       "motifs": null,
       "cues": [],
@@ -878,7 +694,7 @@
         "uuid": "JournalEntry.7ef6926cd48a2fd4.JournalEntryPage.05f0579174e841d9"
       },
       "music": {
-        "src": "systems/mr-eat-the-reich/assets/audio/musica/vampiros.ogg?v=0.6.0"
+        "src": "systems/mr-eat-the-reich/assets/audio/musica/vampiros.ogg?v=0.7.0"
       },
       "motifs": null,
       "cues": [],
@@ -919,7 +735,7 @@
         "uuid": "JournalEntry.7ef6926cd48a2fd4.JournalEntryPage.7ab5174ed22726f3"
       },
       "music": {
-        "src": "systems/mr-eat-the-reich/assets/audio/musica/miedo.ogg?v=0.6.0"
+        "src": "systems/mr-eat-the-reich/assets/audio/musica/miedo.ogg?v=0.7.0"
       },
       "motifs": null,
       "cues": [],
@@ -960,7 +776,7 @@
         "uuid": "JournalEntry.7ef6926cd48a2fd4.JournalEntryPage.82b8fb855c49be58"
       },
       "music": {
-        "src": "systems/mr-eat-the-reich/assets/audio/musica/sorpresa.ogg?v=0.6.0"
+        "src": "systems/mr-eat-the-reich/assets/audio/musica/sorpresa.ogg?v=0.7.0"
       },
       "motifs": null,
       "cues": [],
@@ -1001,7 +817,7 @@
         "uuid": "JournalEntry.7ef6926cd48a2fd4.JournalEntryPage.9450ee80605d8ca9"
       },
       "music": {
-        "src": "systems/mr-eat-the-reich/assets/audio/musica/opera.ogg?v=0.6.0"
+        "src": "systems/mr-eat-the-reich/assets/audio/musica/opera.ogg?v=0.7.0"
       },
       "motifs": null,
       "cues": [],
@@ -1036,7 +852,7 @@
         "uuid": "JournalEntry.7ef6926cd48a2fd4.JournalEntryPage.557501e4faf4d9d7"
       },
       "music": {
-        "src": "systems/mr-eat-the-reich/assets/audio/musica/deposito.ogg?v=0.6.0"
+        "src": "systems/mr-eat-the-reich/assets/audio/musica/deposito.ogg?v=0.7.0"
       },
       "motifs": null,
       "cues": [],
@@ -1083,7 +899,7 @@
         "uuid": "JournalEntry.7ef6926cd48a2fd4.JournalEntryPage.39c3955900a720d3"
       },
       "music": {
-        "src": "systems/mr-eat-the-reich/assets/audio/musica/fiesta.ogg?v=0.6.0"
+        "src": "systems/mr-eat-the-reich/assets/audio/musica/fiesta.ogg?v=0.7.0"
       },
       "motifs": null,
       "cues": [],
@@ -1124,7 +940,7 @@
         "uuid": "JournalEntry.7ef6926cd48a2fd4.JournalEntryPage.06e4929bdc039019"
       },
       "music": {
-        "src": "systems/mr-eat-the-reich/assets/audio/musica/accion.ogg?v=0.6.0"
+        "src": "systems/mr-eat-the-reich/assets/audio/musica/accion.ogg?v=0.7.0"
       },
       "motifs": null,
       "cues": [],
@@ -1165,7 +981,7 @@
         "uuid": "JournalEntry.7ef6926cd48a2fd4.JournalEntryPage.d87fceea89617504"
       },
       "music": {
-        "src": "systems/mr-eat-the-reich/assets/audio/musica/zepelin.ogg?v=0.6.0"
+        "src": "systems/mr-eat-the-reich/assets/audio/musica/zepelin.ogg?v=0.7.0"
       },
       "motifs": null,
       "cues": [],
@@ -1200,7 +1016,7 @@
         "uuid": "JournalEntry.7ef6926cd48a2fd4.JournalEntryPage.d08775e304183ce7"
       },
       "music": {
-        "src": "systems/mr-eat-the-reich/assets/audio/musica/climax.ogg?v=0.6.0"
+        "src": "systems/mr-eat-the-reich/assets/audio/musica/climax.ogg?v=0.7.0"
       },
       "motifs": null,
       "cues": [],

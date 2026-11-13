@@ -41,15 +41,18 @@
         <div class="er-equipo-flujo">
           <span class="er-cinta">Equipo</span>
           {{#each equipo}}
-            <div class="er-obj"><span class="er-obj-nombre">{{nombre}}{{#if corchete}} <i>[{{corchete}}]</i>{{/if}}</span>
+            <div class="er-obj">{{#if ../editable}}<button type="button" class="er-obj-nombre er-obj-boton" data-action="objeto" data-i="{{@index}}" data-tooltip="Cambiar este cacharro">{{nombre}}{{#if corchete}} <i>[{{corchete}}]</i>{{/if}}</button>{{else}}<span class="er-obj-nombre">{{nombre}}</span>{{/if}}
               <span class="er-usos" role="group" aria-label="Usos de {{nombre}}">{{#each cajas}}<button type="button" class="er-uso {{#if llena}}llena{{/if}} {{#if ultima}}ultima{{/if}}" data-action="uso" data-objeto="equipo.{{@../index}}" data-n="{{i}}" aria-label="Uso {{i}}{{#if llena}} disponible{{else}} gastado{{/if}}" {{#if ultima}}data-tooltip="El último uso explota: +1 dado"{{/if}}></button>{{/each}}</span>
-              {{#if bono}}<span class="er-req">({{mas}}{{req}})</span>{{/if}}{{#if nota}}<span class="er-req">({{nota}})</span>{{/if}}</div>
+              {{#if bono}}<span class="er-req">({{mas}}{{req}})</span>{{/if}}{{#if nota}}<span class="er-req">({{nota}})</span>{{/if}}
+              {{#if ../editable}}<button type="button" class="er-icono er-obj-tirar" data-action="soltar" data-i="{{@index}}" data-tooltip="Tirar este cacharro" aria-label="Tirar {{nombre}}"><i class="fa-solid fa-trash" inert></i></button>{{/if}}</div>
           {{/each}}
-          <div class="er-obj er-obj-botin"><span class="er-obj-nombre">Botín:</span>
-            <input type="text" name="system.botin.nombre" value="{{system.botin.nombre}}" placeholder="lo saqueado" aria-label="Botín" {{disabled (not editable)}}>
-            {{#if system.botin.nombre}}<span class="er-usos">{{#each botin.cajas}}<button type="button" class="er-uso {{#if llena}}llena{{/if}} {{#if ultima}}ultima{{/if}}" data-action="uso" data-objeto="botin" data-n="{{i}}" aria-label="Uso {{i}} del botín"></button>{{/each}}</span>
-            +<input type="number" class="er-num" name="system.botin.bono" value="{{system.botin.bono}}" min="0" max="5" aria-label="Dados de bonificación del botín" {{disabled (not editable)}}>
-            <input type="text" name="system.botin.req" value="{{system.botin.req}}" placeholder="requisito del +" aria-label="Requisito del botín" {{disabled (not editable)}}>{{/if}}</div>
+          {{#if system.botin.nombre}}
+            <div class="er-obj"><span class="er-obj-nombre">{{system.botin.nombre}}</span>
+              <span class="er-usos">{{#each botin.cajas}}<button type="button" class="er-uso {{#if llena}}llena{{/if}} {{#if ultima}}ultima{{/if}}" data-action="uso" data-objeto="botin" data-n="{{i}}" aria-label="Uso {{i}} del botín"></button>{{/each}}</span>
+              {{#if system.botin.bono}}<span class="er-req">({{botin.mas}}{{system.botin.req}})</span>{{/if}}
+              {{#if editable}}<button type="button" class="er-icono er-obj-tirar" data-action="soltarBotin" data-tooltip="Tirar este cacharro" aria-label="Tirar {{system.botin.nombre}}"><i class="fa-solid fa-trash" inert></i></button>{{/if}}</div>
+          {{/if}}
+          {{#if editable}}<p class="er-obj-nuevo"><button type="button" class="er-chip-mini" data-action="objeto"><i class="fa-solid fa-hand-back-fist" inert></i> coger un cacharro</button></p>{{/if}}
         </div>
       </section>
 

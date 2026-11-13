@@ -1,5 +1,12 @@
 # Cambios
 
+## 0.7.0 · 13-11-2026
+
+- **Inventario en la hoja-ataúd**: «coger un cacharro» lo define (nombre, usos, dados + y cuándo se ganan) y lo añade al Equipo; pulsar el nombre de cualquier cacharro lo cambia; la papelera lo tira (también el equipo de serie, gastado o no; nunca automático). Sustituye al hueco único de botín.
+- **Tablón del mapa de París**: la nota amarilla pequeña lleva el nombre de la campaña (ajuste; por defecto el título del mundo) y la grande, el escuadrón con sus jugadores, retratos, estado y el avance (sector, localizaciones visitadas, Übermenschen caídos). Se actualiza solo.
+- **MR- Dirección con menos efectos**: la barra pasa de 29 a 6 (Alarma, Impacto de ataúd, Disparos, Explosión, Mordisco, Murciélagos). Los catálogos ya guardados se podan solos al entrar como GM, respetando lo que el director haya reasignado a recursos suyos.
+- **Las armas suenan solas**: al usar un cacharro o un poder en una tirada se oye su efecto (rifle, sable, runas, enjambre…). El banco completo sigue en la lista «Eat the Reich · Efectos».
+
 ## 0.6.0 · 13-11-2026
 
 - Restaurados los motivos generales y los seis temas de personaje en todas las escenas. Reparación de catálogos guardados, sin sobrescribir recursos externos del director.

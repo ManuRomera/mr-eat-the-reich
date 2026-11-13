@@ -1,5 +1,24 @@
 # Cambios
 
+## 0.5.0 · Presentación del escuadrón y partitura por escenas
+
+- Sala oscura con cinco ataúdes completos en una máquina de lanzamiento.
+- Panel del GM con nombres de jugadores, imágenes originales, apertura, fundidos y canciones.
+- Siguiente vuelve a la sala y su tema; audio exclusivo durante la presentación incluso con MR Dirección.
+- 30 grabaciones seleccionadas según los acontecimientos del manual; siete alternativas de ambiente/acción y seis temas personales conservados.
+- Migración sin reimportar la misión y actualizador con copia de seguridad.
+
+## 0.4.0 · Despliegue libre y temas de personaje · 2026-11-13
+
+- Plaza de la Sirena sin ataúdes, impactos ni humo de despliegue; nueva miniatura y renovación de caché.
+- Nuevo tipo de actor Objeto de atrezo y ataúd metálico con transparencia real, disponible en Actores → Atrezo. No se coloca ninguno automáticamente.
+- Atajo Colocar ataúd en los controles, Ajustes y la hoja del objeto; se pueden arrastrar y duplicar tokens en cualquier escena.
+- Banda sonora sustituida por 20 grabaciones instrumentales de punk, pop punk, garage y rock; dos motivos adicionales reutilizan grabaciones de la selección.
+- Seis temas aportados por el director, copiados sin cambios, accesibles desde las listas y como motivos de MR Dirección.
+- Actualización de mundos existentes sin reimportar la aventura, conservando actores, diarios, posiciones de tokens y listas musicales externas.
+- Créditos, licencias por pista e instalador con copia de seguridad. No requiere modificar MR Dirección.
+
+
 ## 0.3.0 · 12-11-2026
 
 - **Diálogo de tirada rediseñado** al estilo de la hoja: forro del color del personaje, atributos como fichas, equipo y habilidades como tiras que se tachan, y un botón grande que dice cuántos dados vas a tirar.

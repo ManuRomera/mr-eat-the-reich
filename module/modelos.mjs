@@ -1,4 +1,4 @@
-/** Modelos de datos: vampiro (PJ) y amenaza (fuerzas nazis y Übermenschen). Todo va en el actor; no hay Items. */
+/** Modelos de datos: vampiro (PJ) y amenaza (fuerzas nazis y Übermenschen). Incluye objetos de atrezo colocables como tokens; no hay Items. */
 import { ATRIBUTOS } from "./datos.mjs";
 import { atributosEfectivos, bloqueos, SANGRE_MAX } from "./reglas.mjs";
 
@@ -54,4 +54,10 @@ export class ModeloAmenaza extends foundry.abstract.TypeDataModel {
   }
 }
 
-export const MODELOS = { vampiro: ModeloVampiro, amenaza: ModeloAmenaza };
+/** Un objeto escénico no tiene atributos de combate ni se cuenta como amenaza. */
+export class ModeloObjeto extends foundry.abstract.TypeDataModel {
+  static defineSchema() {
+    return { descripcion: new HTMLField({ required: true, blank: true }), notas: new HTMLField({ required: true, blank: true }) };
+  }
+}
+export const MODELOS = { vampiro: ModeloVampiro, amenaza: ModeloAmenaza, objeto: ModeloObjeto };

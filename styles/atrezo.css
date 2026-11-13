@@ -1,0 +1,7 @@
+/* Atrezo reutilizable: la silueta transparente conserva sus proporciones. */
+.mr-eat-the-reich .er-objeto { display: flex; flex-direction: column; gap: .7rem; }
+.mr-eat-the-reich .er-objeto-cab { display: flex; flex-direction: column; gap: .3rem; }
+.mr-eat-the-reich .er-objeto-cab > span { opacity: .75; font-size: .85rem; }
+.mr-eat-the-reich .er-objeto-imagen { width: 100%; height: 340px; object-fit: contain; border: 0; }
+.mr-eat-the-reich .er-objeto-ayuda { line-height: 1.5; margin: 0; }
+.mr-eat-the-reich .er-objeto button:focus-visible { outline: 3px solid #e6ba37; outline-offset: 3px; }

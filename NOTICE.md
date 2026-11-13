@@ -23,7 +23,7 @@ Por eso:
 ## Imágenes generadas y audio
 
 - `assets/escenas/` y `assets/amenazas/` se han generado con IA (Codex) a partir de descripciones propias, sin usar ilustraciones del libro como referencia. Es uno de los motivos por los que este sistema no puede publicarse bajo la licencia comunitaria.
-- `assets/audio/musica/`: obras y grabaciones de dominio público o CC0 (detalle y fuentes en `assets/audio/CREDITOS.md`). `assets/audio/sfx/`: sintetizados para este sistema.
+- `assets/audio/musica/`: música con licencia CC BY 4.0 y una grabación CC BY-SA 3.0, según la grabación (detalle y fuentes en `assets/audio/CREDITOS.md`). Los temas de `assets/audio/personajes/` han sido aportados por el director y no reciben una licencia adicional aquí. `assets/audio/sfx/`: sintetizados para este sistema.
 
 ## Terceros
 

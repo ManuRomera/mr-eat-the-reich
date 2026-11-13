@@ -2,7 +2,7 @@
  * Escenas, sonido y navegación:
  *  - las calaveras del mapa de París llevan a la escena de su localización (y cada escena tiene su nota de vuelta al mapa);
  *  - los decorados 16:9 cubren toda la pantalla;
- *  - efectos de sonido del sistema y la banda sonora (música clásica) cuando no la lleva MR- Dirección.
+ *  - efectos de sonido del sistema y la partitura por situaciones del manual cuando no la lleva MR- Dirección.
  */
 import { ID, RUTA } from "./mesa.mjs";
 import { PISTAS } from "./datos.mjs";

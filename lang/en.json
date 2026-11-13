@@ -1,0 +1,24 @@
+{
+  "TYPES": {
+    "Actor": {
+      "vampiro": "Vampire",
+      "amenaza": "Threat",
+      "objeto": "Scenery prop"
+    }
+  },
+  "ER": {
+    "Coffin": {
+      "Name": "Steel deployment coffin",
+      "Folder": "Props",
+      "Description": "Armored deployment coffin. Scenery prop without combat attributes.",
+      "Help": "Drag this actor onto any scene and place copies wherever the group chooses to deploy. Move, rotate and resize them like any token.",
+      "Place": "Place coffin",
+      "Notes": "Notes",
+      "OpenScene": "Open a scene before placing the coffin.",
+      "Reload": "Reload the world to prepare the prop."
+    },
+    "Content": {
+      "Error": "Content could not be updated. Reload the world to retry."
+    }
+  }
+}

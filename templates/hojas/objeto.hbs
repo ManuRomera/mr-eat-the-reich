@@ -1,0 +1,12 @@
+<div class="er-hoja-cuerpo er-objeto">
+  <header class="er-objeto-cab">
+    <input class="er-nombre" type="text" name="name" value="{{actor.name}}" aria-label="{{localize 'ER.Coffin.Name'}}" {{disabled (not editable)}}>
+    <span>{{localize 'TYPES.Actor.objeto'}}</span>
+  </header>
+  <img class="er-objeto-imagen" src="{{actor.img}}" alt="{{actor.name}}" data-edit="img">
+  <p class="er-objeto-ayuda">{{localize 'ER.Coffin.Help'}}</p>
+  {{#if esGM}}<button type="button" class="er-boton" data-action="colocar"><i class="fa-solid fa-box" inert></i> {{localize 'ER.Coffin.Place'}}</button>{{/if}}
+  <details class="er-notas" data-memoria="notas"><summary>{{localize 'ER.Coffin.Notes'}}</summary>
+    {{#if editable}}<prose-mirror name="system.notas" value="{{system.notas}}" toggled compact>{{{notas}}}</prose-mirror>{{else}}{{{notas}}}{{/if}}
+  </details>
+</div>

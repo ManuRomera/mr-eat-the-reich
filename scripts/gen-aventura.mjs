@@ -8,6 +8,8 @@ import { existsSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { VAMPIROS, AMENAZAS, LOCALIZACIONES, FLASHBACK, PREMIOS_SECUNDARIO, BOTIN_EJEMPLOS, ATRIBUTOS, AYUDA_ATRIBUTOS, PISTAS, MOTIVOS, MUSICA_LUGAR, EFECTOS } from "../module/datos.mjs";
 
+import { AUDIO, TEMAS_PERSONAJE } from "../module/banda-sonora-datos.mjs";
+
 const manifiesto = JSON.parse(await fs.readFile("system.json"));
 const ID = manifiesto.id, R = `systems/${ID}/assets`;
 const uid = t => createHash("sha1").update(t).digest("hex").slice(0, 16);
@@ -127,16 +129,17 @@ const tabla = (clave, nombre, filas) => ({
 const tables = [tabla("contexto", "Flashback · ¿dónde fue?", FLASHBACK.contexto), tabla("preguntas", "Flashback · la pregunta", FLASHBACK.preguntas)];
 
 /* ───────── Música y efectos ───────── */
-// Solo entran las pistas que existen en disco; si falta la de una escena, suena la alternativa más parecida.
-const hay = k => existsSync(`assets/audio/musica/${k}.ogg`);
+// El catálogo resuelve Ogg y MP3. No se publica una partitura con archivos ausentes.
+const hay = k => Boolean(AUDIO[k] && existsSync(AUDIO[k].ruta));
+const audioDe = k => `systems/${ID}/${AUDIO[k].ruta}?v=${manifiesto.version}`;
 const ALTERNATIVA = { climax: "accion", sorpresa: "accion", persecucion: "accion", zepelin: "fiesta", catedral: "funeral", muerte: "funeral", cripta: "misterio", noche: "calma", guerra: "miedo", opera: "accion", vampiros: "miedo", fiesta: "accion", funeral: "calma", misterio: "calma", sigilo: "misterio", miedo: "misterio", calma: "misterio" };
 const pista = k => (hay(k) ? k : hay(ALTERNATIVA[k]) ? ALTERNATIVA[k] : Object.keys(PISTAS).find(hay));
 const faltan = Object.keys(PISTAS).filter(k => !hay(k));
-if (faltan.length) console.warn(`AVISO: faltan pistas (python3 tools/audio.py musica <carpeta>): ${faltan.join(", ")}`);
+if (faltan.length) throw new Error(`Faltan archivos de la partitura: ${faltan.join(", ")}`);
 const sonido = (lista, clave, nombre, ruta, extra = {}) => ({ _id: uid(`son-${lista}-${clave}`), name: nombre, description: "", path: ruta, channel: lista === "musica" ? "music" : "interface", playing: false, pausedTime: null, repeat: lista === "musica", volume: 0.55, fade: lista === "musica" ? 2500 : 0, sort: 0, flags: { [ID]: { clave } }, ...extra });
 const playlists = [
-  { _id: uid("lista-musica"), name: "Eat the Reich · Banda sonora (música clásica)", description: "Dominio público. Créditos en assets/audio/CREDITOS.md.", channel: "music", mode: -1, playing: false, fade: 2500, folder: null, sorting: "a", sort: 0,
-    sounds: Object.entries(PISTAS).filter(([k]) => hay(k)).map(([k, [titulo, obra]], i) => sonido("musica", k, `${titulo} — ${obra}`, `${R}/audio/musica/${k}.ogg`, { sort: i * 100 })), ownership: { default: 0 }, flags: { [ID]: { clave: "musica" } }, _stats: STATS },
+  { _id: uid("lista-musica"), name: "Eat the Reich · Música de escena", description: "Partitura por situaciones del manual. Créditos y licencias en assets/audio/CREDITOS.md.", channel: "music", mode: -1, playing: false, fade: 2500, folder: null, sorting: "a", sort: 0,
+    sounds: Object.entries(PISTAS).filter(([k]) => hay(k)).map(([k, [titulo, obra]], i) => sonido("musica", k, `${titulo} — ${obra}`, audioDe(k), { sort: i * 100, repeat: !AUDIO[k].personaje })), ownership: { default: 0 }, flags: { [ID]: { clave: "musica" } }, _stats: STATS },
   { _id: uid("lista-sfx"), name: "Eat the Reich · Efectos", description: "Sintetizados para el sistema.", channel: "interface", mode: -1, playing: false, folder: null, sorting: "a", sort: 1,
     sounds: Object.entries(EFECTOS).map(([k, [nombre]], i) => sonido("sfx", k, nombre, `${R}/audio/sfx/${k}.ogg`, { sort: i * 100, volume: 0.7 })), ownership: { default: 0 }, flags: { [ID]: { clave: "sfx" } }, _stats: STATS }
 ];
@@ -157,7 +160,7 @@ const scenes = [
     tiles: [], notes, journal: journal[1]._id, ...musicaDe("paris"), flags: { [ID]: { escena: "paris", musica: musicaDe("paris") } } },
   ...LOCALIZACIONES.map((l, i) => ({
     ...escenaBase, _id: uid(`escena-${l.clave}`), name: l.nombre, folder: folders.find(f => f.type === "Scene" && f.name.startsWith(`Sector ${l.sector}`))._id, sort: (i + 1) * 100, navigation: false, navOrder: i + 1, navName: l.nombre,
-    background: { src: `${R}/escenas/${l.clave}.webp` }, thumb: `${R}/escenas/${l.clave}-thumb.webp`, width: 1920, height: 1080, initial: { x: 960, y: 540, scale: 0.6 },
+    background: { src: `${R}/escenas/${l.clave === "sirena" ? "sirena-limpia" : l.clave}.webp` }, thumb: `${R}/escenas/${l.clave === "sirena" ? "sirena-limpia" : l.clave}-thumb.webp`, width: 1920, height: 1080, initial: { x: 960, y: 540, scale: 0.6 },
     journal: journal[1]._id, journalEntryPage: uid(`pag-lugar-${l.clave}`), ...musicaDe(l.clave),
     notes: [
       nota(`volver-${l.clave}`, 90, 90, "Volver al mapa de París", { texture: { src: "icons/svg/city.svg", tint: "#ffffff" }, iconSize: 48, fontSize: 28, flags: { [ID]: { ir: "paris" } } }),
@@ -170,24 +173,26 @@ const scenes = [
 ];
 
 /* ───────── Paquete para MR- Dirección ───────── */
-const src = (carpeta, k) => ({ src: `${R}/audio/${carpeta}/${k}.ogg` });
+// El JSON versionado conserva la selección contextual de motivos de cada localización.
+const curado = JSON.parse(await fs.readFile("content/direccion-es.json", "utf8"));
+const src = (carpeta, k) => ({ src: carpeta === "musica" ? audioDe(k) : `${R}/audio/${carpeta}/${k}.ogg` });
 const direccion = {
   schema: 1, id: ID, title: "Eat the Reich · La misión", version: manifiesto.version, author: "Manu Romera", license: "Uso privado",
   settings: {
     fade: 3.5,
-    motifs: Object.entries(MOTIVOS).filter(([k]) => hay(k)).map(([k, icon]) => ({ id: k, label: PISTAS[k][0], icon, music: src("musica", k) })),
+    motifs: Object.entries(MOTIVOS).filter(([k]) => hay(k)).map(([k, icon]) => ({ id: k, label: curado.settings?.motifs?.find(m => m.id === k)?.label ?? PISTAS[k][0], icon, music: src("musica", k) })).concat(TEMAS_PERSONAJE.map(t => ({ ...t, music: src("musica", t.id) }))),
     effects: Object.entries(EFECTOS).map(([k, [label, icon]]) => ({ id: k, label, icon, sound: src("sfx", k) })),
     markers: { milestones: AMENAZAS.filter(a => a.uber).map(a => ({ id: a.clave, label: `${a.nombre} ha caído`, public: true })), clocks: [{ id: "amanecer", label: "Hasta el amanecer", segments: 6, public: true, announce: true, phrases: ["La noche se acaba."] }] }
   },
   scenes: [{ clave: "paris", nombre: "París, 1943", pagina: uid("pag-estructura"), enemigos: [], thumb: `${R}/libro/mapa-thumb.webp` },
-    ...LOCALIZACIONES.map(l => ({ clave: l.clave, nombre: l.nombre, pagina: uid(`pag-lugar-${l.clave}`), enemigos: l.enemigos, thumb: `${R}/escenas/${l.clave}-thumb.webp` }))].map((e, i) => ({
+    ...LOCALIZACIONES.map(l => ({ clave: l.clave, nombre: l.nombre, pagina: uid(`pag-lugar-${l.clave}`), enemigos: l.enemigos, thumb: `${R}/escenas/${l.clave === "sirena" ? "sirena-limpia" : l.clave}-thumb.webp` }))].map((e, i) => ({
     ref: { flag: [ID, "escena", e.clave] }, order: i, name: e.nombre, reading: { uuid: `JournalEntry.${journal[1]._id}.JournalEntryPage.${e.pagina}` }, music: src("musica", pista(MUSICA_LUGAR[e.clave])),
-    motifs: null, cues: [], ambient: null, figures: e.enemigos.map(x => ({ ref: { uuid: `Actor.${uid(`amenaza-${x.clave}`)}` }, label: x.alias || AMENAZAS.find(a => a.clave === x.clave).nombre })),
+    motifs: curado.scenes?.find(c => c.ref?.flag?.[2] === e.clave)?.motifs ?? null, cues: [], ambient: null, figures: e.enemigos.map(x => ({ ref: { uuid: `Actor.${uid(`amenaza-${x.clave}`)}` }, label: x.alias || AMENAZAS.find(a => a.clave === x.clave).nombre })),
     handouts: [], notes: "", thumb: e.thumb, stage: e.clave === "paris" ? { mode: "none" } : { mode: "horizon", eye: 0.5 }
   }))
 };
 await fs.mkdir("content", { recursive: true });
-await fs.writeFile("content/direccion-es.json", JSON.stringify(direccion));
+await fs.writeFile("content/direccion-es.json", JSON.stringify(direccion, null, 2) + "\n");
 
 const aventura = {
   _id: uid("aventura"), name: "Eat the Reich · La misión", img: `${R}/libro/portada.webp`,

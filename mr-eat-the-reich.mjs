@@ -2,7 +2,7 @@
 import { ApplicationV2, DocumentSheetConfig, anadirHerramienta, diagnostico } from "./module/compat.mjs";
 import { ID, registrarAjustes, escucharSocket, mision, cambiarMision } from "./module/mesa.mjs";
 import { MODELOS } from "./module/modelos.mjs";
-import { HojaVampiro, HojaAtaud, HojaAmenaza } from "./module/hojas.mjs";
+import { HojaVampiro, HojaAtaud, HojaAmenaza, HojaObjeto } from "./module/hojas.mjs";
 import { PanelMision, registrarMision, cargarLocalizacion, finDeRonda } from "./module/apps/mision.mjs";
 import { escucharTiradas, dialogoTirada, tirar, ultimoGesto } from "./module/tirada.mjs";
 import { registrarAccesibilidad, temaVentana } from "./module/accesibilidad.mjs";
@@ -12,11 +12,15 @@ import { PanelDiagnostico } from "./module/apps/diagnostico.mjs";
 import { registrarLupa } from "./module/lupa.mjs";
 import { registrarInicio, importarAventura } from "./module/inicio.mjs";
 import { registrarEscenas, sonar, musica } from "./module/escenas.mjs";
+import { registrarContenido, colocarAtaud } from "./module/contenido.mjs";
+import { leitmotiv } from "./module/direccion-mr.mjs";
 import { registrarDireccionMR } from "./module/direccion-mr.mjs";
+
+import { registrarPresentacion, abrirPresentacion, iniciarPresentacion, presentarPersonaje, siguientePresentacion, terminarPresentacion } from "./module/presentacion.mjs";
 
 Hooks.once("init", () => {
   Object.assign(CONFIG.Actor.dataModels, MODELOS);
-  CONFIG.Actor.typeLabels = { vampiro: "Vampiro", amenaza: "Amenaza" };
+  CONFIG.Actor.typeLabels = { vampiro: "Vampiro", amenaza: "Amenaza", objeto: "TYPES.Actor.objeto" };
   DocumentSheetConfig.registerSheet(Actor, ID, HojaAtaud, { types: ["vampiro"], makeDefault: true, label: "Eat the Reich · Ataúd" });
   DocumentSheetConfig.registerSheet(Actor, ID, HojaVampiro, { types: ["vampiro"], makeDefault: false, label: "Eat the Reich · Ficha clásica (rectangular, con edición)" });
   DocumentSheetConfig.registerSheet(Actor, ID, HojaAmenaza, { types: ["amenaza"], makeDefault: true, label: "Eat the Reich · Amenaza" });
@@ -26,6 +30,9 @@ Hooks.once("init", () => {
   registrarLupa();
   registrarSeguridad();
   registrarMision();
+  DocumentSheetConfig.registerSheet(Actor, ID, HojaObjeto, { types: ["objeto"], makeDefault: true, label: "Eat the Reich · Atrezo" });
+  registrarPresentacion();
+  registrarContenido();
   registrarInicio();
   registrarEscenas();
   registrarDireccionMR();
@@ -38,7 +45,7 @@ Hooks.once("init", () => {
 
   game.mrEatTheReich = {
     abrirMision: () => PanelMision.abrir(), abrirSeguridad: () => PanelSeguridad.abrir(), abrirDiagnostico: () => PanelDiagnostico.abrir(),
-    dialogoTirada, tirar, ultimoGesto, mision, cambiarMision, cargarLocalizacion, finDeRonda, importarAventura, diagnostico, sonar, musica
+    dialogoTirada, tirar, ultimoGesto, mision, cambiarMision, cargarLocalizacion, finDeRonda, importarAventura, diagnostico, sonar, musica, colocarAtaud, leitmotiv, abrirPresentacion, iniciarPresentacion, presentarPersonaje, siguientePresentacion, terminarPresentacion
   };
 });
 
@@ -52,6 +59,7 @@ Hooks.once("ready", () => {
 /** Los vampiros son personajes de jugador: token enlazado y amistoso. */
 Hooks.on("preCreateActor", (actor, datos) => {
   if (actor.type === "vampiro") actor.updateSource({ prototypeToken: { actorLink: true, disposition: 1, ...(datos.prototypeToken ?? {}) } });
+  if (actor.type === "objeto") actor.updateSource({ prototypeToken: { actorLink: false, disposition: 0, sight: { enabled: false }, ...(datos.prototypeToken ?? {}) } });
 });
 
 Hooks.on("updateActor", (actor, cambios) => {
@@ -81,6 +89,8 @@ Hooks.on("renderJournalEntrySheet", app => {
 Hooks.on("renderApplicationV2", app => { if (app.element?.classList.contains(ID)) temaVentana(app.element); });
 
 Hooks.on("getSceneControlButtons", controles => {
+  if (game.user.isGM) anadirHerramienta(controles, "tokens", { name: "erPresentacion", title: "Presentación de jugadores", icon: "fa-solid fa-id-card", onChange: () => abrirPresentacion() });
   anadirHerramienta(controles, "tokens", { name: "erMision", title: "Panel de misión", icon: "fa-solid fa-crosshairs", onChange: () => PanelMision.abrir() });
+  if (game.user.isGM) anadirHerramienta(controles, "tokens", { name: "erAtaud", title: game.i18n.localize("ER.Coffin.Place"), icon: "fa-solid fa-box", onChange: () => colocarAtaud() });
   anadirHerramienta(controles, "tokens", { name: "erSeguridad", title: "Seguridad en la sesión", icon: "fa-solid fa-shield-heart", onChange: () => PanelSeguridad.abrir() });
 });

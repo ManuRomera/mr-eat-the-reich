@@ -246,19 +246,6 @@ export const PREMIOS_SECUNDARIO = ["Reducir 1d6 un Objetivo principal", "Reducir
 
 export const BOTIN_EJEMPLOS = ["Subfusil (+flanquear)", "Rifle (+largo alcance)", "Pistola (+espacios cerrados)", "Ametralladora (+enemigos a cubierto)", "Granadas de fragmentación (+espacios cerrados)", "Coche blindado (+bajo fuego pesado)", "Coche de lujo (+abrir camino)", "Tanque (+aplastar edificios)"];
 
-/** Banda sonora: música clásica contra el punk. id → [título en la mesa, obra]. Los archivos están en assets/audio/musica/<id>.ogg. */
-export const PISTAS = {
-  noche: ["París de noche", "Claro de luna · Debussy"], accion: ["Acción", "Capricho n.º 24 · Paganini"], persecucion: ["Persecución", "Guillermo Tell (final) · Rossini"],
-  sigilo: ["Sigilo", "En la gruta del rey de la montaña · Grieg"], misterio: ["Misterio e investigación", "Gnossienne n.º 1 · Satie"], miedo: ["Miedo", "Una noche en el monte Pelado · Músorgski"],
-  sorpresa: ["Sorpresa", "Sinfonía n.º 5 · Beethoven"], guerra: ["Guerra", "Marte · Holst"], vampiros: ["Los vampiros", "Danse macabre · Saint-Saëns"], calma: ["Calma", "Gymnopédie n.º 1 · Satie"],
-  fiesta: ["Fiesta", "Galop infernal (cancán) · Offenbach"], funeral: ["Funeral", "Marcha fúnebre · Chopin"], cripta: ["La cripta", "«Pequeña» fuga en sol menor · Bach"], catedral: ["La catedral", "Dies iræ del Réquiem · Mozart"],
-  opera: ["La Ópera", "Cabalgata de las valquirias · Wagner"], zepelin: ["El zepelín", "El Danubio azul · Strauss"], climax: ["Clímax", "Obertura 1812 · Chaikovski"], muerte: ["Último gesto", "Lacrimosa del Réquiem · Mozart"]
-};
-/** Estados de ánimo que se pueden lanzar en cualquier escena (motivos). */
-export const MOTIVOS = { accion: "bolt", persecucion: "person-running", sigilo: "user-ninja", misterio: "magnifying-glass", miedo: "ghost", sorpresa: "burst", guerra: "explosion", calma: "moon", muerte: "skull" };
-/** Qué suena al llegar a cada localización. */
-export const MUSICA_LUGAR = {
-  paris: "noche", sirena: "noche", almacenes: "zepelin", cementerio: "funeral", hotel: "calma", mausoleo: "cripta", catedral: "catedral", palacio: "guerra", metro: "sigilo", garaje: "persecucion",
-  "cerdo-negro": "misterio", museo: "vampiros", parque: "miedo", galeria: "sorpresa", opera: "opera", deposito: "guerra", jardin: "fiesta", torre: "accion", zepelin: "zepelin", transmision: "climax"
-};
+/** La música se mantiene separada de los datos de reglas. */
+export { PISTAS, MOTIVOS, MUSICA_LUGAR, TEMAS_PERSONAJE } from "./banda-sonora-datos.mjs";
 export const EFECTOS = { sello: ["Resultado", "stamp"], critico: ["Crítico", "star"], lesion: ["Lesión", "bone"], derribo: ["Derribo", "explosion"], sangre: ["Sangre", "droplet"], sirena: ["Refuerzos", "bullhorn"], ataud: ["Caen los ataúdes", "box"], objetivo: ["Objetivo cumplido", "flag-checkered"], flashback: ["Flashback", "clock-rotate-left"] };

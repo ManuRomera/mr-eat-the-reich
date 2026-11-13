@@ -6,6 +6,7 @@ import { EditorRetrato, pintarRetratos } from "./retrato.mjs";
 import { dialogoTirada, ultimoGesto } from "./tirada.mjs";
 import { ATRIBUTOS, AYUDA_ATRIBUTOS, BLOQUEOS } from "./datos.mjs";
 import { SANGRE_MAX, COSTE_CURAR } from "./reglas.mjs";
+import { colocarAtaud } from "./contenido.mjs";
 
 const PODER_NUEVO = { nombre: "Nueva", tipo: "sangre", texto: "", coste: 1, bono: 1, req: "", activa: true };
 const OBJETO_NUEVO = { nombre: "Nuevo objeto", usos: 3, max: 3, bono: 1, req: "", dado: true, nota: "", corchete: 0 };
@@ -205,4 +206,13 @@ export class HojaAmenaza extends HojaBase {
     return { ...c, rasgos: await enriquecer(this.document.system.rasgos, this.document), umbrales: { 4: "4 o más", 5: "5 o más", 6: "solo con 6" } };
   }
   static #aMision() { pedir("amenazaNueva", { uuid: this.document.uuid }); ui.notifications.info(`${this.document.name} entra en la misión.`); }
+}
+
+/** Hoja de atrezo: se arrastra desde Actores y no añade mecánicas de combate. */
+export class HojaObjeto extends HojaBase {
+  static DEFAULT_OPTIONS = { classes: ["er-hoja-objeto"], position: { width: 440, height: 650 },
+    actions: { colocar: HojaObjeto.#colocar } };
+  static PARTS = { hoja: { template: `${RUTA}/templates/hojas/objeto.hbs`, scrollable: [".er-hoja-cuerpo"] } };
+  static SCROLL_MEMORIA = [".er-hoja-cuerpo"];
+  static #colocar() { return colocarAtaud(this.document); }
 }

@@ -1,3 +1,4 @@
+import { AUDIO } from "./banda-sonora-datos.mjs";
 // MR · Manu Romera · Digital RPG Design — crédito discreto en Ajustes del juego.
 // Archivo común a los paquetes de Foundry de Manu Romera: registra un botón «Créditos»
 // en la sección del paquete dentro de Configurar ajustes. No toca la interfaz de juego.
@@ -11,6 +12,12 @@ function pkgData() {
   return { title: p?.title ?? PKG, version: p?.version ?? "", url: p?.url ?? p?.manifest?.url ?? "" };
 }
 
+function creditosMusicales() {
+  const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const rows = Object.values(AUDIO).filter(a => !a.personaje).map(a => `<tr><td>${esc(a.obra)}</td><td>${esc(a.autor)}</td><td><a target="_blank" rel="noopener" href="${esc(a.fuente)}">Fuente</a> · <a target="_blank" rel="noopener" href="${esc(a.licenciaUrl)}">${esc(a.licencia)}</a></td></tr>`).join("");
+  return `<section style="text-align:left;margin-top:20px;font-size:12px;max-height:50vh;overflow:auto"><h3>Música / Music</h3><p>Kevin MacLeod (Incompetech) y Jason Shaw (Audionautix): CC BY 4.0. Die Walküre · Hojotoho: Richard Wagner, Félia Litvinne / archivo Gegeours, CC BY-SA 3.0. Adaptaciones: recorte de silencio, fundido entre extremos, normalización y conversión; la adaptación de Hojotoho mantiene CC BY-SA 3.0.</p><table><thead><tr><th>Obra</th><th>Autor / intérprete</th><th>Fuente / licencia</th></tr></thead><tbody>${rows}</tbody></table><p>Los seis MP3 de personajes han sido aportados por el director y se conservan sin modificar; no reciben una licencia abierta aquí. Ilustraciones originales: Will Kirkby.</p></section>`;
+}
+
 function html() {
   const p = pkgData();
   const es = ES();
@@ -22,13 +29,14 @@ function html() {
     <div style="height:1px;background:#B87333;opacity:.7;margin:16px auto 14px;width:56%"></div>
     <div style="font-size:13px;line-height:1.5">${es ? "Desarrollo para Foundry VTT de" : "Foundry VTT development of"}<br><b>${p.title}</b>${p.version ? ` <span style="color:#7C8792">v${p.version}</span>` : ""}</div>
     <div style="font-size:12px;margin-top:12px;line-height:1.7">${link("https://github.com/ManuRomera", es ? "Más sistemas y módulos" : "More systems and modules")}${p.url ? `<br>${link(p.url, es ? "Página del proyecto" : "Project page")}` : ""}</div>
+${creditosMusicales()}
   </div>`;
 }
 
 const Base = V2 ?? FormApplication;
 class MrCredits extends Base {
-  static DEFAULT_OPTIONS = { id: `mr-credits-${PKG}`, tag: "div", window: { title: "Manu Romera · Digital RPG Design", resizable: false }, position: { width: 360 } };
-  static get defaultOptions() { return foundry.utils.mergeObject(super.defaultOptions, { id: `mr-credits-${PKG}`, title: "Manu Romera · Digital RPG Design", width: 360, popOut: true }); }
+  static DEFAULT_OPTIONS = { id: `mr-credits-${PKG}`, tag: "div", window: { title: "Manu Romera · Digital RPG Design", resizable: true }, position: { width: 640 } };
+  static get defaultOptions() { return foundry.utils.mergeObject(super.defaultOptions, { id: `mr-credits-${PKG}`, title: "Manu Romera · Digital RPG Design", width: 640, popOut: true }); }
   async _renderHTML() { return html(); }
   _replaceHTML(result, content) { content.innerHTML = result; }
   async _renderInner() { return $(html()); }

@@ -1,6 +1,7 @@
 /** Instalación del contenido: en un mundo vacío, el GM activo importa la misión la primera vez; después, desde Configuración. */
 import { ID } from "./mesa.mjs";
 import { DialogV2 } from "./compat.mjs";
+import { actualizarContenido } from "./contenido.mjs";
 
 const PACK = `${ID}.aventura`;
 
@@ -23,6 +24,7 @@ export async function importarAventura({ confirmar = false } = {}) {
   }
   ui.notifications.info("Eat the Reich: importando vampiros, amenazas, diarios y el mapa de París…");
   await (await pack.getDocuments())[0].import({ dialog: false });
+  await actualizarContenido();
   await game.settings.set(ID, "importada", true);
   await game.scenes.find(s => s.getFlag(ID, "escena") === "paris")?.activate();
   return true;
@@ -36,7 +38,7 @@ async function bienvenida() {
     content: `<div class="er-tc er-parte"><header class="er-tc-cab"><div><strong>MR- Eat the Reich ${game.system.version}</strong><span>París, 1943</span></div></header>
       <p>Reparte los seis vampiros (clic derecho → Configurar propiedad). Abre el <b>Panel de misión</b> (botón en el directorio de Actores o en los controles de escena), carga una localización del Sector 3 y que alguien pulse un atributo de su hoja.</p>
       <p>Cada éxito de la tarjeta se gasta pulsando su dado: Objetivo, Amenaza, Defensa, Sangre o un ESPECIAL con los seises. Al terminar el turno, los ataques sin defender marcan la lesión solos.</p>
-      <p><b>El mapa:</b> doble clic en una calavera te lleva al decorado de esa localización (Mayús + doble clic abre su diario, con la página del manual). Cada escena trae su pieza de música clásica.</p>
+      <p><b>El mapa:</b> doble clic en una calavera te lleva al decorado de esa localización (Mayús + doble clic abre su diario, con la página del manual). Abre <b>Presentación de jugadores</b> para entrar en la sala de despliegue: un nombre abre su ataúd y activa su canción; Siguiente recupera la sala. La música de cada localización sigue los acontecimientos del manual. En Motivos tienes los seis temas de los protagonistas. El ataúd metálico está en Actores → Atrezo: arrástralo a la escena que elija el grupo.</p>
       <p class="er-tc-nota">Líneas, velos y Tarjeta X: icono del escudo en los controles de escena.</p></div>`
   });
 }
@@ -50,10 +52,14 @@ export function registrarInicio() {
     sec.className = "er-ajustes flexcol";
     sec.innerHTML = `<h4 class="divider">Eat the Reich</h4>
       <button type="button" data-er="mision"><i class="fa-solid fa-crosshairs" inert></i> Panel de misión</button>
+      <button type="button" data-er="presentacion"><i class="fa-solid fa-id-card" inert></i> Presentación de jugadores</button>
+      <button type="button" data-er="ataud"><i class="fa-solid fa-box" inert></i> ${game.i18n.localize("ER.Coffin.Place")}</button>
       <button type="button" data-er="importar"><i class="fa-solid fa-file-import" inert></i> Importar la misión</button>`;
     sec.addEventListener("click", ev => {
       const a = ev.target.closest("button[data-er]")?.dataset.er;
       if (a === "mision") game.mrEatTheReich.abrirMision();
+      if (a === "presentacion") game.mrEatTheReich.abrirPresentacion();
+      if (a === "ataud") game.mrEatTheReich.colocarAtaud();
       if (a === "importar") importarAventura({ confirmar: true });
     });
     sitio.after(sec);

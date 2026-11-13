@@ -1,10 +1,16 @@
+# Actualización 0.5.0
+
+En la pantalla inicial de Foundry, entra en **Sistemas de juego → MR- Eat the Reich → Actualizar**. El manifiesto estable enlaza con la última versión publicada y su ZIP. Después abre el mundo y recarga los clientes.
+
+Abre **Configuración → Eat the Reich → Presentación de jugadores**. Encontrarás instrucciones en **docs/PRESENTACION.md** y la selección musical por acontecimiento en **docs/GUIA_MUSICAL.md**. No es necesario reimportar la aventura.
+
 <p align="center">
   <img src="docs/img/banner.webp" alt="MR- Eat the Reich · sistema no oficial de uso privado para Foundry VTT" width="100%">
 </p>
 
 <p align="center">
   <a href="https://github.com/ManuRomera"><img alt="Manu Romera · Digital RPG Design" src="https://raw.githubusercontent.com/ManuRomera/ManuRomera/main/badges/mr-firma.svg" height="28"></a>
-  <a href="https://github.com/ManuRomera/mr-eat-the-reich/releases/latest"><img alt="Versión 0.3.0" src="https://img.shields.io/badge/versi%C3%B3n-0.3.0-d81557?style=for-the-badge&labelColor=10132b"></a>
+  <a href="https://github.com/ManuRomera/mr-eat-the-reich/releases/latest"><img alt="Versión 0.5.0" src="https://img.shields.io/badge/versi%C3%B3n-0.5.0-d81557?style=for-the-badge&labelColor=10132b"></a>
   <img alt="Foundry VTT 13 y 14" src="https://img.shields.io/badge/Foundry_VTT-13_%E2%80%93_14-ff3d8b?style=for-the-badge&labelColor=10132b">
   <img alt="Repositorio privado, uso personal" src="https://img.shields.io/badge/uso-privado-1f6f78?style=for-the-badge&labelColor=10132b">
   <img alt="En español" src="https://img.shields.io/badge/idioma-espa%C3%B1ol-f2c230?style=for-the-badge&labelColor=10132b">
@@ -17,7 +23,7 @@
 
 # MR- Eat the Reich
 
-**París, 1943.** Un escuadrón de vampiros cae del cielo en ataúdes de acero con un único objetivo: beberse a Hitler. Este es un sistema **no oficial y de uso privado** para jugar a *EAT THE REICH* (Grant Howitt y Will Kirkby; Rowan, Rook and Decard) en **Foundry VTT**, con todo el ruido del manual: hojas con forma de ataúd, rotulador rojo sangre, decorados de neón… y, para llevar la contraria, **música clásica**.
+**París, 1943.** Un escuadrón de vampiros cae del cielo en ataúdes de acero con un único objetivo: beberse a Hitler. Este es un sistema **no oficial y de uso privado** para jugar a *EAT THE REICH* (Grant Howitt y Will Kirkby; Rowan, Rook and Decard) en **Foundry VTT**, con todo el ruido del manual: hojas con forma de ataúd, rotulador rojo sangre, decorados de neón… y **una partitura elegida según lo que sucede en cada escena**.
 
 > Repositorio privado. No está publicado ni puede publicarse tal cual: lee [NOTICE.md](NOTICE.md) antes de compartirlo.
 
@@ -51,9 +57,42 @@ Y cada amenaza con su imagen:
 
 <p align="center"><img src="docs/img/amenazas.webp" alt="Las fuerzas de ocupación" width="100%"></p>
 
-## Música clásica contra el punk
+## Despliegue donde decida el grupo
 
-Una pieza de dominio público por escena y por estado de ánimo, en bucle sin costura: el **Capricho n.º 24 de Paganini** para la acción, la *Danse macabre* para los no-muertos del museo, Grieg para el sigilo, Músorgski para el miedo, la **Cabalgata de las valquirias** en la Ópera (lo que suena en el manual), el cancán en la fiesta del jardín, Chopin en el cementerio, Satie para investigar, Marte de Holst para los tanques… Suena sola al activar la escena y se cambia desde el Panel de misión. Nueve **efectos** propios: el golpe del resultado, críticos, lesiones, derribos, sorbos de sangre, la sirena de los refuerzos y los ataúdes cayendo.
+La **Plaza de la Sirena está vacía de ataúdes**, humo e impactos de despliegue. El objeto **Ataúd metálico de despliegue** aparece automáticamente en **Actores → Atrezo**. Su imagen tiene transparencia real, sin suelo, cráter ni marco circular. Arrástralo desde Actores a cualquier escena para colocar las copias que necesites. También puedes abrir su hoja y pulsar **Colocar ataúd**, o usar el icono de caja en los controles de escena. Ese botón coloca una copia en el centro de la escena para moverla después.
+
+No se coloca ningún ataúd automáticamente en el mapa ni en los decorados. El nuevo tipo de actor **Objeto de atrezo** no cuenta como vampiro ni como amenaza y no tiene estadísticas de combate.
+
+## Música de escena y temas de los protagonistas
+
+La banda sonora incluye **30 grabaciones**: temas de las 20 localizaciones, alternativas para siete cambios de situación, una sala de presentación y apoyos para maquinaria de guerra y último gesto. Cada selección responde a los acontecimientos del manual: persecución, funeral, refugio de la Resistencia, transformación demoníaca o asalto. La ópera emplea un fragmento vocal de Wagner. Los nueve efectos originales se conservan.
+
+Las fuentes, autores y licencias CC BY 4.0 y CC BY-SA 3.0 se detallan en [assets/audio/CREDITOS.md](assets/audio/CREDITOS.md) y en **Configurar ajustes → MR- Eat the Reich → Créditos**. El audio está incluido y no necesita conexión durante la partida. Se ha ajustado su sonoridad y suavizado el reinicio con un fundido; no se garantiza un bucle musical perfecto.
+
+Las canciones aportadas por el director se conservan sin alterar y se añaden a la lista musical. Con **MR- Dirección 0.5.1**, aparecen seis botones en **Motivos**:
+
+| Botón | Canción |
+|---|---|
+| Iryna | The Last Velvet Dynasty |
+| Chuck | A Decent Man with Bad Teeth |
+| Cosgrave | Dead Men Owe Me Money |
+| Nicole | Nothing Left to Lose |
+| Flint | Born Below the World |
+| Astrid | The Taiga Inside My Heart |
+
+Pulsa un nombre para activar su tema. Vuelve a pulsarlo para recuperar el fondo de la escena. Sin MR- Dirección, se pueden activar desde el selector de música del Panel de misión o desde Listas de reproducción. La integración está en el sistema y no requiere sustituir ni modificar el módulo.
+
+## Actualizar la instalación existente
+
+Cierra el mundo y, en la pantalla inicial de Foundry, abre **Sistemas de juego → MR- Eat the Reich → Actualizar**. La versión debe cambiar a **0.5.0**. Abre el mundo y recarga los navegadores; la presentación, la música y el atrezo se actualizan sin reimportar la aventura. Se conservan personajes, diarios y posiciones de tokens, además de listas musicales externas y fondos personalizados fuera de los recursos del sistema.
+
+Manifiesto estable para instalar o vincular el sistema:
+
+```text
+https://github.com/ManuRomera/mr-eat-the-reich/releases/latest/download/system.json
+```
+
+Para instalar manualmente, descarga **mr-eat-the-reich.zip** de la última release y extrae su contenido en **Data/systems/mr-eat-the-reich**, con Foundry cerrado. El ZIP de Foundry contiene system.json en la raíz y el compendio compilado.
 
 Con **[MR- Dirección](https://github.com/ManuRomera/mr-direccion)** (opcional) el sistema entrega la misión entera a su barra: escenas, lectura, música con fundido cruzado, nueve motivos, efectos, reparto de enemigos, un hito por Übermensch y el reloj «Hasta el amanecer».
 
@@ -76,7 +115,7 @@ En los dos casos faltan las ilustraciones del libro, que no se distribuyen: se s
 |---|---|---|
 | Retratos, mapa y páginas del manual (`assets/libro`, `assets/retratos`) | Tu PDF, con `npm run arte` | No (copyright de Will Kirkby y RR&D) |
 | Decorados de las 19 localizaciones y 11 amenazas (`assets/escenas`, `assets/amenazas`) | Generados con Codex para este sistema, sin usar el arte del libro como referencia; firmados con la marca MR | Sí |
-| Música (`assets/audio/musica`) | Grabaciones de dominio público o CC0 de Wikimedia Commons; ver `assets/audio/CREDITOS.md` | Sí |
+| Música (`assets/audio/musica`) | Punk/rock instrumental CC BY 4.0 o CC0 1.0; temas de personaje aportados por el director; ver `assets/audio/CREDITOS.md` | Sí |
 | Efectos (`assets/audio/sfx`) | Sintetizados con `tools/audio.py sfx` | Sí |
 
 ## Ponerlo en marcha
@@ -111,3 +150,13 @@ npm test
 
 Sin Foundry: `tests/arnes.html` pinta las plantillas reales con el CSS de Foundry (instrucciones en el propio archivo).
 **No se ha probado en un Foundry real** (ni v13 ni v14, ni con Dice So Nice): es lo primero que hay que hacer.
+
+## Comprobaciones de esta edición
+
+```sh
+node tests/contenido.mjs
+```
+
+La prueba comprueba la migración concurrente sin duplicados, 28 referencias de audio, seis motivos de personaje, 20 escenas con pistas distintas, conservación de ajustes externos, imagen limpia, creación de un solo actor de atrezo, ausencia de despliegue automático y permisos de colocación. El paquete se valida también con el esquema real de MR- Dirección 0.5.1. Se comprueban sintaxis, rutas, huellas digitales, transparencia y decodificación de audio. El instalador se prueba en una copia temporal, incluyendo la detección de conflictos.
+
+No se ha probado esta versión dentro de una instancia real de Foundry ni se ha realizado una audición completa de todas las pistas. La copia instalada permanece sin cambios.

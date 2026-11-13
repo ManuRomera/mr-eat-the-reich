@@ -2,7 +2,23 @@
   "TYPES": {
     "Actor": {
       "vampiro": "Vampiro",
-      "amenaza": "Amenaza"
+      "amenaza": "Amenaza",
+      "objeto": "Objeto de atrezo"
+    }
+  },
+  "ER": {
+    "Coffin": {
+      "Name": "Ataúd metálico de despliegue",
+      "Folder": "Atrezo",
+      "Description": "Ataúd blindado de despliegue. Objeto escénico sin atributos de combate.",
+      "Help": "Arrastra este actor a cualquier escena y coloca las copias donde el grupo decida desplegarse. Puedes moverlas, girarlas y ajustar su tamaño como cualquier token.",
+      "Place": "Colocar ataúd",
+      "Notes": "Notas",
+      "OpenScene": "Abre una escena antes de colocar el ataúd.",
+      "Reload": "Recarga el mundo para preparar el atrezo."
+    },
+    "Content": {
+      "Error": "No se ha podido actualizar el contenido. Recarga el mundo para reintentar."
     }
   }
 }

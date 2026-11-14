@@ -216,7 +216,7 @@ export function registrarPresentacion() {
     if (game.user.isGM) {
       const boton = document.createElement("button"); boton.type = "button";
       boton.className = "er-pres-control-rapido"; boton.textContent = "Control de presentación";
-      boton.addEventListener("click", abrirPresentacion); vista.root.append(boton);
+      boton.addEventListener("click", abrirPresentacion); (document.body ?? vista.root).append(boton);
     }
     refrescar();
     // Al recargar, Foundry puede restaurar la pista nativa de sala. Se reconcilia con el personaje compartido.

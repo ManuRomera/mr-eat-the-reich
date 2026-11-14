@@ -1,5 +1,10 @@
 # Cambios
 
+## 1.1.2 · 14-11-2026
+
+- **Dados punk**: las caras salían con la ruta del archivo escrita en vez de la imagen. Dice So Nice no precarga las texturas de los dados que se añaden después de su arranque; ahora se cargan a mano, con reintentos.
+- **Presentación**: vuelve el botón «Control de presentación» en pantalla (había quedado tapado por la interfaz); ahora va fijo, abajo en el centro, por encima de los menús.
+
 ## 1.1.1 · 14-11-2026
 
 - **Dados punk para Dice So Nice**: números a máquina, calavera con colmillos en el 6 y el color del ataúd de cada vampiro (los del GM, negros con canto rojo). Dos ajustes por jugador para quitar los dados punk o el color.

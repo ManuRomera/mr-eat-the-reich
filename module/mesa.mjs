@@ -48,6 +48,15 @@ export function registrarAjustes() {
   Hooks.once("diceSoNiceReady", dados => {
     dados.addSystem({ id: ID, name: "Eat the Reich · punk" }, "default");
     dados.addDicePreset({ type: "d6", system: ID, labels: [1, 2, 3, 4, 5, 6].map(n => `${RUTA}/assets/dados/${n}.webp`) });
+    // Dice So Nice solo precarga las texturas una vez al arrancar: las de un preset añadido después hay que cargarlas a mano
+    // (si no, dibuja la ruta del archivo como texto en las caras). Se reintenta hasta que su cargador esté listo.
+    const cargar = async (intentos = 8) => {
+      const p = dados.DiceFactory?.systems?.get(ID)?.dice?.get("d6");
+      if (!p || p.modelLoaded) return;
+      try { p.modelLoading = false; await p.loadTextures(); } catch { /* aún no está listo */ }
+      if (!p.modelLoaded && intentos > 0) setTimeout(() => cargar(intentos - 1), 1500);
+    };
+    setTimeout(() => cargar(), 1000);
   });
   game.settings.register(ID, "escalaAtaud", {
     name: "Tamaño de la hoja-ataúd",

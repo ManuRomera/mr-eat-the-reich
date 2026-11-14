@@ -46,7 +46,8 @@
 .er-pres-acciones{display:grid;grid-template-columns:1fr 1fr;gap:10px}.er-pres-acciones .er-pres-siguiente{background:var(--er-sangre);border-color:var(--er-noche);color:#fff}
 .er-pres-panel label{display:flex;align-items:center;gap:12px;font-size:12px}.er-pres-panel input[type=range]{flex:1;accent-color:var(--er-sangre)}
 .er-pres-estado{padding:8px 11px;border-left:4px solid var(--er-cinta);background:var(--er-campo);font-size:11px;line-height:1.5}
-.er-pres-control-rapido{position:absolute;top:14px;left:50%;transform:translateX(-50%);pointer-events:auto;min-height:42px!important;padding:9px 17px!important;background:var(--er-sangre)!important;color:#fff!important;border:3px solid #05060f!important;border-radius:0!important;font:700 17px/1.2 var(--er-rotulo)!important;letter-spacing:.1em;text-transform:uppercase;box-shadow:5px 5px 0 #05060f!important;transform:rotate(-1.5deg);cursor:pointer}
+/* Va en el body, por encima de la interfaz (60) y por debajo de las ventanas (100); solo se ve con la sala en pantalla. */
+.er-pres-control-rapido{display:none;position:fixed;z-index:70;bottom:128px;left:50%;transform:translateX(-50%);width:auto!important;height:auto!important;pointer-events:auto;min-height:42px!important;padding:9px 17px!important;background:var(--er-sangre)!important;color:#fff!important;border:3px solid #05060f!important;border-radius:0!important;font:700 17px/1.2 var(--er-rotulo)!important;letter-spacing:.1em;text-transform:uppercase;box-shadow:5px 5px 0 #05060f!important;transform:rotate(-1.5deg);cursor:pointer}
 .er-pres-control-rapido:focus-visible{outline:3px solid #f2c230;outline-offset:4px}
 .er-ajustes [data-er='presentacion']{font-family:var(--er-rotulo);text-transform:uppercase;letter-spacing:.08em;background:var(--er-sangre);color:#fff;border:2px solid var(--er-noche);box-shadow:3px 3px 0 var(--er-noche);border-radius:0;min-height:38px}
 @media(max-width:700px){.er-pres-foco{inset:6vh 3vw;gap:2vw}.er-pres-ataud{height:80vh;width:55vh;max-width:60vw}.er-pres-identidad{width:29vw;min-width:0}.er-pres-nombre{font-size:8vw!important}.er-pres-expediente{letter-spacing:0}.er-pres-jugador{margin-top:15px}}
@@ -61,3 +62,5 @@
 .er-pres-panel .er-pres-juega[aria-pressed=false]{background:var(--er-campo);color:var(--er-tenue)}
 .er-pres-fila.fuera .er-pres-elegir{opacity:.45}.er-pres-fila.fuera .er-pres-elegir strong{text-decoration:line-through}
 .er-pres-musica{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center}
+
+body.er-presentacion-exclusiva .er-pres-control-rapido{display:block}

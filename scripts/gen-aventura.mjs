@@ -185,11 +185,12 @@ const direccion = {
     effects: Object.entries(EFECTOS_BARRA).map(([k, label]) => ({ id: k, label, icon: EFECTOS[k][1], sound: src("sfx", k) })),
     markers: { milestones: AMENAZAS.filter(a => a.uber).map(a => ({ id: a.clave, label: `${a.nombre} ha caído`, public: true })), clocks: [{ id: "amanecer", label: "Hasta el amanecer", segments: 6, public: true, announce: true, phrases: ["La noche se acaba."] }] }
   },
-  scenes: [{ clave: "paris", nombre: "París, 1943", pagina: uid("pag-estructura"), enemigos: [], thumb: `${R}/libro/mapa-thumb.webp` },
+  scenes: [{ clave: "presentacion", nombre: "F.A.N.G. · Sala de despliegue", pagina: uid("pag-estructura"), enemigos: [], thumb: `${R}/escenas/presentacion-thumb.webp`, sinMusica: true },
+    { clave: "paris", nombre: "París, 1943", pagina: uid("pag-estructura"), enemigos: [], thumb: `${R}/libro/mapa-thumb.webp` },
     ...LOCALIZACIONES.map(l => ({ clave: l.clave, nombre: l.nombre, pagina: uid(`pag-lugar-${l.clave}`), enemigos: l.enemigos, thumb: `${R}/escenas/${l.clave === "sirena" ? "sirena-limpia" : l.clave}-thumb.webp` }))].map((e, i) => ({
-    ref: { flag: [ID, "escena", e.clave] }, order: i, name: e.nombre, reading: { uuid: `JournalEntry.${journal[1]._id}.JournalEntryPage.${e.pagina}` }, music: src("musica", pista(MUSICA_LUGAR[e.clave])),
+    ref: { flag: [ID, "escena", e.clave] }, order: i, name: e.nombre, reading: { uuid: `JournalEntry.${journal[1]._id}.JournalEntryPage.${e.pagina}` }, music: e.sinMusica ? null : src("musica", pista(MUSICA_LUGAR[e.clave])),
     motifs: curado.scenes?.find(c => c.ref?.flag?.[2] === e.clave)?.motifs ?? null, cues: [], ambient: null, figures: e.enemigos.map(x => ({ ref: { uuid: `Actor.${uid(`amenaza-${x.clave}`)}` }, label: x.alias || AMENAZAS.find(a => a.clave === x.clave).nombre })),
-    handouts: [], notes: "", thumb: e.thumb, stage: e.clave === "paris" ? { mode: "none" } : { mode: "horizon", eye: 0.5 }
+    handouts: [], notes: "", thumb: e.thumb, stage: ["paris", "presentacion"].includes(e.clave) ? { mode: "none" } : { mode: "horizon", eye: 0.5 }
   }))
 };
 await fs.mkdir("content", { recursive: true });

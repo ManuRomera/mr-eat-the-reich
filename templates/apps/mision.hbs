@@ -66,6 +66,7 @@
     <details data-memoria="escuadron"><summary>Quién juega</summary>
       <div class="er-fila-botones er-juegan">{{#each todos}}<button type="button" class="er-boton {{#unless juega}}er-boton-suave{{/unless}}" data-action="juega" data-id="{{id}}" aria-pressed="{{juega}}"><i class="fa-solid {{#if juega}}fa-check{{else}}fa-xmark{{/if}}" inert></i> {{nombre}}</button>{{/each}}</div>
       <p class="er-tenue">Los que no juegan salen de los turnos, del tablón del mapa y de la presentación, y no cuentan para los ataúdes del despliegue.</p>
+      <div class="er-linea"><button type="button" class="er-boton er-reiniciar" data-action="reiniciar" data-tooltip="Vampiros como vienen en el sistema, misión vacía y despliegue deshecho. Pide confirmación."><i class="fa-solid fa-skull-crossbones" inert></i> Reiniciar la partida</button></div>
       {{#if m.desplegado}}<div class="er-linea"><button type="button" class="er-boton er-boton-suave" data-action="redesplegar" data-tooltip="Devuelve los decorados a su estado original y vuelve a ofrecer el punto de despliegue en el mapa"><i class="fa-solid fa-rotate-left" inert></i> Repetir el despliegue</button></div>{{/if}}
     </details>
     <details data-memoria="preparar" open><summary>Preparar la escena</summary>

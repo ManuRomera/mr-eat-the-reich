@@ -6,7 +6,7 @@
  */
 import { ID, RUTA } from "./mesa.mjs";
 import { PISTAS, LOCALIZACIONES, AMENAZAS } from "./datos.mjs";
-import { mision, escuadron } from "./mesa.mjs";
+import { mision, escuadron, vampiros, cambiarMision } from "./mesa.mjs";
 import { VERSION_CONTENIDO } from "./banda-sonora-datos.mjs";
 
 const AUDIO = `${RUTA}/assets/audio`;
@@ -40,6 +40,7 @@ export const catalogoMusica = () => (lista()?.sounds.contents ?? []).sort((a, b)
  * y el escuadrón con sus jugadores, retratos y el avance (la grande). Va dentro de #hud, que Foundry mueve y escala con el mapa.
  */
 const NOTAS = { campana: [150, 232, 1010, 300], equipo: [2390, 270, 1240, 700] };   // x, y, ancho, alto en píxeles del mapa (4000 × 2473)
+let eligiendo = false;   // quien dirige está marcando quién juega (solo en su pantalla)
 export function pintarTablon() {
   document.getElementById("er-tablon")?.remove();
   const hud = document.getElementById("hud");
@@ -47,11 +48,13 @@ export function pintarTablon() {
   const esc = t => foundry.utils.escapeHTML(String(t ?? ""));
   const m = mision(), d = canvas.dimensions, k = d.sceneWidth / 4000;
   const caja = ([x, y, w, h]) => `left:${x}px;top:${y}px;width:${w}px;height:${h}px`;
-  const filas = escuadron().map(v => {
+  const gm = game.user.isGM, elige = gm && eligiendo, banquillo = m.banquillo ?? [];
+  const filas = (elige ? vampiros() : escuadron()).map(v => {
     const duenos = game.users.filter(u => !u.isGM && v.testUserPermission(u, "OWNER")).map(u => u.name);
     const heridas = v.system.lesiones.flat().filter(l => l.marcada).length;
     const estado = v.system.muerto ? "ha caído" : v.system.derribado ? "derribado" : `sangre ${v.system.sangre}${heridas ? ` · ${heridas} lesión${heridas > 1 ? "es" : ""}` : ""}`;
-    return `<div class="er-tb-fila ${v.system.muerto ? "caido" : ""}"><img src="${esc(v.prototypeToken?.texture?.src || v.img)}" alt=""><div><b>${esc(v.name)}</b><span>${esc(duenos.join(", ") || "sin jugador")}</span><i>${esc(estado)}</i></div></div>`;
+    const fuera = banquillo.includes(v.id), E = elige ? "button" : "div";
+    return `<${E} ${elige ? `type="button" data-juega="${v.id}" aria-pressed="${!fuera}"` : ""} class="er-tb-fila ${v.system.muerto ? "caido" : ""} ${fuera ? "fuera" : ""}"><img src="${esc(v.prototypeToken?.texture?.src || v.img)}" alt=""><div><b>${esc(v.name)}</b><span>${esc(duenos.join(", ") || "sin jugador")}</span><i>${esc(elige ? (fuera ? "no juega" : "juega") : estado)}</i></div></${E}>`;
   }).join("");
   const visitadas = LOCALIZACIONES.filter(l => (m.visitadas ?? []).includes(l.clave));
   const actual = LOCALIZACIONES.find(l => l.nombre === m.escena);
@@ -62,9 +65,15 @@ export function pintarTablon() {
   t.id = "er-tablon";
   t.style.cssText = `left:${d.sceneX}px;top:${d.sceneY}px;width:4000px;height:2473px;transform-origin:0 0;transform:scale(${k})`;
   t.innerHTML = `<div class="er-tb er-tb-campana" style="${caja(NOTAS.campana)}"><small>Operación</small><b>${esc(game.settings.get(ID, "campana") || game.world.title)}</b></div>
-    <div class="er-tb er-tb-equipo" style="${caja(NOTAS.equipo)}"><h3>Escuadrón F.A.N.G.</h3><div class="er-tb-lista">${filas || "<span>Aún no hay vampiros.</span>"}</div>
+    <div class="er-tb er-tb-equipo" style="${caja(NOTAS.equipo)}"><div class="er-tb-cab"><h3>Escuadrón F.A.N.G.</h3>${gm ? `<button type="button" data-tb="elegir" aria-pressed="${elige}">${elige ? "Hecho" : "Quién juega"}</button><button type="button" data-tb="reiniciar">Reiniciar</button>` : ""}</div><div class="er-tb-lista">${filas || "<span>Aún no hay vampiros.</span>"}</div>
       <div class="er-tb-avance"><div class="er-tb-sectores">${sectores}</div>
         ${actual ? `Ahora: <b>${esc(actual.nombre)}</b> · ronda ${m.ronda}<br>` : m.desplegado ? "" : "Elegid el punto de despliegue en el Sector 3.<br>"}Localizaciones: <b>${visitadas.length}</b> · Übermenschen caídos: <b>${(m.caidos ?? []).length}/${uber}</b></div></div>`;
+  t.addEventListener("click", ev => {
+    const id = ev.target.closest("[data-juega]")?.dataset.juega, que = ev.target.closest("[data-tb]")?.dataset.tb;
+    if (id) cambiarMision(x => { x.banquillo = x.banquillo.includes(id) ? x.banquillo.filter(y => y !== id) : [...x.banquillo, id]; if (x.turno === id) x.turno = ""; });
+    if (que === "elegir") { eligiendo = !eligiendo; pintarTablon(); }
+    if (que === "reiniciar") game.mrEatTheReich.reiniciarPartida();
+  });
   hud.append(t);
   Hooks.callAll("eatthereich.tablon", t, m, k);
 }

@@ -149,6 +149,7 @@ export function terminarPresentacion() {
     if (presentacionActiva() && !await cerrarActual()) return;
     await publicar({ personaje: "", activa: false, fase: "sala" });
     await lista()?.stopAll();
+    control?.close();
     if (anterior && !anterior.getFlag(ID, "presentacion")) {
       saliendo = true;
       try { await anterior.activate(); } finally { saliendo = false; }

@@ -102,7 +102,7 @@ export class PanelMision extends ConMemoria(HandlebarsApplicationMixin(Applicati
     id: "er-mision", classes: [ID, "er-mision"], position: { width: 540, height: 680 },
     window: { title: "Misión", icon: "fa-solid fa-crosshairs", resizable: true },
     actions: { mas: PanelMision.#ajustar, menos: PanelMision.#ajustar, quitar: PanelMision.#quitar, objetivo: PanelMision.#objetivo, amenaza: PanelMision.#amenaza,
-      cargar: PanelMision.#cargar, tirarDesde: PanelMision.#tirarDesde, musica: PanelMision.#musica, silencio: PanelMision.#silencio, irEscena: PanelMision.#irEscena, ronda: PanelMision.#ronda, limpiar: PanelMision.#limpiar, turno: PanelMision.#turno, abrir: PanelMision.#abrir, juega: PanelMision.#juega, redesplegar: PanelMision.#redesplegar }
+      cargar: PanelMision.#cargar, tirarDesde: PanelMision.#tirarDesde, musica: PanelMision.#musica, silencio: PanelMision.#silencio, irEscena: PanelMision.#irEscena, ronda: PanelMision.#ronda, limpiar: PanelMision.#limpiar, turno: PanelMision.#turno, abrir: PanelMision.#abrir, juega: PanelMision.#juega, redesplegar: PanelMision.#redesplegar, reiniciar: PanelMision.#reiniciar }
   };
   static PARTS = { cuerpo: { template: `${RUTA}/templates/apps/mision.hbs`, scrollable: [".er-mision-cuerpo"] } };
   static SCROLL_MEMORIA = [".er-mision-cuerpo"];
@@ -169,6 +169,7 @@ export class PanelMision extends ConMemoria(HandlebarsApplicationMixin(Applicati
   /** Quién juega: el banquillo quita a ese vampiro de los turnos, del tablón del mapa, de la presentación y de la cuenta de ataúdes. */
   static #juega(ev, b) { const id = b.dataset.id; return cambiarMision(m => { m.banquillo = m.banquillo.includes(id) ? m.banquillo.filter(x => x !== id) : [...m.banquillo, id]; if (m.turno === id) m.turno = ""; }); }
   static #redesplegar() { return game.mrEatTheReich.nuevoDespliegue(); }
+  static #reiniciar() { return game.mrEatTheReich.reiniciarPartida(); }
   static async #limpiar() {
     const ok = await DialogV2.confirm({ window: { title: "Escena nueva", icon: "fa-solid fa-broom" }, content: "<p>Se quitan los Objetivos y las Amenazas de la escena actual. Los vampiros siguen adelante.</p>", yes: { label: "Escena nueva", icon: "fa-solid fa-broom" }, no: { label: "Cancelar" }, rejectClose: false });
     if (ok) return cambiarMision(m => Object.assign(m, { escena: "", ronda: 1, objetivos: [], amenazas: [], actuaron: [] }));

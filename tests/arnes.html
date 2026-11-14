@@ -148,6 +148,7 @@ if (new URLSearchParams(location.search).has("tablon")) {
   game.world = { title: "Beberse a Hitler" };
   game.settings.get = (_, k) => (k === "mision" ? (new URLSearchParams(location.search).has("diana") ? { escena: "", ronda: 1, visitadas: [], caidos: [], banquillo: ["flint", "astrid"], diana: new URLSearchParams(location.search).get("diana") } : { escena: "Museo de la Guerra Europea", ronda: 2, visitadas: ["sirena", "catedral", "museo"], caidos: ["Stahlsoldat"], desplegado: "sirena" }) : k === "campana" ? "" : {});
   (await import("../module/escenas.mjs")).pintarTablon();
+  if (new URLSearchParams(location.search).has("elige")) document.querySelector('#er-tablon [data-tb="elegir"]')?.click();   // ?tablon&elige: quien dirige marcando quién juega
 }
 // Aviso de turno: ?turno[&jugador]
 if (new URLSearchParams(location.search).has("turno")) {

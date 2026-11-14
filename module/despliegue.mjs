@@ -3,7 +3,8 @@
  * y quien dirige da la orden de lanzamiento. La mesa va a ese decorado, caen tantos ataúdes como vampiros juegan (de 3 a 5),
  * cada uno con su explosión, el humo lo tapa todo y, al despejarse, el decorado es ya el de los ataúdes clavados.
  */
-import { ID, RUTA, mision, cambiarMision, operacion, pedir, escuadron } from "./mesa.mjs";
+import { ID, RUTA, MISION_INICIAL, mision, cambiarMision, operacion, pedir, escuadron } from "./mesa.mjs";
+import { DialogV2 } from "./compat.mjs";
 import { LOCALIZACIONES } from "./datos.mjs";
 import { escenaDe, sonar } from "./escenas.mjs";
 import { cargarLocalizacion } from "./apps/mision.mjs";
@@ -42,7 +43,10 @@ function pintarDianas(tablon, m, k) {
     const b = document.createElement("button");
     b.type = "button"; b.className = `er-diana ${fijada ? "fijada" : ""}`; b.style.cssText = `left:${x}px;top:${y}px`;
     b.setAttribute("aria-pressed", String(fijada)); b.setAttribute("aria-label", `Punto de despliegue: ${l.nombre}`);
-    b.addEventListener("click", () => pedir("diana", { clave: l.clave }));
+    if (game.user.isGM) b.dataset.tooltip = "Clic: fijar la diana · Alt + doble clic: asomarte tú al decorado";
+    // Con Alt no se toca la diana: quien dirige se asoma al decorado sin activarlo para la mesa ni lanzar nada.
+    b.addEventListener("click", ev => { if (!ev.altKey && ev.detail < 2) pedir("diana", { clave: l.clave }); });
+    b.addEventListener("dblclick", ev => { if (ev.altKey && game.user.isGM) escenaDe(l.clave)?.view(); });
     tablon.append(b);
     if (!fijada) continue;
     const n = cuantos(escuadron().length), f = document.createElement("div");
@@ -85,6 +89,38 @@ export async function nuevoDespliegue() {
   await restaurar();
   await cambiarMision(m => { m.diana = ""; m.desplegado = ""; m.despliegue = null; });
   await escenaDe("paris")?.activate();
+}
+
+/**
+ * Deja la partida a cero: los vampiros como vienen en el compendio, la misión vacía, los decorados sin ataúdes y la mesa en el mapa.
+ * No toca quién juega, los jugadores asignados, los diarios ni las escenas. Pide confirmación.
+ */
+export async function reiniciarPartida() {
+  if (!activoGM()) return ui.notifications.warn("Solo quien dirige puede reiniciar la partida.");
+  const r = await DialogV2.wait({
+    classes: [ID, "er-dialogo", "er-tirada-dlg", "er-reinicio"], window: { title: "Reiniciar la partida", icon: "fa-solid fa-skull-crossbones" }, position: { width: 460 }, rejectClose: false,
+    content: `<div class="er-reinicio-cuerpo"><b>¿Todo a cero?</b>
+      <ul><li>Los vampiros vuelven a estar <em>como vienen en el sistema</em>: sangre, lesiones, equipo, mejoras.</li><li>Se vacía la misión: escena, ronda, objetivos, amenazas, turnos y avance.</li><li>Se deshace el despliegue y los decorados recuperan su aspecto.</li></ul>
+      <label><input type="checkbox" name="chat" checked> Vaciar también el chat</label>
+      <p>Quién juega y los jugadores de cada vampiro se conservan. <strong>No se puede deshacer.</strong></p></div>`,
+    buttons: [{ action: "reiniciar", label: "A cero", icon: "fa-solid fa-skull-crossbones", callback: (ev, boton) => ({ chat: boton.form?.elements.chat?.checked ?? false }) },
+      { action: "no", label: "Ni hablar", icon: "fa-solid fa-xmark", default: true, callback: () => null }]
+  });
+  if (!r) return;
+  const aventura = (await game.packs.get(`${ID}.aventura`)?.getDocuments())?.[0]?.toObject();
+  if (!aventura) ui.notifications.warn("No encuentro el compendio de la misión: los vampiros se quedan como están.");
+  for (const src of aventura?.actors ?? []) {
+    if (src.type !== "vampiro") continue;
+    const actor = game.actors.get(src._id) ?? game.actors.find(a => a.type === "vampiro" && a.getFlag(ID, "clave") === src.flags?.[ID]?.clave);
+    if (actor) await actor.update({ system: src.system }, { diff: false, recursive: false });
+  }
+  await restaurar();
+  await game.settings.set(ID, "mision", { ...foundry.utils.deepClone(MISION_INICIAL), banquillo: mision().banquillo ?? [] });
+  if (r.chat) await ChatMessage.deleteDocuments([], { deleteAll: true });
+  const paris = escenaDe("paris");
+  if (paris && !paris.active) await paris.activate();
+  sonar("sello", 0.6);
+  ui.notifications.info("Partida a cero. París os espera.");
 }
 
 let jugado = null;

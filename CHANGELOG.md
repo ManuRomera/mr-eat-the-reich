@@ -1,5 +1,14 @@
 # Cambios
 
+## 0.9.0 · 14-11-2026
+
+- **Quién juega, desde el mapa**: en la nota amarilla grande, quien dirige tiene el botón «Quién juega»; al pulsarlo salen los seis vampiros y cada uno se marca o desmarca con un clic. El selector sigue también en el Panel de misión.
+- **Reiniciar la partida** (en la misma nota y en el Panel de misión): deja los vampiros como vienen en el sistema, vacía la misión, deshace el despliegue y devuelve la mesa al mapa. Pide confirmación en una ventana con el estilo de la tirada; se puede elegir si vaciar también el chat. Conserva quién juega y los jugadores de cada vampiro.
+- **Alt + doble clic en un punto de despliegue**: quien dirige se asoma al decorado sin fijar la diana, sin lanzar nada y sin mover a los jugadores.
+- **La sala de despliegue es la primera escena de MR- Dirección**. No lleva música en la barra: la pone la propia presentación.
+- **Puerta del ataúd por dentro** en la presentación: al abrirse se ve la cara interior de la tapa (imagen nueva), y el soporte se queda con el ataúd, no con la puerta.
+- «Salir de la presentación» cierra también su ventana de control.
+
 ## 0.8.0 · 14-11-2026
 
 - **Punto de despliegue**: en el mapa de París, los seis puntos del Sector 3 llevan una marca. Al pulsar uno (cualquier jugador) sale la diana con su ficha; quien dirige da la orden de **¡Lanzamiento!**. La mesa va al decorado, caen los ataúdes uno a uno con su explosión, el humo lo tapa todo y, al despejarse, el decorado es ya el de los ataúdes clavados. Se carga también la localización en el Panel de misión.

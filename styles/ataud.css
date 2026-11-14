@@ -153,8 +153,8 @@ body.er-sin-movimiento .er-tapa-giro { transform: rotate(-5deg) !important; }
 .er-dt-op:has(input:disabled) { opacity: .45; cursor: default; }
 .er-dt-op b { text-transform: uppercase; letter-spacing: .03em; } .er-dt-op small { display: block; opacity: .85; }
 .er-tirada-dlg .form-footer { margin-top: 12px; }
-.mr-eat-the-reich.er-tirada-dlg .form-footer button:is([data-action="tirar"], [data-action="guardar"]) { height: auto; min-height: 54px; font-family: var(--er-rotulo); font-weight: 700; font-size: 28px; letter-spacing: .12em; text-transform: uppercase; color: #fff; background: var(--er-sangre); border: 3px solid #05060f; border-radius: 0; box-shadow: 6px 6px 0 #05060f; transform: rotate(-1deg); cursor: pointer; }
-.mr-eat-the-reich.er-tirada-dlg .form-footer button:is([data-action="tirar"], [data-action="guardar"]):hover { transform: rotate(1deg) scale(1.03); background: #05060f; border-color: var(--er-sangre); }
+.mr-eat-the-reich.er-tirada-dlg .form-footer button:is([data-action="tirar"], [data-action="guardar"], [data-action="reiniciar"]) { height: auto; min-height: 54px; font-family: var(--er-rotulo); font-weight: 700; font-size: 28px; letter-spacing: .12em; text-transform: uppercase; color: #fff; background: var(--er-sangre); border: 3px solid #05060f; border-radius: 0; box-shadow: 6px 6px 0 #05060f; transform: rotate(-1deg); cursor: pointer; }
+.mr-eat-the-reich.er-tirada-dlg .form-footer button:is([data-action="tirar"], [data-action="guardar"], [data-action="reiniciar"]):hover { transform: rotate(1deg) scale(1.03); background: #05060f; border-color: var(--er-sangre); }
 
 /* Misión: turno en curso y vampiros fuera de escena */
 .mr-eat-the-reich .er-turno.turno { border-color: var(--er-oro); box-shadow: 0 0 0 3px var(--er-oro), 0 0 18px var(--er-oro); transform: scale(1.18); z-index: 1; }
@@ -281,3 +281,23 @@ body.er-temblor #board { animation: er-temblor .4s linear; }
   body.er-temblor #board { animation: none; }
 }
 .er-mision .er-juegan .er-boton[aria-pressed="false"] { opacity: .6; text-decoration: line-through; }
+
+/* ── Tablón: quien dirige marca ahí quién juega y reinicia la partida ── */
+#er-tablon .er-tb-cab { display: flex; align-items: center; gap: 18px; }
+#er-tablon .er-tb-cab button, #er-tablon button.er-tb-fila { pointer-events: auto; cursor: pointer; }
+#er-tablon .er-tb-cab button { width: auto; height: auto; margin: 0; padding: 2px 20px 6px; border: 5px solid #17120c; border-radius: 0; background: transparent; box-shadow: none; color: #17120c; font-family: "ER Rotulo", "Arial Narrow", sans-serif; font-weight: 700; font-size: 36px; line-height: 1.15; letter-spacing: .08em; text-transform: uppercase; transform: rotate(1.5deg); }
+#er-tablon .er-tb-cab button[data-tb="elegir"] { margin-left: auto; }
+#er-tablon .er-tb-cab button[aria-pressed="true"] { background: #17120c; color: #f2c230; }
+#er-tablon .er-tb-cab button[data-tb="reiniciar"] { border-color: #8b0018; background: #8b0018; color: #fff; transform: rotate(-2deg); box-shadow: 6px 6px 0 #17120c; }
+#er-tablon .er-tb-cab button:hover, #er-tablon .er-tb-cab button:focus-visible, #er-tablon button.er-tb-fila:hover, #er-tablon button.er-tb-fila:focus-visible { outline: 6px solid #17120c; outline-offset: 3px; }
+#er-tablon button.er-tb-fila { justify-content: flex-start; width: auto; height: auto; margin: 0; padding: 4px; border: 4px dashed #2a1708; border-radius: 0; background: rgba(255, 255, 255, .25); box-shadow: none; color: inherit; font: inherit; text-align: left; }
+#er-tablon .er-tb-fila.fuera { opacity: .5; }
+#er-tablon .er-tb-fila.fuera img { filter: grayscale(1); }
+#er-tablon .er-tb-fila.fuera b { text-decoration: line-through 6px #8b0018; }
+/* ── Reinicio: confirmación con el mismo aire que la tirada ── */
+.er-reinicio .er-reinicio-cuerpo { font-family: "ER Maquina", "Courier New", monospace; font-size: 14px; line-height: 1.35; }
+.er-reinicio .er-reinicio-cuerpo > b { display: inline-block; margin-bottom: 8px; padding: 0 14px 4px; background: #05060f; color: #fff; font-family: var(--er-rotulo); font-size: 34px; line-height: 1.1; text-transform: uppercase; letter-spacing: .04em; transform: rotate(-2deg); }
+.er-reinicio .er-reinicio-cuerpo ul { margin: 6px 0 10px; padding-left: 20px; }
+.er-reinicio .er-reinicio-cuerpo label { display: flex; align-items: center; gap: 8px; font-weight: 700; }
+.er-reinicio .er-reinicio-cuerpo strong { text-decoration: underline wavy; text-underline-offset: 3px; }
+.er-mision .er-reiniciar { background: var(--er-sangre, #8b0018); color: #fff; border-color: #05060f; font-family: var(--er-rotulo); text-transform: uppercase; letter-spacing: .06em; transform: rotate(-1deg); box-shadow: 3px 3px 0 #05060f; }

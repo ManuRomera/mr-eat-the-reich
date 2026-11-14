@@ -13,7 +13,7 @@ import { registrarLupa } from "./module/lupa.mjs";
 import { registrarInicio, importarAventura } from "./module/inicio.mjs";
 import { registrarEscenas, sonar, musica } from "./module/escenas.mjs";
 import { registrarContenido, colocarAtaud } from "./module/contenido.mjs";
-import { registrarDespliegue, lanzar, nuevoDespliegue } from "./module/despliegue.mjs";
+import { registrarDespliegue, lanzar, nuevoDespliegue, reiniciarPartida, reiniciarPartida } from "./module/despliegue.mjs";
 import { leitmotiv } from "./module/direccion-mr.mjs";
 import { registrarDireccionMR } from "./module/direccion-mr.mjs";
 

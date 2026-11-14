@@ -17,7 +17,9 @@
 .er-pres-original{display:block;width:100%;height:100%;object-fit:cover;object-position:center center;border:0;max-width:none}
 .er-pres-tapa{position:absolute;inset:0;transform:rotateY(0deg);transform-origin:18% 24%;transform-style:preserve-3d;transition:transform var(--er-puerta-cerrar) cubic-bezier(.4,0,.15,1);will-change:transform}
 .er-pres-tapa-cara,.er-pres-tapa-dorso{position:absolute;inset:0;backface-visibility:hidden;background:url('../assets/atrezo/ataud-presentacion-frontal.png') center/100% 100% no-repeat}
-.er-pres-tapa-dorso{transform:rotateY(180deg);filter:brightness(.48) saturate(.7)}
+/* La puerta es solo la tapa: el soporte se queda con el ataúd. Por dentro tiene su propia imagen (refuerzos, cerrojo, arañazos). */
+.er-pres-tapa-cara{clip-path:polygon(39% 1%,62% 1%,84.5% 25%,71% 83.5%,31% 83.5%,16.5% 25%)}
+.er-pres-tapa-dorso{transform:rotateY(180deg);background-image:url('../assets/atrezo/ataud-presentacion-tapa-dentro.webp');filter:brightness(.82)}
 .is-open .er-pres-tapa{transform:rotateY(-114deg);transition-duration:var(--er-puerta-abrir)}
 .er-pres-identidad{width:31vw;max-width:580px;min-width:180px;text-shadow:0 4px 16px #000;opacity:0;transform:translateX(30px);transition:opacity 1s,transform 1s}
 .is-open .er-pres-identidad{opacity:1;transform:translateX(0);transition-delay:.8s}

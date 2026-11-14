@@ -1,5 +1,10 @@
 # Cambios
 
+## 1.2.0 · 14-11-2026
+
+- **Reparto de éxitos dentro de la tarjeta**: desaparece el menú flotante. El siguiente éxito sin gastar queda «en la mano» (resaltado) y debajo salen, en una lista, los sitios donde puede ir: cada Objetivo, cada Amenaza, defenderte, beber sangre y, con un 6, los especiales. Un clic lo gasta y pasa al siguiente; para gastar antes otro dado, se pulsa ese dado. Los valores se actualizan solos cuando cambia la misión.
+- En modo oscuro, los dados de ataque del GM con éxito vuelven a leerse.
+
 ## 1.1.3 · 14-11-2026
 
 - **Diálogo de tirada**: además de «Tirar Nd6» dice cuántos dados negros tira el GM contra ti (el Ataque de la amenaza elegida + 1 por cada otra en juego), para que cuadre con los dados que caen en pantalla.

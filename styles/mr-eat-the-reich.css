@@ -298,3 +298,19 @@ body.er-sin-movimiento .er-lupa { animation: none; }
 .chat-message .table-draw .table-results { list-style: none; margin: 8px 0 0; padding: 0; }
 .chat-message .table-draw .table-results li { display: block; margin: 0; padding: 6px 8px 6px 12px; border: 0; border-left: 6px solid var(--er-sangre); background: var(--er-campo); font-size: 1.12em; line-height: 1.35; font-weight: 700; }
 .chat-message .table-draw .table-results li img { display: none; }
+
+/* ── Reparto de éxitos dentro de la tarjeta: el dado «en la mano» y, debajo, dónde puede ir ── */
+.er-tc .er-dado.mano { transform: translateY(-5px) rotate(-6deg) scale(1.12); box-shadow: 0 0 0 3px var(--er-papel), 0 0 0 6px var(--er-sangre), 4px 6px 0 var(--er-noche); z-index: 1; }
+.er-tc-destinos { margin: 8px 0 4px; padding-top: 6px; border-top: 1px dashed var(--er-tenue); }
+.er-tc-destinos > p { margin: 0 0 2px; font-family: var(--er-rotulo); font-size: 1.05em; letter-spacing: .06em; text-transform: uppercase; }
+.er-tc-destinos > p b { display: inline-block; padding: 0 6px; background: var(--er-sangre); color: #fff; transform: rotate(-4deg); }
+.er-tc .er-dest { display: flex; align-items: center; gap: 8px; width: 100%; height: auto; min-height: 30px; margin: 0; padding: 4px 2px; text-align: left; line-height: 1.2; font-family: var(--er-texto); font-size: 1em; color: inherit; background: none; border: 0; border-bottom: 1px dashed color-mix(in srgb, currentColor 30%, transparent); border-radius: 0; box-shadow: none; cursor: pointer; }
+.er-tc .er-dest:last-child { border-bottom: 0; }
+.er-tc .er-dest i { flex: none; width: 18px; text-align: center; color: var(--er-sangre); }
+.er-tc .er-dest span { flex: 1; min-width: 0; }
+.er-tc .er-dest small { opacity: .75; font-size: .85em; }
+.er-tc .er-dest b { flex: none; min-width: 1.6em; padding: 0 5px; text-align: center; font-family: var(--er-rotulo); font-size: 1.15em; border: 2px solid currentColor; transform: rotate(3deg); }
+.er-tc .er-dest:hover, .er-tc .er-dest:focus-visible { outline: 0; background: var(--er-noche); color: #fff; padding-left: 8px; }
+.er-tc .er-dest:hover i, .er-tc .er-dest:focus-visible i { color: var(--er-neon); }
+body.er-sin-movimiento .er-tc .er-dado.mano { transform: none; }
+body.er-oscuro .er-dados.gm .er-dado.exito { background: #f1ead6; color: #10132b; border-color: #f1ead6; }

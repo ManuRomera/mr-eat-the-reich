@@ -137,15 +137,40 @@ export const ultimoGesto = actor => tirar(actor, { ultimo: true });
 
 const ICONO = { objetivo: "fa-bullseye", amenaza: "fa-skull", defensa: "fa-shield", sangre: "fa-droplet", especial: "fa-star" };
 
+/** El éxito que cada cual tiene «en la mano» en su navegador: el siguiente sin gastar, o el dado que haya pulsado. */
+const enMano = new Map();
+function manoDe(mensaje, t) {
+  const libres = t.dados.map((d, i) => (!d.destino && R.exitosDado(d.c, t.umbral) ? i : -1)).filter(i => i >= 0);
+  const elegido = enMano.get(mensaje?.id);
+  return libres.includes(elegido) ? elegido : libres[0] ?? -1;
+}
+
+/** Dónde puede ir un éxito (manual, p. 31): un Objetivo, una Amenaza, defenderse, beber sangre o, con un 6, un ESPECIAL. */
+function destinos(t, i) {
+  const m = mision(), d = t.dados[i], ex = R.exitosDado(d.c, t.umbral), quedan = Math.max(0, t.gm.exitos - t.defensa);
+  const vivas = m.amenazas.filter(a => a.valor > 0);
+  const soloSinSangre = vivas.length > 0 && vivas.every(a => a.sinSangre);
+  const reto = o => (o.desafio ? `Desafío ${o.desafio}` : "");
+  return [
+    ...m.objetivos.filter(o => o.valor > 0).map(o => ({ tipo: "objetivo", id: o.id, texto: o.nombre, cifra: o.valor, nota: [o.secundario ? "secundario" : "", reto(o)].filter(Boolean).join(" · ") })),
+    ...vivas.map(a => ({ tipo: "amenaza", id: a.id, texto: a.nombre, cifra: a.valor, nota: reto(a) })),
+    ...(quedan ? [{ tipo: "defensa", texto: "Defenderte", cifra: quedan, nota: quedan === 1 ? "ataque por parar" : "ataques por parar" }] : []),
+    ...(t.sinBeber || soloSinSangre || !vivas.length ? [] : [{ tipo: "sangre", texto: "Beber sangre", cifra: `+${ex}` }]),
+    ...(d.c === 6 ? [...t.especiales.map(e => ({ tipo: "especial", nombre: e.nombre, texto: e.nombre, nota: "especial", ayuda: e.texto })), { tipo: "especial", nombre: "", texto: "Otro especial" }] : [])
+  ];
+}
+
 export function htmlTirada(mensaje, t) {
   const actor = game.actors.get(t.actor);
   const mio = Boolean(actor?.isOwner) && !t.cerrada;
+  const mano = mio ? manoDe(mensaje, t) : -1, vale = mano >= 0 ? R.exitosDado(t.dados[mano].c, t.umbral) : 0;
+  const ops = mano >= 0 ? destinos(t, mano) : [];
   const dado = (d, i) => {
     const ex = R.exitosDado(d.c, t.umbral);
     const clase = d.destino ? "gastado" : ex === 2 ? "critico" : ex ? "exito" : "fallo";
-    const titulo = d.destino ? `${d.destino.nombre}` : ex ? (mio ? "Pulsa para gastar este éxito" : `${ex} éxito${ex > 1 ? "s" : ""}`) : "Descartado";
+    const titulo = d.destino ? `${d.destino.nombre}` : ex ? (mio ? (i === mano ? "Este es el que vas a gastar" : "Pulsa para gastar este en vez del otro") : `${ex} éxito${ex > 1 ? "s" : ""}`) : "Descartado";
     const dentro = d.destino ? `<i class="fa-solid ${ICONO[d.destino.tipo]}" inert></i>` : d.c;
-    return `<button type="button" class="er-dado ${clase}${d.origen ? " bono" : ""}" data-dado="${i}" ${!ex || d.destino || !mio ? "disabled" : ""} data-tooltip="${esc(titulo)}" aria-label="Dado ${d.c}. ${esc(titulo)}">${dentro}</button>`;
+    return `<button type="button" class="er-dado ${clase}${d.origen ? " bono" : ""}${i === mano ? " mano" : ""}" data-dado="${i}" ${i === mano ? 'aria-pressed="true"' : ""} ${!ex || d.destino || !mio ? "disabled" : ""} data-tooltip="${esc(titulo)}" aria-label="Dado ${d.c}. ${esc(titulo)}">${dentro}</button>`;
   };
   const total = R.totalExitos(t.dados.map(d => d.c), t.umbral);
   const quedan = Math.max(0, t.gm.exitos - t.defensa);
@@ -165,6 +190,8 @@ export function htmlTirada(mensaje, t) {
       <div class="er-dados gm">${t.gm.caras.map(c => `<span class="er-dado ${c >= 4 ? "exito" : "fallo"}">${c}</span>`).join("")}</div>
       <span class="er-tc-quedan ${quedan ? "peligro" : ""}">${t.gm.exitos} ataque${t.gm.exitos === 1 ? "" : "s"}${t.defensa ? ` − ${t.defensa} defendidos` : ""} → <b>${quedan}</b> sin defender</span></div>`
     : ""}
+    ${mano >= 0 ? `<div class="er-tc-destinos" role="group" aria-label="Dónde gastar el éxito"><p>${vale > 1 ? "Ese <b>6</b> vale por dos. ¿Dónde va?" : `¿Dónde va ese <b>${t.dados[mano].c}</b>?`}</p>
+      ${ops.map((o, k) => `<button type="button" class="er-dest ${o.tipo}" data-dest="${k}" ${o.ayuda ? `data-tooltip="${esc(o.ayuda)}"` : ""}><i class="fa-solid ${ICONO[o.tipo]}" inert></i><span>${esc(o.texto)}${o.nota ? ` <small>${esc(o.nota)}</small>` : ""}</span>${o.cifra !== undefined ? `<b>${o.cifra}</b>` : ""}</button>`).join("") || `<p class="er-tc-nota">No hay nada en juego. Abre el Panel de misión.</p>`}</div>` : ""}
     ${repartos ? `<ul class="er-tc-reparto">${repartos}</ul>` : ""}
     ${t.notas.length ? `<p class="er-tc-nota">${t.notas.map(esc).join(" ")}</p>` : ""}
     ${t.sinBonos ? `<p class="er-tc-nota">Por su lesión no puede usar los +.</p>` : ""}
@@ -178,46 +205,26 @@ export function htmlTirada(mensaje, t) {
   </div>`;
 }
 
-/** Menú de destinos para un dado, construido con la misión del momento. */
-function menuDestinos(mensaje, t, i, ancla) {
-  document.querySelector(".er-menu")?.remove();
-  const m = mision(), d = t.dados[i], ex = R.exitosDado(d.c, t.umbral), quedan = Math.max(0, t.gm.exitos - t.defensa);
-  const vivas = m.amenazas.filter(a => a.valor > 0);
-  const soloSinSangre = vivas.length > 0 && vivas.every(a => a.sinSangre);
-  const op = [
-    ...m.objetivos.filter(o => o.valor > 0).map(o => ({ tipo: "objetivo", id: o.id, texto: `${o.secundario ? "Secundario" : "Objetivo"}: ${o.nombre} (${o.valor}${o.desafio ? `, Desafío ${o.desafio}` : ""})` })),
-    ...vivas.map(a => ({ tipo: "amenaza", id: a.id, texto: `Atacar: ${a.nombre} (${a.valor}${a.desafio ? `, Desafío ${a.desafio}` : ""})` })),
-    ...(quedan ? [{ tipo: "defensa", texto: `Defenderse (quedan ${quedan} ataques)` }] : []),
-    ...(t.sinBeber || soloSinSangre || !vivas.length ? [] : [{ tipo: "sangre", texto: `Beber sangre (+${ex})` }]),
-    ...(d.c === 6 ? [...t.especiales.map(e => ({ tipo: "especial", nombre: e.nombre, texto: `ESPECIAL · ${e.nombre}`, ayuda: e.texto })), { tipo: "especial", nombre: "", texto: "Otro ESPECIAL" }] : [])
-  ];
-  const menu = document.createElement("div");
-  menu.className = `${ID} er-menu`;
-  menu.setAttribute("role", "menu");
-  menu.innerHTML = `<p>Gastar ${ex > 1 ? "este crítico (2 éxitos)" : "este éxito"} en…</p>` + (op.map((o, k) => `<button type="button" role="menuitem" data-k="${k}" ${o.ayuda ? `data-tooltip="${esc(o.ayuda)}"` : ""}><i class="fa-solid ${ICONO[o.tipo]}" inert></i> ${esc(o.texto)}</button>`).join("") || "<p>No hay nada en juego. Abre el Panel de misión.</p>");
-  document.body.append(menu);
-  const r = ancla.getBoundingClientRect();
-  menu.style.left = `${Math.max(8, Math.min(r.left - menu.offsetWidth + r.width, window.innerWidth - menu.offsetWidth - 8))}px`;
-  menu.style.top = `${Math.min(r.bottom + 4, window.innerHeight - menu.offsetHeight - 8)}px`;
-  menu.addEventListener("click", ev => {
-    const o = op[ev.target.closest("button[data-k]")?.dataset.k];
-    if (o) pedir("asignar", { mensaje: mensaje.id, i, tipo: o.tipo, id: o.id ?? "", nombre: o.nombre ?? "" });
-    menu.remove();
-  });
-  setTimeout(() => document.addEventListener("pointerdown", ev => { if (!menu.contains(ev.target)) menu.remove(); }, { once: true, capture: true }), 0);
-  menu.querySelector("button")?.focus();
-}
-
+/** Tarjetas abiertas en este navegador: se repintan cuando cambia la misión (los valores de objetivos y amenazas van en los destinos). */
+const vivas = new Map();
 export function escucharTiradas() {
+  Hooks.on("eatthereich.mision", () => { for (const [id, v] of vivas) { if (v.hueco.isConnected) v.pintar(); else vivas.delete(id); } });
   alRenderizarMensaje((mensaje, html) => {
     const t = mensaje.getFlag(ID, "tirada");
     const hueco = html.querySelector(".er-tirada");
     if (!t || !hueco) return;
-    hueco.innerHTML = htmlTirada(mensaje, t);
-    pintarRetratos(hueco);
+    const pintar = () => { const actual = mensaje.getFlag(ID, "tirada"); if (actual) { hueco.innerHTML = htmlTirada(mensaje, actual); pintarRetratos(hueco); } };
+    pintar();
+    if (!t.cerrada) vivas.set(mensaje.id, { hueco, pintar });
     hueco.addEventListener("click", ev => {
       const dado = ev.target.closest("button[data-dado]");
-      if (dado) return menuDestinos(mensaje, mensaje.getFlag(ID, "tirada"), Number(dado.dataset.dado), dado);
+      if (dado) { enMano.set(mensaje.id, Number(dado.dataset.dado)); return pintar(); }
+      const destino = ev.target.closest("button[data-dest]");
+      if (destino) {
+        const actual = mensaje.getFlag(ID, "tirada"), i = manoDe(mensaje, actual), o = i >= 0 ? destinos(actual, i)[Number(destino.dataset.dest)] : null;
+        if (o) pedir("asignar", { mensaje: mensaje.id, i, tipo: o.tipo, id: o.id ?? "", nombre: o.nombre ?? "" });
+        return;
+      }
       const b = ev.target.closest("button[data-er]");
       if (b) pedir(b.dataset.er, { mensaje: mensaje.id, k: Number(b.dataset.k) });
     });

@@ -31,7 +31,7 @@ const { VAMPIROS, AMENAZAS, LOCALIZACIONES, ATRIBUTOS, AYUDA_ATRIBUTOS, BLOQUEOS
 const R = await import("../module/reglas.mjs");
 const RUTA = "/systems/mr-eat-the-reich";
 const actores = new Map(VAMPIROS.map(v => [v.clave, { id: v.clave, name: v.nombre, img: `${RUTA}/assets/libro/${v.clave}.webp`, isOwner: true, system: { ...structuredClone(v), flashback: false }, getFlag: () => null }]));
-globalThis.game = { actors: { get: id => actores.get(id) }, settings: { get: () => ({}) }, users: {}, user: { isGM: true } };
+globalThis.game = { actors: { get: id => actores.get(id) }, settings: { get: (_, k) => (k === "mision" ? { objetivos: [{ id: "o1", nombre: "Encontrar la salida del laberinto de plantas", valor: 6, desafio: 0 }, { id: "o2", nombre: "Rescatar a Iryna", valor: 3, desafio: 0, secundario: true }], amenazas: [{ id: "a1", nombre: "Escuadrón de infantería", valor: 6, ataque: 3 }, { id: "a2", nombre: "Vehículo blindado", valor: 4, ataque: 2, desafio: 1 }] } : {}) }, users: {}, user: { isGM: true } };
 const { htmlTirada } = await import("../module/tirada.mjs");
 
 for (const c of new URLSearchParams(location.search).keys()) document.body.classList.add(`er-${c}`);

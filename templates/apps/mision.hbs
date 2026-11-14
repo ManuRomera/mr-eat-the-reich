@@ -70,7 +70,7 @@
       {{#if m.desplegado}}<div class="er-linea"><button type="button" class="er-boton er-boton-suave" data-action="redesplegar" data-tooltip="Devuelve los decorados a su estado original y vuelve a ofrecer el punto de despliegue en el mapa"><i class="fa-solid fa-rotate-left" inert></i> Repetir el despliegue</button></div>{{/if}}
     </details>
     <details data-memoria="preparar" open><summary>Preparar la escena</summary>
-      <div class="er-linea"><select name="lugar" aria-label="Localización">{{#each sectores}}<optgroup label="{{nombre}}">{{#each lugares}}<option value="{{clave}}">{{nombre}}</option>{{/each}}</optgroup>{{/each}}</select>
+      <div class="er-linea"><select name="lugar" aria-label="Localización">{{#each sectores}}<optgroup label="{{nombre}}">{{#each lugares}}<option value="{{clave}}" {{#if actual}}selected{{/if}}>{{nombre}}</option>{{/each}}</optgroup>{{/each}}</select>
         <button type="button" class="er-boton" data-action="cargar" data-tooltip="Sustituye lo que hay por el objetivo y los enemigos de esa localización">Cargar</button></div>
       <div class="er-linea"><select name="catalogo" aria-label="Amenaza">{{#each catalogo}}<option value="{{v}}">{{n}}</option>{{/each}}</select>
         <button type="button" class="er-boton er-boton-suave" data-action="amenaza"><i class="fa-solid fa-plus" inert></i> Amenaza</button></div>

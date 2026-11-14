@@ -15,6 +15,13 @@ import { ATRIBUTOS, BLOQUEOS, FLASHBACK } from "./datos.mjs";
 const esc = t => foundry.utils.escapeHTML(String(t ?? ""));
 const mas = n => "+".repeat(n);
 const d6 = async () => (await new Roll("1d6").evaluate()).total;
+/** Dice So Nice: los dados de quien tira salen con las caras punk y el color de su vampiro (los del GM, negros con canto rojo). */
+function vestir(roll, actor) {
+  if (!roll || !game.dice3d || !game.settings.get(ID, "dadosPunk")) return roll;
+  const color = actor && game.settings.get(ID, "dadosColor") ? actor.getFlag(ID, "forro") : "";
+  for (const d of roll.dice) d.options.appearance = { system: ID, colorset: "custom", foreground: "#f4ead6", outline: "#05060f", background: color || "#16131f", edge: color ? "#05060f" : "#c8102e", material: "plastic", texture: "none" };
+  return roll;
+}
 const caras = roll => roll.dice.flatMap(d => d.results.map(r => r.result));
 
 /* ───────────── Diálogo ───────────── */
@@ -97,8 +104,8 @@ export async function tirar(actor, { atributo = "", amenaza = "", equipo = [], b
 
   const m = mision();
   const ataque = ultimo ? { dados: 0, amenaza: null } : R.reservaAtaque(m.amenazas, amenaza);
-  const rJ = await new Roll(`${n}d6`).evaluate();
-  const rG = ataque.dados ? await new Roll(`${ataque.dados}d6`).evaluate() : null;
+  const rJ = vestir(await new Roll(`${n}d6`).evaluate(), actor);
+  const rG = vestir(ataque.dados ? await new Roll(`${ataque.dados}d6`).evaluate() : null, null);
   const carasGM = rG ? caras(rG) : [];
   const especiales = bloq.has("especiales") ? [] : [...dato.habilidades, ...dato.mejoras.filter(h => h.activa)].filter(h => h.tipo === "especial").map(h => ({ nombre: h.nombre, texto: h.texto }));
   const tirada = {
@@ -269,10 +276,10 @@ export function escucharTiradas() {
   });
 
   operacion("bono", async (datos, quien) => {
-    const { msg, t } = abrir(datos, quien);
+    const { msg, t, actor } = abrir(datos, quien);
     const b = t?.bonos[datos.k];
     if (!b || b.hecho) return;
-    const roll = await new Roll(`${b.n}d6`).evaluate();
+    const roll = vestir(await new Roll(`${b.n}d6`).evaluate(), actor);
     mostrar3d(roll, quien);
     b.hecho = true;
     t.dados.push(...caras(roll).map(c => ({ c, origen: b.nombre, destino: null })));
@@ -285,7 +292,7 @@ export function escucharTiradas() {
     if (!t || t.flashback || actor.system.flashback || t.dados.some(d => d.destino) || R.totalExitos(t.dados.map(d => d.c), t.umbral) > 2) return;
     const otros = escuadron().filter(v => v.id !== actor.id && !v.system.muerto);
     const quienSale = otros.length ? otros[Math.floor(Math.random() * otros.length)].name : "alguien de F.A.N.G.";
-    const roll = await new Roll(`${t.dados.length + 2}d6`).evaluate();
+    const roll = vestir(await new Roll(`${t.dados.length + 2}d6`).evaluate(), actor);
     mostrar3d(roll, quien);
     t.flashback = { contexto: FLASHBACK.contexto[(await d6()) - 1], pregunta: FLASHBACK.preguntas[(await d6()) - 1].replace("[personaje]", quienSale) };
     t.dados = caras(roll).map(c => ({ c, origen: "", destino: null }));

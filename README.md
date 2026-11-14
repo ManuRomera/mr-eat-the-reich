@@ -1,4 +1,4 @@
-# Actualización 1.0.0
+# Actualización 1.1.0
 
 En la pantalla inicial de Foundry, entra en **Sistemas de juego → MR- Eat the Reich → Actualizar**. El manifiesto estable enlaza con la última versión publicada y su ZIP. Después abre el mundo y recarga los clientes.
 
@@ -10,7 +10,7 @@ Los mundos nuevos comienzan en la sala de despliegue. En un mundo ya iniciado, a
 
 <p align="center">
   <a href="https://github.com/ManuRomera"><img alt="Manu Romera · Digital RPG Design" src="https://raw.githubusercontent.com/ManuRomera/ManuRomera/main/badges/mr-firma.svg" height="28"></a>
-  <a href="https://github.com/ManuRomera/mr-eat-the-reich/releases/latest"><img alt="Versión 1.0.0" src="https://img.shields.io/badge/versi%C3%B3n-1.0.0-d81557?style=for-the-badge&labelColor=10132b"></a>
+  <a href="https://github.com/ManuRomera/mr-eat-the-reich/releases/latest"><img alt="Versión 1.1.0" src="https://img.shields.io/badge/versi%C3%B3n-1.1.0-d81557?style=for-the-badge&labelColor=10132b"></a>
   <img alt="Foundry VTT 13 y 14" src="https://img.shields.io/badge/Foundry_VTT-13_%E2%80%93_14-ff3d8b?style=for-the-badge&labelColor=10132b">
   <img alt="Repositorio privado, uso personal" src="https://img.shields.io/badge/uso-privado-1f6f78?style=for-the-badge&labelColor=10132b">
   <img alt="En español" src="https://img.shields.io/badge/idioma-espa%C3%B1ol-f2c230?style=for-the-badge&labelColor=10132b">
@@ -56,6 +56,18 @@ El mapa del manual con **una calavera por localización**: doble clic y estás e
 Y cada amenaza con su imagen:
 
 <p align="center"><img src="docs/img/amenazas.webp" alt="Las fuerzas de ocupación" width="100%"></p>
+
+## Preparar la tirada
+
+Sin cajas: el atributo elegido va **rodeado a rotulador**, cada cacharro y cada poder tiene su casilla torcida y, al usarlo, **el aspa roja** se sale del hueco. El botón dice cuántos dados vas a tirar. En modo oscuro, lo mismo sobre noche.
+
+<p align="center"><img src="docs/img/tirada.webp" alt="El diálogo de tirada en claro y en oscuro: atributo rodeado, casillas con aspa roja y botón Tirar 4d6" width="86%"></p>
+
+## Dados punk
+
+Con **Dice So Nice**, cada vampiro tira dados **del color de su ataúd**, con números a máquina y **la calavera con colmillos en el 6**. Los del GM son negros con el canto rojo. Cada jugador puede quitar los dados punk o el color desde los ajustes del sistema.
+
+<p align="center"><img src="docs/img/dados.webp" alt="Las seis caras del dado en los colores de los seis vampiros y en negro para el GM" width="60%"></p>
 
 ## Presentación del escuadrón
 
@@ -104,7 +116,7 @@ Pulsa un nombre para activar su tema. Vuelve a pulsarlo para recuperar el fondo 
 
 ## Actualizar la instalación existente
 
-Cierra el mundo y, en la pantalla inicial de Foundry, abre **Sistemas de juego → MR- Eat the Reich → Actualizar**. La versión debe cambiar a **1.0.0**. Abre el mundo y recarga los navegadores; la presentación, la música y el atrezo se actualizan sin reimportar la aventura. Se conservan personajes, diarios y posiciones de tokens, además de listas musicales externas y fondos personalizados fuera de los recursos del sistema.
+Cierra el mundo y, en la pantalla inicial de Foundry, abre **Sistemas de juego → MR- Eat the Reich → Actualizar**. La versión debe cambiar a **1.1.0**. Abre el mundo y recarga los navegadores; la presentación, la música y el atrezo se actualizan sin reimportar la aventura. Se conservan personajes, diarios y posiciones de tokens, además de listas musicales externas y fondos personalizados fuera de los recursos del sistema.
 
 Manifiesto estable para instalar o vincular el sistema:
 

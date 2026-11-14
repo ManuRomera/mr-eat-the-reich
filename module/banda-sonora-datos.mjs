@@ -1,5 +1,5 @@
 /** Partitura por situación del manual. Fuentes y licencias completas en assets/audio/CREDITOS.md. */
-export const VERSION_CONTENIDO = "1.0.0";
+export const VERSION_CONTENIDO = "1.1.0";
 export const AUDIO = {
   "noche": {
     "titulo": "París · Fondo",

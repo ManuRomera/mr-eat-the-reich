@@ -40,6 +40,18 @@ export const catalogoMusica = () => (lista()?.sounds.contents ?? []).sort((a, b)
  * y el escuadrón con sus jugadores, retratos y el avance (la grande). Va dentro de #hud, que Foundry mueve y escala con el mapa.
  */
 const NOTAS = { campana: [150, 232, 1010, 300], equipo: [2390, 270, 1240, 700] };   // x, y, ancho, alto en píxeles del mapa (4000 × 2473)
+/**
+ * Las calaveras del mapa: a la vista de todos (Foundry las esconde a quien no puede leer el diario) y con el nombre siempre puesto;
+ * las de escenas resueltas pierden la calavera (el nombre tachado lo pone el tablón).
+ */
+function vestirNota(n) {
+  const ir = n.document?.getFlag(ID, "ir");
+  if (!ir || ir === "paris" || canvas.scene?.getFlag(ID, "escena") !== "paris") return;
+  const hecha = (mision().resueltas ?? []).includes(ir);
+  n.visible = true;
+  if (n.controlIcon) n.controlIcon.alpha = hecha ? 0 : 1;
+  if (n.tooltip) n.tooltip.visible = !hecha;
+}
 let eligiendo = false;   // quien dirige está marcando quién juega (solo en su pantalla)
 export function pintarTablon() {
   document.getElementById("er-tablon")?.remove();
@@ -78,7 +90,7 @@ export function pintarTablon() {
     r.innerHTML = `<span>${esc(l.nombre)}</span>`;
     t.append(r);
   }
-  for (const n of canvas.notes?.placeables ?? []) if (n.controlIcon) n.controlIcon.alpha = resueltas.includes(n.document.getFlag(ID, "ir")) ? 0 : 1;
+  for (const n of canvas.notes?.placeables ?? []) vestirNota(n);
   // Doble clic en un retrato: su ficha, para quien tenga permiso.
   t.addEventListener("dblclick", ev => {
     const actor = game.actors.get(ev.target.closest("[data-ficha]")?.dataset.ficha);
@@ -99,7 +111,7 @@ export function registrarEscenas() {
   Hooks.on("canvasReady", () => { pintarTablon(); setTimeout(pintarTablon, 400); setTimeout(pintarTablon, 1600); });
   Hooks.on("renderHeadsUpDisplayContainer", () => setTimeout(pintarTablon, 0));
   Hooks.on("eatthereich.mision", () => pintarTablon());
-  Hooks.on("refreshNote", n => { if (n.controlIcon && (mision().resueltas ?? []).includes(n.document.getFlag(ID, "ir"))) n.controlIcon.alpha = 0; });
+  Hooks.on("refreshNote", vestirNota);
   for (const h of ["updateActor", "createActor", "deleteActor", "updateUser"]) Hooks.on(h, () => pintarTablon());
 
   game.settings.register(ID, "sonidos", {
@@ -110,7 +122,9 @@ export function registrarEscenas() {
   // Doble clic en una calavera del mapa: quien dirige lleva la mesa a esa escena (Mayús + doble clic abre el diario; Alt + doble clic, solo mirar).
   Hooks.on("activateNote", (nota, opciones) => {
     const ir = nota.document.getFlag(ID, "ir");
-    if (!ir || !game.user.isGM || globalThis.event?.shiftKey) return;
+    if (!ir) return;
+    if (!game.user.isGM) return false;   // los jugadores ven las calaveras y los nombres, pero no van a ningún sitio
+    if (globalThis.event?.shiftKey) return;
     const escena = escenaDe(ir);
     if (!escena) return;
     // Se activa (va toda la mesa y cambia la música de la escena); con Alt, quien dirige solo se asoma.

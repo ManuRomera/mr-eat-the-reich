@@ -307,3 +307,30 @@ body.er-temblor #board { animation: er-temblor .4s linear; }
 #er-tablon .er-tb-resuelta { position: absolute; width: 0; height: 0; pointer-events: none; }
 #er-tablon .er-tb-resuelta span { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%) rotate(-4deg); white-space: nowrap; padding: 2px 26px 8px; font-family: "ER Rotulo", "Arial Narrow", sans-serif; font-weight: 700; font-size: 64px; line-height: 1.1; letter-spacing: .04em; text-transform: uppercase; color: #17120c;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 60' preserveAspectRatio='none'%3E%3Cpath d='M4 34 C50 22 90 40 140 28 S230 22 296 31 M8 24 C70 36 150 18 292 40 M2 44 C90 30 200 46 298 22' fill='none' stroke='%23c8102e' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat, rgba(244, 234, 214, .82); box-shadow: 6px 6px 0 rgba(23, 18, 12, .55); }
+
+/* ── Diálogo de tirada sin cajas: palabras rodeadas a rotulador, casillas torcidas con su aspa y renglones a rayas ── */
+.mr-eat-the-reich .er-dt label.er-dt-atr { position: relative; align-items: baseline; gap: 5px; margin: 4px 10px; padding: 2px 4px 4px; background: none !important; border: 0 !important; box-shadow: none !important; color: inherit !important; font-size: 1.3em; opacity: .72; }
+.mr-eat-the-reich .er-dt label.er-dt-atr span { padding: 0; }
+.mr-eat-the-reich .er-dt label.er-dt-atr b { min-width: 0; background: none !important; color: inherit !important; font-family: var(--er-texto); font-size: 1.15em; }
+.mr-eat-the-reich .er-dt label.er-dt-atr:hover { opacity: 1; transform: rotate(-2deg) scale(1.06); }
+.mr-eat-the-reich .er-dt label.er-dt-atr:has(input:checked) { opacity: 1; transform: rotate(-2deg) scale(1.14); }
+.mr-eat-the-reich .er-dt label.er-dt-atr:has(input:checked)::after { content: ""; position: absolute; inset: -7px -13px -5px; pointer-events: none; background: #a3001b;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80' preserveAspectRatio='none'%3E%3Cpath d='M18 44 C10 20 60 6 110 7 C160 8 196 22 190 44 C184 66 130 76 86 74 C40 72 4 62 14 36 C22 16 70 10 104 12' fill='none' stroke='%23000' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80' preserveAspectRatio='none'%3E%3Cpath d='M18 44 C10 20 60 6 110 7 C160 8 196 22 190 44 C184 66 130 76 86 74 C40 72 4 62 14 36 C22 16 70 10 104 12' fill='none' stroke='%23000' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
+.mr-eat-the-reich .er-dt .er-dt-bloque { margin-top: 14px; }
+.mr-eat-the-reich .er-dt .er-dt-bloque > .er-cinta { position: relative; display: inline-block; padding: 0 2px 5px; background: none !important; color: inherit !important; box-shadow: none; clip-path: none; transform: rotate(-1.5deg); font-size: 1.3em; }
+.mr-eat-the-reich .er-dt .er-dt-bloque > .er-cinta::after { content: ""; position: absolute; left: -4px; right: -8px; bottom: -2px; height: 9px; background: currentColor;
+  -webkit-mask: var(--pk-tacha) center / 100% 100% no-repeat; mask: var(--pk-tacha) center / 100% 100% no-repeat; }
+.mr-eat-the-reich .er-dt .er-dt-bloque select, .mr-eat-the-reich .er-dt .er-dt-extra input, .mr-eat-the-reich .er-dt .er-dt-bloque input:is([type="text"], [type="number"]) { background: transparent !important; box-shadow: none !important; color: inherit !important; border-bottom-color: currentColor !important; }
+.mr-eat-the-reich .er-dt label.er-dt-op { position: relative; margin: 0; padding: 8px 4px 8px 52px; transform: none; background: none !important; color: inherit !important; border: 0 !important; border-bottom: 2px dashed color-mix(in srgb, currentColor 32%, transparent) !important; }
+.mr-eat-the-reich .er-dt label.er-dt-op input { position: absolute; opacity: 0; width: 0; height: 0; margin: 0; }
+.mr-eat-the-reich .er-dt label.er-dt-op::before { content: ""; position: absolute; left: 8px; top: 50%; width: 30px; height: 30px; margin-top: -15px; transform: rotate(-4deg); background: currentColor; -webkit-mask: var(--pk-caja) center / 100% 100% no-repeat; mask: var(--pk-caja) center / 100% 100% no-repeat; }
+.mr-eat-the-reich .er-dt label.er-dt-op:nth-child(2n)::before { transform: rotate(5deg); }
+.mr-eat-the-reich .er-dt label.er-dt-op:has(input:checked)::after { content: ""; position: absolute; left: -4px; top: 50%; width: 56px; height: 54px; margin-top: -28px; transform: rotate(-6deg); pointer-events: none; background: #a3001b; -webkit-mask: var(--pk-x1) center / 100% 100% no-repeat; mask: var(--pk-x1) center / 100% 100% no-repeat; }
+.mr-eat-the-reich .er-dt label.er-dt-op:nth-child(2n):has(input:checked)::after { transform: rotate(7deg); -webkit-mask-image: var(--pk-x2); mask-image: var(--pk-x2); }
+.mr-eat-the-reich .er-dt label.er-dt-op:has(input:checked) b { background: linear-gradient(transparent 58%, color-mix(in srgb, currentColor 22%, transparent) 58%); }
+.mr-eat-the-reich .er-dt label.er-dt-op:hover b { text-decoration: underline dotted; text-underline-offset: 4px; }
+.mr-eat-the-reich .er-dt label.er-dt-op:has(input:focus-visible) { outline: 3px solid currentColor; outline-offset: 2px; }
+.mr-eat-the-reich .er-dt label.er-dt-op:has(input:disabled) { opacity: .4; }
+body.er-oscuro .mr-eat-the-reich .er-dt label.er-dt-atr:has(input:checked)::after, body.er-oscuro .mr-eat-the-reich .er-dt label.er-dt-op:has(input:checked)::after { background: #ff2d55; }
+.mr-eat-the-reich.er-tirada-dlg .form-footer button[data-action="tirar"] { clip-path: polygon(0 6%, 3% 0, 97% 3%, 100% 0, 99% 94%, 96% 100%, 2% 97%, 0 100%); transform: rotate(-.6deg); }

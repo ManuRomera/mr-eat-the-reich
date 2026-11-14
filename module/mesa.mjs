@@ -37,6 +37,18 @@ export function registrarAjustes() {
     name: "Nombre de la campaña", hint: "Sale en la nota amarilla pequeña del mapa de París. Vacío = el título del mundo.",
     scope: "world", config: true, type: String, default: "", onChange: () => Hooks.callAll("eatthereich.mision", mision())
   });
+  game.settings.register(ID, "dadosPunk", {
+    name: "Dados punk (Dice So Nice)", hint: "Tus tiradas salen con los dados de Eat the Reich: números a máquina y la calavera con colmillos en el 6. Ajuste de este navegador.",
+    scope: "client", config: true, type: Boolean, default: true
+  });
+  game.settings.register(ID, "dadosColor", {
+    name: "Dados del color de tu vampiro", hint: "Cada vampiro tira dados del color de su ataúd. Si lo quitas, salen negros. Ajuste de este navegador.",
+    scope: "client", config: true, type: Boolean, default: true
+  });
+  Hooks.once("diceSoNiceReady", dados => {
+    dados.addSystem({ id: ID, name: "Eat the Reich · punk" }, "default");
+    dados.addDicePreset({ type: "d6", system: ID, labels: [1, 2, 3, 4, 5, 6].map(n => `${RUTA}/assets/dados/${n}.webp`) });
+  });
   game.settings.register(ID, "escalaAtaud", {
     name: "Tamaño de la hoja-ataúd",
     hint: "0 = automático (lo que quepa en tu pantalla). Ajuste de este navegador.",

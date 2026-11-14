@@ -1,5 +1,13 @@
 # Cambios
 
+## 1.1.0 · 14-11-2026
+
+- **Dados punk para Dice So Nice**: números a máquina, calavera con colmillos en el 6 y el color del ataúd de cada vampiro (los del GM, negros con canto rojo). Dos ajustes por jugador para quitar los dados punk o el color.
+- **Diálogo de tirada sin cajas**: atributo rodeado a rotulador, casillas torcidas con aspa roja al usar un cacharro o un poder, renglones a rayas.
+- **Panel de misión**: al activar un decorado se carga solo esa localización (si no es la que ya estaba ni está resuelta); el selector marca la escena actual y muestra tachadas las resueltas.
+- **Mapa para jugadores**: ven las calaveras y los nombres de los sitios, pero no pueden ir a ellos.
+- **Presentación**: con el ataúd cerrado ya no asoma la ilustración por debajo de la puerta.
+
 ## 1.0.0 · 14-11-2026
 
 - **Presentación**: ya no tapa los menús de Foundry, así que cada jugador puede abrir su ficha mientras se presenta. El control marca también quién juega, tiene botón para parar o poner la música y se ajusta al contenido. Los controles de Parar, Silenciar y volumen de MR- Dirección actúan sobre la música de la presentación. Al salir, la mesa va al mapa de París. La puerta del ataúd queda en su sitio.

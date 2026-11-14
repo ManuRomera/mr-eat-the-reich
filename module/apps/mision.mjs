@@ -111,7 +111,9 @@ export class PanelMision extends ConMemoria(HandlebarsApplicationMixin(Applicati
 
   async _prepareContext() {
     const m = mision(), ataque = reservaAtaque(m.amenazas);
-    const sectores = [3, 2, 1].map(s => ({ nombre: `Sector ${s}`, lugares: LOCALIZACIONES.filter(l => l.sector === s) }));
+    // En un desplegable del sistema no cabe el rotulador: las resueltas van con aspa y tachadas con el propio texto.
+    const tachar = t => `✗ ${[...t].map(c => c + "\u0336").join("")}`;
+    const sectores = [3, 2, 1].map(s => ({ nombre: `Sector ${s}`, lugares: LOCALIZACIONES.filter(l => l.sector === s).map(l => ({ clave: l.clave, nombre: m.resueltas.includes(l.clave) ? tachar(l.nombre) : l.nombre, actual: l.nombre === m.escena })) }));
     const mundo = game.actors.filter(a => a.type === "amenaza" && !AMENAZAS.some(x => x.clave === a.getFlag(ID, "clave")));
     return {
       direccion: Boolean(game.modules.get("mr-direccion")?.active),
@@ -195,5 +197,11 @@ export function registrarMision() {
   });
   Hooks.on("eatthereich.mision", m => { foundry.applications.instances.get("er-mision")?.render(); avisoTurno(m); });
   Hooks.once("ready", () => { turnoVisto = mision().turno; });
+  // Al activar un decorado, el Panel de misión se prepara solo con esa localización (si no es la que ya estaba ni está resuelta).
+  Hooks.on("updateScene", (escena, cambios) => {
+    if (cambios.active !== true || !game.users.activeGM?.isSelf) return;
+    const l = LOCALIZACIONES.find(x => x.clave === escena.getFlag(ID, "escena")), m = mision();
+    if (l && m.escena !== l.nombre && !m.resueltas.includes(l.clave)) cargarLocalizacion(l.clave);
+  });
   for (const h of ["updateActor", "createActor", "deleteActor"]) Hooks.on(h, a => { if (a.type === "vampiro") foundry.applications.instances.get("er-mision")?.render(); });
 }

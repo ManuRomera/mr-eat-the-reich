@@ -220,3 +220,64 @@ body.er-oscuro .mr-eat-the-reich .er-forro .er-obj-boton:hover { color: var(--fo
 #er-tablon .er-tb-sectores span { flex: 1; text-align: center; font-family: "ER Rotulo", "Arial Narrow", sans-serif; font-weight: 700; font-size: 38px; letter-spacing: .08em; text-transform: uppercase; border: 5px solid #2a1708; padding: 2px 0 6px; }
 #er-tablon .er-tb-sectores span.hecho { background: #8b0018; border-color: #8b0018; color: #fff; }
 #er-tablon .er-tb-sectores span.ahora { background: #17120c; color: #f2c230; }
+
+/* ── Aviso de turno: estampado en pantalla, una vez, cuando el turno cambia de manos ── */
+#er-turno-aviso { position: fixed; z-index: 9990; left: 50%; top: 15%; display: flex; align-items: center; gap: 22px; max-width: min(92vw, 900px); padding: 14px 34px 20px 18px;
+  background: #17120c; color: #f4ead6; border: 4px solid #f4ead6; box-shadow: 10px 10px 0 #8b0018, 0 18px 50px rgba(0, 0, 0, .6); cursor: pointer; text-align: left;
+  transform: translateX(-50%) rotate(-2deg); animation: er-turno-entra .42s cubic-bezier(.2, 1.5, .4, 1) both; }
+#er-turno-aviso.fuera { transition: opacity .5s, transform .5s; opacity: 0; transform: translateX(-50%) rotate(-2deg) translateY(-30px); }
+#er-turno-aviso img { width: 116px; height: 116px; flex: none; object-fit: cover; object-position: top; border: 4px solid #f4ead6; border-radius: 0; transform: rotate(3deg); background: #2a2118; }
+#er-turno-aviso div { display: flex; flex-direction: column; min-width: 0; }
+#er-turno-aviso small { font-family: "ER Maquina", "Courier New", monospace; font-size: 15px; letter-spacing: .12em; text-transform: uppercase; opacity: .8; }
+#er-turno-aviso b { font-family: "ER Rotulo", "Arial Narrow", sans-serif; font-weight: 700; font-size: clamp(34px, 5.2vw, 64px); line-height: 1; text-transform: uppercase; letter-spacing: .03em; }
+#er-turno-aviso em { display: inline-block; font-style: normal; color: #ff2b47; padding-bottom: 14px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 18' preserveAspectRatio='none'%3E%3Cpath d='M3 9 C40 2 70 15 110 7 S190 3 230 11 S280 5 297 9 M12 14 C80 9 160 16 290 12' fill='none' stroke='%23ff2b47' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E") 0 100% / 100% 14px no-repeat; }
+#er-turno-aviso span { margin-top: 8px; font-family: "ER Maquina", "Courier New", monospace; font-size: 19px; }
+#er-turno-aviso span strong { display: inline-block; padding: 0 8px; background: #f2c230; color: #17120c; font-family: "ER Rotulo", "Arial Narrow", sans-serif; font-size: 26px; transform: rotate(-3deg); }
+@keyframes er-turno-entra { from { opacity: 0; transform: translateX(-50%) rotate(-9deg) scale(1.9); } }
+
+/* ── Punto de despliegue en el mapa: marcas en los puntos del Sector 3, diana sobre el elegido y orden de lanzamiento ── */
+#er-tablon .er-diana, #er-tablon .er-diana-ficha { pointer-events: auto; }
+#er-tablon .er-diana { position: absolute; width: 190px; height: 190px; margin: -95px 0 0 -95px; padding: 0; border: 9px dashed #c8102e; border-radius: 50%; background: rgba(200, 16, 46, .12); box-shadow: none; cursor: crosshair; animation: er-diana-late 1.6s ease-in-out infinite; }
+#er-tablon .er-diana:hover, #er-tablon .er-diana:focus-visible { background: rgba(200, 16, 46, .3); outline: 8px solid #f2c230; }
+#er-tablon .er-diana.fijada { width: 380px; height: 380px; margin: -190px 0 0 -190px; border: 0; animation: er-diana-fija .45s cubic-bezier(.2, 1.6, .4, 1) both, er-diana-gira 14s linear .45s infinite;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23c8102e' stroke-linecap='round'%3E%3Ccircle cx='100' cy='100' r='88' stroke-width='9' stroke-dasharray='96 42'/%3E%3Ccircle cx='100' cy='100' r='56' stroke-width='6'/%3E%3Ccircle cx='100' cy='100' r='22' stroke-width='6'/%3E%3Cpath d='M100 2v60M100 138v60M2 100h60M138 100h60' stroke-width='8'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat; filter: drop-shadow(0 0 14px rgba(0, 0, 0, .7)); }
+#er-tablon .er-diana-ficha { position: absolute; z-index: 2; width: 860px; margin: -170px 0 0 230px; padding: 26px 34px 30px; background: #17120c; color: #f4ead6; border: 7px solid #f4ead6; box-shadow: 18px 18px 0 #8b0018; transform: rotate(-1.5deg); font-size: 36px; line-height: 1.25; animation: er-diana-fija .35s ease-out both; }
+#er-tablon .er-diana-ficha.izq { margin-left: -1090px; transform: rotate(1.5deg); }
+#er-tablon .er-diana-ficha small { display: block; font-size: 28px; letter-spacing: .14em; text-transform: uppercase; color: #f2c230; }
+#er-tablon .er-diana-ficha b { display: block; font-family: "ER Rotulo", "Arial Narrow", sans-serif; font-size: 92px; line-height: 1; text-transform: uppercase; margin: 4px 0 10px; }
+#er-tablon .er-diana-ficha p { margin: 0 0 12px; }
+#er-tablon .er-diana-ficha button { height: auto; width: auto; margin: 10px 18px 0 0; padding: 8px 26px 12px; border: 6px solid #f4ead6; border-radius: 0; background: transparent; color: #f4ead6; font-family: "ER Rotulo", "Arial Narrow", sans-serif; font-size: 46px; line-height: 1.1; text-transform: uppercase; letter-spacing: .06em; cursor: pointer; }
+#er-tablon .er-diana-ficha button[data-er="lanzar"] { background: #c8102e; border-color: #c8102e; color: #fff; font-size: 70px; transform: rotate(-2deg); box-shadow: 9px 9px 0 #f2c230; }
+#er-tablon .er-diana-ficha button[data-er="lanzar"] span { display: block; font-family: "ER Maquina", "Courier New", monospace; font-size: 28px; letter-spacing: .1em; }
+#er-tablon .er-diana-ficha button:hover, #er-tablon .er-diana-ficha button:focus-visible { outline: 8px solid #f2c230; outline-offset: 4px; }
+#er-tablon .er-diana-espera { color: #f2c230; }
+@keyframes er-diana-late { 50% { transform: scale(1.14); } }
+@keyframes er-diana-fija { from { opacity: 0; transform: scale(2.6); } }
+@keyframes er-diana-gira { to { transform: rotate(360deg); } }
+
+/* ── La caída de los ataúdes: capa a pantalla completa por encima del decorado ── */
+#er-despliegue { position: fixed; inset: 0; z-index: 9980; overflow: hidden; pointer-events: none; }
+#er-despliegue .er-dp-humo { position: absolute; inset: -12%; opacity: 0; transition: opacity .5s ease-in; animation: er-humo 16s linear infinite alternate;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360'%3E%3Cfilter id='h'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.011 .016' numOctaves='4' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 .2  0 0 0 0 .17  0 0 0 0 .15  1.9 0 0 0 -.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23h)'/%3E%3C/svg%3E") center / cover,
+    radial-gradient(ellipse at 30% 70%, #a79d8e, transparent 60%), radial-gradient(ellipse at 75% 60%, #8f8679, transparent 65%), linear-gradient(#6f675d, #a39a8b); }
+#er-despliegue.despeja .er-dp-humo { opacity: 0 !important; transition: opacity 3.2s ease-out; }
+#er-despliegue .er-dp-ataud { position: absolute; width: auto; max-width: none; border: 0; transform-origin: 85% 97%; transform: translate(-85%, -90%); clip-path: inset(0 0 8% 0); filter: drop-shadow(0 0 18px rgba(0, 0, 0, .8)); animation: er-cae .48s cubic-bezier(.55, 0, 1, .5) both; }
+#er-despliegue .er-dp-ataud.derecha { transform: translate(-15%, -90%) scaleX(-1); transform-origin: 50% 50%; animation-name: er-cae-d; }
+#er-despliegue .er-dp-nube { position: absolute; width: var(--t); height: var(--t); margin: calc(var(--t) / -2) 0 0 calc(var(--t) / -2); border-radius: 50%; background: radial-gradient(circle, #fff 0 8%, #f2c230 16%, rgba(180, 168, 150, .95) 34%, rgba(120, 110, 98, .7) 60%, transparent 72%); animation: er-nube 1.6s ease-out both; }
+#er-despliegue .er-dp-rotulo { position: absolute; left: 50%; top: 9%; padding: 8px 34px 14px; background: #17120c; color: #f4ead6; border: 4px solid #f4ead6; box-shadow: 10px 10px 0 #8b0018; text-align: center; transform: translateX(-50%) rotate(-2deg); animation: er-turno-entra .42s cubic-bezier(.2, 1.5, .4, 1) both; }
+#er-despliegue .er-dp-rotulo small { display: block; font-family: "ER Maquina", "Courier New", monospace; font-size: 16px; letter-spacing: .14em; text-transform: uppercase; color: #f2c230; }
+#er-despliegue .er-dp-rotulo b { font-family: "ER Rotulo", "Arial Narrow", sans-serif; font-size: clamp(40px, 6vw, 84px); line-height: 1; text-transform: uppercase; color: #ff2b47; }
+#er-despliegue.despeja .er-dp-rotulo { opacity: 0; transition: opacity 1.2s; }
+body.er-temblor #board { animation: er-temblor .4s linear; }
+@keyframes er-cae { from { transform: translate(-85%, -90%) translate(22vh, -130vh) scale(1.5); } }
+@keyframes er-cae-d { from { transform: translate(-15%, -90%) translate(-22vh, -130vh) scaleX(-1) scale(1.5); } }
+@keyframes er-nube { from { transform: scale(.1); opacity: 1; } 35% { opacity: 1; } to { transform: scale(2.6); opacity: 0; } }
+@keyframes er-humo { from { transform: translate(-3%, 2%) scale(1); } to { transform: translate(3%, -2%) scale(1.12); } }
+@keyframes er-temblor { 10% { transform: translate(-12px, 9px); } 30% { transform: translate(11px, -8px); } 50% { transform: translate(-8px, -6px); } 70% { transform: translate(6px, 7px); } 90% { transform: translate(-3px, 2px); } }
+@media (prefers-reduced-motion: reduce) {
+  #er-turno-aviso, #er-despliegue .er-dp-rotulo, #er-tablon .er-diana, #er-tablon .er-diana.fijada, #er-tablon .er-diana-ficha, #er-despliegue .er-dp-humo { animation: none; }
+  body.er-temblor #board { animation: none; }
+}
+.er-mision .er-juegan .er-boton[aria-pressed="false"] { opacity: .6; text-decoration: line-through; }

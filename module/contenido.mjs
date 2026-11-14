@@ -133,7 +133,7 @@ async function actualizarPlaza() {
     if (escena.getFlag(ID, "escena") !== "sirena") continue;
     const actual = escena.background?.src ?? escena._source.background?.src;
     const src = versionada("assets/escenas/sirena-limpia.webp");
-    if (actual?.startsWith(`${RUTA}/assets/escenas/`) && actual !== src)
+    if (actual?.startsWith(`${RUTA}/assets/escenas/`) && !actual.includes("/despliegue/") && actual !== src)
       await escena.update({ "background.src": src, thumb: versionada("assets/escenas/sirena-limpia-thumb.webp") });
   }
 }

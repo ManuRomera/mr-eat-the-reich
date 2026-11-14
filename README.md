@@ -1,4 +1,4 @@
-# Actualización 0.7.0
+# Actualización 0.8.0
 
 En la pantalla inicial de Foundry, entra en **Sistemas de juego → MR- Eat the Reich → Actualizar**. El manifiesto estable enlaza con la última versión publicada y su ZIP. Después abre el mundo y recarga los clientes.
 
@@ -10,7 +10,7 @@ Los mundos nuevos comienzan en la sala de despliegue. En un mundo ya iniciado, a
 
 <p align="center">
   <a href="https://github.com/ManuRomera"><img alt="Manu Romera · Digital RPG Design" src="https://raw.githubusercontent.com/ManuRomera/ManuRomera/main/badges/mr-firma.svg" height="28"></a>
-  <a href="https://github.com/ManuRomera/mr-eat-the-reich/releases/latest"><img alt="Versión 0.7.0" src="https://img.shields.io/badge/versi%C3%B3n-0.7.0-d81557?style=for-the-badge&labelColor=10132b"></a>
+  <a href="https://github.com/ManuRomera/mr-eat-the-reich/releases/latest"><img alt="Versión 0.8.0" src="https://img.shields.io/badge/versi%C3%B3n-0.8.0-d81557?style=for-the-badge&labelColor=10132b"></a>
   <img alt="Foundry VTT 13 y 14" src="https://img.shields.io/badge/Foundry_VTT-13_%E2%80%93_14-ff3d8b?style=for-the-badge&labelColor=10132b">
   <img alt="Repositorio privado, uso personal" src="https://img.shields.io/badge/uso-privado-1f6f78?style=for-the-badge&labelColor=10132b">
   <img alt="En español" src="https://img.shields.io/badge/idioma-espa%C3%B1ol-f2c230?style=for-the-badge&labelColor=10132b">
@@ -84,7 +84,7 @@ Pulsa un nombre para activar su tema. Vuelve a pulsarlo para recuperar el fondo 
 
 ## Actualizar la instalación existente
 
-Cierra el mundo y, en la pantalla inicial de Foundry, abre **Sistemas de juego → MR- Eat the Reich → Actualizar**. La versión debe cambiar a **0.7.0**. Abre el mundo y recarga los navegadores; la presentación, la música y el atrezo se actualizan sin reimportar la aventura. Se conservan personajes, diarios y posiciones de tokens, además de listas musicales externas y fondos personalizados fuera de los recursos del sistema.
+Cierra el mundo y, en la pantalla inicial de Foundry, abre **Sistemas de juego → MR- Eat the Reich → Actualizar**. La versión debe cambiar a **0.8.0**. Abre el mundo y recarga los navegadores; la presentación, la música y el atrezo se actualizan sin reimportar la aventura. Se conservan personajes, diarios y posiciones de tokens, además de listas musicales externas y fondos personalizados fuera de los recursos del sistema.
 
 Manifiesto estable para instalar o vincular el sistema:
 

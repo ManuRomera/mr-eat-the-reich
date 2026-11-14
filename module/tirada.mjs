@@ -4,7 +4,7 @@
  * (Objetivo, Amenaza, Defensa, Sangre, ESPECIAL), dados de bonificación, flashback y, al cerrar el turno, la lesión.
  * La tarjeta se pinta a partir de `flags.mr-eat-the-reich.tirada`; todo cambio lo aplica el GM activo.
  */
-import { ID, mision, cambiarMision, pedir, operacion, nuevoId, vampiros } from "./mesa.mjs";
+import { ID, mision, cambiarMision, pedir, operacion, nuevoId, escuadron } from "./mesa.mjs";
 import { DialogV2, aplicarModo, alRenderizarMensaje } from "./compat.mjs";
 import { pintarRetratos } from "./retrato.mjs";
 import { sonar } from "./escenas.mjs";
@@ -283,7 +283,7 @@ export function escucharTiradas() {
   operacion("flashback", async (datos, quien) => {
     const { msg, t, actor } = abrir(datos, quien);
     if (!t || t.flashback || actor.system.flashback || t.dados.some(d => d.destino) || R.totalExitos(t.dados.map(d => d.c), t.umbral) > 2) return;
-    const otros = vampiros().filter(v => v.id !== actor.id && !v.system.muerto);
+    const otros = escuadron().filter(v => v.id !== actor.id && !v.system.muerto);
     const quienSale = otros.length ? otros[Math.floor(Math.random() * otros.length)].name : "alguien de F.A.N.G.";
     const roll = await new Roll(`${t.dados.length + 2}d6`).evaluate();
     mostrar3d(roll, quien);

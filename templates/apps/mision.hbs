@@ -26,7 +26,7 @@
     </div>
     {{#if enTurno}}<p class="er-turno-rotulo"><span class="er-cinta">Turno de {{enTurno}}</span></p>{{/if}}
     {{#if tiradores.length}}<div class="er-fila-botones">{{#each tiradores}}<button type="button" class="er-boton {{#if turno}}er-boton-fuerte{{/if}}" data-action="tirarDesde" data-id="{{id}}"><i class="fa-solid fa-dice" inert></i> Tirar · {{nombre}}</button>{{/each}}</div>{{/if}}
-    {{#if esGM}}<p class="er-tenue">Clic: dar el turno y anunciarlo · Mayús + clic: ya actuó · Clic derecho: entra o sale de la escena. Los enemigos no tienen turno: atacan en el de cada vampiro.</p>{{/if}}
+    {{#if esGM}}<p class="er-tenue">Clic: dar el turno (sale en pantalla, una vez) · Mayús + clic: ya actuó · Clic derecho: entra o sale de la escena. Los enemigos no tienen turno: atacan en el de cada vampiro.</p>{{/if}}
   </section>
 
   <section aria-label="Objetivos">
@@ -63,6 +63,11 @@
       <button type="button" class="er-boton {{#if rondaHecha}}er-boton-fuerte{{/if}}" data-action="ronda" data-tooltip="Las amenazas caídas vuelven a la mitad de Ataque, las activas suben 1 y empieza otra ronda"><i class="fa-solid fa-person-military-rifle" inert></i> Fin de ronda: refuerzos</button>
       <button type="button" class="er-boton er-boton-suave" data-action="limpiar"><i class="fa-solid fa-broom" inert></i> Escena nueva</button>
     </div>
+    <details data-memoria="escuadron"><summary>Quién juega</summary>
+      <div class="er-fila-botones er-juegan">{{#each todos}}<button type="button" class="er-boton {{#unless juega}}er-boton-suave{{/unless}}" data-action="juega" data-id="{{id}}" aria-pressed="{{juega}}"><i class="fa-solid {{#if juega}}fa-check{{else}}fa-xmark{{/if}}" inert></i> {{nombre}}</button>{{/each}}</div>
+      <p class="er-tenue">Los que no juegan salen de los turnos, del tablón del mapa y de la presentación, y no cuentan para los ataúdes del despliegue.</p>
+      {{#if m.desplegado}}<div class="er-linea"><button type="button" class="er-boton er-boton-suave" data-action="redesplegar" data-tooltip="Devuelve los decorados a su estado original y vuelve a ofrecer el punto de despliegue en el mapa"><i class="fa-solid fa-rotate-left" inert></i> Repetir el despliegue</button></div>{{/if}}
+    </details>
     <details data-memoria="preparar" open><summary>Preparar la escena</summary>
       <div class="er-linea"><select name="lugar" aria-label="Localización">{{#each sectores}}<optgroup label="{{nombre}}">{{#each lugares}}<option value="{{clave}}">{{nombre}}</option>{{/each}}</optgroup>{{/each}}</select>
         <button type="button" class="er-boton" data-action="cargar" data-tooltip="Sustituye lo que hay por el objetivo y los enemigos de esa localización">Cargar</button></div>

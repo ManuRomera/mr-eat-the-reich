@@ -10,7 +10,7 @@ export const SOCKET = `system.${ID}`;
 export const RUTA = `systems/${ID}`;
 export const ARTE = `${RUTA}/assets`;
 
-export const MISION_INICIAL = { escena: "", ronda: 1, objetivos: [], amenazas: [], actuaron: [], turno: "", fuera: [], visitadas: [], caidos: [] };
+export const MISION_INICIAL = { escena: "", ronda: 1, objetivos: [], amenazas: [], actuaron: [], turno: "", fuera: [], visitadas: [], caidos: [], banquillo: [], diana: "", desplegado: "", despliegue: null };
 
 class RestablecerVentanas extends ApplicationV2 {
   async render() {
@@ -61,6 +61,8 @@ export async function cambiarMision(fn) {
 
 export const nuevoId = () => foundry.utils.randomID(8);
 export const vampiros = () => game.actors.filter(a => a.type === "vampiro");
+/** Los vampiros que juegan esta partida: todos menos los que quien dirige deja en el banquillo (Panel de misión → Quién juega). */
+export const escuadron = () => { const b = mision().banquillo ?? []; return vampiros().filter(v => !b.includes(v.id)); };
 
 const OPERACIONES = {};
 /** Registra una operación que ejecuta el GM activo: fn(datos, usuarioQueLaPide). */

@@ -6,7 +6,7 @@
  */
 import { ID, RUTA } from "./mesa.mjs";
 import { PISTAS, LOCALIZACIONES, AMENAZAS } from "./datos.mjs";
-import { mision, vampiros } from "./mesa.mjs";
+import { mision, escuadron } from "./mesa.mjs";
 import { VERSION_CONTENIDO } from "./banda-sonora-datos.mjs";
 
 const AUDIO = `${RUTA}/assets/audio`;
@@ -16,7 +16,7 @@ export const escenaDe = clave => game.scenes.find(s => s.getFlag(ID, "escena") =
 export function sonar(clave, volumen = 0.7) {
   try {
     if (!game.settings.get(ID, "sonidos")) return;
-    foundry.audio.AudioHelper.play({ src: `${AUDIO}/sfx/${clave}.ogg?v=${VERSION_CONTENIDO}`, volume: volumen, autoplay: true, loop: false }, true);
+    foundry.audio.AudioHelper.play({ src: `${AUDIO}/${clave.includes("/") ? clave : `sfx/${clave}`}.ogg?v=${VERSION_CONTENIDO}`, volume: volumen, autoplay: true, loop: false }, true);
   } catch (e) { console.warn(`${ID} | no se pudo reproducir «${clave}»`, e); }
 }
 
@@ -47,7 +47,7 @@ export function pintarTablon() {
   const esc = t => foundry.utils.escapeHTML(String(t ?? ""));
   const m = mision(), d = canvas.dimensions, k = d.sceneWidth / 4000;
   const caja = ([x, y, w, h]) => `left:${x}px;top:${y}px;width:${w}px;height:${h}px`;
-  const filas = vampiros().map(v => {
+  const filas = escuadron().map(v => {
     const duenos = game.users.filter(u => !u.isGM && v.testUserPermission(u, "OWNER")).map(u => u.name);
     const heridas = v.system.lesiones.flat().filter(l => l.marcada).length;
     const estado = v.system.muerto ? "ha caído" : v.system.derribado ? "derribado" : `sangre ${v.system.sangre}${heridas ? ` · ${heridas} lesión${heridas > 1 ? "es" : ""}` : ""}`;
@@ -64,8 +64,9 @@ export function pintarTablon() {
   t.innerHTML = `<div class="er-tb er-tb-campana" style="${caja(NOTAS.campana)}"><small>Operación</small><b>${esc(game.settings.get(ID, "campana") || game.world.title)}</b></div>
     <div class="er-tb er-tb-equipo" style="${caja(NOTAS.equipo)}"><h3>Escuadrón F.A.N.G.</h3><div class="er-tb-lista">${filas || "<span>Aún no hay vampiros.</span>"}</div>
       <div class="er-tb-avance"><div class="er-tb-sectores">${sectores}</div>
-        ${actual ? `Ahora: <b>${esc(actual.nombre)}</b> · ronda ${m.ronda}<br>` : ""}Localizaciones: <b>${visitadas.length}</b> · Übermenschen caídos: <b>${(m.caidos ?? []).length}/${uber}</b></div></div>`;
+        ${actual ? `Ahora: <b>${esc(actual.nombre)}</b> · ronda ${m.ronda}<br>` : m.desplegado ? "" : "Elegid el punto de despliegue en el Sector 3.<br>"}Localizaciones: <b>${visitadas.length}</b> · Übermenschen caídos: <b>${(m.caidos ?? []).length}/${uber}</b></div></div>`;
   hud.append(t);
+  Hooks.callAll("eatthereich.tablon", t, m, k);
 }
 
 export function registrarEscenas() {
@@ -80,13 +81,14 @@ export function registrarEscenas() {
     scope: "world", config: true, type: Boolean, default: true
   });
 
-  // Doble clic en una calavera del mapa: quien dirige va a esa escena (Mayús + doble clic abre el diario, como siempre).
+  // Doble clic en una calavera del mapa: quien dirige lleva la mesa a esa escena (Mayús + doble clic abre el diario; Alt + doble clic, solo mirar).
   Hooks.on("activateNote", (nota, opciones) => {
     const ir = nota.document.getFlag(ID, "ir");
     if (!ir || !game.user.isGM || globalThis.event?.shiftKey) return;
     const escena = escenaDe(ir);
     if (!escena) return;
-    escena.view();
+    // Se activa (va toda la mesa y cambia la música de la escena); con Alt, quien dirige solo se asoma.
+    if (globalThis.event?.altKey) escena.view(); else escena.activate();
     return false;
   });
 

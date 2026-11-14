@@ -1,5 +1,13 @@
 # Cambios
 
+## 0.8.0 · 14-11-2026
+
+- **Punto de despliegue**: en el mapa de París, los seis puntos del Sector 3 llevan una marca. Al pulsar uno (cualquier jugador) sale la diana con su ficha; quien dirige da la orden de **¡Lanzamiento!**. La mesa va al decorado, caen los ataúdes uno a uno con su explosión, el humo lo tapa todo y, al despejarse, el decorado es ya el de los ataúdes clavados. Se carga también la localización en el Panel de misión.
+- 18 decorados nuevos: cada punto del Sector 3 con 3, 4 y 5 ataúdes (el manual pide de tres a seis personas contando a quien dirige). Con menos de 3 vampiros se usa el de 3; con 6, el de 5. «Repetir el despliegue» (Panel de misión → Quién juega) lo devuelve todo a su estado original.
+- **Quién juega**: en el Panel de misión se marca qué vampiros juegan. Los demás salen de los turnos, del tablón del mapa y de la presentación, y no cuentan para los ataúdes.
+- **Aviso de turno en pantalla** en vez de mensaje de chat: sale una sola vez, cuando el turno pasa a otro vampiro, con su sonido. Repetir el clic sobre quien ya tiene el turno no hace nada.
+- **Música al cambiar de escena**: el doble clic en una calavera activa la escena para toda la mesa (antes solo cambiaba la vista de quien dirige, y por eso no cambiaba la música). Alt + doble clic sigue sirviendo para asomarse. Al salir de la sala de presentación su música se para siempre y arranca la de la escena nueva.
+
 ## 0.7.0 · 13-11-2026
 
 - **Inventario en la hoja-ataúd**: «coger un cacharro» lo define (nombre, usos, dados + y cuándo se ganan) y lo añade al Equipo; pulsar el nombre de cualquier cacharro lo cambia; la papelera lo tira (también el equipo de serie, gastado o no; nunca automático). Sustituye al hueco único de botín.

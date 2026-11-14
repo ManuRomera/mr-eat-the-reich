@@ -13,6 +13,7 @@ import { registrarLupa } from "./module/lupa.mjs";
 import { registrarInicio, importarAventura } from "./module/inicio.mjs";
 import { registrarEscenas, sonar, musica } from "./module/escenas.mjs";
 import { registrarContenido, colocarAtaud } from "./module/contenido.mjs";
+import { registrarDespliegue, lanzar, nuevoDespliegue } from "./module/despliegue.mjs";
 import { leitmotiv } from "./module/direccion-mr.mjs";
 import { registrarDireccionMR } from "./module/direccion-mr.mjs";
 
@@ -35,6 +36,7 @@ Hooks.once("init", () => {
   registrarContenido();
   registrarInicio();
   registrarEscenas();
+  registrarDespliegue();
   registrarDireccionMR();
   game.settings.registerMenu(ID, "diagnosticoMenu", {
     name: "Diagnóstico", label: "Comprobar el sistema",
@@ -45,7 +47,7 @@ Hooks.once("init", () => {
 
   game.mrEatTheReich = {
     abrirMision: () => PanelMision.abrir(), abrirSeguridad: () => PanelSeguridad.abrir(), abrirDiagnostico: () => PanelDiagnostico.abrir(),
-    dialogoTirada, tirar, ultimoGesto, mision, cambiarMision, cargarLocalizacion, finDeRonda, importarAventura, diagnostico, sonar, musica, colocarAtaud, leitmotiv, abrirPresentacion, iniciarPresentacion, presentarPersonaje, siguientePresentacion, terminarPresentacion
+    dialogoTirada, tirar, ultimoGesto, mision, cambiarMision, cargarLocalizacion, finDeRonda, importarAventura, diagnostico, sonar, musica, colocarAtaud, lanzar, nuevoDespliegue, leitmotiv, abrirPresentacion, iniciarPresentacion, presentarPersonaje, siguientePresentacion, terminarPresentacion
   };
 });
 

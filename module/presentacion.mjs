@@ -1,5 +1,5 @@
 /** Presentación sincronizada con ajustes de mundo y audio nativo de Foundry. Solo publica el GM activo. */
-import { ID, RUTA } from "./mesa.mjs";
+import { ID, RUTA, mision } from "./mesa.mjs";
 import { ApplicationV2, HandlebarsApplicationMixin } from "./compat.mjs";
 import { AUDIO, VERSION_CONTENIDO } from "./banda-sonora-datos.mjs";
 import { PERSONAJES, ESTADO_INICIAL, TIEMPOS, estadoSeguro, siguienteEstado, reparto, claveSonido, bloquearMusica } from "./presentacion-core.mjs";
@@ -12,7 +12,7 @@ const lista = () => game.playlists.find(p => p.getFlag(ID, "clave") === "present
 export const escenaPresentacion = () => game.scenes.find(s => s.getFlag(ID, "presentacion") === true);
 export const presentacionActiva = () => game.scenes.active?.getFlag(ID, "presentacion") === true;
 export const estadoPresentacion = () => estadoSeguro(game.settings.get(ID, "presentacionEstado"));
-const roster = () => reparto(game.actors.contents, game.users.contents);
+const roster = () => { const b = mision().banquillo ?? []; return reparto(game.actors.contents, game.users.contents).filter(p => !b.includes(p.actorId)); };
 let preparando = null, cola = Promise.resolve(), activando = false, vista = null, saliendo = false;
 let control = null, generacion = 0;
 const vigente = turno => turno === generacion && presentacionActiva() && activoGM();
@@ -216,6 +216,7 @@ export function registrarPresentacion() {
   });
   Hooks.on("canvasReady", () => refrescar());
   Hooks.on("updateUser", () => refrescar());
+  Hooks.on("eatthereich.mision", () => { if (control?.rendered) control.render({ force: true }); });
   Hooks.on("updateActor", () => refrescar());
   Hooks.on("preUpdatePlaylistSound", (s, cambios) => {
     if (saliendo || s.flags?.["mr-direccion"]?.ch === "fx") return;
@@ -231,7 +232,14 @@ export function registrarPresentacion() {
     if (escena.getFlag(ID, "presentacion")) {
       enqueue(async () => { await pararExterna(); await publicar({ escena: escena.id, personaje: "", activa: true, fase: "sala" }); await tocar("sala"); }).catch(fallo);
     } else {
-      (async () => { if (!estadoPresentacion().activa) return; await publicar({ activa: false, personaje: "", fase: "sala" }); await lista()?.stopAll(); })().catch(fallo);
+      // Al salir de la sala se calla siempre su música (aunque el estado compartido se hubiera perdido) y suena la de la escena nueva:
+      // Foundry intenta arrancarla antes de que cambie la escena activa y el bloqueo de la presentación la frena.
+      enqueue(async () => {
+        if (estadoPresentacion().activa) await publicar({ activa: false, personaje: "", fase: "sala" });
+        for (const s of lista()?.sounds ?? []) if (s.playing) await lista().stopSound(s);
+        const pista = escena.playlistSound;
+        if (pista && !pista.playing) await escena.playlist.playSound(pista);
+      }).catch(fallo);
     }
   });
 }

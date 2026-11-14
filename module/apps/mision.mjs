@@ -2,7 +2,7 @@
  * Panel de misión: lo que hay en juego en la escena (Objetivos, Amenazas, ronda y turnos).
  * Quien dirige lo edita; los jugadores lo ven. Las tarjetas de tirada gastan sus éxitos contra lo que haya aquí.
  */
-import { ID, RUTA, mision, cambiarMision, operacion, pedir, nuevoId, vampiros } from "../mesa.mjs";
+import { ID, RUTA, mision, cambiarMision, operacion, pedir, nuevoId, vampiros, escuadron } from "../mesa.mjs";
 import { ApplicationV2, HandlebarsApplicationMixin, DialogV2 } from "../compat.mjs";
 import { ConMemoria } from "../memoria.mjs";
 import { pintarRetratos } from "../retrato.mjs";
@@ -34,7 +34,6 @@ async function aviso(titulo, html) {
 export async function cargarLocalizacion(clave) {
   const l = LOCALIZACIONES.find(x => x.clave === clave);
   if (!l || !game.user.isGM) return;
-  if (!mision().escena) sonar("ataud");   // la primera escena de la noche: caen los ataúdes
   await cambiarMision(m => {
     m.escena = l.nombre; m.ronda = 1; m.actuaron = []; m.turno = "";
     if (!m.visitadas.includes(l.clave)) m.visitadas.push(l.clave);
@@ -63,20 +62,38 @@ export async function finDeRonda() {
 }
 
 /**
- * Da el turno a un vampiro y lo anuncia a la mesa. En Eat the Reich los enemigos no tienen turno propio:
- * atacan dentro del turno de cada vampiro, así que el aviso dice quién le dispara y con cuántos dados.
+ * Da el turno a un vampiro. No escribe en el chat: cada cliente lo ve estampado en pantalla (avisoTurno) y suena una vez.
+ * Repetir el clic sobre quien ya tiene el turno no hace nada.
  */
 export async function darTurno(id) {
   const actor = game.actors.get(id);
-  if (!actor || !game.user.isGM) return;
-  let m;
-  await cambiarMision(x => { x.turno = id; x.fuera = x.fuera.filter(f => f !== id); x.actuaron = x.actuaron.filter(f => f !== id); m = x; });
-  const ataque = reservaAtaque(m.amenazas), vivas = m.amenazas.filter(a => a.valor > 0 && a.ataque > 0);
-  const quedan = vampiros().filter(v => !v.system.muerto && !v.system.derribado && !m.fuera.includes(v.id) && !m.actuaron.includes(v.id) && v.id !== id).map(v => v.name);
-  await ChatMessage.create({ speaker: ChatMessage.getSpeaker({ alias: "F.A.N.G." }), content: `<div class="er-tc er-turno-aviso"><header class="er-tc-cab"><img src="${esc(actor.img)}" data-retrato="${actor.id}" alt=""><div><strong>Turno de ${esc(actor.name)}</strong><span>Ronda ${m.ronda}${m.escena ? ` · ${esc(m.escena)}` : ""}</span></div></header>
-    ${vivas.length ? `<p><b>Le disparan:</b> ${vivas.map(a => `${esc(a.nombre)} (Ataque ${a.ataque})`).join(", ")}.</p><div class="er-res"><b class="er-res-n">${ataque.dados}</b><span class="er-res-l"><b>${ataque.dados === 1 ? "DADO" : "DADOS"}</b><small>de ataque del GM</small></span></div>` : `<p>Nadie le dispara. Por ahora.</p>`}
-    ${m.objetivos.filter(o => o.valor > 0).length ? `<p><b>En juego:</b> ${m.objetivos.filter(o => o.valor > 0).map(o => `${esc(o.nombre)} (${o.valor})`).join(" · ")}</p>` : ""}
-    <p class="er-tc-nota">${quedan.length ? `Después: ${quedan.map(esc).join(", ")}.` : "Es el último de la ronda: después llegan los refuerzos."}</p></div>` });
+  if (!actor || !game.user.isGM || mision().turno === id) return;
+  sonar("avisos/turno", 0.6);
+  await cambiarMision(x => { x.turno = id; x.fuera = x.fuera.filter(f => f !== id); x.actuaron = x.actuaron.filter(f => f !== id); });
+}
+
+/**
+ * El turno, estampado en pantalla para toda la mesa. En Eat the Reich los enemigos no tienen turno propio: atacan dentro del de cada
+ * vampiro, así que el aviso dice cuántos dados le disparan. Solo salta cuando el turno pasa a otro vampiro.
+ */
+let turnoVisto = null;
+export function avisoTurno(m = mision()) {
+  const antes = turnoVisto; turnoVisto = m.turno;
+  if (antes === null || antes === m.turno || !m.turno) return;
+  const actor = game.actors.get(m.turno);
+  if (!actor) return;
+  const ataque = reservaAtaque(m.amenazas).dados, mio = actor.isOwner && !game.user.isGM;
+  document.getElementById("er-turno-aviso")?.remove();
+  const a = document.createElement("div");
+  a.id = "er-turno-aviso"; a.className = ID; a.setAttribute("role", "status");
+  a.innerHTML = `<img src="${esc(actor.prototypeToken?.texture?.src || actor.img)}" alt="">
+    <div><small>Ronda ${m.ronda}${m.escena ? ` · ${esc(m.escena)}` : ""}</small>
+    <b>${mio ? "¡Te toca!" : "Turno de"} <em>${esc(actor.name)}</em></b>
+    <span>${ataque ? `${mio ? "Te" : "Le"} disparan <strong>${ataque}</strong> ${ataque === 1 ? "dado" : "dados"}` : "Nadie dispara. Por ahora."}</span></div>`;
+  a.addEventListener("click", () => a.remove());
+  document.body.append(a);
+  setTimeout(() => a.classList.add("fuera"), 3800);
+  setTimeout(() => a.remove(), 4400);
 }
 
 export class PanelMision extends ConMemoria(HandlebarsApplicationMixin(ApplicationV2)) {
@@ -85,7 +102,7 @@ export class PanelMision extends ConMemoria(HandlebarsApplicationMixin(Applicati
     id: "er-mision", classes: [ID, "er-mision"], position: { width: 540, height: 680 },
     window: { title: "Misión", icon: "fa-solid fa-crosshairs", resizable: true },
     actions: { mas: PanelMision.#ajustar, menos: PanelMision.#ajustar, quitar: PanelMision.#quitar, objetivo: PanelMision.#objetivo, amenaza: PanelMision.#amenaza,
-      cargar: PanelMision.#cargar, tirarDesde: PanelMision.#tirarDesde, musica: PanelMision.#musica, silencio: PanelMision.#silencio, irEscena: PanelMision.#irEscena, ronda: PanelMision.#ronda, limpiar: PanelMision.#limpiar, turno: PanelMision.#turno, abrir: PanelMision.#abrir }
+      cargar: PanelMision.#cargar, tirarDesde: PanelMision.#tirarDesde, musica: PanelMision.#musica, silencio: PanelMision.#silencio, irEscena: PanelMision.#irEscena, ronda: PanelMision.#ronda, limpiar: PanelMision.#limpiar, turno: PanelMision.#turno, abrir: PanelMision.#abrir, juega: PanelMision.#juega, redesplegar: PanelMision.#redesplegar }
   };
   static PARTS = { cuerpo: { template: `${RUTA}/templates/apps/mision.hbs`, scrollable: [".er-mision-cuerpo"] } };
   static SCROLL_MEMORIA = [".er-mision-cuerpo"];
@@ -103,11 +120,12 @@ export class PanelMision extends ConMemoria(HandlebarsApplicationMixin(Applicati
       objetivos: m.objetivos.map(o => ({ ...o, hecho: o.valor <= 0 })),
       amenazas: m.amenazas.map(a => ({ ...a, caida: a.valor <= 0, solo: !a.revive && !a.crece })),
       catalogo: [...AMENAZAS.map(a => ({ v: a.clave, n: `${a.nombre} (${a.valor}/${a.ataque})` })), ...mundo.map(a => ({ v: a.uuid, n: `${a.name} · del mundo` }))],
-      vampiros: vampiros().map(v => ({ id: v.id, nombre: v.name, img: v.img, sangre: v.system.sangre, actuo: m.actuaron.includes(v.id), turno: m.turno === v.id, fuera: m.fuera.includes(v.id), derribado: v.system.derribado, muerto: v.system.muerto })),
+      vampiros: escuadron().map(v => ({ id: v.id, nombre: v.name, img: v.img, sangre: v.system.sangre, actuo: m.actuaron.includes(v.id), turno: m.turno === v.id, fuera: m.fuera.includes(v.id), derribado: v.system.derribado, muerto: v.system.muerto })),
       // Quién puede tirar desde aquí: los jugadores, con sus vampiros en escena; quien dirige, con el que tiene el turno.
-      tiradores: vampiros().filter(v => !v.system.muerto && !m.fuera.includes(v.id) && (game.user.isGM ? m.turno === v.id : v.isOwner)).map(v => ({ id: v.id, nombre: v.name, turno: m.turno === v.id })),
+      tiradores: escuadron().filter(v => !v.system.muerto && !m.fuera.includes(v.id) && (game.user.isGM ? m.turno === v.id : v.isOwner)).map(v => ({ id: v.id, nombre: v.name, turno: m.turno === v.id })),
       enTurno: game.actors.get(m.turno)?.name ?? "",
-      rondaHecha: vampiros().filter(v => !v.system.muerto && !v.system.derribado && !m.fuera.includes(v.id)).every(v => m.actuaron.includes(v.id))
+      todos: vampiros().map(v => ({ id: v.id, nombre: v.name, juega: !m.banquillo.includes(v.id) })),
+      rondaHecha: escuadron().filter(v => !v.system.muerto && !v.system.derribado && !m.fuera.includes(v.id)).every(v => m.actuaron.includes(v.id))
     };
   }
 
@@ -147,7 +165,10 @@ export class PanelMision extends ConMemoria(HandlebarsApplicationMixin(Applicati
   static #ronda() { return finDeRonda(); }
   static async #musica() { await musica(this.element.querySelector("select[name=pista]")?.value); this.render(); }
   static async #silencio() { await musica(""); this.render(); }
-  static #irEscena() { const l = LOCALIZACIONES.find(x => x.nombre === mision().escena); return escenaDe(l?.clave)?.view(); }
+  static #irEscena() { const l = LOCALIZACIONES.find(x => x.nombre === mision().escena); return escenaDe(l?.clave)?.activate(); }
+  /** Quién juega: el banquillo quita a ese vampiro de los turnos, del tablón del mapa, de la presentación y de la cuenta de ataúdes. */
+  static #juega(ev, b) { const id = b.dataset.id; return cambiarMision(m => { m.banquillo = m.banquillo.includes(id) ? m.banquillo.filter(x => x !== id) : [...m.banquillo, id]; if (m.turno === id) m.turno = ""; }); }
+  static #redesplegar() { return game.mrEatTheReich.nuevoDespliegue(); }
   static async #limpiar() {
     const ok = await DialogV2.confirm({ window: { title: "Escena nueva", icon: "fa-solid fa-broom" }, content: "<p>Se quitan los Objetivos y las Amenazas de la escena actual. Los vampiros siguen adelante.</p>", yes: { label: "Escena nueva", icon: "fa-solid fa-broom" }, no: { label: "Cancelar" }, rejectClose: false });
     if (ok) return cambiarMision(m => Object.assign(m, { escena: "", ronda: 1, objetivos: [], amenazas: [], actuaron: [] }));
@@ -171,6 +192,7 @@ export function registrarMision() {
     const ficha = fichaAmenaza({ clave, actor });
     if (ficha) await cambiarMision(m => m.amenazas.push(ficha));
   });
-  Hooks.on("eatthereich.mision", () => foundry.applications.instances.get("er-mision")?.render());
+  Hooks.on("eatthereich.mision", m => { foundry.applications.instances.get("er-mision")?.render(); avisoTurno(m); });
+  Hooks.once("ready", () => { turnoVisto = mision().turno; });
   for (const h of ["updateActor", "createActor", "deleteActor"]) Hooks.on(h, a => { if (a.type === "vampiro") foundry.applications.instances.get("er-mision")?.render(); });
 }

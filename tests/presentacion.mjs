@@ -27,7 +27,7 @@ globalThis.game={user:{id:'gm',isGM:true},users:{activeGM:{isSelf:true},contents
 globalThis.document={createElement:()=>({addEventListener(){}})};
 globalThis.Playlist={create:async d=>playlist(d)};globalThis.Scene={create:async d=>scene(d)};
 globalThis.ui={notifications:{error:x=>errors.push(x),warn(){}}};
-const prelude='const {ID,RUTA,AUDIO,VERSION_CONTENIDO,PERSONAJES,ESTADO_INICIAL,TIEMPOS,estadoSeguro,siguienteEstado,reparto,bloquearMusica}=globalThis.fixture; const sonar=k=>globalThis.fixture.fx.push(k); const ApplicationV2=class{}; const HandlebarsApplicationMixin=c=>c; const crearVistaPresentacion=()=>({root:{append(){}},render(){}});';
+const prelude='const {ID,RUTA,AUDIO,VERSION_CONTENIDO,PERSONAJES,ESTADO_INICIAL,TIEMPOS,estadoSeguro,siguienteEstado,reparto,bloquearMusica}=globalThis.fixture; const sonar=k=>globalThis.fixture.fx.push(k); const mision=()=>({banquillo:[]}); const ApplicationV2=class{}; const HandlebarsApplicationMixin=c=>c; const crearVistaPresentacion=()=>({root:{append(){}},render(){}});';
 globalThis.fixture={ID,RUTA,AUDIO,VERSION_CONTENIDO,PERSONAJES,ESTADO_INICIAL,TIEMPOS:{entrada:0,apertura:0,cierre:0,fundido:0},estadoSeguro,siguienteEstado,reparto,bloquearMusica,fx:fxLog};
 const code=(await fs.readFile(new URL('../module/presentacion.mjs',import.meta.url),'utf8')).replace(/^import .*;\n/gm,'');
 const mod=await import('data:text/javascript;base64,'+Buffer.from(prelude+code).toString('base64'));

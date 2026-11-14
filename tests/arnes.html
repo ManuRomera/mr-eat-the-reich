@@ -25,7 +25,7 @@ globalThis.foundry = {
     handlebars: { renderTemplate() {}, loadTemplates() {} }, ux: { TextEditor: { implementation: {} } }, instances: new Map() },
   utils: { escapeHTML: t => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;"), deepClone: x => structuredClone(x), randomID: () => Math.random().toString(36).slice(2, 10), mergeObject: (a, b) => ({ ...a, ...b }) }
 };
-globalThis.Hooks = { on() {}, once() {}, callAll() {} };
+const _h = {}; globalThis.Hooks = { on(n, fn) { (_h[n] ??= []).push(fn); }, once(n, fn) { (_h[n] ??= []).push(fn); }, callAll(n, ...a) { for (const fn of _h[n] ?? []) fn(...a); } };
 const { VAMPIROS, AMENAZAS, LOCALIZACIONES, ATRIBUTOS, AYUDA_ATRIBUTOS, BLOQUEOS, PREMIOS_SECUNDARIO } = await import("../module/datos.mjs");
 const R = await import("../module/reglas.mjs");
 const RUTA = "/systems/mr-eat-the-reich";
@@ -136,14 +136,44 @@ if (new URLSearchParams(location.search).has("tablon")) {
   const esc = 0.36, hud = document.createElement("div"); hud.id = "hud";
   hud.style.cssText = `position:relative;width:4000px;height:2473px;transform:scale(${esc});transform-origin:0 0;background:url(${RUTA}/assets/libro/mapa.webp) 0 0/100% 100%;margin-bottom:-1580px`;
   document.body.style.display = "block"; document.body.append(hud);
-  globalThis.canvas = { ready: true, scene: { getFlag: () => "paris" }, dimensions: { sceneWidth: 4000, sceneX: 0, sceneY: 0 } };
+  // Notas del Sector 3 en su sitio (misma cuenta que scripts/gen-aventura.mjs) para las dianas: ?tablon&diana=hotel[&jugador]
+  const PT = 4000 / 1114, notas = LOCALIZACIONES.filter(l => l.sector === 3).map(l => ({ x: Math.round((l.mapa[1] + (l.mapa[0] === 49 ? 557 : 0)) * PT), y: Math.round((l.mapa[2] - 1) * PT), getFlag: () => l.clave }));
+  globalThis.canvas = { ready: true, scene: { getFlag: () => "paris", notes: notas }, dimensions: { sceneWidth: 4000, sceneX: 0, sceneY: 0 } };
+  game.user.isGM = !new URLSearchParams(location.search).has("jugador");
+  (await import("../module/despliegue.mjs")).registrarDespliegue();
   const lesion = n => [[{ marcada: n > 0 }, { marcada: n > 1 }], [{ marcada: false }, { marcada: false }], [{ marcada: false }, { marcada: false }]];
   const vs = VAMPIROS.map((v, i) => ({ id: v.clave, name: v.nombre, type: "vampiro", img: "", prototypeToken: { texture: { src: `${RUTA}/assets/retratos/${v.clave}.webp` } }, testUserPermission: u => u.i === i, system: { sangre: i * 2, lesiones: lesion(i % 3), muerto: i === 5, derribado: i === 3 } }));
   game.actors.filter = f => vs.filter(f);
   game.users = { filter: f => ["Marta", "Íñigo", "Laura", "Pau", "Edu"].map((name, i) => ({ name, i, isGM: false })).filter(f) };
   game.world = { title: "Beberse a Hitler" };
-  game.settings.get = (_, k) => (k === "mision" ? { escena: "Museo de la Guerra Europea", ronda: 2, visitadas: ["sirena", "catedral", "museo"], caidos: ["Stahlsoldat"] } : k === "campana" ? "" : {});
+  game.settings.get = (_, k) => (k === "mision" ? (new URLSearchParams(location.search).has("diana") ? { escena: "", ronda: 1, visitadas: [], caidos: [], banquillo: ["flint", "astrid"], diana: new URLSearchParams(location.search).get("diana") } : { escena: "Museo de la Guerra Europea", ronda: 2, visitadas: ["sirena", "catedral", "museo"], caidos: ["Stahlsoldat"], desplegado: "sirena" }) : k === "campana" ? "" : {});
   (await import("../module/escenas.mjs")).pintarTablon();
+}
+// Aviso de turno: ?turno[&jugador]
+if (new URLSearchParams(location.search).has("turno")) {
+  const { avisoTurno } = await import("../module/apps/mision.mjs");
+  game.user.isGM = !new URLSearchParams(location.search).has("jugador");
+  const m = { turno: "", ronda: 2, escena: "Hôtel L'Étoile", amenazas: [fa("patrulla"), fa("infanteria")] };
+  avisoTurno(m); avisoTurno({ ...m, turno: "nicole" });
+}
+// Despliegue: ?despliegue=hotel-4 reproduce la caída sobre el decorado; con &fijo deja los ataúdes del código sobre los del dibujo para comprobar la puntería.
+if (new URLSearchParams(location.search).has("despliegue")) {
+  const [clave, n] = new URLSearchParams(location.search).get("despliegue").split("-"), fijo = new URLSearchParams(location.search).has("fijo");
+  for (const el of [...document.body.children]) if (el.matches(".application, .chat, #er-turno-aviso")) el.remove();
+  const D = await import("../module/despliegue.mjs");
+  document.head.append(Object.assign(document.createElement("base"), { href: "/" }));   // las rutas del módulo son relativas a la raíz, como en Foundry
+  const limpio = `${RUTA}/assets/escenas/${clave === "sirena" ? "sirena-limpia" : clave}.webp`, z = innerWidth / 1920;
+  const board = document.createElement("div"); board.id = "board";
+  board.style.cssText = `position:fixed;left:0;top:0;width:${innerWidth}px;height:${innerWidth * 9 / 16}px;background:url(${fijo ? D.variante(clave, n) : limpio}) 0 0/100% 100%`;
+  document.body.style.cssText = "padding:0;margin:0;background:#000;overflow:hidden"; document.body.append(board);
+  const escena = { background: { src: limpio }, _source: { background: { src: limpio } }, getFlag: () => clave, async update(c) { this.background.src = c["background.src"]; board.style.backgroundImage = `url(${this.background.src})`; } };
+  globalThis.canvas = { ready: true, scene: escena, dimensions: { sceneRect: { x: 0, y: 0, width: 1920, height: 1080 } }, stage: { scale: { x: z }, worldTransform: { apply: p => ({ x: p.x * z, y: p.y * z }) } } };
+  game.users = { activeGM: { isSelf: true } }; game.settings.get = () => true;
+  foundry.audio = { AudioHelper: { play() {} } };
+  if (fijo) {
+    const capa = document.createElement("div"); capa.id = "er-despliegue"; document.body.append(capa);
+    for (const [x, y, alto, der] of D.ATAUDES[clave][n]) { const a = document.createElement("img"); a.className = `er-dp-ataud ${der ? "derecha" : ""}`; a.src = `${RUTA}/assets/atrezo/ataud-metalico.png`; a.style.cssText = `left:${19.2 * x * z}px;top:${10.8 * y * z}px;height:${10.8 * alto * z}px;animation:none;opacity:.6;outline:2px solid lime`; capa.append(a); }
+  } else D.animar({ clave, n: Number(n) });
 }
 // Para capturas: ?solo=ataud|clasica|mision|chat deja solo esa pieza; ?fondo=<escena> pone un decorado detrás.
 const P = new URLSearchParams(location.search), SOLO = { ataud: ".er-hoja-ataud", clasica: ".er-hoja-vampiro:not(.er-hoja-ataud)", mision: ".er-mision, .chat", chat: ".chat", dialogo: ".er-tirada-dlg, .er-hoja-ataud" }[P.get("solo")];

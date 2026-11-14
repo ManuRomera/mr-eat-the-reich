@@ -1,5 +1,9 @@
 # Cambios
 
+## 0.9.2 · 14-11-2026
+
+- **Corrección grave**: en 0.9.0 y 0.9.1 el sistema no cargaba (un nombre importado dos veces en el archivo de entrada), así que no funcionaba nada ni se importaba la misión. Arreglado, y una prueba nueva comprueba la sintaxis de todos los módulos antes de publicar.
+
 ## 0.9.1 · 14-11-2026
 
 - **Quién juega, desde el mapa**: en la nota amarilla grande, quien dirige tiene el botón «Quién juega»; al pulsarlo salen los seis vampiros y cada uno se marca o desmarca con un clic. El selector sigue también en el Panel de misión.

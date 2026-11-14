@@ -28,8 +28,9 @@ export function registrarLupa() {
   };
 
   const mostrar = img => {
-    const origen = img.currentSrc || img.src;
-    const ratio = img.naturalWidth && img.naturalHeight ? img.naturalWidth / img.naturalHeight : 0.6;
+    // data-lupa puede traer otra imagen (la ilustración entera en vez del retrato recortado).
+    const origen = img.dataset.lupa || img.currentSrc || img.src;
+    const ratio = img.dataset.lupa ? 0.62 : img.naturalWidth && img.naturalHeight ? img.naturalWidth / img.naturalHeight : 0.6;
     const alto = Math.min(window.innerHeight * 0.9, ratio < 1 ? 880 : 560);
     const ancho = Math.min(alto * ratio, window.innerWidth * 0.46);
     const rect = img.getBoundingClientRect();
@@ -53,7 +54,7 @@ export function registrarLupa() {
     if (!img || img === actual || img.closest(".er-lupa")) return;
     ocultar();
     actual = img;
-    espera = setTimeout(() => { if (actual === img && img.isConnected) mostrar(img); }, RETRASO);
+    espera = setTimeout(() => { if (actual === img && img.isConnected) mostrar(img); }, Number(img.dataset.lupaEspera) || RETRASO);
   });
   document.addEventListener("pointerout", ev => {
     if (actual && ev.target instanceof Element && ev.target.closest(SELECTOR) === actual && !actual.contains(ev.relatedTarget)) ocultar();

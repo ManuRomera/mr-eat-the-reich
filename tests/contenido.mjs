@@ -1,13 +1,14 @@
 /** Comprobación de migraciones sin servidor: node tests/contenido.mjs */
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
-import { AUDIO, MUSICA_LUGAR, TEMAS_PERSONAJE, MOTIVOS, MOTIVOS_LUGAR, VERSION_CONTENIDO } from "../module/banda-sonora-datos.mjs";
+import { motivosDeEscena, AUDIO, MUSICA_LUGAR, TEMAS_PERSONAJE, MOTIVOS, MOTIVOS_LUGAR, VERSION_CONTENIDO } from "../module/banda-sonora-datos.mjs";
+globalThis.__motivos = motivosDeEscena;
 import { EFECTOS, EFECTOS_BARRA } from "../module/efectos-datos.mjs";
 import { repararCatalogo, podarCatalogo } from "../module/direccion-contenido.mjs";
 const ID = "mr-eat-the-reich", RUTA = `systems/${ID}`;
 const code = (await fs.readFile(new URL("../module/contenido.mjs", import.meta.url), "utf8")).replace(/^import .*;\n/gm, "");
 const mod = await import(`data:text/javascript;base64,${Buffer.from(
-  `const repararCatalogo=${repararCatalogo.toString()}; const podarCatalogo=${podarCatalogo.toString()}; const EFECTOS_BARRA=${JSON.stringify(EFECTOS_BARRA)}; const EFECTOS=${JSON.stringify(EFECTOS)}, MOTIVOS=${JSON.stringify(MOTIVOS)}; const ID=${JSON.stringify(ID)}, RUTA=${JSON.stringify(RUTA)}, AUDIO=${JSON.stringify(AUDIO)}, MUSICA_LUGAR=${JSON.stringify(MUSICA_LUGAR)}, TEMAS_PERSONAJE=${JSON.stringify(TEMAS_PERSONAJE)}, MOTIVOS_LUGAR=${JSON.stringify(MOTIVOS_LUGAR)}, asegurarPresentacion=async()=>{} , VERSION_CONTENIDO=${JSON.stringify(VERSION_CONTENIDO)};\n${code}`
+  `const motivosDeEscena=k=>globalThis.__motivos(k); const repararCatalogo=${repararCatalogo.toString()}; const podarCatalogo=${podarCatalogo.toString()}; const EFECTOS_BARRA=${JSON.stringify(EFECTOS_BARRA)}; const EFECTOS=${JSON.stringify(EFECTOS)}, MOTIVOS=${JSON.stringify(MOTIVOS)}; const ID=${JSON.stringify(ID)}, RUTA=${JSON.stringify(RUTA)}, AUDIO=${JSON.stringify(AUDIO)}, MUSICA_LUGAR=${JSON.stringify(MUSICA_LUGAR)}, TEMAS_PERSONAJE=${JSON.stringify(TEMAS_PERSONAJE)}, MOTIVOS_LUGAR=${JSON.stringify(MOTIVOS_LUGAR)}, asegurarPresentacion=async()=>{} , VERSION_CONTENIDO=${JSON.stringify(VERSION_CONTENIDO)};\n${code}`
 ).toString("base64")}`);
 let writes = 0, nextId = 0, tokenCount = 0;
 const settings = new Map([["mr-direccion.global", { motifs: [
@@ -82,6 +83,8 @@ for (const s of scenes.slice(0, 20)) {
   const sound = list.sounds.find(a => a.id === s.flags[ID].musica.playlistSound);
   assert.equal(sound.getFlag(ID, "clave"), MUSICA_LUGAR[s.flags[ID].escena]);
   for (const tema of TEMAS_PERSONAJE) assert(s.flags["mr-direccion"].config.motifs.includes(tema.id));
+  // Cada escena lleva solo sus motivos, no el catálogo entero (22).
+  assert(s.flags["mr-direccion"].config.motifs.length <= 13, `${s.flags[ID].escena}: ${s.flags["mr-direccion"].config.motifs.length} motivos`);
   assert.equal(s.flags["mr-direccion"].config.reading.uuid, "JournalEntry.1234567890123456");
 }
 assert(scenes[1]._source.background.src.includes("sirena-limpia.webp"));

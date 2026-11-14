@@ -1,5 +1,5 @@
 /** Partitura por situación del manual. Fuentes y licencias completas en assets/audio/CREDITOS.md. */
-export const VERSION_CONTENIDO = "0.9.2";
+export const VERSION_CONTENIDO = "1.0.0";
 export const AUDIO = {
   "noche": {
     "titulo": "París · Fondo",
@@ -415,3 +415,23 @@ export const MUSICA_LUGAR = {
   "zepelin": "zepelin",
   "transmision": "climax"
 };
+
+/**
+ * Qué motivos lleva cada escena en la barra de MR- Dirección: los suyos propios, cuatro o cinco estados de ánimo que le van
+ * (Acción y Último gesto están en todas las localizaciones) y los temas de los protagonistas. La sala de despliegue solo lleva los temas.
+ */
+const ANIMO_ESCENA = {
+  paris: ["calma", "misterio", "sigilo", "muerte"],
+  sirena: ["persecucion", "sorpresa", "guerra"], almacenes: ["persecucion", "sigilo", "sorpresa"], cementerio: ["sorpresa", "miedo", "guerra"],
+  hotel: ["sorpresa", "calma", "guerra"], mausoleo: ["sigilo", "misterio", "miedo"], catedral: ["guerra", "miedo", "sorpresa"],
+  palacio: ["guerra", "sorpresa", "persecucion"], metro: ["sigilo", "persecucion", "miedo"], garaje: ["persecucion", "sorpresa", "guerra"],
+  "cerdo-negro": ["calma", "misterio", "sigilo"], museo: ["miedo", "misterio", "sorpresa"], parque: ["persecucion", "miedo", "sorpresa"],
+  galeria: ["sorpresa", "guerra", "misterio"], opera: ["miedo", "sorpresa", "misterio"], deposito: ["guerra", "persecucion", "sigilo"],
+  jardin: ["calma", "sorpresa", "guerra"], torre: ["guerra", "persecucion", "miedo"], zepelin: ["guerra", "miedo", "sorpresa"], transmision: ["guerra", "miedo", "sorpresa"]
+};
+export function motivosDeEscena(clave) {
+  const temas = TEMAS_PERSONAJE.map(t => t.id);
+  if (clave === "presentacion") return temas;
+  if (!ANIMO_ESCENA[clave]) return null;
+  return [...(MOTIVOS_LUGAR[clave] ?? []), ...(clave === "paris" ? [] : ["accion"]), ...ANIMO_ESCENA[clave], ...(clave === "paris" ? [] : ["muerte"]), ...temas];
+}

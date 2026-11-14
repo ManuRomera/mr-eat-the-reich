@@ -1,5 +1,5 @@
 /** Presentación sincronizada con ajustes de mundo y audio nativo de Foundry. Solo publica el GM activo. */
-import { ID, RUTA, mision } from "./mesa.mjs";
+import { ID, RUTA, mision, cambiarMision } from "./mesa.mjs";
 import { ApplicationV2, HandlebarsApplicationMixin } from "./compat.mjs";
 import { AUDIO, VERSION_CONTENIDO } from "./banda-sonora-datos.mjs";
 import { PERSONAJES, ESTADO_INICIAL, TIEMPOS, estadoSeguro, siguienteEstado, reparto, claveSonido, bloquearMusica } from "./presentacion-core.mjs";
@@ -12,7 +12,9 @@ const lista = () => game.playlists.find(p => p.getFlag(ID, "clave") === "present
 export const escenaPresentacion = () => game.scenes.find(s => s.getFlag(ID, "presentacion") === true);
 export const presentacionActiva = () => game.scenes.active?.getFlag(ID, "presentacion") === true;
 export const estadoPresentacion = () => estadoSeguro(game.settings.get(ID, "presentacionEstado"));
-const roster = () => { const b = mision().banquillo ?? []; return reparto(game.actors.contents, game.users.contents).filter(p => !b.includes(p.actorId)); };
+const todos = () => { const b = mision().banquillo ?? []; return reparto(game.actors.contents, game.users.contents).map(p => ({ ...p, juega: !b.includes(p.actorId) })); };
+const roster = () => todos().filter(p => p.juega);
+const sonando = () => (lista()?.sounds ?? []).some(s => s.playing);
 let preparando = null, cola = Promise.resolve(), activando = false, vista = null, saliendo = false;
 let control = null, generacion = 0;
 const vigente = turno => turno === generacion && presentacionActiva() && activoGM();
@@ -77,7 +79,7 @@ async function tocar(clave) {
   const pl = lista(), sonido = pl?.sounds.find(s => s.getFlag(ID, "presentacionTema") === clave);
   if (!sonido) throw new Error(`Falta el tema de presentación: ${clave}`);
   const volumen = Math.min(1, Math.max(0, Number(game.settings.get(ID, "presentacionVolumen")) || 0));
-  await sonido.update({ volume: volumen, fade: 700 });
+  await sonido.update({ volume: volumen, fade: 700, "flags.mr-direccion.ch": "music" });
   const otros = pl.sounds.filter(s => s.playing && s.id !== sonido.id);
   await Promise.all(otros.map(s => s.update({ fade: 700 })));
   await Promise.all([sonido.playing ? Promise.resolve() : pl.playSound(sonido), ...otros.map(s => pl.stopSound(s))]);
@@ -145,7 +147,8 @@ export function terminarPresentacion() {
   if (!activoGM() || !presentacionActiva()) return Promise.resolve();
   return enqueue(async () => {
     if (!presentacionActiva()) return;
-    const anterior = game.scenes.get(estadoPresentacion().anterior) ?? game.scenes.find(s => !s.getFlag(ID, "presentacion"));
+    // Al salir, la mesa va al mapa de París (o, si no está importado, a la escena de la que se vino).
+    const anterior = game.scenes.find(s => s.getFlag(ID, "escena") === "paris") ?? game.scenes.get(estadoPresentacion().anterior) ?? game.scenes.find(s => !s.getFlag(ID, "presentacion"));
     if (presentacionActiva() && !await cerrarActual()) return;
     await publicar({ personaje: "", activa: false, fase: "sala" });
     await lista()?.stopAll();
@@ -166,15 +169,17 @@ function refrescar() {
 
 class PanelPresentacion extends HandlebarsApplicationMixin(ApplicationV2) {
   static DEFAULT_OPTIONS = { id: "er-presentacion-control", classes: [ID, "er-presentacion-control"],
-    window: { title: "F.A.N.G. · Presentación de jugadores", resizable: true }, position: { width: 470, height: 570 },
+    window: { title: "F.A.N.G. · Presentación de jugadores", resizable: true }, position: { width: 500, height: "auto" },
     actions: { iniciar: () => iniciarPresentacion(), siguiente: () => siguientePresentacion(), terminar: () => terminarPresentacion(),
-      personaje: (ev, b) => presentarPersonaje(b.dataset.personaje) } };
+      personaje: (ev, b) => presentarPersonaje(b.dataset.personaje),
+      juega: (ev, b) => { const id = b.dataset.id; return cambiarMision(m => { m.banquillo = m.banquillo.includes(id) ? m.banquillo.filter(x => x !== id) : [...m.banquillo, id]; if (m.turno === id) m.turno = ""; }); },
+      musica: () => alternarMusica() } };
   static PARTS = { contenido: { template: `${RUTA}/templates/apps/presentacion.hbs` } };
   async _prepareContext() {
     const s = estadoPresentacion();
     const ocupado = !["sala", "abierto"].includes(s.fase);
     const faseTexto = ({ entrada: "Ataúd cerrado · preparando apertura", abriendo: "Abriendo compuerta…", abierto: "Personaje presentado · compuerta abierta", cerrando: "Cerrando compuerta…", salida: "Recuperando la sala…", sala: "Sala de despliegue lista" })[s.fase];
-    return { ocupado, faseTexto, filas: roster().map(p => ({ ...p, seleccionada: s.personaje === p.id, img: `${RUTA}/assets/retratos/${p.id}.webp` })),
+    return { ocupado, faseTexto, suena: sonando(), filas: todos().map(p => ({ ...p, seleccionada: s.personaje === p.id, img: `${RUTA}/assets/retratos/${p.id}.webp` })),
       enSala: presentacionActiva(), personaje: s.personaje, volumen: Math.round((Number(game.settings.get(ID, "presentacionVolumen")) || 0) * 100) };
   }
   async _onRender(context, options) {
@@ -186,6 +191,15 @@ class PanelPresentacion extends HandlebarsApplicationMixin(ApplicationV2) {
         for (const s of lista()?.sounds ?? []) if (s.playing) await s.update({ volume: value }); }).catch(fallo);
     });
   }
+}
+/** Para o reanuda la música de la sala (o el tema del personaje presentado). Para quien dirige sin MR- Dirección. */
+function alternarMusica() {
+  if (!activoGM() || !presentacionActiva()) return Promise.resolve();
+  return enqueue(async () => {
+    if (sonando()) for (const s of lista().sounds) { if (s.playing) await lista().stopSound(s); }
+    else await tocar(estadoPresentacion().personaje || "sala");
+    if (control?.rendered) control.render({ force: true });
+  }).catch(fallo);
 }
 export function abrirPresentacion() {
   if (!game.user.isGM) return;
@@ -217,6 +231,7 @@ export function registrarPresentacion() {
   });
   Hooks.on("canvasReady", () => refrescar());
   Hooks.on("updateUser", () => refrescar());
+  Hooks.on("updatePlaylistSound", s => { if (s.parent?.getFlag(ID, "clave") === "presentacion" && control?.rendered) control.render({ force: true }); });
   Hooks.on("eatthereich.mision", () => { if (control?.rendered) control.render({ force: true }); });
   Hooks.on("updateActor", () => refrescar());
   Hooks.on("preUpdatePlaylistSound", (s, cambios) => {

@@ -4,13 +4,14 @@
  */
 import { olvidarTodo } from "./memoria.mjs";
 import { ApplicationV2 } from "./compat.mjs";
+import { LOCALIZACIONES } from "./datos.mjs";
 
 export const ID = "mr-eat-the-reich";
 export const SOCKET = `system.${ID}`;
 export const RUTA = `systems/${ID}`;
 export const ARTE = `${RUTA}/assets`;
 
-export const MISION_INICIAL = { escena: "", ronda: 1, objetivos: [], amenazas: [], actuaron: [], turno: "", fuera: [], visitadas: [], caidos: [], banquillo: [], diana: "", desplegado: "", despliegue: null };
+export const MISION_INICIAL = { escena: "", ronda: 1, objetivos: [], amenazas: [], actuaron: [], turno: "", fuera: [], visitadas: [], caidos: [], banquillo: [], diana: "", desplegado: "", despliegue: null, resueltas: [] };
 
 class RestablecerVentanas extends ApplicationV2 {
   async render() {
@@ -56,6 +57,9 @@ export async function cambiarMision(fn) {
   if (!game.user.isGM) return;
   const m = mision();
   await fn(m);
+  // Escena resuelta: su objetivo principal ha llegado a cero. Queda apuntada para tacharla en el mapa.
+  const l = LOCALIZACIONES.find(x => x.nombre === m.escena), principales = m.objetivos.filter(o => !o.secundario);
+  if (l && principales.length && principales.every(o => o.valor <= 0) && !m.resueltas.includes(l.clave)) m.resueltas.push(l.clave);
   return game.settings.set(ID, "mision", m);
 }
 

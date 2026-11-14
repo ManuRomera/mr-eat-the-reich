@@ -54,7 +54,7 @@ export function pintarTablon() {
     const heridas = v.system.lesiones.flat().filter(l => l.marcada).length;
     const estado = v.system.muerto ? "ha caído" : v.system.derribado ? "derribado" : `sangre ${v.system.sangre}${heridas ? ` · ${heridas} lesión${heridas > 1 ? "es" : ""}` : ""}`;
     const fuera = banquillo.includes(v.id), E = elige ? "button" : "div";
-    return `<${E} ${elige ? `type="button" data-juega="${v.id}" aria-pressed="${!fuera}"` : ""} class="er-tb-fila ${v.system.muerto ? "caido" : ""} ${fuera ? "fuera" : ""}"><img src="${esc(v.prototypeToken?.texture?.src || v.img)}" alt=""><div><b>${esc(v.name)}</b><span>${esc(duenos.join(", ") || "sin jugador")}</span><i>${esc(elige ? (fuera ? "no juega" : "juega") : estado)}</i></div></${E}>`;
+    return `<${E} ${elige ? `type="button" data-juega="${v.id}" aria-pressed="${!fuera}"` : ""} class="er-tb-fila ${v.system.muerto ? "caido" : ""} ${fuera ? "fuera" : ""}"><img src="${esc(v.prototypeToken?.texture?.src || v.img)}" data-lupa="${esc(v.img)}" data-lupa-espera="1000" data-ficha="${v.id}" alt=""><div><b>${esc(v.name)}</b><span>${esc(duenos.join(", ") || "sin jugador")}</span><i>${esc(elige ? (fuera ? "no juega" : "juega") : estado)}</i></div></${E}>`;
   }).join("");
   const visitadas = LOCALIZACIONES.filter(l => (m.visitadas ?? []).includes(l.clave));
   const actual = LOCALIZACIONES.find(l => l.nombre === m.escena);
@@ -65,9 +65,25 @@ export function pintarTablon() {
   t.id = "er-tablon";
   t.style.cssText = `left:${d.sceneX}px;top:${d.sceneY}px;width:4000px;height:2473px;transform-origin:0 0;transform:scale(${k})`;
   t.innerHTML = `<div class="er-tb er-tb-campana" style="${caja(NOTAS.campana)}"><small>Operación</small><b>${esc(game.settings.get(ID, "campana") || game.world.title)}</b></div>
-    <div class="er-tb er-tb-equipo" style="${caja(NOTAS.equipo)}"><div class="er-tb-cab"><h3>Escuadrón F.A.N.G.</h3>${gm ? `<button type="button" data-tb="elegir" aria-pressed="${elige}">${elige ? "Hecho" : "Quién juega"}</button><button type="button" data-tb="reiniciar">Reiniciar</button>` : ""}</div><div class="er-tb-lista">${filas || "<span>Aún no hay vampiros.</span>"}</div>
+    <div class="er-tb er-tb-equipo" style="${caja(NOTAS.equipo)}"><div class="er-tb-cab"><h3>Escuadrón F.A.N.G.</h3>${gm ? `<button type="button" data-tb="elegir" aria-pressed="${elige}">${elige ? "Hecho" : "¿Quién juega?"}</button><button type="button" data-tb="reiniciar">Reiniciar</button>` : ""}</div><div class="er-tb-lista">${filas || "<span>Aún no hay vampiros.</span>"}</div>
       <div class="er-tb-avance"><div class="er-tb-sectores">${sectores}</div>
         ${actual ? `Ahora: <b>${esc(actual.nombre)}</b> · ronda ${m.ronda}<br>` : m.desplegado ? "" : "Elegid el punto de despliegue en el Sector 3.<br>"}Localizaciones: <b>${visitadas.length}</b> · Übermenschen caídos: <b>${(m.caidos ?? []).length}/${uber}</b></div></div>`;
+  // Escenas resueltas: la calavera desaparece y queda el nombre, tachado.
+  const resueltas = m.resueltas ?? [];
+  for (const nota of canvas.scene?.notes ?? []) {
+    const l = LOCALIZACIONES.find(x => x.clave === nota.getFlag(ID, "ir"));
+    if (!l || !resueltas.includes(l.clave)) continue;
+    const r = document.createElement("div");
+    r.className = "er-tb-resuelta"; r.style.cssText = `left:${(nota.x - d.sceneX) / k}px;top:${(nota.y - d.sceneY) / k}px`;
+    r.innerHTML = `<span>${esc(l.nombre)}</span>`;
+    t.append(r);
+  }
+  for (const n of canvas.notes?.placeables ?? []) if (n.controlIcon) n.controlIcon.alpha = resueltas.includes(n.document.getFlag(ID, "ir")) ? 0 : 1;
+  // Doble clic en un retrato: su ficha, para quien tenga permiso.
+  t.addEventListener("dblclick", ev => {
+    const actor = game.actors.get(ev.target.closest("[data-ficha]")?.dataset.ficha);
+    if (actor && !eligiendo && actor.testUserPermission(game.user, "OBSERVER")) actor.sheet.render(true);
+  });
   t.addEventListener("click", ev => {
     const id = ev.target.closest("[data-juega]")?.dataset.juega, que = ev.target.closest("[data-tb]")?.dataset.tb;
     if (id) cambiarMision(x => { x.banquillo = x.banquillo.includes(id) ? x.banquillo.filter(y => y !== id) : [...x.banquillo, id]; if (x.turno === id) x.turno = ""; });
@@ -83,6 +99,7 @@ export function registrarEscenas() {
   Hooks.on("canvasReady", () => { pintarTablon(); setTimeout(pintarTablon, 400); setTimeout(pintarTablon, 1600); });
   Hooks.on("renderHeadsUpDisplayContainer", () => setTimeout(pintarTablon, 0));
   Hooks.on("eatthereich.mision", () => pintarTablon());
+  Hooks.on("refreshNote", n => { if (n.controlIcon && (mision().resueltas ?? []).includes(n.document.getFlag(ID, "ir"))) n.controlIcon.alpha = 0; });
   for (const h of ["updateActor", "createActor", "deleteActor", "updateUser"]) Hooks.on(h, () => pintarTablon());
 
   game.settings.register(ID, "sonidos", {

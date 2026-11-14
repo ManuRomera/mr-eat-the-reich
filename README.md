@@ -1,4 +1,4 @@
-# Actualización 0.9.2
+# Actualización 1.0.0
 
 En la pantalla inicial de Foundry, entra en **Sistemas de juego → MR- Eat the Reich → Actualizar**. El manifiesto estable enlaza con la última versión publicada y su ZIP. Después abre el mundo y recarga los clientes.
 
@@ -10,7 +10,7 @@ Los mundos nuevos comienzan en la sala de despliegue. En un mundo ya iniciado, a
 
 <p align="center">
   <a href="https://github.com/ManuRomera"><img alt="Manu Romera · Digital RPG Design" src="https://raw.githubusercontent.com/ManuRomera/ManuRomera/main/badges/mr-firma.svg" height="28"></a>
-  <a href="https://github.com/ManuRomera/mr-eat-the-reich/releases/latest"><img alt="Versión 0.9.2" src="https://img.shields.io/badge/versi%C3%B3n-0.9.2-d81557?style=for-the-badge&labelColor=10132b"></a>
+  <a href="https://github.com/ManuRomera/mr-eat-the-reich/releases/latest"><img alt="Versión 1.0.0" src="https://img.shields.io/badge/versi%C3%B3n-1.0.0-d81557?style=for-the-badge&labelColor=10132b"></a>
   <img alt="Foundry VTT 13 y 14" src="https://img.shields.io/badge/Foundry_VTT-13_%E2%80%93_14-ff3d8b?style=for-the-badge&labelColor=10132b">
   <img alt="Repositorio privado, uso personal" src="https://img.shields.io/badge/uso-privado-1f6f78?style=for-the-badge&labelColor=10132b">
   <img alt="En español" src="https://img.shields.io/badge/idioma-espa%C3%B1ol-f2c230?style=for-the-badge&labelColor=10132b">
@@ -57,11 +57,31 @@ Y cada amenaza con su imagen:
 
 <p align="center"><img src="docs/img/amenazas.webp" alt="Las fuerzas de ocupación" width="100%"></p>
 
-## Despliegue donde decida el grupo
+## Presentación del escuadrón
 
-La **Plaza de la Sirena está vacía de ataúdes**, humo e impactos de despliegue. El objeto **Ataúd metálico de despliegue** aparece automáticamente en **Actores → Atrezo**. Su imagen tiene transparencia real, sin suelo, cráter ni marco circular. Arrástralo desde Actores a cualquier escena para colocar las copias que necesites. También puedes abrir su hoja y pulsar **Colocar ataúd**, o usar el icono de caja en los controles de escena. Ese botón coloca una copia en el centro de la escena para moverla después.
+La partida empieza en la **sala de despliegue**: cada vampiro se presenta con su ataúd, su ilustración y su canción. La puerta se abre y se ve por dentro; el soporte se queda con el ataúd. Los menús de Foundry siguen a mano, así que cada jugador puede abrir su ficha mientras se presenta. Desde el control se marca **quién juega**, se para o se pone la música y, al salir, la mesa va al mapa de París.
 
-No se coloca ningún ataúd automáticamente en el mapa ni en los decorados. El nuevo tipo de actor **Objeto de atrezo** no cuenta como vampiro ni como amenaza y no tiene estadísticas de combate.
+<p align="center"><img src="docs/img/presentacion.webp" alt="Presentación de Astrid: el ataúd abierto con la puerta vista por dentro" width="100%"></p>
+
+## El mapa manda
+
+En las dos notas amarillas del mapa de París van, con datos vivos, el nombre de la campaña y el **escuadrón**: retrato, jugador, sangre y lesiones de cada vampiro, y el avance por sectores. Doble clic en un retrato abre su ficha; al dejar el ratón encima un segundo, la ilustración se ve en grande. Quien dirige tiene ahí **¿Quién juega?** y **Reiniciar** (deja la partida a cero, con confirmación). Las escenas resueltas pierden la calavera y quedan con el nombre tachado.
+
+<p align="center"><img src="docs/img/mapa.webp" alt="El mapa de París con el tablón del escuadrón y dos localizaciones tachadas" width="100%"></p>
+
+## Lanzamiento
+
+Tal como dice el manual, la mesa **elige dónde caer** entre los seis puntos del Sector 3. Al pulsar uno sale la diana con su ficha y quien dirige da la orden: la mesa va al decorado, los ataúdes caen uno a uno con su explosión, el humo lo tapa todo y, al despejarse, están clavados en el suelo y el sitio destrozado. Hay decorado para 3, 4 y 5 ataúdes, según cuántos vampiros jueguen. Alt + doble clic en un punto deja a quien dirige asomarse sin lanzar nada.
+
+<p align="center"><img src="docs/img/despliegue.webp" alt="La diana sobre el Hôtel L'Étoile, los ataúdes cayendo, el humo y el decorado con los ataúdes clavados" width="100%"></p>
+
+El **Ataúd metálico de despliegue** sigue en **Actores → Atrezo** por si quieres colocar alguno a mano en cualquier escena.
+
+## Turnos a la vista
+
+Dar el turno desde el Panel de misión lo **estampa en pantalla** para toda la mesa, una sola vez y con su golpe de sonido: de quién es y cuántos dados le disparan. Nada de mensajes repetidos en el chat.
+
+<p align="center"><img src="docs/img/turno.webp" alt="Aviso de turno en pantalla: ¡Te toca! Nicole, te disparan 4 dados" width="86%"></p>
 
 ## Música de escena y temas de los protagonistas
 
@@ -84,7 +104,7 @@ Pulsa un nombre para activar su tema. Vuelve a pulsarlo para recuperar el fondo 
 
 ## Actualizar la instalación existente
 
-Cierra el mundo y, en la pantalla inicial de Foundry, abre **Sistemas de juego → MR- Eat the Reich → Actualizar**. La versión debe cambiar a **0.9.2**. Abre el mundo y recarga los navegadores; la presentación, la música y el atrezo se actualizan sin reimportar la aventura. Se conservan personajes, diarios y posiciones de tokens, además de listas musicales externas y fondos personalizados fuera de los recursos del sistema.
+Cierra el mundo y, en la pantalla inicial de Foundry, abre **Sistemas de juego → MR- Eat the Reich → Actualizar**. La versión debe cambiar a **1.0.0**. Abre el mundo y recarga los navegadores; la presentación, la música y el atrezo se actualizan sin reimportar la aventura. Se conservan personajes, diarios y posiciones de tokens, además de listas musicales externas y fondos personalizados fuera de los recursos del sistema.
 
 Manifiesto estable para instalar o vincular el sistema:
 

@@ -9,7 +9,7 @@ import { existsSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { VAMPIROS, AMENAZAS, LOCALIZACIONES, FLASHBACK, PREMIOS_SECUNDARIO, BOTIN_EJEMPLOS, ATRIBUTOS, AYUDA_ATRIBUTOS, PISTAS, MOTIVOS, MUSICA_LUGAR, EFECTOS } from "../module/datos.mjs";
 
-import { AUDIO, TEMAS_PERSONAJE } from "../module/banda-sonora-datos.mjs";
+import { motivosDeEscena, AUDIO, TEMAS_PERSONAJE } from "../module/banda-sonora-datos.mjs";
 
 const manifiesto = JSON.parse(await fs.readFile("system.json"));
 const ID = manifiesto.id, R = `systems/${ID}/assets`;
@@ -189,7 +189,7 @@ const direccion = {
     { clave: "paris", nombre: "París, 1943", pagina: uid("pag-estructura"), enemigos: [], thumb: `${R}/libro/mapa-thumb.webp` },
     ...LOCALIZACIONES.map(l => ({ clave: l.clave, nombre: l.nombre, pagina: uid(`pag-lugar-${l.clave}`), enemigos: l.enemigos, thumb: `${R}/escenas/${l.clave === "sirena" ? "sirena-limpia" : l.clave}-thumb.webp` }))].map((e, i) => ({
     ref: { flag: [ID, "escena", e.clave] }, order: i, name: e.nombre, reading: { uuid: `JournalEntry.${journal[1]._id}.JournalEntryPage.${e.pagina}` }, music: e.sinMusica ? null : src("musica", pista(MUSICA_LUGAR[e.clave])),
-    motifs: curado.scenes?.find(c => c.ref?.flag?.[2] === e.clave)?.motifs ?? null, cues: [], ambient: null, figures: e.enemigos.map(x => ({ ref: { uuid: `Actor.${uid(`amenaza-${x.clave}`)}` }, label: x.alias || AMENAZAS.find(a => a.clave === x.clave).nombre })),
+    motifs: motivosDeEscena(e.clave)?.filter(id => id.startsWith("pj-") || hay(id)) ?? null, cues: [], ambient: null, figures: e.enemigos.map(x => ({ ref: { uuid: `Actor.${uid(`amenaza-${x.clave}`)}` }, label: x.alias || AMENAZAS.find(a => a.clave === x.clave).nombre })),
     handouts: [], notes: "", thumb: e.thumb, stage: ["paris", "presentacion"].includes(e.clave) ? { mode: "none" } : { mode: "horizon", eye: 0.5 }
   }))
 };

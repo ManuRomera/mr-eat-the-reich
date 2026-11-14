@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="../styles/mr-eat-the-reich.css?v=4">
 <link rel="stylesheet" href="../styles/punk.css?v=4">
 <link rel="stylesheet" href="../styles/ataud.css?v=4">
+<link rel="stylesheet" href="../styles/presentacion.css?v=4">
 <style>
   html, body { overflow: auto !important; height: auto !important; position: static !important; background: #2a2d45 !important; }
   body { padding: 20px; display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
@@ -146,10 +147,17 @@ if (new URLSearchParams(location.search).has("tablon")) {
   game.actors.filter = f => vs.filter(f);
   game.users = { filter: f => ["Marta", "Íñigo", "Laura", "Pau", "Edu"].map((name, i) => ({ name, i, isGM: false })).filter(f) };
   game.world = { title: "Beberse a Hitler" };
-  game.settings.get = (_, k) => (k === "mision" ? (new URLSearchParams(location.search).has("diana") ? { escena: "", ronda: 1, visitadas: [], caidos: [], banquillo: ["flint", "astrid"], diana: new URLSearchParams(location.search).get("diana") } : { escena: "Museo de la Guerra Europea", ronda: 2, visitadas: ["sirena", "catedral", "museo"], caidos: ["Stahlsoldat"], desplegado: "sirena" }) : k === "campana" ? "" : {});
+  game.settings.get = (_, k) => (k === "mision" ? (new URLSearchParams(location.search).has("diana") ? { escena: "", ronda: 1, visitadas: [], caidos: [], banquillo: ["flint", "astrid"], diana: new URLSearchParams(location.search).get("diana") } : { escena: "Museo de la Guerra Europea", ronda: 2, visitadas: ["sirena", "catedral", "museo"], caidos: ["Stahlsoldat"], desplegado: "sirena", resueltas: ["sirena", "catedral"], banquillo: ["flint"] }) : k === "campana" ? "" : {});
   (await import("../module/escenas.mjs")).pintarTablon();
   if (new URLSearchParams(location.search).has("elige")) document.querySelector('#er-tablon [data-tb="elegir"]')?.click();   // ?tablon&elige: quien dirige marcando quién juega
 }
+// Tirada de tabla con el marcado de Foundry y control de presentación: ?solo=tabla · ?solo=pres
+{ const d = document.createElement("div"); d.className = "chat-message message flexcol";
+  d.innerHTML = `<header class="message-header flexrow"><h4 class="message-sender">Gamemaster</h4></header><div class="message-content"><span class="flavor-text">Saca un resultado de la tabla Flashback · la pregunta</span><div class="table-draw"><div class="dice-roll"><div class="dice-result"><div class="dice-formula">1d6</div><h4 class="dice-total">6</h4></div></div><ul class="table-results"><li class="flexrow"><img src="x.svg">No quieres que [personaje] te vea fracasar así. ¿Qué espera de ti?</li></ul></div></div>`;
+  chat.append(d);
+  const P0 = (await import("../module/presentacion-core.mjs")).PERSONAJES;
+  ventana("F.A.N.G. · Presentación de jugadores", "er-presentacion-control", (await plantilla("apps/presentacion.hbs"))({ ocupado: false, faseTexto: "Personaje presentado · compuerta abierta", enSala: true, suena: true, volumen: 50,
+    filas: P0.map((p, i) => ({ ...p, actorId: p.id, jugador: ["Marta", "Íñigo", "Laura", "Pau", "", ""][i], boton: ["Marta", "Íñigo", "Laura", "Pau", p.nombre, p.nombre][i], juega: i !== 5, seleccionada: i === 0, img: `${RUTA}/assets/retratos/${p.id}.webp` })) }), 500); }
 // Aviso de turno: ?turno[&jugador]
 if (new URLSearchParams(location.search).has("turno")) {
   const { avisoTurno } = await import("../module/apps/mision.mjs");
@@ -177,7 +185,7 @@ if (new URLSearchParams(location.search).has("despliegue")) {
   } else D.animar({ clave, n: Number(n) });
 }
 // Para capturas: ?solo=ataud|clasica|mision|chat deja solo esa pieza; ?fondo=<escena> pone un decorado detrás.
-const P = new URLSearchParams(location.search), SOLO = { ataud: ".er-hoja-ataud", clasica: ".er-hoja-vampiro:not(.er-hoja-ataud)", mision: ".er-mision, .chat", chat: ".chat", dialogo: ".er-tirada-dlg, .er-hoja-ataud" }[P.get("solo")];
+const P = new URLSearchParams(location.search), SOLO = { ataud: ".er-hoja-ataud", clasica: ".er-hoja-vampiro:not(.er-hoja-ataud)", mision: ".er-mision, .chat", chat: ".chat", tabla: ".chat", pres: ".er-presentacion-control", dialogo: ".er-tirada-dlg, .er-hoja-ataud" }[P.get("solo")];
 if (SOLO) { let visto = false; for (const el of [...document.body.children]) { if (!el.matches(".application, .chat")) continue; if (!el.matches(SOLO) || (P.get("solo") === "clasica" && visto)) el.remove(); else visto = true; } document.body.style.justifyContent = "center"; }
 if (P.get("fondo")) document.body.style.cssText += `;background:#0c1026 url(${RUTA}/assets/escenas/${P.get("fondo")}.webp) center/cover fixed !important;min-height:100vh`;
 document.title = "Arnés listo";

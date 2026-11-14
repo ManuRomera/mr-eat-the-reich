@@ -136,6 +136,7 @@ function comprobar() {
 export async function animar(d) {
   const puntos = ATAUDES[d.clave]?.[d.n] ?? [], escena = canvas.scene, l = PUNTOS.find(p => p.clave === d.clave);
   const calma = globalThis.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  new Image().src = `${RUTA}/assets/atrezo/ataud-metalico.png`;   // que el primer ataúd no llegue tarde por la descarga
   document.getElementById("er-despliegue")?.remove();
   const capa = document.createElement("div");
   capa.id = "er-despliegue"; capa.className = ID; capa.setAttribute("aria-hidden", "true");

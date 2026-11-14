@@ -1,6 +1,6 @@
 /** Actualización no destructiva de música, decorado y atrezo; nunca reimporta la misión. */
 import { ID, RUTA } from "./mesa.mjs";
-import { AUDIO, MUSICA_LUGAR, TEMAS_PERSONAJE, MOTIVOS, VERSION_CONTENIDO } from "./banda-sonora-datos.mjs";
+import { motivosDeEscena, AUDIO, MUSICA_LUGAR, TEMAS_PERSONAJE, MOTIVOS, VERSION_CONTENIDO } from "./banda-sonora-datos.mjs";
 
 import { EFECTOS, EFECTOS_BARRA } from "./efectos-datos.mjs";
 import { repararCatalogo, podarCatalogo } from "./direccion-contenido.mjs";
@@ -113,12 +113,12 @@ async function actualizarDireccion() {
     if (gestionada(next.music?.src) && next.music.src !== fuente(pista)) {
       next.music = { src: fuente(pista) }; cambia = true;
     }
-    // Las listas explícitas de 0.5.0 recuperan el catálogo completo.
-    if (Array.isArray(next.motifs)) {
-      const ids = new Set(next.motifs);
-      for (const id of motivos.map(t => t.id)) if (!ids.has(id)) {
-        next.motifs.push(id); ids.add(id); cambia = true;
-      }
+    // Cada escena lleva solo sus motivos; los que el director haya añadido por su cuenta (no son del sistema) se conservan.
+    const suyos = motivosDeEscena(clave);
+    if (Array.isArray(next.motifs) && suyos) {
+      const delSistema = new Set(motivos.map(t => t.id));
+      const lista = [...suyos.filter(id => delSistema.has(id)), ...next.motifs.filter(id => !delSistema.has(id))];
+      if (JSON.stringify(lista) !== JSON.stringify(next.motifs)) { next.motifs = lista; cambia = true; }
     }
     if (clave === "sirena" && next.thumb?.startsWith(`${RUTA}/assets/escenas/`)) {
       const thumb = versionada("assets/escenas/sirena-limpia-thumb.webp");

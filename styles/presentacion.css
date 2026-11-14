@@ -1,5 +1,6 @@
 /* Ataúd de acero: casco, hueco hexagonal y compuerta permanecen montados durante toda la presentación. */
-.er-presentacion-vista{--er-pres-color:#ed397c;position:fixed;inset:0;z-index:60;pointer-events:none;overflow:hidden;opacity:0;visibility:hidden;transition:opacity .8s,visibility .8s;background:#050711 url('../assets/escenas/presentacion.webp') center/contain no-repeat;color:#f4ecd6;font-family:var(--er-texto)}
+/* Por encima del lienzo y por debajo de la interfaz de Foundry: los jugadores siguen teniendo sus menús y su ficha a mano. */
+.er-presentacion-vista{--er-pres-color:#ed397c;position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden;opacity:0;visibility:hidden;transition:opacity .8s,visibility .8s;background:#050711 url('../assets/escenas/presentacion.webp') center/contain no-repeat;color:#f4ecd6;font-family:var(--er-texto)}
 .er-presentacion-vista.is-visible{opacity:1;visibility:visible}
 .er-presentacion-vista::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#030610c9,#03061077 55%,#030610e0);opacity:0;transition:opacity var(--er-fundido)}
 .er-presentacion-vista.is-character::before{opacity:1;backdrop-filter:blur(2px)}
@@ -27,7 +28,8 @@
 .er-pres-jugador{font:700 clamp(15px,2.1vw,32px)/1.3 var(--er-rotulo);margin:28px 0 10px;color:#f4ecd6;overflow-wrap:anywhere}
 .er-pres-nombre{font:700 clamp(38px,7vw,116px)/.95 var(--er-rotulo)!important;text-transform:uppercase;letter-spacing:-.035em!important;color:var(--er-pres-color)!important;border:0!important;margin:0 0 24px!important;overflow-wrap:anywhere}
 .er-pres-titulo{font:400 clamp(12px,1.4vw,21px)/1.6 var(--er-texto);color:#eee3cc;margin:0;max-width:25em}
-.er-presentacion-exclusiva [data-mrd-action='music'],.er-presentacion-exclusiva [data-mrd-action='motif'],.er-presentacion-exclusiva [data-mrd-action='quiet'],.er-presentacion-exclusiva [data-mrd-action='level']{opacity:.4;pointer-events:none}
+/* En la sala, MR- Dirección no cambia de pista (la lleva la presentación), pero sí puede pararla, silenciarla y ajustar el volumen. */
+.er-presentacion-exclusiva [data-mrd-action='music'],.er-presentacion-exclusiva [data-mrd-action='motif']{opacity:.4;pointer-events:none}
 /* Expediente de dirección: papel, máquina de escribir, cintas de tinta y magenta del sistema. */
 .mr-eat-the-reich.er-presentacion-control .window-content{padding:16px;overflow:auto}
 .er-pres-panel{display:grid;gap:13px;font-family:var(--er-texto);color:var(--er-tinta)}
@@ -44,7 +46,7 @@
 .er-pres-acciones{display:grid;grid-template-columns:1fr 1fr;gap:10px}.er-pres-acciones .er-pres-siguiente{background:var(--er-sangre);border-color:var(--er-noche);color:#fff}
 .er-pres-panel label{display:flex;align-items:center;gap:12px;font-size:12px}.er-pres-panel input[type=range]{flex:1;accent-color:var(--er-sangre)}
 .er-pres-estado{padding:8px 11px;border-left:4px solid var(--er-cinta);background:var(--er-campo);font-size:11px;line-height:1.5}
-.er-pres-control-rapido{position:absolute;top:22px;right:24px;pointer-events:auto;min-height:42px!important;padding:9px 17px!important;background:var(--er-sangre)!important;color:#fff!important;border:3px solid #05060f!important;border-radius:0!important;font:700 17px/1.2 var(--er-rotulo)!important;letter-spacing:.1em;text-transform:uppercase;box-shadow:5px 5px 0 #05060f!important;transform:rotate(-1.5deg);cursor:pointer}
+.er-pres-control-rapido{position:absolute;top:14px;left:50%;transform:translateX(-50%);pointer-events:auto;min-height:42px!important;padding:9px 17px!important;background:var(--er-sangre)!important;color:#fff!important;border:3px solid #05060f!important;border-radius:0!important;font:700 17px/1.2 var(--er-rotulo)!important;letter-spacing:.1em;text-transform:uppercase;box-shadow:5px 5px 0 #05060f!important;transform:rotate(-1.5deg);cursor:pointer}
 .er-pres-control-rapido:focus-visible{outline:3px solid #f2c230;outline-offset:4px}
 .er-ajustes [data-er='presentacion']{font-family:var(--er-rotulo);text-transform:uppercase;letter-spacing:.08em;background:var(--er-sangre);color:#fff;border:2px solid var(--er-noche);box-shadow:3px 3px 0 var(--er-noche);border-radius:0;min-height:38px}
 @media(max-width:700px){.er-pres-foco{inset:6vh 3vw;gap:2vw}.er-pres-ataud{height:80vh;width:55vh;max-width:60vw}.er-pres-identidad{width:29vw;min-width:0}.er-pres-nombre{font-size:8vw!important}.er-pres-expediente{letter-spacing:0}.er-pres-jugador{margin-top:15px}}
@@ -52,3 +54,10 @@
 .er-sin-movimiento .er-presentacion-vista,.er-sin-movimiento .er-presentacion-vista *{transition:none!important}
 
 .er-pres-panel button:disabled{cursor:wait;opacity:.6;transform:none;box-shadow:1px 1px 0 var(--er-noche)}
+
+/* Quién juega, también desde el control de presentación */
+.er-pres-fila{display:flex;gap:6px;min-width:0}.er-pres-fila .er-pres-elegir{flex:1;min-width:0}
+.er-pres-panel .er-pres-juega{flex:none;width:34px;min-height:76px;padding:0;background:var(--er-noche);color:#fff;border-color:var(--er-noche)}
+.er-pres-panel .er-pres-juega[aria-pressed=false]{background:var(--er-campo);color:var(--er-tenue)}
+.er-pres-fila.fuera .er-pres-elegir{opacity:.45}.er-pres-fila.fuera .er-pres-elegir strong{text-decoration:line-through}
+.er-pres-musica{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center}

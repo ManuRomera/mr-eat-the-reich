@@ -1,5 +1,13 @@
 # Cambios
 
+## 1.0.0 · 14-11-2026
+
+- **Presentación**: ya no tapa los menús de Foundry, así que cada jugador puede abrir su ficha mientras se presenta. El control marca también quién juega, tiene botón para parar o poner la música y se ajusta al contenido. Los controles de Parar, Silenciar y volumen de MR- Dirección actúan sobre la música de la presentación. Al salir, la mesa va al mapa de París. La puerta del ataúd queda en su sitio.
+- **Mapa**: «¿Quién juega?» con interrogante; doble clic en un retrato abre su ficha (con permiso) y, tras un segundo con el ratón encima, se ve la ilustración en grande. Las escenas resueltas (objetivo principal a cero) pierden la calavera y muestran su nombre tachado.
+- **Tiradas de tabla** (flashbacks) con la misma tarjeta que el resto del sistema.
+- **MR- Dirección**: cada escena lleva solo sus motivos (los suyos, cuatro o cinco estados de ánimo y los temas de los protagonistas) en vez de los 22. La sala de despliegue lleva solo los temas. Se corrigen también las escenas ya guardadas en el mundo, conservando los motivos añadidos por el director.
+- Página del repositorio y capturas al día.
+
 ## 0.9.2 · 14-11-2026
 
 - **Corrección grave**: en 0.9.0 y 0.9.1 el sistema no cargaba (un nombre importado dos veces en el archivo de entrada), así que no funcionaba nada ni se importaba la misión. Arreglado, y una prueba nueva comprueba la sintaxis de todos los módulos antes de publicar.

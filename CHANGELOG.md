@@ -1,6 +1,6 @@
 # Cambios
 
-## 1.1.0 · 14-11-2026
+## 1.1.1 · 14-11-2026
 
 - **Dados punk para Dice So Nice**: números a máquina, calavera con colmillos en el 6 y el color del ataúd de cada vampiro (los del GM, negros con canto rojo). Dos ajustes por jugador para quitar los dados punk o el color.
 - **Diálogo de tirada sin cajas**: atributo rodeado a rotulador, casillas torcidas con aspa roja al usar un cacharro o un poder, renglones a rayas.

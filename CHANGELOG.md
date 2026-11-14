@@ -1,5 +1,9 @@
 # Cambios
 
+## 1.2.2 · 14-11-2026
+
+- **La caída de los ataúdes vuelve a ser la de la 1.2.0**: la de la 1.2.1 iba peor y menos fluida.
+
 ## 1.2.1 · 14-11-2026
 
 - **Caída de los ataúdes rehecha**: el ataúd solo se ve cayendo, con su estela de fuego; al tocar suelo hay destello, onda en el suelo, cascotes y una polvareda con volumen que lo tapa. Ya no queda parado junto a los del decorado (de ahí venían los tamaños que no cuadraban) ni se le ve el recuadro alrededor.

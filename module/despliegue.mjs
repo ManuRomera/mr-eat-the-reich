@@ -136,7 +136,7 @@ function comprobar() {
 export async function animar(d) {
   const puntos = ATAUDES[d.clave]?.[d.n] ?? [], escena = canvas.scene, l = PUNTOS.find(p => p.clave === d.clave);
   const calma = globalThis.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-  new Image().src = `${RUTA}/assets/atrezo/ataud-caida.webp`;   // que el primer ataúd no llegue tarde por la descarga
+  new Image().src = `${RUTA}/assets/atrezo/ataud-metalico.png`;   // que el primer ataúd no llegue tarde por la descarga
   document.getElementById("er-despliegue")?.remove();
   const capa = document.createElement("div");
   capa.id = "er-despliegue"; capa.className = ID; capa.setAttribute("aria-hidden", "true");
@@ -145,32 +145,24 @@ export async function animar(d) {
   const humo = capa.firstElementChild;
   if (activoGM()) sonar("sirena", 0.35);
   await esperar(900);   // el decorado tarda un instante en encuadrarse a pantalla completa
-  const r = canvas.dimensions.sceneRect, zoom = canvas.stage.scale.x, azar = (a, b) => a + Math.random() * (b - a);
-  const pieza = (clase, estilo, vida) => { const e = document.createElement("i"); e.className = clase; e.style.cssText = estilo; capa.append(e); if (vida) setTimeout(() => e.remove(), vida); return e; };
+  const r = canvas.dimensions.sceneRect, zoom = canvas.stage.scale.x;
   for (const [i, [x, y, alto, derecha]] of puntos.entries()) {
     const p = canvas.stage.worldTransform.apply({ x: r.x + r.width * x / 100, y: r.y + r.height * y / 100 });
-    const h = r.height * alto / 100 * zoom, sitio = `left:${p.x}px;top:${p.y}px;`;
+    const h = r.height * alto / 100 * zoom;
     if (!calma) {
-      // El ataúd solo se ve cayendo, con su estela: al tocar suelo lo tapa el polvo (los clavados son los del decorado nuevo).
-      const c = document.createElement("div");
-      c.className = `er-dp-caida ${derecha ? "derecha" : ""}`; c.style.cssText = `${sitio}--h:${h}px`;
-      c.innerHTML = `<i class="er-dp-estela"></i><i class="er-dp-ataud" style="background-image:url(${RUTA}/assets/atrezo/ataud-caida.webp)"></i>`;
-      capa.append(c);
-      await esperar(420);
-      c.classList.add("clavado"); setTimeout(() => c.remove(), 320);
+      const a = document.createElement("img");
+      a.className = `er-dp-ataud ${derecha ? "derecha" : ""}`; a.src = `${RUTA}/assets/atrezo/ataud-metalico.png`; a.alt = "";
+      a.style.cssText = `left:${p.x}px;top:${p.y}px;height:${h}px`;
+      capa.append(a);
+      await esperar(480);
     }
     if (activoGM()) sonar("granada", 0.85);
-    const t = Math.max(280, h * 3.2);
-    // Polvareda en tres bocanadas desiguales: se queda tapando el sitio hasta que llega el humo general.
-    for (const [dx, dy, k] of [[0, 0, 1], [azar(-.4, -.2), azar(-.25, .05), azar(.6, .8)], [azar(.2, .4), azar(-.3, 0), azar(.55, .8)]]) pieza("er-dp-polvo", `left:${p.x + dx * t}px;top:${p.y + dy * t}px;--t:${t * k}px;--g:${azar(-40, 40)}deg;animation-delay:${k === 1 ? 0 : azar(60, 180)}ms`);
-    if (!calma) {
-      pieza("er-dp-destello", `--x:${p.x}px;--y:${p.y}px`, 500);
-      pieza("er-dp-onda", `${sitio}--t:${t * 1.5}px`, 800);
-      for (let k = 0; k < 14; k++) { const ang = azar(-165, -15) * Math.PI / 180, d = azar(.5, 1.5) * t; pieza("er-dp-cascote", `${sitio}--s:${azar(6, 20)}px;--dx:${Math.cos(ang) * d}px;--dy:${Math.sin(ang) * d}px;--r:${azar(-540, 540)}deg`, 900); }
-      document.body.classList.remove("er-temblor"); void document.body.offsetWidth; document.body.classList.add("er-temblor");
-    }
-    humo.style.opacity = String(Math.min(1, (i + 1) / puntos.length));
-    await esperar(calma ? 250 : 580);
+    const nube = document.createElement("i");
+    nube.className = "er-dp-nube"; nube.style.cssText = `left:${p.x}px;top:${p.y}px;--t:${Math.max(160, h * 2.2)}px`;
+    capa.append(nube);
+    if (!calma) { document.body.classList.remove("er-temblor"); void document.body.offsetWidth; document.body.classList.add("er-temblor"); }
+    humo.style.opacity = String((i + 1) / puntos.length);
+    await esperar(calma ? 250 : 520);
   }
   humo.style.opacity = "1";
   await esperar(900);
@@ -184,7 +176,7 @@ export async function animar(d) {
   await esperar(500);
   for (let t = 0; t < 6000 && !canvas.ready; t += 150) await esperar(150);
   await esperar(500);
-  for (const a of capa.querySelectorAll(".er-dp-caida, .er-dp-polvo")) a.remove();
+  for (const a of capa.querySelectorAll(".er-dp-ataud, .er-dp-nube")) a.remove();
   capa.classList.add("despeja");
   await esperar(3400);
   capa.remove();

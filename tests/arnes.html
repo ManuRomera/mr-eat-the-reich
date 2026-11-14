@@ -181,7 +181,7 @@ if (new URLSearchParams(location.search).has("despliegue")) {
   foundry.audio = { AudioHelper: { play() {} } };
   if (fijo) {
     const capa = document.createElement("div"); capa.id = "er-despliegue"; document.body.append(capa);
-    for (const [x, y, alto, der] of D.ATAUDES[clave][n]) { const a = document.createElement("img"); a.className = `er-dp-ataud ${der ? "derecha" : ""}`; a.src = `${RUTA}/assets/atrezo/ataud-metalico.png`; a.style.cssText = `left:${19.2 * x * z}px;top:${10.8 * y * z}px;height:${10.8 * alto * z}px;animation:none;opacity:.6;outline:2px solid lime`; capa.append(a); }
+    for (const [x, y, alto, der] of D.ATAUDES[clave][n]) { const a = document.createElement("div"); a.className = `er-dp-caida ${der ? "derecha" : ""}`; a.style.cssText = `left:${19.2 * x * z}px;top:${10.8 * y * z}px;--h:${10.8 * alto * z}px;animation:none;opacity:.6`; a.innerHTML = `<i class="er-dp-ataud" style="background-image:url(${RUTA}/assets/atrezo/ataud-caida.webp);outline:2px solid lime"></i>`; capa.append(a); }
   } else D.animar({ clave, n: Number(n) });
 }
 // Para capturas: ?solo=ataud|clasica|mision|chat deja solo esa pieza; ?fondo=<escena> pone un decorado detrás.

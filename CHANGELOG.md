@@ -1,5 +1,9 @@
 # Cambios
 
+## 1.2.1 · 14-11-2026
+
+- **Caída de los ataúdes rehecha**: el ataúd solo se ve cayendo, con su estela de fuego; al tocar suelo hay destello, onda en el suelo, cascotes y una polvareda con volumen que lo tapa. Ya no queda parado junto a los del decorado (de ahí venían los tamaños que no cuadraban) ni se le ve el recuadro alrededor.
+
 ## 1.2.0 · 14-11-2026
 
 - **Reparto de éxitos dentro de la tarjeta**: desaparece el menú flotante. El siguiente éxito sin gastar queda «en la mano» (resaltado) y debajo salen, en una lista, los sitios donde puede ir: cada Objetivo, cada Amenaza, defenderte, beber sangre y, con un 6, los especiales. Un clic lo gasta y pasa al siguiente; para gastar antes otro dado, se pulsa ese dado. Los valores se actualizan solos cuando cambia la misión.

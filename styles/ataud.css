@@ -263,17 +263,11 @@ body.er-oscuro .mr-eat-the-reich .er-forro .er-obj-boton:hover { color: var(--fo
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360'%3E%3Cfilter id='h'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.011 .016' numOctaves='4' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 .2  0 0 0 0 .17  0 0 0 0 .15  1.9 0 0 0 -.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23h)'/%3E%3C/svg%3E") center / cover,
     radial-gradient(ellipse at 30% 70%, #a79d8e, transparent 60%), radial-gradient(ellipse at 75% 60%, #8f8679, transparent 65%), linear-gradient(#6f675d, #a39a8b); }
 #er-despliegue.despeja .er-dp-humo { opacity: 0 !important; transition: opacity 3.2s ease-out; }
-#er-despliegue .er-dp-ataud { position: absolute; width: auto; max-width: none; border: 0; transform-origin: 85% 97%; transform: translate(-85%, -90%); clip-path: inset(0 0 8% 0); filter: drop-shadow(0 0 18px rgba(0, 0, 0, .8)); animation: er-cae .48s cubic-bezier(.55, 0, 1, .5) both; }
-#er-despliegue .er-dp-ataud.derecha { transform: translate(-15%, -90%) scaleX(-1); transform-origin: 50% 50%; animation-name: er-cae-d; }
-#er-despliegue .er-dp-nube { position: absolute; width: var(--t); height: var(--t); margin: calc(var(--t) / -2) 0 0 calc(var(--t) / -2); border-radius: 50%; background: radial-gradient(circle, #fff 0 8%, #f2c230 16%, rgba(180, 168, 150, .95) 34%, rgba(120, 110, 98, .7) 60%, transparent 72%); animation: er-nube 1.6s ease-out both; }
 #er-despliegue .er-dp-rotulo { position: absolute; left: 50%; top: 9%; padding: 8px 34px 14px; background: #17120c; color: #f4ead6; border: 4px solid #f4ead6; box-shadow: 10px 10px 0 #8b0018; text-align: center; transform: translateX(-50%) rotate(-2deg); animation: er-turno-entra .42s cubic-bezier(.2, 1.5, .4, 1) both; }
 #er-despliegue .er-dp-rotulo small { display: block; font-family: "ER Maquina", "Courier New", monospace; font-size: 16px; letter-spacing: .14em; text-transform: uppercase; color: #f2c230; }
 #er-despliegue .er-dp-rotulo b { font-family: "ER Rotulo", "Arial Narrow", sans-serif; font-size: clamp(40px, 6vw, 84px); line-height: 1; text-transform: uppercase; color: #ff2b47; }
 #er-despliegue.despeja .er-dp-rotulo { opacity: 0; transition: opacity 1.2s; }
 body.er-temblor #board { animation: er-temblor .4s linear; }
-@keyframes er-cae { from { transform: translate(-85%, -90%) translate(22vh, -130vh) scale(1.5); } }
-@keyframes er-cae-d { from { transform: translate(-15%, -90%) translate(-22vh, -130vh) scaleX(-1) scale(1.5); } }
-@keyframes er-nube { from { transform: scale(.1); opacity: 1; } 35% { opacity: 1; } to { transform: scale(2.6); opacity: 0; } }
 @keyframes er-humo { from { transform: translate(-3%, 2%) scale(1); } to { transform: translate(3%, -2%) scale(1.12); } }
 @keyframes er-temblor { 10% { transform: translate(-12px, 9px); } 30% { transform: translate(11px, -8px); } 50% { transform: translate(-8px, -6px); } 70% { transform: translate(6px, 7px); } 90% { transform: translate(-3px, 2px); } }
 @media (prefers-reduced-motion: reduce) {
@@ -338,3 +332,29 @@ body.er-oscuro .mr-eat-the-reich .er-dt label.er-dt-atr:has(input:checked)::afte
 .mr-eat-the-reich .er-dt .er-dt-gm { margin: 6px 0 0; font-family: var(--er-texto); font-size: .95em; opacity: .9; }
 .mr-eat-the-reich .er-dt .er-dt-gm b { display: inline-block; min-width: 1.5em; padding: 0 5px; text-align: center; background: #05060f; color: #fff; border: 2px solid #c8102e; font-family: var(--er-rotulo); font-size: 1.25em; transform: rotate(-3deg); }
 .mr-eat-the-reich .er-dt .er-dt-gm small { opacity: .8; }
+
+/* ── Caída de los ataúdes, segunda vuelta: el ataúd solo se ve cayendo (con estela); el impacto es destello, onda, cascotes y polvo ── */
+#er-despliegue .er-dp-caida { position: absolute; width: 0; height: 0; animation: er-cae .42s cubic-bezier(.6, 0, 1, .55) both; }
+#er-despliegue .er-dp-caida.derecha { animation-name: er-cae-d; }
+#er-despliegue .er-dp-caida.clavado { opacity: 0; transition: opacity .18s; }
+#er-despliegue .er-dp-ataud { position: absolute; width: calc(var(--h) * .786); height: var(--h); left: calc(var(--h) * -.668); top: calc(var(--h) * -.92); background: center / contain no-repeat; }
+#er-despliegue .er-dp-caida.derecha .er-dp-ataud { left: calc(var(--h) * -.118); transform: scaleX(-1); }
+#er-despliegue .er-dp-estela { position: absolute; width: calc(var(--h) * .46); height: calc(var(--h) * 3.2); left: calc(var(--h) * -.5); top: calc(var(--h) * -3.7); transform-origin: 50% 100%; transform: rotate(9.6deg);
+  background: linear-gradient(to bottom, transparent, rgba(255, 150, 60, .25) 35%, rgba(255, 196, 110, .75) 80%, #fff); filter: blur(calc(var(--h) * .07)); border-radius: 50% 50% 20% 20%; }
+#er-despliegue .er-dp-caida.derecha .er-dp-estela { left: calc(var(--h) * .04); transform: rotate(-9.6deg); }
+#er-despliegue .er-dp-destello { position: absolute; inset: 0; background: radial-gradient(circle at var(--x) var(--y), #fff 0, rgba(255, 220, 140, .85) 12%, rgba(255, 150, 60, .35) 30%, transparent 58%); animation: er-destello .5s ease-out both; }
+#er-despliegue .er-dp-onda { position: absolute; width: var(--t); height: calc(var(--t) * .4); margin: calc(var(--t) * -.2) 0 0 calc(var(--t) * -.5); border: 5px solid rgba(255, 244, 220, .9); border-radius: 50%; animation: er-onda .8s ease-out both; }
+#er-despliegue .er-dp-polvo { position: absolute; width: var(--t); height: var(--t); margin: calc(var(--t) * -.66) 0 0 calc(var(--t) * -.5); rotate: var(--g, 0deg); animation: er-polvo 1.6s cubic-bezier(.08, .7, .25, 1) both;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.022' numOctaves='4' seed='11'/%3E%3CfeColorMatrix values='0 0 0 0 .2  0 0 0 0 .17  0 0 0 0 .14  1.5 0 0 0 -.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E") center / cover,
+    radial-gradient(circle at 50% 68%, #ffd08a 0, #e9dcc4 14%, #b9ad9a 40%, #8c8274 70%);
+  -webkit-mask: radial-gradient(circle at 50% 58%, #000 30%, rgba(0, 0, 0, .85) 48%, transparent 70%); mask: radial-gradient(circle at 50% 58%, #000 30%, rgba(0, 0, 0, .85) 48%, transparent 70%); }
+#er-despliegue .er-dp-cascote { position: absolute; width: var(--s); height: var(--s); margin: calc(var(--s) * -.5); background: #17120c; clip-path: polygon(12% 30%, 55% 0, 100% 38%, 78% 100%, 20% 86%); animation: er-cascote .9s cubic-bezier(.15, .6, .4, 1) both; }
+#er-despliegue .er-dp-cascote:nth-of-type(3n) { background: #6b6156; }
+#er-despliegue .er-dp-humo::before { content: ""; position: absolute; inset: 0; opacity: .75; mix-blend-mode: multiply; animation: er-humo 11s linear infinite alternate-reverse;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360'%3E%3Cfilter id='h'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.006 .012' numOctaves='5' seed='23'/%3E%3CfeColorMatrix values='0 0 0 0 .35  0 0 0 0 .32  0 0 0 0 .29  1.6 0 0 0 -.35'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23h)'/%3E%3C/svg%3E") center / cover; }
+@keyframes er-cae { from { transform: translate(22vh, -130vh); } }
+@keyframes er-cae-d { from { transform: translate(-22vh, -130vh); } }
+@keyframes er-destello { from { opacity: 1; } to { opacity: 0; } }
+@keyframes er-onda { from { transform: scale(.05); opacity: 1; } to { transform: scale(1); opacity: 0; } }
+@keyframes er-polvo { from { transform: scale(.1) translateY(20%); opacity: 1; filter: brightness(1.6); } 25% { filter: brightness(1.15); } to { transform: scale(1.75) translateY(-6%); opacity: .98; filter: brightness(1); } }
+@keyframes er-cascote { from { transform: translate(0, 0) rotate(0); opacity: 1; } 70% { opacity: 1; } to { transform: translate(var(--dx), calc(var(--dy) + 12vh)) rotate(var(--r)); opacity: 0; } }

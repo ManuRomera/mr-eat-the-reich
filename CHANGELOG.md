@@ -1,6 +1,6 @@
 # Cambios
 
-## 0.9.0 · 14-11-2026
+## 0.9.1 · 14-11-2026
 
 - **Quién juega, desde el mapa**: en la nota amarilla grande, quien dirige tiene el botón «Quién juega»; al pulsarlo salen los seis vampiros y cada uno se marca o desmarca con un clic. El selector sigue también en el Panel de misión.
 - **Reiniciar la partida** (en la misma nota y en el Panel de misión): deja los vampiros como vienen en el sistema, vacía la misión, deshace el despliegue y devuelve la mesa al mapa. Pide confirmación en una ventana con el estilo de la tirada; se puede elegir si vaciar también el chat. Conserva quién juega y los jugadores de cada vampiro.

@@ -103,6 +103,8 @@ await mod.actualizarContenido(); assert.equal(writes, noWrites);
 const pack = JSON.parse(await fs.readFile(new URL("../content/direccion-es.json", import.meta.url), "utf8"));
 assert.equal(pack.settings.motifs.length, 22);
 for (const t of TEMAS_PERSONAJE) assert(pack.settings.motifs.some(m => m.id === t.id && m.music.src.includes("personajes/")));
-assert.equal(new Set(pack.scenes.map(s => s.music.src)).size, 20);
+assert.equal(new Set(pack.scenes.filter(s => s.music).map(s => s.music.src)).size, 20);
+// La sala de despliegue es la primera escena de la barra y no lleva música propia: la pone la presentación.
+assert.deepEqual([pack.scenes[0].ref.flag[2], pack.scenes[0].music, pack.scenes[1].ref.flag[2]], ["presentacion", null, "paris"]);
 for (const a of Object.values(AUDIO)) await fs.access(new URL(`../${a.ruta}`, import.meta.url));
 console.log("OK: 36 pistas, seis motivos, 20 escenas, migración sin duplicados, listas externas, fondo limpio, atrezo sin despliegue automático y permisos.");

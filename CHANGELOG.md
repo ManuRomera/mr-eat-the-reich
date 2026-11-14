@@ -1,5 +1,9 @@
 # Cambios
 
+## 1.1.3 · 14-11-2026
+
+- **Diálogo de tirada**: además de «Tirar Nd6» dice cuántos dados negros tira el GM contra ti (el Ataque de la amenaza elegida + 1 por cada otra en juego), para que cuadre con los dados que caen en pantalla.
+
 ## 1.1.2 · 14-11-2026
 
 - **Dados punk**: las caras salían con la ruta del archivo escrita en vez de la imagen. Dice So Nice no precarga las texturas de los dados que se añaden después de su arranque; ahora se cargan a mano, con reintentos.

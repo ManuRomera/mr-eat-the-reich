@@ -334,3 +334,7 @@ body.er-temblor #board { animation: er-temblor .4s linear; }
 .mr-eat-the-reich .er-dt label.er-dt-op:has(input:disabled) { opacity: .4; }
 body.er-oscuro .mr-eat-the-reich .er-dt label.er-dt-atr:has(input:checked)::after, body.er-oscuro .mr-eat-the-reich .er-dt label.er-dt-op:has(input:checked)::after { background: #ff2d55; }
 .mr-eat-the-reich.er-tirada-dlg .form-footer button[data-action="tirar"] { clip-path: polygon(0 6%, 3% 0, 97% 3%, 100% 0, 99% 94%, 96% 100%, 2% 97%, 0 100%); transform: rotate(-.6deg); }
+
+.mr-eat-the-reich .er-dt .er-dt-gm { margin: 6px 0 0; font-family: var(--er-texto); font-size: .95em; opacity: .9; }
+.mr-eat-the-reich .er-dt .er-dt-gm b { display: inline-block; min-width: 1.5em; padding: 0 5px; text-align: center; background: #05060f; color: #fff; border: 2px solid #c8102e; font-family: var(--er-rotulo); font-size: 1.25em; transform: rotate(-3deg); }
+.mr-eat-the-reich .er-dt .er-dt-gm small { opacity: .8; }

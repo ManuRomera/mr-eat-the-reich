@@ -46,7 +46,8 @@ export async function dialogoTirada(actor, atributo = "", libre = false) {
     ${avisos ? `<p class="er-avisos-linea">${avisos}</p>` : ""}
     <div class="er-dt-atrs" role="radiogroup" aria-label="Atributo">${fichas}</div>
     <div class="er-dt-bloque"><span class="er-cinta">Contra</span>
-      <select name="amenaza" aria-label="Amenaza a la que te enfrentas">${vivas.length ? vivas.map(a => `<option value="${a.id}" ${a.id === mayor?.id ? "selected" : ""}>${esc(a.nombre)} · Ataque ${a.ataque}</option>`).join("") : `<option value="">Nadie os dispara: el GM no tira</option>`}</select></div>
+      <select name="amenaza" aria-label="Amenaza a la que te enfrentas">${vivas.length ? vivas.map(a => `<option value="${a.id}" data-gm="${a.ataque + vivas.length - 1}" ${a.id === mayor?.id ? "selected" : ""}>${esc(a.nombre)} · Ataque ${a.ataque}</option>`).join("") : `<option value="" data-gm="0">Nadie os dispara: el GM no tira</option>`}</select>
+      <p class="er-dt-gm" aria-live="polite"></p></div>
     ${objetos || botin ? `<div class="er-dt-bloque"><span class="er-cinta">Equipo</span> <small class="er-susurro">+1 dado, gasta un uso</small>${objetos}${botin}</div>` : ""}
     ${habs ? `<div class="er-dt-bloque"><span class="er-cinta">Habilidades</span> <small class="er-susurro">+1 dado · tienes ${s.sangre} de Sangre</small>${habs}</div>` : ""}
     <div class="er-dt-bloque er-dt-extra"><span class="er-cinta">Dados extra</span> <input type="number" name="extra" value="0" min="-5" max="10" step="1" aria-label="Dados extra"></div>
@@ -64,6 +65,9 @@ export async function dialogoTirada(actor, atributo = "", libre = false) {
         for (const c of el.querySelectorAll(".er-dt-op input:checked")) n += Number(c.dataset.dados) || 0;
         const rotulo = el.querySelector('button[data-action="tirar"] span') ?? el.querySelector('button[data-action="tirar"]');
         if (rotulo) rotulo.textContent = `Tirar ${Math.max(1, n)}d6`;
+        // Además de los tuyos caen los dados del GM (negros): el Ataque de esa amenaza + 1 por cada otra en juego.
+        const gm = Number(el.querySelector('select[name="amenaza"]')?.selectedOptions[0]?.dataset.gm) || 0, otras = Math.max(0, vivas.length - 1), aviso = el.querySelector(".er-dt-gm");
+        if (aviso) aviso.innerHTML = gm ? `Y el GM tira <b>${gm}</b> ${gm === 1 ? "dado negro" : "dados negros"} contra ti${otras ? ` <small>(su Ataque + ${otras} por ${otras === 1 ? "la otra amenaza" : "las otras amenazas"})</small>` : ""}.` : "";
       };
       el.addEventListener("change", contar); el.addEventListener("input", contar); contar();
     }

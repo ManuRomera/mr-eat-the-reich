@@ -1,5 +1,9 @@
 # Cambios
 
+## 1.2.3 · 14-11-2026
+
+- **Caída de los ataúdes**: desaparece el recuadro que se veía alrededor de cada ataúd (era su sombra difusa, cortada en recto por el recorte de la imagen). El resto de la animación no cambia.
+
 ## 1.2.2 · 14-11-2026
 
 - **La caída de los ataúdes vuelve a ser la de la 1.2.0**: la de la 1.2.1 iba peor y menos fluida.

@@ -1,5 +1,12 @@
 # Cambios
 
+## 1.3.2 · 17-11-2026
+
+- **Hoja-ataúd con texto grande o fuente legible**: ya no se pierde contenido por debajo de la caja. Los nombres de cacharro largos («Cigarrillos sacados de los bolsillos de un ahorcado») y las lesiones se parten en varias líneas siguiendo la silueta del ataúd, en vez de caer fuera como un bloque. Si aun así algo no cupiera, la caja se desplaza por dentro.
+- Al cambiar el tamaño del texto o la fuente en Accesibilidad, las hojas abiertas se reajustan al momento (antes solo al volver a abrirlas).
+- Con el texto agrandado, la letra solo se encoge hasta el tamaño normal, no por debajo: quien lo agranda quiere leerlo grande.
+- La verificación de pantallas (`npm run pantallas`) prueba también los seis vampiros × cuatro pestañas × cinco tamaños de texto × fuente normal y legible: antes fallaban 86 de 240 combinaciones; ahora, ninguna.
+
 ## 1.3.1 · 17-11-2026
 
 - **Todo se escala en proporción a la pantalla**, no solo lo que no cabía: la hoja-ataúd (con la imagen del personaje), las tiradas, el panel de misión, las fichas y los diálogos se ven igual de «grandes» en un portátil que en un monitor de 1080p. En pantallas menores de 1080p ninguna ventana ocupa más del 92 % del espacio útil (antes, la hoja-ataúd ocupaba el 99 % del alto en un portátil de 15″; ahora, el 81 %).

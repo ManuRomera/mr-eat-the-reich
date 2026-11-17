@@ -338,3 +338,10 @@ body.er-oscuro .mr-eat-the-reich .er-dt label.er-dt-atr:has(input:checked)::afte
 .mr-eat-the-reich .er-dt .er-dt-gm { margin: 6px 0 0; font-family: var(--er-texto); font-size: .95em; opacity: .9; }
 .mr-eat-the-reich .er-dt .er-dt-gm b { display: inline-block; min-width: 1.5em; padding: 0 5px; text-align: center; background: #05060f; color: #fff; border: 2px solid #c8102e; font-family: var(--er-rotulo); font-size: 1.25em; transform: rotate(-3deg); }
 .mr-eat-the-reich .er-dt .er-dt-gm small { opacity: .8; }
+
+/* ── Texto que se parte: dentro de la caja el texto se ciñe a la silueta del ataúd, y lo que no se puede partir (botones, inline-block)
+   cae por debajo de la caja en cuanto la línea se estrecha. Nombres de cacharro y lesiones fluyen como texto; lo que aun así no quepa se desplaza. ── */
+.mr-eat-the-reich .er-forro .er-obj-boton { display: inline; cursor: pointer; }
+.mr-eat-the-reich .er-forro .er-obj-boton:focus-visible { outline: 3px solid currentColor; outline-offset: 2px; }
+.er-forro .er-lesion { display: inline; }
+.er-forro { overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; scrollbar-color: color-mix(in srgb, currentColor 45%, transparent) transparent; }

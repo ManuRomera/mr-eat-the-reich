@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
-"""Verifica cómo se ven las ventanas del sistema en pantallas de distinto tamaño, emulándolas con Chrome (sin Foundry).
+"""Verifica cómo se ven las ventanas del sistema en pantallas de distinto tamaño y con el texto agrandado, emulándolas con Chrome (sin Foundry).
   python3 tools/pantallas.py                       # tabla con todas las ventanas en las pantallas habituales; sale con 1 si alguna falla
   python3 tools/pantallas.py --capturas salida/    # además, una captura por ventana y pantalla y una hoja de contactos por pantalla
   python3 tools/pantallas.py --pantallas 1440x780  # solo esas pantallas (separadas por comas)
+  python3 tools/pantallas.py --sin-textos          # sin la prueba de textos grandes y fuente legible en la hoja-ataúd
 Sirve tests/arnes.html (modo ?verificar), que aplica module/ventanas.mjs con un emulador del posicionamiento de Foundry
 y deja el informe en <pre id="informe-pantallas">. Una ventana falla si se sale de la pantalla, deja su botón principal fuera
-o ocupa más del 92 % del alto o del ancho en pantallas menores de 1080p."""
+o ocupa más del 92 % del alto o del ancho en pantallas menores de 1080p.
+Además recorre (arnés ?textos) los seis vampiros × cuatro pestañas × cinco tamaños de texto × fuente normal y legible de la hoja-ataúd y falla
+si algo de su contenido queda fuera de la caja."""
 import argparse, functools, html, http.server, json, os, re, subprocess, sys, tempfile, threading
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -42,14 +45,22 @@ def calibrar(url):
     ancho, alto = (int(v) for v in r["pantalla"].split("×"))
     AJUSTE[0], AJUSTE[1] = 1000 - ancho, 700 - alto
 
+def leer_informe(dom, id):
+    """El JSON que el arnés deja en <pre id=...>: se toma la última aparición (el id también sale en comentarios del script)."""
+    i = dom.rfind(f'<pre id="{id}"')
+    m = re.match(rf'<pre id="{id}"[^>]*>(.*?)</pre>', dom[i:], re.S) if i >= 0 else None
+    if not m: return None
+    try: return json.loads(html.unescape(m.group(1)).strip())
+    except ValueError: return None
+
 def informe(url, tam, calibrando=False):
     out = chrome(["--dump-dom", url + "?verificar"], tam if calibrando else ventana(tam)).stdout
-    m = re.search(r'<pre id="informe-pantallas"[^>]*>(.*?)</pre>', out, re.S)
-    if not m: return [{"nombre": "?", "pantalla": tam, "ok": False, "error": "el arnés no dejó informe"}]
-    return json.loads(html.unescape(m.group(1)))
+    datos = leer_informe(out, "informe-pantallas")
+    if datos is None: return [{"nombre": "?", "pantalla": tam, "ok": False, "error": "el arnés no dejó informe"}]
+    return datos
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--pantallas"); ap.add_argument("--capturas"); a = ap.parse_args()
+    ap = argparse.ArgumentParser(); ap.add_argument("--pantallas"); ap.add_argument("--capturas"); ap.add_argument("--sin-textos", action="store_true"); a = ap.parse_args()
     sistema = json.load(open(RAIZ / "system.json"))["id"]
     raiz = Path(tempfile.mkdtemp()); (raiz / "systems").mkdir(); (raiz / "systems" / sistema).symlink_to(RAIZ)
     servir(raiz, 30021); servir(PUBLIC, 30022)
@@ -67,6 +78,14 @@ def main():
             if e["pantalla"] != p.replace("x", "×"): print(f"  (aviso: la vista real es {e['pantalla']})"); 
             motivos = [t for t, c in (("fuera de pantalla", not e["dentro"]), ("sin botón", e["botonVisible"] is False), ("ocupa demasiado", e["ocupaDemasiado"])) if c]
             print(f"  {e['nombre']:13} {e['escala']:>6.2f} {e['fraccionAlto']:>6.0%} {e['fraccionAncho']:>6.0%}  {e['caja']} {marca} {', '.join(motivos)}")
+    if not a.sin_textos:
+        r = leer_informe(chrome(["--dump-dom", url + "?textos&solo=ataud"], ventana("1920,1100")).stdout, "informe-textos")
+        print("\nTextos grandes y fuente legible en la hoja-ataúd")
+        if r is None: print("  ✗ el arnés no dejó informe"); fallos += 1
+        else:
+            mal = [e for e in r if e["desborda"]]; fallos += len(mal)
+            print(f"  {len(r) - len(mal)} de {len(r)} combinaciones caben" + (" ✓" if not mal else " ✗"))
+            for e in mal[:12]: print(f"  ✗ {e['pj']} · {e['pestana']} · texto {e['escala']:.0%}{' · legible' if e['legible'] else ''}: fuera {', '.join(e.get('fuera', [])[:3])}")
     if a.capturas:
         out = Path(a.capturas); out.mkdir(parents=True, exist_ok=True)
         trabajos = [(p, v) for p in pantallas for v in VENTANAS]

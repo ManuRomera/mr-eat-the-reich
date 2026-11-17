@@ -75,13 +75,33 @@ const { marcoSVG } = await import("../module/hojas.mjs");
 const FORROS = { iryna: "#ff4f93", nicole: "#ff8a3c", cosgrave: "#3fd0b4", chuck: "#6fd45c", astrid: "#ffa3c4", flint: "#35b8a0" };
 const ha = await plantilla("hojas/ataud.hbs");
 const pest = new URLSearchParams(location.search).get("tab") ?? "accion";
-for (const k of (new URLSearchParams(location.search).get("ataudes") ?? quien).split(",")) {
+const { ajustarForro } = await import("../module/forro.mjs");
+const ataudDe = (k, pest) => {
   const v = VAMPIROS.find(x => x.clave === k), c = contextoVampiro(v, false);
   const w = ventana(v.nombre, "er-hoja er-hoja-vampiro er-hoja-ataud", ha({ ...c, pestana: pest, pestanas: ["accion", "poderes", "heridas", "dosier"].map(id => ({ id, nombre: { accion: "Acción", poderes: "Poderes", heridas: "Heridas", dosier: "Dosier" }[id], activa: id === pest })), forro: FORROS[k], marcoCaja: marcoSVG(620, 880), marcoTapa: marcoSVG(500, 780) }), 1090, 920);
   w.style.height = "920px";
-  const forro = w.querySelector(".er-forro"); let f = 1;
-  while (forro.scrollHeight > forro.clientHeight + 1 && f > 0.72) forro.style.setProperty("--er-ajuste", (f -= 0.03));
-  w.dataset.ajuste = f.toFixed(2);
+  return w;
+};
+const escalaTexto = Number(new URLSearchParams(location.search).get("texto")) || 1;
+document.documentElement.style.setProperty("--er-escala", String(escalaTexto));
+if (!new URLSearchParams(location.search).has("textos")) for (const k of (new URLSearchParams(location.search).get("ataudes") ?? quien).split(",")) {
+  const w = ataudDe(k, pest);
+  w.dataset.ajuste = ajustarForro(w.querySelector(".er-forro"), escalaTexto).ajuste.toFixed(2);
+}
+// Textos: ?textos recorre los seis vampiros, las cuatro pestañas, cinco tamaños de texto y la fuente legible, y deja <pre id="informe-textos">
+// con lo que no cabe en la caja (tools/pantallas.py --textos).
+if (new URLSearchParams(location.search).has("textos")) {
+  const informe = [];
+  for (const legible of [false, true]) for (const escala of [1, 1.15, 1.25, 1.4, 1.6]) {
+    document.body.classList.toggle("er-legible", legible);
+    document.documentElement.style.setProperty("--er-escala", String(escala));
+    for (const v of VAMPIROS) for (const pestana of ["accion", "poderes", "heridas", "dosier"]) {
+      const w = ataudDe(v.clave, pestana);
+      informe.push({ pj: v.clave, pestana, escala, legible, ...ajustarForro(w.querySelector(".er-forro"), escala) });
+      w.remove();
+    }
+  }
+  document.body.append(Object.assign(document.createElement("pre"), { id: "informe-textos", hidden: true, textContent: JSON.stringify(informe) }));
 }
 const hv = await plantilla("hojas/vampiro.hbs");
 ventana(quien, "er-hoja er-hoja-vampiro", hv(contextoVampiro(VAMPIROS.find(v => v.clave === quien), false)), 820, 860);

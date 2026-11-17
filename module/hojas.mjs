@@ -7,6 +7,7 @@ import { dialogoTirada, ultimoGesto } from "./tirada.mjs";
 import { ATRIBUTOS, AYUDA_ATRIBUTOS, BLOQUEOS } from "./datos.mjs";
 import { SANGRE_MAX, COSTE_CURAR } from "./reglas.mjs";
 import { colocarAtaud } from "./contenido.mjs";
+import { ajustarForro } from "./forro.mjs";
 
 const PODER_NUEVO = { nombre: "Nueva", tipo: "sangre", texto: "", coste: 1, bono: 1, req: "", activa: true };
 const OBJETO_NUEVO = { nombre: "Nuevo objeto", usos: 3, max: 3, bono: 1, req: "", dado: true, nota: "", corchete: 0 };
@@ -201,6 +202,10 @@ export class HojaAtaud extends HojaVampiro {
 
   async _onRender(context, options) {
     await super._onRender(context, options);
+    // Los nombres de cacharro son texto en línea con role="button": Enter y Espacio los activan como a un botón.
+    this.element.querySelectorAll('[role="button"][data-action]').forEach(el => el.addEventListener("keydown", ev => {
+      if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); el.click(); }
+    }));
     // El tamaño lo pone module/ventanas.mjs (el elegido en Ajustes, o el proporcional a esta pantalla).
     this.ajustar();
   }
@@ -210,13 +215,9 @@ export class HojaAtaud extends HojaVampiro {
     this.ajustar();
   }
 
-  /** Si lo de una pestaña no cabe en el ataúd, se encoge la letra poco a poco hasta que quepa (nunca por debajo del 72 %). */
+  /** Si lo de una pestaña no cabe en el ataúd, se encoge la letra (module/forro.mjs) y, si aun así no cabe, la caja se desplaza por dentro. */
   ajustar() {
-    const forro = this.element?.querySelector(".er-forro");
-    if (!forro) return;
-    let f = 1;
-    forro.style.setProperty("--er-ajuste", f);
-    while (forro.scrollHeight > forro.clientHeight + 1 && f > 0.72) forro.style.setProperty("--er-ajuste", (f -= 0.03));
+    ajustarForro(this.element?.querySelector(".er-forro"), Number(getComputedStyle(document.documentElement).getPropertyValue("--er-escala")) || 1);
   }
 
   /** La ficha rectangular de siempre, en modo edición: para crear o retocar vampiros. */

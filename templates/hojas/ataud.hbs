@@ -41,7 +41,7 @@
         <div class="er-equipo-flujo">
           <span class="er-cinta">Equipo</span>
           {{#each equipo}}
-            <div class="er-obj">{{#if ../editable}}<button type="button" class="er-obj-nombre er-obj-boton" data-action="objeto" data-i="{{@index}}" data-tooltip="Cambiar este cacharro">{{nombre}}{{#if corchete}} <i>[{{corchete}}]</i>{{/if}}</button>{{else}}<span class="er-obj-nombre">{{nombre}}</span>{{/if}}
+            <div class="er-obj">{{#if ../editable}}<span role="button" tabindex="0" class="er-obj-nombre er-obj-boton" data-action="objeto" data-i="{{@index}}" data-tooltip="Cambiar este cacharro">{{nombre}}{{#if corchete}} <i>[{{corchete}}]</i>{{/if}}</span>{{else}}<span class="er-obj-nombre">{{nombre}}</span>{{/if}}
               <span class="er-usos" role="group" aria-label="Usos de {{nombre}}">{{#each cajas}}<button type="button" class="er-uso {{#if llena}}llena{{/if}} {{#if ultima}}ultima{{/if}}" data-action="uso" data-objeto="equipo.{{@../index}}" data-n="{{i}}" aria-label="Uso {{i}}{{#if llena}} disponible{{else}} gastado{{/if}}" {{#if ultima}}data-tooltip="El último uso explota: +1 dado"{{/if}}></button>{{/each}}</span>
               {{#if bono}}<span class="er-req">({{mas}}{{req}})</span>{{/if}}{{#if nota}}<span class="er-req">({{nota}})</span>{{/if}}
               {{#if ../editable}}<button type="button" class="er-icono er-obj-tirar" data-action="soltar" data-i="{{@index}}" data-tooltip="Tirar este cacharro" aria-label="Tirar {{nombre}}"><i class="fa-solid fa-trash" inert></i></button>{{/if}}</div>

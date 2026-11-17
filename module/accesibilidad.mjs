@@ -34,6 +34,8 @@ export function aplicarAccesibilidad() {
   document.body.classList.toggle("er-legible", g("a11yLegible"));
   document.body.classList.toggle("er-sin-movimiento", g("a11yMovimiento"));
   for (const app of foundry.applications.instances.values()) if (app.element?.classList.contains(ID)) temaVentana(app.element);
+  // Con otra fuente o tamaño de texto el contenido de las hojas-ataúd abiertas ocupa otro sitio: se vuelve a ajustar.
+  requestAnimationFrame(() => { for (const app of foundry.applications.instances.values()) if (app.element?.classList.contains("er-hoja-ataud")) app.ajustar?.(); });
   const tip = game.tooltip?.constructor;
   if (tip) tip.TOOLTIP_ACTIVATION_MS = g("a11yAyuda") ? 60 : 500;
 }

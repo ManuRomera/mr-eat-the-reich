@@ -1,6 +1,6 @@
 {
   "name": "mr-eat-the-reich",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "private": true,
   "type": "module",
   "description": "MR- Eat the Reich · sistema para Foundry VTT (uso privado)",
@@ -9,7 +9,8 @@
     "arte": "python3 scripts/extraer-arte.py",
     "punk": "python3 tools/punk.py",
     "build": "node scripts/gen-aventura.mjs && node scripts/build.mjs",
-    "zip": "npm run build && node scripts/zip.mjs"
+    "zip": "npm run build && node scripts/zip.mjs",
+    "pantallas": "python3 tools/pantallas.py"
   },
   "devDependencies": {
     "classic-level": "^2.0.0"

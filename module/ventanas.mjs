@@ -2,22 +2,21 @@
  * Ventanas que caben en cualquier pantalla. Toda ventana del sistema (diálogos, paneles, fichas) se escala sola para
  * quedar entera a la vista —el botón de Tirar nunca se sale por abajo— y, si aun así no cabe, se desplaza por dentro
  * (el tope y el desplazamiento los pone el CSS). El ajuste «Tamaño de las ventanas» fija una escala propia en vez de la automática.
- * La hoja-ataúd tiene su propia escala (ajuste «Tamaño de la hoja-ataúd»).
+ * La hoja-ataúd entra en la misma regla pero con su propio ajuste («Tamaño de la hoja-ataúd»).
  */
 import { ID } from "./mesa.mjs";
 import { escalaDeVentana } from "./ventanas-core.mjs";
 
-const nuestra = app => {
-  const el = app?.element;
-  return Boolean(el?.classList?.contains(ID)) && !el.classList.contains("er-hoja-ataud");
-};
+const nuestra = app => Boolean(app?.element?.classList?.contains(ID));
+/** Ajuste de escala elegido por el usuario (porcentaje, 0 = automático): la hoja-ataúd tiene el suyo. */
+const manualDe = app => (app.element.classList.contains("er-hoja-ataud") ? Math.round((Number(game.settings.get(ID, "escalaAtaud")) || 0) * 100) : Number(game.settings.get(ID, "escalaVentanas")) || 0);
 
 /** Escala una ventana para que quepa en la pantalla (o con la escala elegida en Ajustes). Se llama al pintarla y al cambiar la pantalla. */
 export function ajustarVentana(app) {
   if (!nuestra(app) || !app.rendered || app.minimized) return;
   const el = app.element, doc = document.documentElement;
   const hotbar = parseFloat(getComputedStyle(document.body).getPropertyValue("--hotbar-height")) || 0;   // Foundry deja libre 1,5 veces su alto bajo las ventanas
-  const vista = { ancho: doc.clientWidth, alto: doc.clientHeight - 1.5 * hotbar };
+  const vista = { ancho: doc.clientWidth, alto: doc.clientHeight - 1.5 * hotbar, total: doc.clientHeight };
   // La primera vez se parte del tamaño que pide la ventana (Foundry ya lo ha recortado a la pantalla); después, del que tiene ahora.
   const primera = !app._erAjustada;
   app._erAjustada = true;
@@ -28,7 +27,7 @@ export function ajustarVentana(app) {
     const tope = el.style.maxHeight; el.style.maxHeight = "none";   // lo que la ventana pide de verdad, sin el tope de la pantalla
     const h = el.offsetHeight; el.style.maxHeight = tope; return h;
   });
-  const escala = escalaDeVentana(ancho, alto, vista, Number(game.settings.get(ID, "escalaVentanas")) || 0);
+  const escala = escalaDeVentana(ancho, alto, vista, manualDe(app));
   el.style.setProperty("--er-esc-ventana", String(escala));   // el CSS escala con ella el tope de tamaño
   if (!primera && Math.abs((ahora.scale ?? 1) - escala) < 0.004) return;
   const cambio = { scale: escala };

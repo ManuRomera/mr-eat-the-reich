@@ -201,10 +201,7 @@ export class HojaAtaud extends HojaVampiro {
 
   async _onRender(context, options) {
     await super._onRender(context, options);
-    // Tamaño: el elegido en Ajustes, o el que quepa en esta pantalla.
-    const elegido = Number(game.settings.get(ID, "escalaAtaud")) || 0;
-    const escala = elegido || Math.min(1, (window.innerHeight - 8) / ALTO, (window.innerWidth - 8) / ANCHO);
-    if (Math.abs((this.position.scale ?? 1) - escala) > 0.005) this.setPosition({ scale: escala });
+    // El tamaño lo pone module/ventanas.mjs (el elegido en Ajustes, o el proporcional a esta pantalla).
     this.ajustar();
   }
 

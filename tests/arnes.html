@@ -158,29 +158,40 @@ if (new URLSearchParams(location.search).has("tablon")) {
   const P0 = (await import("../module/presentacion-core.mjs")).PERSONAJES;
   ventana("F.A.N.G. · Presentación de jugadores", "er-presentacion-control", (await plantilla("apps/presentacion.hbs"))({ ocupado: false, faseTexto: "Personaje presentado · compuerta abierta", enSala: true, suena: true, volumen: 50,
     filas: P0.map((p, i) => ({ ...p, actorId: p.id, jugador: ["Marta", "Íñigo", "Laura", "Pau", "", ""][i], boton: ["Marta", "Íñigo", "Laura", "Pau", p.nombre, p.nombre][i], juega: i !== 5, seleccionada: i === 0, img: `${RUTA}/assets/retratos/${p.id}.webp` })) }), 500); }
-// Pantalla pequeña: ?ajuste[=<%>] deja solo el diálogo de tirada, fijo y centrado como en Foundry, y le aplica module/ventanas.mjs de verdad.
-if (new URLSearchParams(location.search).has("ajuste")) {
-  const manual = Number(new URLSearchParams(location.search).get("ajuste")) || 0;
-  for (const el of [...document.body.children]) if (el.matches(".application") && !el.matches(".er-tirada-dlg")) el.remove(); else if (el.matches(".chat")) el.remove();
-  const d = document.querySelector(".er-tirada-dlg"), cont = d.querySelector(".window-content");
-  const cuerpo = cont.querySelector(".er-dt"), pie = cont.querySelector(".form-footer");
-  cont.innerHTML = `<form class="dialog-form standard-form"><div class="dialog-content standard-form"></div></form>`;
-  cont.querySelector(".dialog-content").append(cuerpo); cont.querySelector("form").append(pie);
-  const css = document.createElement("style");
-  css.textContent = "body{display:block!important;padding:0!important}.application.er-tirada-dlg{position:fixed!important;transform-origin:top left;max-height:calc((100vh - 1.5*var(--hotbar-height))/var(--er-esc-ventana,1))}";
-  document.head.append(css);
-  game.settings.get = (_, k) => (k === "escalaVentanas" ? manual : {});
+// Verificación por pantallas: ?verificar[=<ventana>][&manual=<%>] aplica module/ventanas.mjs de verdad con un emulador del posicionamiento de Foundry
+// y deja un informe JSON en <pre id="informe-pantallas">. tools/pantallas.py lo lanza con Chrome a distintos tamaños de pantalla.
+if (new URLSearchParams(location.search).has("verificar")) {
+  const Q = new URLSearchParams(location.search), solo = Q.get("verificar"), manual = Number(Q.get("manual")) || 0;
+  document.body.classList.add("verificar");
+  document.head.append(Object.assign(document.createElement("style"), { textContent: "body.verificar{display:block!important;padding:0!important;margin:0}.application{position:fixed!important;transform-origin:top left}" }));
+  for (const el of [...document.body.children]) if (!el.matches(".application")) el.remove();
+  // El diálogo de tirada con la estructura real de DialogV2: formulario con el cuerpo y, aparte, el pie con los botones.
+  const dlg = document.querySelector(".er-tirada-dlg .window-content");
+  if (dlg) { const cuerpo = dlg.querySelector(".er-dt"), pie = dlg.querySelector(".form-footer"); dlg.innerHTML = `<form class="dialog-form standard-form"><div class="dialog-content standard-form"></div></form>`; dlg.querySelector(".dialog-content").append(cuerpo); dlg.querySelector("form").append(pie); }
+  game.settings.get = (_, k) => (k === "escalaVentanas" || k === "escalaAtaud" ? manual : {});
+  const { crearApp, medirVentana } = await import("./emulador-ventana.mjs");
   const { ajustarVentana } = await import("../module/ventanas.mjs");
-  const doc = document.documentElement;
-  const app = { element: d, rendered: true, minimized: false, options: { position: { width: 500, height: "auto" } }, position: { width: 500, height: "auto", scale: 1 },
-    setPosition(p) {
-      const s = p.scale ?? 1; this.position.scale = s; d.style.width = "500px"; d.style.height = "";
-      d.style.transform = s === 1 ? "" : `scale(${s})`;
-      const w = d.offsetWidth * s, h = d.offsetHeight * s;
-      d.style.left = `${Math.max(0, (doc.clientWidth - w) / 2)}px`; d.style.top = `${Math.max(0, Math.min((doc.clientHeight - h) / 2, doc.clientHeight - h))}px`;
-    } };
-  app.setPosition({ scale: 1 }); ajustarVentana(app);
-  window.__ajuste = { escala: app.position.scale, alto: d.getBoundingClientRect().height, bajo: d.getBoundingClientRect().bottom, vista: doc.clientHeight, pie: pie.getBoundingClientRect().bottom };
+  // Tamaño que pide cada ventana (su DEFAULT_OPTIONS.position): hay que mantenerlos al día si cambian.
+  const VENTANAS = {
+    ataud: [".er-hoja-ataud", { width: 1090, height: 920 }], clasica: [".er-hoja-vampiro:not(.er-hoja-ataud)", { width: 820, height: 860 }],
+    amenaza: [".er-hoja-amenaza", { width: 520, height: 640 }], mision: [".er-mision", { width: 540, height: 680 }],
+    tirada: [".er-tirada-dlg", { width: 500, height: "auto" }], seguridad: [".er-seguridad", { width: 460, height: "auto" }],
+    presentacion: [".er-presentacion-control", { width: 500, height: "auto" }]
+  };
+  const doc = document.documentElement, ancho = doc.clientWidth, alto = doc.clientHeight, hotbar = 1.5 * (parseFloat(getComputedStyle(document.body).getPropertyValue("--hotbar-height")) || 0);
+  const informe = [];
+  for (const [id, [sel, pos]] of Object.entries(VENTANAS)) {
+    const el = document.querySelector(sel);
+    if (!el) { informe.push({ nombre: id, pantalla: `${ancho}×${alto}`, ok: false, error: "no está en el arnés" }); continue; }
+    document.querySelectorAll(".application").forEach(x => { x.style.display = x === el ? "" : "none"; });
+    const app = crearApp(el, pos);
+    ajustarVentana(app);
+    await new Promise(r => setTimeout(r, 30));
+    informe.push(medirVentana(id, el, { ancho, alto, hotbar }));
+  }
+  const muestra = solo && VENTANAS[solo] ? document.querySelector(VENTANAS[solo][0]) : null;
+  document.querySelectorAll(".application").forEach(x => { x.style.display = !solo || x === muestra ? "" : "none"; });
+  document.body.append(Object.assign(document.createElement("pre"), { id: "informe-pantallas", hidden: true, textContent: JSON.stringify(informe) }));
 }
 // Aviso de turno: ?turno[&jugador]
 if (new URLSearchParams(location.search).has("turno")) {

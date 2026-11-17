@@ -60,7 +60,7 @@ export function registrarAjustes() {
   });
   game.settings.register(ID, "escalaAtaud", {
     name: "Tamaño de la hoja-ataúd",
-    hint: "0 = automático (lo que quepa en tu pantalla). Ajuste de este navegador.",
+    hint: "0 = automático (proporcional a tu pantalla). Ajuste de este navegador.",
     scope: "client", config: true, type: Number, default: 0, range: { min: 0, max: 1.3, step: 0.05 },
     onChange: () => { for (const app of foundry.applications.instances.values()) if (app.element?.classList.contains("er-hoja-ataud")) app.render(); }
   });

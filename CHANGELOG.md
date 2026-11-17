@@ -1,5 +1,11 @@
 # Cambios
 
+## 1.3.1 · 17-11-2026
+
+- **Todo se escala en proporción a la pantalla**, no solo lo que no cabía: la hoja-ataúd (con la imagen del personaje), las tiradas, el panel de misión, las fichas y los diálogos se ven igual de «grandes» en un portátil que en un monitor de 1080p. En pantallas menores de 1080p ninguna ventana ocupa más del 92 % del espacio útil (antes, la hoja-ataúd ocupaba el 99 % del alto en un portátil de 15″; ahora, el 81 %).
+- La hoja-ataúd usa la misma regla que el resto, con su propio ajuste («Tamaño de la hoja-ataúd»; 0 = automático), y deja de recortarse con el tope de altura de Foundry.
+- **Verificación por pantallas**: `npm run pantallas` emula nueve tamaños de pantalla (de 1024×640 a 2560×1300) con un emulador del posicionamiento de Foundry y comprueba que ninguna ventana se sale, que el botón principal queda a la vista y que no ocupa de más; con `--capturas` deja una captura por ventana y pantalla.
+
 ## 1.3.0 · 17-11-2026
 
 - **Cabe en cualquier pantalla**: todas las ventanas del sistema (tirada, misión, fichas, diálogos, paneles) se encogen solas lo justo para verse enteras, y si aun así no caben (pantallas muy pequeñas) se desplazan por dentro. El botón de **Tirar** ya no se sale por abajo en un portátil de 15″: el cuerpo del diálogo hace scroll y los botones quedan siempre a la vista.

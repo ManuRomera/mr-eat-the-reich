@@ -111,7 +111,7 @@ export class HojaVampiro extends HojaBase {
     const o = lista[i] ?? { ...OBJETO_NUEVO, nombre: "" };
     const actor = this.document;
     const datos = await DialogV2.wait({
-      window: { title: i < 0 ? "Coger un cacharro" : `Cambiar: ${o.nombre}`, icon: "fa-solid fa-toolbox" }, classes: [ID, "er-dialogo", "er-tirada-dlg"], position: { width: 470 }, rejectClose: false,
+      window: { resizable: true, title: i < 0 ? "Coger un cacharro" : `Cambiar: ${o.nombre}`, icon: "fa-solid fa-toolbox" }, classes: [ID, "er-dialogo", "er-tirada-dlg"], position: { width: 470 }, rejectClose: false,
       content: `<div class="er-dt"><h2 class="er-nombre-cinta">${i < 0 ? "¿Qué has cogido?" : "Cacharro"}</h2>
         <div class="er-dt-bloque"><span class="er-cinta">Nombre</span> <input type="text" name="nombre" value="${esc(o.nombre)}" placeholder="Subfusil, coche de lujo, cañón…" autofocus></div>
         <div class="er-dt-bloque"><span class="er-cinta">Usos</span> <input type="number" name="max" value="${o.max}" min="1" max="9"> <small class="er-susurro">el botín suele traer 3; el último uso explota: +1 dado</small></div>

@@ -24,7 +24,7 @@ export class PanelSeguridad extends ConMemoria(HandlebarsApplicationMixin(Applic
     id: "er-seguridad",
     classes: ["mr-eat-the-reich", "er-dialogo", "er-seguridad"],
     position: { width: 460, height: "auto" },
-    window: { title: "Seguridad en la sesión", icon: "fa-solid fa-shield-heart" },
+    window: { resizable: true, title: "Seguridad en la sesión", icon: "fa-solid fa-shield-heart" },
     actions: { senal: PanelSeguridad.#senal, guardar: PanelSeguridad.#guardar }
   };
   static PARTS = { cuerpo: { template: "systems/mr-eat-the-reich/templates/apps/seguridad.hbs" } };

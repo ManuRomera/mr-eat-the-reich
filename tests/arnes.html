@@ -158,6 +158,30 @@ if (new URLSearchParams(location.search).has("tablon")) {
   const P0 = (await import("../module/presentacion-core.mjs")).PERSONAJES;
   ventana("F.A.N.G. · Presentación de jugadores", "er-presentacion-control", (await plantilla("apps/presentacion.hbs"))({ ocupado: false, faseTexto: "Personaje presentado · compuerta abierta", enSala: true, suena: true, volumen: 50,
     filas: P0.map((p, i) => ({ ...p, actorId: p.id, jugador: ["Marta", "Íñigo", "Laura", "Pau", "", ""][i], boton: ["Marta", "Íñigo", "Laura", "Pau", p.nombre, p.nombre][i], juega: i !== 5, seleccionada: i === 0, img: `${RUTA}/assets/retratos/${p.id}.webp` })) }), 500); }
+// Pantalla pequeña: ?ajuste[=<%>] deja solo el diálogo de tirada, fijo y centrado como en Foundry, y le aplica module/ventanas.mjs de verdad.
+if (new URLSearchParams(location.search).has("ajuste")) {
+  const manual = Number(new URLSearchParams(location.search).get("ajuste")) || 0;
+  for (const el of [...document.body.children]) if (el.matches(".application") && !el.matches(".er-tirada-dlg")) el.remove(); else if (el.matches(".chat")) el.remove();
+  const d = document.querySelector(".er-tirada-dlg"), cont = d.querySelector(".window-content");
+  const cuerpo = cont.querySelector(".er-dt"), pie = cont.querySelector(".form-footer");
+  cont.innerHTML = `<form class="dialog-form standard-form"><div class="dialog-content standard-form"></div></form>`;
+  cont.querySelector(".dialog-content").append(cuerpo); cont.querySelector("form").append(pie);
+  const css = document.createElement("style");
+  css.textContent = "body{display:block!important;padding:0!important}.application.er-tirada-dlg{position:fixed!important;transform-origin:top left;max-height:calc((100vh - 1.5*var(--hotbar-height))/var(--er-esc-ventana,1))}";
+  document.head.append(css);
+  game.settings.get = (_, k) => (k === "escalaVentanas" ? manual : {});
+  const { ajustarVentana } = await import("../module/ventanas.mjs");
+  const doc = document.documentElement;
+  const app = { element: d, rendered: true, minimized: false, options: { position: { width: 500, height: "auto" } }, position: { width: 500, height: "auto", scale: 1 },
+    setPosition(p) {
+      const s = p.scale ?? 1; this.position.scale = s; d.style.width = "500px"; d.style.height = "";
+      d.style.transform = s === 1 ? "" : `scale(${s})`;
+      const w = d.offsetWidth * s, h = d.offsetHeight * s;
+      d.style.left = `${Math.max(0, (doc.clientWidth - w) / 2)}px`; d.style.top = `${Math.max(0, Math.min((doc.clientHeight - h) / 2, doc.clientHeight - h))}px`;
+    } };
+  app.setPosition({ scale: 1 }); ajustarVentana(app);
+  window.__ajuste = { escala: app.position.scale, alto: d.getBoundingClientRect().height, bajo: d.getBoundingClientRect().bottom, vista: doc.clientHeight, pie: pie.getBoundingClientRect().bottom };
+}
 // Aviso de turno: ?turno[&jugador]
 if (new URLSearchParams(location.search).has("turno")) {
   const { avisoTurno } = await import("../module/apps/mision.mjs");

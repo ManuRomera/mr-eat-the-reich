@@ -1,5 +1,12 @@
 # Cambios
 
+## 1.3.0 · 17-11-2026
+
+- **Cabe en cualquier pantalla**: todas las ventanas del sistema (tirada, misión, fichas, diálogos, paneles) se encogen solas lo justo para verse enteras, y si aun así no caben (pantallas muy pequeñas) se desplazan por dentro. El botón de **Tirar** ya no se sale por abajo en un portátil de 15″: el cuerpo del diálogo hace scroll y los botones quedan siempre a la vista.
+- **Todas las ventanas son redimensionables**, también los diálogos (tirada, coger un cacharro, reinicio, seguridad, diagnóstico, accesibilidad y encuadre del retrato).
+- **Tamaño de las ventanas**: ajuste nuevo (también en el panel de Accesibilidad, el icono de la cabecera). 0 = automático; de 50 % a 150 % fija esa escala en todas. La hoja-ataúd mantiene su propio ajuste.
+- El aviso «Y el GM tira N dados negros» del diálogo de tirada reserva su sitio para que la ventana no cambie de altura al aparecer.
+
 ## 1.2.3 · 14-11-2026
 
 - **Caída de los ataúdes**: desaparece el recuadro que se veía alrededor de cada ataúd (era su sombra difusa, cortada en recto por el recorte de la imagen). El resto de la animación no cambia.

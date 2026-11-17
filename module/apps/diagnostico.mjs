@@ -26,7 +26,7 @@ export async function informe() {
 
 export class PanelDiagnostico extends ConMemoria(ApplicationV2) {
   static MEMORIA = "diagnostico";
-  static DEFAULT_OPTIONS = { id: "er-diagnostico", classes: ["mr-eat-the-reich", "er-dialogo"], position: { width: 560, height: "auto" }, window: { title: "Diagnóstico", icon: "fa-solid fa-stethoscope" } };
+  static DEFAULT_OPTIONS = { id: "er-diagnostico", classes: ["mr-eat-the-reich", "er-dialogo"], position: { width: 560, height: "auto" }, window: { resizable: true, title: "Diagnóstico", icon: "fa-solid fa-stethoscope" } };
   #json = "";
   static abrir() { return (foundry.applications.instances.get("er-diagnostico") ?? new PanelDiagnostico()).render({ force: true }); }
 

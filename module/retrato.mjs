@@ -60,7 +60,7 @@ export function repintarRetratos() {
 export class EditorRetrato extends ConMemoria(ApplicationV2) {
   static DEFAULT_OPTIONS = {
     id: "mr-er-retrato", classes: ["mr-eat-the-reich", "er-dialogo", "er-retrato-editor"], position: { width: 620, height: "auto" },
-    window: { icon: "fa-solid fa-crop-simple", title: "Encuadre del retrato" }
+    window: { resizable: true, icon: "fa-solid fa-crop-simple", title: "Encuadre del retrato" }
   };
 
   static MEMORIA = "retrato";

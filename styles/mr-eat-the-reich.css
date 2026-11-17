@@ -314,3 +314,16 @@ body.er-sin-movimiento .er-lupa { animation: none; }
 .er-tc .er-dest:hover i, .er-tc .er-dest:focus-visible i { color: var(--er-neon); }
 body.er-sin-movimiento .er-tc .er-dado.mano { transform: none; }
 body.er-oscuro .er-dados.gm .er-dado.exito { background: #f1ead6; color: #10132b; border-color: #f1ead6; }
+
+/* ── Ventanas a la medida de la pantalla (module/ventanas.mjs): nunca más grandes que lo visible, con desplazamiento por dentro ── */
+.mr-eat-the-reich.application:not(.er-hoja-ataud) {
+  max-width: calc((100vw - 8px) / var(--er-esc-ventana, 1));
+  max-height: calc((100vh - 1.5 * var(--hotbar-height, 52px)) / var(--er-esc-ventana, 1));
+}
+.mr-eat-the-reich.application:not(.er-hoja-ataud) .window-content { overflow: auto; min-height: 0; overscroll-behavior: contain; }
+/* Diálogos: el cuerpo se desplaza y el pie, con los botones, queda siempre a la vista */
+.mr-eat-the-reich.application .window-content:has(> form.dialog-form) { overflow: hidden; }
+.mr-eat-the-reich.application form.dialog-form { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; }
+.mr-eat-the-reich.application form.dialog-form > .dialog-content { flex: 1 1 auto; min-height: 0; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; }
+.mr-eat-the-reich.application form.dialog-form > .form-footer { flex: none; }
+.mr-eat-the-reich .er-dt .er-dt-gm { min-height: 2.6em; }

@@ -8,7 +8,7 @@ import { ID } from "./mesa.mjs";
 import { ApplicationV2 } from "./compat.mjs";
 import { ConMemoria } from "./memoria.mjs";
 
-const CLAVES = ["a11yEscala", "a11yOscuro", "a11yContraste", "a11yLegible", "a11yMovimiento", "a11yAyuda"];
+const CLAVES = ["a11yEscala", "escalaVentanas", "a11yOscuro", "a11yContraste", "a11yLegible", "a11yMovimiento", "a11yAyuda"];
 const CAJAS = [
   ["a11yOscuro", "Hojas en modo oscuro", "Las fichas, el panel y los diarios pasan del papel de expediente a tinta clara sobre noche."],
   ["a11yContraste", "Alto contraste", "Texto y bordes más marcados, sin matices."],
@@ -62,7 +62,7 @@ export class PanelAccesibilidad extends ConMemoria(ApplicationV2) {
 
   static DEFAULT_OPTIONS = {
     id: "mr-er-a11y", classes: ["mr-eat-the-reich", "er-dialogo", "er-a11y"], position: { width: 400, height: "auto" },
-    window: { title: "Accesibilidad", icon: "fa-solid fa-universal-access" }
+    window: { resizable: true, title: "Accesibilidad", icon: "fa-solid fa-universal-access" }
   };
 
   static abrir() {
@@ -75,6 +75,8 @@ export class PanelAccesibilidad extends ConMemoria(ApplicationV2) {
     return `<div class="er-dialogo-cuerpo">
       <label class="er-campo er-a11y-escala"><span>Tamaño del texto <b>${g("a11yEscala")}%</b></span>
         <input type="range" name="a11yEscala" min="85" max="160" step="5" value="${g("a11yEscala")}" aria-label="Tamaño del texto"></label>
+      <label class="er-campo er-a11y-escala"><span>Tamaño de las ventanas <b>${g("escalaVentanas") ? `${g("escalaVentanas")}%` : "Automático"}</b></span>
+        <input type="range" name="escalaVentanas" min="0" max="150" step="5" value="${g("escalaVentanas")}" aria-label="Tamaño de las ventanas (0 = automático)"></label>
       ${filas}
       <p class="er-tenue">Son ajustes de este navegador; también están en <b>Configuración → Ajustes del sistema</b>.</p>
       <div class="er-a11y-acciones"><button type="button" class="er-boton er-boton-suave" data-restablecer><i class="fa-solid fa-rotate-left"></i> Restablecer</button></div>
@@ -86,7 +88,10 @@ export class PanelAccesibilidad extends ConMemoria(ApplicationV2) {
     contenido.querySelectorAll("input").forEach(el => el.addEventListener("change", () => {
       game.settings.set(ID, el.name, el.type === "checkbox" ? el.checked : Number(el.value));
     }));
-    contenido.querySelector("input[type=range]")?.addEventListener("input", ev => { ev.target.closest("label").querySelector("b").textContent = `${ev.target.value}%`; });
+    contenido.querySelectorAll("input[type=range]").forEach(r => r.addEventListener("input", ev => {
+      const v = Number(ev.target.value);
+      ev.target.closest("label").querySelector("b").textContent = ev.target.name === "escalaVentanas" && !v ? "Automático" : `${v}%`;
+    }));
     contenido.querySelector("[data-restablecer]")?.addEventListener("click", async () => {
       for (const k of CLAVES) await game.settings.set(ID, k, game.settings.settings.get(`${ID}.${k}`).default);
     });

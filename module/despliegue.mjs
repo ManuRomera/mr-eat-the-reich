@@ -98,7 +98,7 @@ export async function nuevoDespliegue() {
 export async function reiniciarPartida() {
   if (!activoGM()) return ui.notifications.warn("Solo quien dirige puede reiniciar la partida.");
   const r = await DialogV2.wait({
-    classes: [ID, "er-dialogo", "er-tirada-dlg", "er-reinicio"], window: { title: "Reiniciar la partida", icon: "fa-solid fa-skull-crossbones" }, position: { width: 460 }, rejectClose: false,
+    classes: [ID, "er-dialogo", "er-tirada-dlg", "er-reinicio"], window: { resizable: true, title: "Reiniciar la partida", icon: "fa-solid fa-skull-crossbones" }, position: { width: 460 }, rejectClose: false,
     content: `<div class="er-reinicio-cuerpo"><b>¿Todo a cero?</b>
       <ul><li>Los vampiros vuelven a estar <em>como vienen en el sistema</em>: sangre, lesiones, equipo, mejoras.</li><li>Se vacía la misión: escena, ronda, objetivos, amenazas, turnos y avance.</li><li>Se deshace el despliegue y los decorados recuperan su aspecto.</li></ul>
       <label><input type="checkbox" name="chat" checked> Vaciar también el chat</label>

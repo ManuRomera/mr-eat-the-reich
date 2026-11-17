@@ -53,7 +53,7 @@ export async function dialogoTirada(actor, atributo = "", libre = false) {
     <div class="er-dt-bloque er-dt-extra"><span class="er-cinta">Dados extra</span> <input type="number" name="extra" value="0" min="-5" max="10" step="1" aria-label="Dados extra"></div>
   </div>`;
   const datos = await DialogV2.wait({
-    window: { title: `${actor.name} · preparar la tirada`, icon: "fa-solid fa-dice" }, classes: [ID, "er-dialogo", "er-tirada-dlg"], position: { width: 500 }, content, rejectClose: false,
+    window: { resizable: true, title: `${actor.name} · preparar la tirada`, icon: "fa-solid fa-dice" }, classes: [ID, "er-dialogo", "er-tirada-dlg"], position: { width: 500 }, content, rejectClose: false,
     buttons: [{ action: "tirar", label: "Tirar", icon: "fa-solid fa-dice", default: true, callback: (ev, boton) => new foundry.applications.ux.FormDataExtended(boton.form).object }],
     // El botón dice cuántos dados vas a tirar, y la ventana lleva el color del forro del personaje.
     render: (ev, dialogo) => {

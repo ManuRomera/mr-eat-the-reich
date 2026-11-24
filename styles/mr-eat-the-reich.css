@@ -221,11 +221,6 @@
 .er-aviso { font-family: var(--er-texto); }
 .er-pista { font-size: .9em; border-left: 4px solid var(--er-cinta); padding-left: 8px; }
 
-.er-menu { position: fixed; z-index: 10000; min-width: 240px; max-width: 340px; padding: 6px; display: flex; flex-direction: column; gap: 3px; background: var(--er-papel); color: var(--er-tinta); border: 2px solid var(--er-noche); box-shadow: 4px 4px 0 var(--er-sangre); font-family: var(--er-texto); font-size: calc(13px * var(--er-escala)); }
-.er-menu p { margin: 0 0 3px; font-family: var(--er-rotulo); text-transform: uppercase; letter-spacing: .06em; }
-.er-menu button { display: flex; gap: 8px; align-items: center; width: 100%; height: auto; min-height: 30px; padding: 3px 8px; text-align: left; font-family: var(--er-texto); font-size: 1em; line-height: 1.2; background: var(--er-campo); color: var(--er-tinta); border: 1px solid var(--er-tenue); border-radius: 2px; cursor: pointer; }
-.er-menu button:hover, .er-menu button:focus-visible { background: var(--er-noche); color: #fff; outline: 0; }
-.er-menu button i { width: 16px; text-align: center; color: var(--er-sangre); }
 
 /* ---------- Seguridad, retrato, diagnóstico, lupa ---------- */
 .er-senales { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 4px 0 8px; }
@@ -282,7 +277,7 @@ body.er-contraste.er-oscuro { --er-papel: #000000; --er-papel-2: #000000; --er-c
 body.er-contraste .mr-eat-the-reich.application .window-content { background: var(--er-papel); }
 body.er-contraste .er-tc .er-dado.fallo { opacity: .6; }
 body.er-legible { --er-texto: var(--er-legible); --er-rotulo: var(--er-legible); }
-body.er-sin-movimiento :is(.mr-eat-the-reich, .er-tc, .er-lupa, .er-menu) * { transition: none !important; animation: none !important; }
+body.er-sin-movimiento :is(.mr-eat-the-reich, .er-tc, .er-lupa) * { transition: none !important; animation: none !important; }
 body.er-sin-movimiento .er-lupa { animation: none; }
 @media (prefers-reduced-motion: reduce) { .mr-eat-the-reich *, .er-tc * { transition: none !important; animation: none !important; } }
 
@@ -304,7 +299,7 @@ body.er-sin-movimiento .er-lupa { animation: none; }
 .er-tc-destinos { margin: 8px 0 4px; padding-top: 6px; border-top: 1px dashed var(--er-tenue); }
 .er-tc-destinos > p { margin: 0 0 2px; font-family: var(--er-rotulo); font-size: 1.05em; letter-spacing: .06em; text-transform: uppercase; }
 .er-tc-destinos > p b { display: inline-block; padding: 0 6px; background: var(--er-sangre); color: #fff; transform: rotate(-4deg); }
-.er-tc .er-dest { display: flex; align-items: center; gap: 8px; width: 100%; height: auto; min-height: 30px; margin: 0; padding: 4px 2px; text-align: left; line-height: 1.2; font-family: var(--er-texto); font-size: 1em; color: inherit; background: none; border: 0; border-bottom: 1px dashed color-mix(in srgb, currentColor 30%, transparent); border-radius: 0; box-shadow: none; cursor: pointer; }
+.er-tc .er-dest { display: flex; align-items: center; gap: 8px; width: 100%; height: auto; min-height: 30px; margin: 0; padding: 4px 2px; text-align: left; line-height: 1.2; font-family: var(--er-texto); font-size: 1em; color: inherit; background: none; border: 0; border-bottom: 1px dashed color-mix(in oklab, currentColor 30%, transparent); border-radius: 0; box-shadow: none; cursor: pointer; }
 .er-tc .er-dest:last-child { border-bottom: 0; }
 .er-tc .er-dest i { flex: none; width: 18px; text-align: center; color: var(--er-sangre); }
 .er-tc .er-dest span { flex: 1; min-width: 0; }

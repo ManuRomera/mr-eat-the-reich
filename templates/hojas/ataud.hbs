@@ -72,7 +72,7 @@
         {{/each}}
         <div class="er-gesto-flujo"><span class="er-cinta">Último gesto</span>
           <input type="text" name="system.ultimoGesto" value="{{system.ultimoGesto}}" aria-label="Último gesto de resistencia" {{disabled (not editable)}}>
-          <button type="button" class="er-chip rojo" data-action="gesto" {{disabled (not system.muerto)}} data-tooltip="Solo con las seis lesiones marcadas"><span>Tirar</span><b>8D6</b></button></div>
+          <button type="button" class="er-chip rojo" data-action="gesto" {{#if system.gestoHecho}}disabled{{else}}{{disabled (not system.muerto)}}{{/if}} data-tooltip="{{#if system.gestoHecho}}Ya hecho{{else}}Solo con las seis lesiones marcadas{{/if}}"><span>Tirar</span><b>8D6</b></button></div>
         <label class="er-casilla-flujo"><input type="checkbox" name="system.flashback" {{checked system.flashback}} {{disabled (not editable)}}> Flashback usado esta sesión</label>
       </section>
 

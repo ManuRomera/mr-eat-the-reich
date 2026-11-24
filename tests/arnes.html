@@ -15,7 +15,6 @@
   body { padding: 20px; display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
   .application { position: relative !important; display: flex; flex-direction: column; }
   .chat { width: 300px; background: #1c1b22; padding: 8px; display: flex; flex-direction: column; gap: 10px; }
-  .er-menu { position: static !important; }
 </style>
 <script src="handlebars.min.js"></script>
 <body class="vtt game system-mr-eat-the-reich">
@@ -148,9 +147,7 @@ const tarjetas = [
   { ...base, actor: "nicole", ultimo: true, atributo: "Último gesto: Preparada para explotar", dados: dados([6, 6, 5, 4, 4, 3, 2, 1]), usados: [], bonos: [], gm: { caras: [], exitos: 0, nombre: "", otras: 0 } }
 ];
 for (const t of tarjetas) { const d = document.createElement("div"); d.innerHTML = htmlTirada({ id: "m" }, t); chat.append(d); }
-const menu = document.createElement("div"); menu.className = "mr-eat-the-reich er-menu";
-menu.innerHTML = `<p>Gastar este crítico (2 éxitos) en…</p><button><i class="fa-solid fa-bullseye"></i> Objetivo: Cruzar el museo (5, Desafío 1)</button><button><i class="fa-solid fa-skull"></i> Atacar: Einherjar (4)</button><button><i class="fa-solid fa-shield"></i> Defenderse (quedan 2 ataques)</button><button><i class="fa-solid fa-star"></i> ESPECIAL · Tiro certero</button>`;
-chat.append(menu);
+
 // Tablón del mapa: ?tablon pinta el mapa de París con las dos notas rellenas por el código real (escenas.mjs).
 if (new URLSearchParams(location.search).has("tablon")) {
   for (const el of [...document.body.children]) if (el.matches(".application, .chat")) el.remove();

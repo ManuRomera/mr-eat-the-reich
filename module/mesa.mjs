@@ -73,15 +73,23 @@ export function registrarAjustes() {
 
 export const mision = () => foundry.utils.mergeObject(foundry.utils.deepClone(MISION_INICIAL), foundry.utils.deepClone(game.settings.get(ID, "mision") ?? {}), { inplace: false });
 
-/** Solo GM. `fn` recibe una copia de la misión y la modifica. */
-export async function cambiarMision(fn) {
+let colaMision = Promise.resolve();
+/**
+ * Solo GM. `fn` recibe una copia de la misión y la modifica. Los cambios van en cola: si dos llegan a la vez (dos jugadores gastando éxitos,
+ * un Einherjar que sube su Desafío y un clic del GM…) cada uno parte de lo que dejó el anterior en vez de pisarlo.
+ */
+export function cambiarMision(fn) {
   if (!game.user.isGM) return;
-  const m = mision();
-  await fn(m);
-  // Escena resuelta: su objetivo principal ha llegado a cero. Queda apuntada para tacharla en el mapa.
-  const l = LOCALIZACIONES.find(x => x.nombre === m.escena), principales = m.objetivos.filter(o => !o.secundario);
-  if (l && principales.length && principales.every(o => o.valor <= 0) && !m.resueltas.includes(l.clave)) m.resueltas.push(l.clave);
-  return game.settings.set(ID, "mision", m);
+  const turno = colaMision.catch(() => {}).then(async () => {
+    const m = mision();
+    await fn(m);
+    // Escena resuelta: su objetivo principal ha llegado a cero. Queda apuntada para tacharla en el mapa.
+    const l = LOCALIZACIONES.find(x => x.nombre === m.escena), principales = m.objetivos.filter(o => !o.secundario);
+    if (l && principales.length && principales.every(o => o.valor <= 0) && !m.resueltas.includes(l.clave)) m.resueltas.push(l.clave);
+    return game.settings.set(ID, "mision", m);
+  });
+  colaMision = turno;
+  return turno;
 }
 
 export const nuevoId = () => foundry.utils.randomID(8);

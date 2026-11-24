@@ -1,5 +1,22 @@
 # Cambios
 
+## 1.3.3 · 24-11-2026
+
+Auditoría de reglas contrastada con el manual:
+
+- **Derribados**: un vampiro derribado ya no puede tirar (fuera de combate hasta que lo rescaten, pp. 33 y 36). Al completar el objetivo «Rescatar a X», **vuelve al combate solo** y no se ofrece premio de secundario.
+- **ESPECIALES**: con una lesión que los impide ya no se ofrece «Otro especial» ni se puede gastar. **Nicole**: «Disparo en la cabeza» (Headshot) ahora lleva su efecto, «no puedes usar los ESPECIALES» (manual p. 16). **Cosgrave**: «Suerte de muerto» con el texto «quita 1 éxito de ataque del GM por cada 1 que hayas sacado» (pendiente de contrastar con el original inglés).
+- **Último gesto** (p. 36): solo con las seis lesiones y **una sola vez**; los 8d6 van únicamente a Objetivos y Amenazas (sin beber sangre ni defenderse) y no pueden activar un ESPECIAL que cure.
+- **Rust-Witch**: contra ella solo valen el 5 y el 6 al repartir los éxitos, aunque la tirada se haya hecho contra otra amenaza (también en el último gesto).
+- **Flashback**: tira la reserva original más 2, sin contar los dados de bonificación ya tirados.
+- **Beber sangre** sigue disponible si la última amenaza cae en esa misma acción (había sangre nazi a la vista al tirar).
+- **Escuadrón motorizado**: «Chocar y arder» aparece como ESPECIAL de todos los vampiros mientras haya motoristas y les quita 3 al gastarlo.
+- **Caída**: al cargar la escena del despliegue, el aviso recuerda subir de 2 a 4 los Objetivos (p. 42).
+- Los **Cigarrillos de Iryna** suman sus 2 de Sangre al tachar un uso. El botín muestra «último uso: explota» como el equipo.
+- **Dos cambios a la vez en la misión** (dos jugadores gastando éxitos, un Einherjar y un clic del GM) ya no se pisan: van en cola.
+- La **bienvenida** solo la lanza el director activo (con dos directores se duplicaba). Los tipos de actor usan las claves de idioma.
+- **CSS**: el botón «Control de presentación» volvía a quedar descentrado (un `transform` pisaba al otro); se quita el CSS del menú flotante que ya no existe; los botones del tablón no tocan la fuente de iconos; `color-mix` en `oklab`.
+
 ## 1.3.2 · 17-11-2026
 
 - **Hoja-ataúd con texto grande o fuente legible**: ya no se pierde contenido por debajo de la caja. Los nombres de cacharro largos («Cigarrillos sacados de los bolsillos de un ahorcado») y las lesiones se parten en varias líneas siguiendo la silueta del ataúd, en vez de caer fuera como un bloque. Si aun así algo no cupiera, la caja se desplaza por dentro.

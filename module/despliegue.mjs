@@ -77,7 +77,7 @@ export async function lanzar(clave = mision().diana) {
   if (!PUNTOS.some(p => p.clave === clave) || !escena) return ui.notifications.warn("No encuentro el decorado de ese punto: importa primero la misión.");
   const d = { id: foundry.utils.randomID(8), clave, n: cuantos(escuadron().length) };
   await restaurar();
-  await cargarLocalizacion(clave);
+  await cargarLocalizacion(clave, { caida: true });
   await cambiarMision(m => { m.diana = ""; m.desplegado = clave; m.despliegue = d; });
   if (!escena.active) await escena.activate();
   else if (canvas.scene?.id !== escena.id) await escena.view();

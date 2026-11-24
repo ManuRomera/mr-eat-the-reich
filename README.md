@@ -1,4 +1,4 @@
-# Actualización 1.3.2
+# Actualización 1.3.3
 
 En la pantalla inicial de Foundry, entra en **Sistemas de juego → MR- Eat the Reich → Actualizar**. El manifiesto estable enlaza con la última versión publicada y su ZIP. Después abre el mundo y recarga los clientes.
 
@@ -10,7 +10,7 @@ Los mundos nuevos comienzan en la sala de despliegue. En un mundo ya iniciado, a
 
 <p align="center">
   <a href="https://github.com/ManuRomera"><img alt="Manu Romera · Digital RPG Design" src="https://raw.githubusercontent.com/ManuRomera/ManuRomera/main/badges/mr-firma.svg" height="28"></a>
-  <a href="https://github.com/ManuRomera/mr-eat-the-reich/releases/latest"><img alt="Versión 1.3.2" src="https://img.shields.io/badge/versi%C3%B3n-1.3.2-d81557?style=for-the-badge&labelColor=10132b"></a>
+  <a href="https://github.com/ManuRomera/mr-eat-the-reich/releases/latest"><img alt="Versión 1.3.3" src="https://img.shields.io/badge/versi%C3%B3n-1.3.3-d81557?style=for-the-badge&labelColor=10132b"></a>
   <img alt="Foundry VTT 13 y 14" src="https://img.shields.io/badge/Foundry_VTT-13_%E2%80%93_14-ff3d8b?style=for-the-badge&labelColor=10132b">
   <img alt="Repositorio privado, uso personal" src="https://img.shields.io/badge/uso-privado-1f6f78?style=for-the-badge&labelColor=10132b">
   <img alt="En español" src="https://img.shields.io/badge/idioma-espa%C3%B1ol-f2c230?style=for-the-badge&labelColor=10132b">
@@ -126,7 +126,7 @@ Pulsa un nombre para activar su tema. Vuelve a pulsarlo para recuperar el fondo 
 
 ## Actualizar la instalación existente
 
-Cierra el mundo y, en la pantalla inicial de Foundry, abre **Sistemas de juego → MR- Eat the Reich → Actualizar**. La versión debe cambiar a **1.3.2**. Abre el mundo y recarga los navegadores; la presentación, la música y el atrezo se actualizan sin reimportar la aventura. Se conservan personajes, diarios y posiciones de tokens, además de listas musicales externas y fondos personalizados fuera de los recursos del sistema.
+Cierra el mundo y, en la pantalla inicial de Foundry, abre **Sistemas de juego → MR- Eat the Reich → Actualizar**. La versión debe cambiar a **1.3.3**. Abre el mundo y recarga los navegadores; la presentación, la música y el atrezo se actualizan sin reimportar la aventura. Se conservan personajes, diarios y posiciones de tokens, además de listas musicales externas y fondos personalizados fuera de los recursos del sistema.
 
 Manifiesto estable para instalar o vincular el sistema:
 
@@ -176,12 +176,13 @@ npm run build
 
 - Los efectos de los ESPECIALES y de las habilidades pasivas (Devorador de cadáveres, Armadura de huesos, Suerte de muerto, Fluidos corrosivos, Alimentarse del miedo): la tarjeta los anuncia y cuenta los «1»; los números se ajustan con los +/− del Panel de misión o en la hoja.
 - La Maldición del óxido de Rust-Witch (el parte de refuerzos la recuerda).
-- Las recompensas de los objetivos secundarios.
+- Las recompensas de los objetivos secundarios (el rescate de un derribado no tiene: lo devuelve al combate solo).
+- Subir de 2 a 4 los Objetivos de la escena de caída (p. 42): el aviso de la carga lo recuerda y se ajusta en el Panel de misión.
+- El hueco único de Botín (pp. 39-40): «Coger un cacharro» no lo impone, a propósito.
 
 ## Dudas de transcripción
 
-- **Nicole, «Disparo en la cabeza»:** la ficha traducida no trae efecto. Está vacío; se rellena en Editar.
-- **Cosgrave, «Suerte de muerto»:** la ficha traducida dice «por cada dado que tiraste», que anularía siempre el ataque. Se ha dejado remitiendo al manual.
+- **Cosgrave, «Suerte de muerto»:** la ficha traducida dice «por cada dado que tiraste», que anularía siempre el ataque. Se ha puesto «quita 1 éxito de ataque del GM por cada 1 que hayas sacado» (como la Armadura de huesos de Flint), según una auditoría del texto inglés que aquí no se ha podido contrastar con el PDF original. Confírmalo con él.
 - **Derribo:** el manual dice 3 ataques en una página y 4 en otra. Por defecto 3; se cambia en Ajustes.
 
 ## Comprobaciones

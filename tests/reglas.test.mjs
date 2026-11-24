@@ -61,3 +61,10 @@ test("datos coherentes", () => {
   const claves = new Set(AMENAZAS.map(a => a.clave));
   for (const l of LOCALIZACIONES) for (const e of l.enemigos) assert.ok(claves.has(e.clave), `${l.nombre}: ${e.clave}`);
 });
+
+test("fichas: Nicole no puede usar ESPECIALES con «Disparo en la cabeza» (manual p. 16) y Cosgrave descuenta por cada 1", () => {
+  const nicole = VAMPIROS.find(v => v.clave === "nicole"), cosgrave = VAMPIROS.find(v => v.clave === "cosgrave");
+  const cabeza = nicole.lesiones.flat().find(l => l.nombre === "Disparo en la cabeza");
+  assert.equal(cabeza.bloqueo, "especiales");
+  assert.match(cosgrave.mejoras.find(m => m.nombre === "Suerte de muerto").texto, /por cada «1»/);
+});

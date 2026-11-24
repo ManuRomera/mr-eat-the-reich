@@ -22,7 +22,7 @@ import { registrarPresentacion, abrirPresentacion, iniciarPresentacion, presenta
 
 Hooks.once("init", () => {
   Object.assign(CONFIG.Actor.dataModels, MODELOS);
-  CONFIG.Actor.typeLabels = { vampiro: "Vampiro", amenaza: "Amenaza", objeto: "TYPES.Actor.objeto" };
+  CONFIG.Actor.typeLabels = { vampiro: "TYPES.Actor.vampiro", amenaza: "TYPES.Actor.amenaza", objeto: "TYPES.Actor.objeto" };
   DocumentSheetConfig.registerSheet(Actor, ID, HojaAtaud, { types: ["vampiro"], makeDefault: true, label: "Eat the Reich · Ataúd" });
   DocumentSheetConfig.registerSheet(Actor, ID, HojaVampiro, { types: ["vampiro"], makeDefault: false, label: "Eat the Reich · Ficha clásica (rectangular, con edición)" });
   DocumentSheetConfig.registerSheet(Actor, ID, HojaAmenaza, { types: ["amenaza"], makeDefault: true, label: "Eat the Reich · Amenaza" });

@@ -137,7 +137,7 @@
     <div class="er-gesto">
       <span>Último gesto de resistencia:</span>
       <input type="text" name="system.ultimoGesto" value="{{system.ultimoGesto}}" aria-label="Último gesto de resistencia" {{disabled (not editable)}}>
-      <button type="button" class="er-boton er-boton-fuerte" data-action="gesto" {{disabled (not system.muerto)}} data-tooltip="Solo con las seis lesiones marcadas">8D6</button>
+      <button type="button" class="er-boton er-boton-fuerte" data-action="gesto" {{#if system.gestoHecho}}disabled{{else}}{{disabled (not system.muerto)}}{{/if}} data-tooltip="{{#if system.gestoHecho}}Ya hecho{{else}}Solo con las seis lesiones marcadas{{/if}}">8D6</button>
     </div>
   </section>
 

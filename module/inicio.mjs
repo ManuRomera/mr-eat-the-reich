@@ -33,7 +33,7 @@ export async function importarAventura({ confirmar = false } = {}) {
 }
 
 async function bienvenida() {
-  if (!game.user.isGM || game.settings.get(ID, "bienvenida") === game.system.version) return;
+  if (!game.users.activeGM?.isSelf || game.settings.get(ID, "bienvenida") === game.system.version) return;
   await game.settings.set(ID, "bienvenida", game.system.version);
   await ChatMessage.create({
     speaker: ChatMessage.getSpeaker({ alias: "Comandante Slate" }), whisper: [game.user.id],

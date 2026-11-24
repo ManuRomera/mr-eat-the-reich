@@ -166,7 +166,7 @@ body.er-sin-movimiento .er-tapa-giro { transform: rotate(-5deg) !important; }
    El forro pasa a noche; el color del personaje queda en cintas, bordes y fichas. Texto crema, marcas en rojo vivo. */
 body.er-oscuro :is(.er-forro, .mr-eat-the-reich.application.er-tirada-dlg .window-content) {
   --tinta-forro: #f1ead6;
-  background: radial-gradient(circle at 50% 18%, color-mix(in srgb, var(--forro) 26%, transparent), transparent 62%), repeating-linear-gradient(60deg, transparent 0 46px, rgba(255, 255, 255, .05) 46px 48px), repeating-linear-gradient(-60deg, transparent 0 46px, rgba(255, 255, 255, .05) 46px 48px), #10122a;
+  background: radial-gradient(circle at 50% 18%, color-mix(in oklab, var(--forro) 26%, transparent), transparent 62%), repeating-linear-gradient(60deg, transparent 0 46px, rgba(255, 255, 255, .05) 46px 48px), repeating-linear-gradient(-60deg, transparent 0 46px, rgba(255, 255, 255, .05) 46px 48px), #10122a;
 }
 body.er-oscuro :is(.er-forro, .er-dt) :is(.er-cinta, .er-nombre-cinta, .er-rango, .er-poder-nombre, .er-avisos-linea span) { background: var(--forro); color: #05060f; }
 body.er-oscuro :is(.er-forro, .er-dt) .er-pod.especial .er-poder-nombre { background: #ff5c7a; color: #05060f; }
@@ -247,7 +247,7 @@ body.er-oscuro .mr-eat-the-reich .er-forro .er-obj-boton:hover { color: var(--fo
 #er-tablon .er-diana-ficha small { display: block; font-size: 28px; letter-spacing: .14em; text-transform: uppercase; color: #f2c230; }
 #er-tablon .er-diana-ficha b { display: block; font-family: "ER Rotulo", "Arial Narrow", sans-serif; font-size: 92px; line-height: 1; text-transform: uppercase; margin: 4px 0 10px; }
 #er-tablon .er-diana-ficha p { margin: 0 0 12px; }
-#er-tablon .er-diana-ficha button { height: auto; width: auto; margin: 10px 18px 0 0; padding: 8px 26px 12px; border: 6px solid #f4ead6; border-radius: 0; background: transparent; color: #f4ead6; font-family: "ER Rotulo", "Arial Narrow", sans-serif; font-size: 46px; line-height: 1.1; text-transform: uppercase; letter-spacing: .06em; cursor: pointer; }
+#er-tablon .er-diana-ficha button:not([class*="fa-"]) { height: auto; width: auto; margin: 10px 18px 0 0; padding: 8px 26px 12px; border: 6px solid #f4ead6; border-radius: 0; background: transparent; color: #f4ead6; font-family: "ER Rotulo", "Arial Narrow", sans-serif; font-size: 46px; line-height: 1.1; text-transform: uppercase; letter-spacing: .06em; cursor: pointer; }
 #er-tablon .er-diana-ficha button[data-er="lanzar"] { background: #c8102e; border-color: #c8102e; color: #fff; font-size: 70px; transform: rotate(-2deg); box-shadow: 9px 9px 0 #f2c230; }
 #er-tablon .er-diana-ficha button[data-er="lanzar"] span { display: block; font-family: "ER Maquina", "Courier New", monospace; font-size: 28px; letter-spacing: .1em; }
 #er-tablon .er-diana-ficha button:hover, #er-tablon .er-diana-ficha button:focus-visible { outline: 8px solid #f2c230; outline-offset: 4px; }
@@ -285,7 +285,7 @@ body.er-temblor #board { animation: er-temblor .4s linear; }
 /* ── Tablón: quien dirige marca ahí quién juega y reinicia la partida ── */
 #er-tablon .er-tb-cab { display: flex; align-items: center; gap: 18px; }
 #er-tablon .er-tb-cab button, #er-tablon button.er-tb-fila { pointer-events: auto; cursor: pointer; }
-#er-tablon .er-tb-cab button { width: auto; height: auto; margin: 0; padding: 2px 20px 6px; border: 5px solid #17120c; border-radius: 0; background: transparent; box-shadow: none; color: #17120c; font-family: "ER Rotulo", "Arial Narrow", sans-serif; font-weight: 700; font-size: 36px; line-height: 1.15; letter-spacing: .08em; text-transform: uppercase; transform: rotate(1.5deg); }
+#er-tablon .er-tb-cab button:not([class*="fa-"]) { width: auto; height: auto; margin: 0; padding: 2px 20px 6px; border: 5px solid #17120c; border-radius: 0; background: transparent; box-shadow: none; color: #17120c; font-family: "ER Rotulo", "Arial Narrow", sans-serif; font-weight: 700; font-size: 36px; line-height: 1.15; letter-spacing: .08em; text-transform: uppercase; transform: rotate(1.5deg); }
 #er-tablon .er-tb-cab button[data-tb="elegir"] { margin-left: auto; }
 #er-tablon .er-tb-cab button[aria-pressed="true"] { background: #17120c; color: #f2c230; }
 #er-tablon .er-tb-cab button[data-tb="reiniciar"] { border-color: #8b0018; background: #8b0018; color: #fff; transform: rotate(-2deg); box-shadow: 6px 6px 0 #17120c; }
@@ -322,13 +322,13 @@ body.er-temblor #board { animation: er-temblor .4s linear; }
 .mr-eat-the-reich .er-dt .er-dt-bloque > .er-cinta::after { content: ""; position: absolute; left: -4px; right: -8px; bottom: -2px; height: 9px; background: currentColor;
   -webkit-mask: var(--pk-tacha) center / 100% 100% no-repeat; mask: var(--pk-tacha) center / 100% 100% no-repeat; }
 .mr-eat-the-reich .er-dt .er-dt-bloque select, .mr-eat-the-reich .er-dt .er-dt-extra input, .mr-eat-the-reich .er-dt .er-dt-bloque input:is([type="text"], [type="number"]) { background: transparent !important; box-shadow: none !important; color: inherit !important; border-bottom-color: currentColor !important; }
-.mr-eat-the-reich .er-dt label.er-dt-op { position: relative; margin: 0; padding: 8px 4px 8px 52px; transform: none; background: none !important; color: inherit !important; border: 0 !important; border-bottom: 2px dashed color-mix(in srgb, currentColor 32%, transparent) !important; }
+.mr-eat-the-reich .er-dt label.er-dt-op { position: relative; margin: 0; padding: 8px 4px 8px 52px; transform: none; background: none !important; color: inherit !important; border: 0 !important; border-bottom: 2px dashed color-mix(in oklab, currentColor 32%, transparent) !important; }
 .mr-eat-the-reich .er-dt label.er-dt-op input { position: absolute; opacity: 0; width: 0; height: 0; margin: 0; }
 .mr-eat-the-reich .er-dt label.er-dt-op::before { content: ""; position: absolute; left: 8px; top: 50%; width: 30px; height: 30px; margin-top: -15px; transform: rotate(-4deg); background: currentColor; -webkit-mask: var(--pk-caja) center / 100% 100% no-repeat; mask: var(--pk-caja) center / 100% 100% no-repeat; }
 .mr-eat-the-reich .er-dt label.er-dt-op:nth-child(2n)::before { transform: rotate(5deg); }
 .mr-eat-the-reich .er-dt label.er-dt-op:has(input:checked)::after { content: ""; position: absolute; left: -4px; top: 50%; width: 56px; height: 54px; margin-top: -28px; transform: rotate(-6deg); pointer-events: none; background: #a3001b; -webkit-mask: var(--pk-x1) center / 100% 100% no-repeat; mask: var(--pk-x1) center / 100% 100% no-repeat; }
 .mr-eat-the-reich .er-dt label.er-dt-op:nth-child(2n):has(input:checked)::after { transform: rotate(7deg); -webkit-mask-image: var(--pk-x2); mask-image: var(--pk-x2); }
-.mr-eat-the-reich .er-dt label.er-dt-op:has(input:checked) b { background: linear-gradient(transparent 58%, color-mix(in srgb, currentColor 22%, transparent) 58%); }
+.mr-eat-the-reich .er-dt label.er-dt-op:has(input:checked) b { background: linear-gradient(transparent 58%, color-mix(in oklab, currentColor 22%, transparent) 58%); }
 .mr-eat-the-reich .er-dt label.er-dt-op:hover b { text-decoration: underline dotted; text-underline-offset: 4px; }
 .mr-eat-the-reich .er-dt label.er-dt-op:has(input:focus-visible) { outline: 3px solid currentColor; outline-offset: 2px; }
 .mr-eat-the-reich .er-dt label.er-dt-op:has(input:disabled) { opacity: .4; }
@@ -344,4 +344,4 @@ body.er-oscuro .mr-eat-the-reich .er-dt label.er-dt-atr:has(input:checked)::afte
 .mr-eat-the-reich .er-forro .er-obj-boton { display: inline; cursor: pointer; }
 .mr-eat-the-reich .er-forro .er-obj-boton:focus-visible { outline: 3px solid currentColor; outline-offset: 2px; }
 .er-forro .er-lesion { display: inline; }
-.er-forro { overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; scrollbar-color: color-mix(in srgb, currentColor 45%, transparent) transparent; }
+.er-forro { overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; scrollbar-color: color-mix(in oklab, currentColor 45%, transparent) transparent; }

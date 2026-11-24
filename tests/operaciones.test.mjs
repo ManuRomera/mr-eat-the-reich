@@ -13,6 +13,8 @@ globalThis.foundry = {
     mergeObject: (a, b) => ({ ...a, ...b }) }
 };
 globalThis.Hooks = { on() {}, once() {}, callAll() {} };
+const avisos = [];
+globalThis.ui = { notifications: { warn: m => avisos.push(m), info() {} } };
 globalThis.CONFIG = { Dice: { randomUniform: () => 0.5 }, sounds: {} };
 const mensajes = new Map();
 const actor = {
@@ -28,9 +30,9 @@ globalThis.game = {
   messages: { get: id => mensajes.get(id) }, dice3d: null, socket: { emit() {}, on() {} },
   settings: { get: (_, k) => (k === "derribo" ? 3 : ajustes[k]), set: async (_, k, v) => { ajustes[k] = structuredClone(v); } }
 };
-const { ID, MISION_INICIAL, mision, pedir } = await import("../module/mesa.mjs");
+const { ID, MISION_INICIAL, mision, pedir, cambiarMision } = await import("../module/mesa.mjs");
 ajustes.mision = structuredClone(MISION_INICIAL);
-const { escucharTiradas } = await import("../module/tirada.mjs");
+const { escucharTiradas, dialogoTirada, tirar } = await import("../module/tirada.mjs");
 escucharTiradas();
 
 const crear = (t, id = "m1") => {
@@ -121,4 +123,92 @@ test("cerrar: cero éxitos del GM sube su Ataque; defendido del todo no hiere", 
   crear(tirada({ defensa: 3 }));
   await op("cerrar", { mensaje: "m1" });
   assert.ok(actor.system.lesiones.flat().every(l => !l.marcada));
+});
+
+test("rescatar a un derribado lo devuelve al combate, sin premio de secundario", async () => {
+  actor.system.derribado = true;
+  ajustes.mision = { ...structuredClone(MISION_INICIAL), amenazas: [], objetivos: [{ id: "r1", nombre: "Rescatar a Iryna", valor: 1, max: 3, desafio: 0, secundario: true, premio: "Iryna vuelve al combate.", rescate: "a1" }] };
+  const m = crear(tirada());
+  await op("asignar", { mensaje: "m1", i: 0, tipo: "objetivo", id: "r1" });
+  assert.equal(actor.system.derribado, false);
+  assert.match(m.flags[ID].tirada.dados[0].destino.texto, /Rescatado/);
+  assert.doesNotMatch(m.flags[ID].tirada.dados[0].destino.texto, /recompensa/);
+});
+
+test("un derribado no tira: está fuera de combate hasta que lo rescaten", async () => {
+  actor.system.derribado = true; avisos.length = 0;
+  await dialogoTirada(actor);
+  assert.match(avisos[0], /derribado/);
+  actor.system.derribado = false;
+});
+
+test("Rust-Witch: contra ella solo valen el 5 y el 6, aunque la tirada se hiciera contra otra amenaza", async () => {
+  ajustes.mision = { ...structuredClone(MISION_INICIAL), objetivos: [], amenazas: [amenaza({ id: "rw", nombre: "Rust-Witch", umbral: 5, desafio: 0 })] };
+  crear(tirada());
+  await op("asignar", { mensaje: "m1", i: 2, tipo: "amenaza", id: "rw" });          // un 4
+  assert.equal(mision().amenazas[0].valor, 6);
+  await op("asignar", { mensaje: "m1", i: 1, tipo: "amenaza", id: "rw" });          // un 5
+  assert.equal(mision().amenazas[0].valor, 5);
+});
+
+test("con una lesión que impide los ESPECIALES no se puede gastar ni «otro especial»", async () => {
+  const m = crear(tirada({ sinEspeciales: true, especiales: [] }));
+  await op("asignar", { mensaje: "m1", i: 0, tipo: "especial", nombre: "" });
+  assert.equal(m.flags[ID].tirada.dados[0].destino, null);
+});
+
+test("último gesto: solo Objetivos y Amenazas; ni sangre, ni defensa, ni especiales que curen", async () => {
+  ajustes.mision = { ...structuredClone(MISION_INICIAL), objetivos: [], amenazas: [amenaza({ desafio: 0 })] };
+  const curar = { nombre: "Regeneración de pesadilla", texto: "Elimina una lesión marcada." }, tiro = { nombre: "Tiro", texto: "x" };
+  const m = crear(tirada({ ultimo: true, especiales: [curar, tiro], gm: { caras: [], exitos: 0, amenaza: "", nombre: "", garras: false, otras: 0 } }));
+  await op("asignar", { mensaje: "m1", i: 0, tipo: "sangre" });
+  await op("asignar", { mensaje: "m1", i: 0, tipo: "especial", nombre: curar.nombre });
+  assert.equal(m.flags[ID].tirada.dados[0].destino, null);
+  await op("asignar", { mensaje: "m1", i: 0, tipo: "especial", nombre: "Tiro" });
+  assert.match(m.flags[ID].tirada.dados[0].destino.texto, /Tiro/);
+  await op("asignar", { mensaje: "m1", i: 1, tipo: "amenaza", id: "x1" });
+  assert.equal(mision().amenazas[0].valor, 5);
+});
+
+test("el último gesto solo con las seis lesiones y una vez", async () => {
+  avisos.length = 0; actor.system.muerto = false;
+  await tirar(actor, { ultimo: true });   // sin la guarda intentaría crear un mensaje de chat (no existe aquí) y fallaría
+  assert.match(avisos[0], /aún no ha caído/);
+  actor.system.muerto = true; actor.system.gestoHecho = true;
+  await tirar(actor, { ultimo: true });
+  assert.match(avisos[1], /ya ha hecho su último gesto/);
+  actor.system.muerto = false; actor.system.gestoHecho = false;
+});
+
+test("flashback: la reserva es la original más 2, sin contar los dados de bonificación", async () => {
+  actor.system.flashback = false;
+  const m = crear(tirada({ dados: [{ c: 2, origen: "", destino: null }, { c: 1, origen: "", destino: null }, { c: 3, origen: "", destino: null }, { c: 3, origen: "Rifle", destino: null }] }));
+  await op("flashback", { mensaje: "m1" });
+  assert.equal(m.flags[ID].tirada.dados.length, 5);
+});
+
+test("Chocar y arder: el especial de los motoristas les quita 3", async () => {
+  ajustes.mision = { ...structuredClone(MISION_INICIAL), objetivos: [], amenazas: [amenaza({ id: "mo", clave: "motoristas", nombre: "Escuadrón de motoristas", valor: 10, desafio: 0 })] };
+  crear(tirada({ especiales: [{ nombre: "Chocar y arder", texto: "Inflige 3 de daño al escuadrón de motoristas.", golpe: 3 }] }));
+  await op("asignar", { mensaje: "m1", i: 0, tipo: "especial", nombre: "Chocar y arder" });
+  assert.equal(mision().amenazas[0].valor, 7);
+});
+
+test("beber sangre sigue disponible si la última amenaza cae en esa misma acción", async () => {
+  ajustes.mision = { ...structuredClone(MISION_INICIAL), objetivos: [], amenazas: [amenaza({ valor: 1, desafio: 0 })] };
+  const m = crear(tirada({ conSangre: true }));
+  await op("asignar", { mensaje: "m1", i: 1, tipo: "amenaza", id: "x1" });          // cae
+  const antes = actor.system.sangre;
+  await op("asignar", { mensaje: "m1", i: 2, tipo: "sangre" });
+  assert.equal(actor.system.sangre, antes + 1);
+  assert.equal(m.flags[ID].tirada.dados[2].destino.tipo, "sangre");
+});
+
+test("dos cambios de misión a la vez no se pisan", async () => {
+  ajustes.mision = { ...structuredClone(MISION_INICIAL), ronda: 1 };
+  await Promise.all([
+    cambiarMision(async m => { await new Promise(r => setTimeout(r, 20)); m.ronda += 1; }),
+    cambiarMision(async m => { m.ronda += 10; })
+  ]);
+  assert.equal(mision().ronda, 12);
 });

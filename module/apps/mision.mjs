@@ -31,7 +31,7 @@ async function aviso(titulo, html) {
   return ChatMessage.create({ speaker: ChatMessage.getSpeaker({ alias: "F.A.N.G." }), content: `<div class="er-tc er-parte"><header class="er-tc-cab"><div><strong>${esc(titulo)}</strong></div></header>${html}</div>` });
 }
 
-export async function cargarLocalizacion(clave) {
+export async function cargarLocalizacion(clave, { caida = false } = {}) {
   const l = LOCALIZACIONES.find(x => x.clave === clave);
   if (!l || !game.user.isGM) return;
   await cambiarMision(m => {
@@ -44,7 +44,7 @@ export async function cargarLocalizacion(clave) {
     for (const f of m.amenazas) veces[f.nombre] = (veces[f.nombre] ?? 0) + 1;
     for (const f of m.amenazas) if (veces[f.nombre] > 1) { const base = f.nombre; van[base] = (van[base] ?? 0) + 1; f.nombre = `${base} ${van[base]}`; }
   });
-  await aviso(`Sector ${l.sector} · ${l.nombre}`, `<p>${esc(l.resumen)}</p><p><b>Objetivo:</b> ${esc(l.objetivo.nombre)} (${l.objetivo.valor}${l.objetivo.desafio ? `, Desafío ${l.objetivo.desafio}` : ""})</p>${l.botin.length ? `<p><b>Botín a la vista:</b> ${l.botin.map(esc).join(" · ")}</p>` : ""}<p class="er-tc-nota">Manual, p. ${l.pagina}.</p>`);
+  await aviso(`Sector ${l.sector} · ${l.nombre}`, `<p>${esc(l.resumen)}</p><p><b>Objetivo:</b> ${esc(l.objetivo.nombre)} (${l.objetivo.valor}${l.objetivo.desafio ? `, Desafío ${l.objetivo.desafio}` : ""})</p>${l.botin.length ? `<p><b>Botín a la vista:</b> ${l.botin.map(esc).join(" · ")}</p>` : ""}<p class="er-tc-nota">Manual, p. ${l.pagina}.</p>${caida ? `<p class="er-tc-nota"><b>Caída:</b> el manual (p. 42) manda subir de 2 a 4 las calificaciones de los Objetivos de esta escena para que cada vampiro haga su entrada. Ajústalas en el Panel de misión.</p>` : ""}`);
 }
 
 export async function finDeRonda() {
@@ -124,7 +124,7 @@ export class PanelMision extends ConMemoria(HandlebarsApplicationMixin(Applicati
       catalogo: [...AMENAZAS.map(a => ({ v: a.clave, n: `${a.nombre} (${a.valor}/${a.ataque})` })), ...mundo.map(a => ({ v: a.uuid, n: `${a.name} · del mundo` }))],
       vampiros: escuadron().map(v => ({ id: v.id, nombre: v.name, img: v.img, sangre: v.system.sangre, actuo: m.actuaron.includes(v.id), turno: m.turno === v.id, fuera: m.fuera.includes(v.id), derribado: v.system.derribado, muerto: v.system.muerto })),
       // Quién puede tirar desde aquí: los jugadores, con sus vampiros en escena; quien dirige, con el que tiene el turno.
-      tiradores: escuadron().filter(v => !v.system.muerto && !m.fuera.includes(v.id) && (game.user.isGM ? m.turno === v.id : v.isOwner)).map(v => ({ id: v.id, nombre: v.name, turno: m.turno === v.id })),
+      tiradores: escuadron().filter(v => !v.system.muerto && !v.system.derribado && !m.fuera.includes(v.id) && (game.user.isGM ? m.turno === v.id : v.isOwner)).map(v => ({ id: v.id, nombre: v.name, turno: m.turno === v.id })),
       enTurno: game.actors.get(m.turno)?.name ?? "",
       todos: vampiros().map(v => ({ id: v.id, nombre: v.name, juega: !m.banquillo.includes(v.id) })),
       rondaHecha: escuadron().filter(v => !v.system.muerto && !v.system.derribado && !m.fuera.includes(v.id)).every(v => m.actuaron.includes(v.id))

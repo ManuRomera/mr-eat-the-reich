@@ -30,6 +30,7 @@ export async function dialogoTirada(actor, atributo = "", libre = false) {
   if (!actor?.isOwner) return;
   const s = actor.system, m = mision(), bloq = new Set(s.bloqueos);
   if (s.muerto) return ui.notifications.warn(`${actor.name} ha caído. Solo queda su último gesto.`);
+  if (s.derribado) return ui.notifications.warn(`${actor.name} está derribado: fuera de combate hasta que otro vampiro lo rescate.`);
   const opcion = (name, titulo, detalle, dados, off = false) => `<label class="er-dt-op"><input type="checkbox" name="${name}" data-dados="${dados}" ${off ? "disabled" : ""}><span><b>${esc(titulo)}</b><small>${esc(detalle)}</small></span></label>`;
   const vivas = R.activas(m.amenazas);
   const mayor = R.reservaAtaque(m.amenazas).amenaza;
@@ -37,7 +38,7 @@ export async function dialogoTirada(actor, atributo = "", libre = false) {
   const fichas = [...Object.entries(ATRIBUTOS).map(([k, n]) => [k, n, s.efectivos[k]]), ["", "Otra cosa", 2]]
     .map(([k, n, v]) => `<label class="er-chip er-dt-atr${k ? "" : " libre"}"><input type="radio" name="atributo" value="${k}" data-dados="${v}" ${k === elegido ? "checked" : ""}><span>${n}</span><b>${v}</b></label>`).join("");
   const objetos = s.equipo.map((e, i) => (!e.dado ? "" : opcion(`eq.${i}`, e.nombre, `${e.usos}/${e.max} usos${e.usos === 1 && e.max > 1 ? " · último uso: explota, +1 dado" : ""}${e.bono ? ` · ${mas(e.bono)}${e.req}` : ""}`, R.dadosObjeto(e), e.usos < 1))).join("");
-  const botin = s.botin.nombre ? opcion("botin", `Botín: ${s.botin.nombre}`, `${s.botin.usos}/${s.botin.max} usos${s.botin.bono ? ` · ${mas(s.botin.bono)}${s.botin.req}` : ""}`, R.dadosObjeto(s.botin), s.botin.usos < 1) : "";
+  const botin = s.botin.nombre ? opcion("botin", `Botín: ${s.botin.nombre}`, `${s.botin.usos}/${s.botin.max} usos${s.botin.usos === 1 && s.botin.max > 1 ? " · último uso: explota, +1 dado" : ""}${s.botin.bono ? ` · ${mas(s.botin.bono)}${s.botin.req}` : ""}`, R.dadosObjeto(s.botin), s.botin.usos < 1) : "";
   const poderes = (lista, pre) => lista.map((h, i) => (h.tipo !== "sangre" || !h.activa ? "" : opcion(`${pre}.${i}`, h.nombre, `${h.coste} de Sangre${h.bono ? ` · ${mas(h.bono)}${h.req}` : ""}`, 1, bloq.has("gastar") || s.sangre < h.coste))).join("");
   const habs = poderes(s.habilidades, "hab") + poderes(s.mejoras, "mej");
   const avisos = [...bloq].map(b => `<span>${esc(BLOQUEOS[b] ?? b)}</span>`).join("");
@@ -81,6 +82,7 @@ export async function dialogoTirada(actor, atributo = "", libre = false) {
 
 export async function tirar(actor, { atributo = "", amenaza = "", equipo = [], botin = false, habilidades = [], mejoras = [], extra = 0, ultimo = false } = {}) {
   const dato = actor.toObject().system, s = actor.system, bloq = new Set(s.bloqueos);
+  if (ultimo && (!s.muerto || s.gestoHecho)) return ui.notifications.warn(s.gestoHecho ? `${actor.name} ya ha hecho su último gesto.` : `${actor.name} aún no ha caído: el último gesto es con las seis lesiones marcadas.`);
   const cambios = {}, usados = [], bonos = [], notas = [];
   let n = ultimo ? R.DADOS_ULTIMO_GESTO : (atributo ? s.efectivos[atributo] : 2) + extra, sangre = s.sangre;
 
@@ -112,11 +114,15 @@ export async function tirar(actor, { atributo = "", amenaza = "", equipo = [], b
   const rG = vestir(ataque.dados ? await new Roll(`${ataque.dados}d6`).evaluate() : null, null);
   const carasGM = rG ? caras(rG) : [];
   const especiales = bloq.has("especiales") ? [] : [...dato.habilidades, ...dato.mejoras.filter(h => h.activa)].filter(h => h.tipo === "especial").map(h => ({ nombre: h.nombre, texto: h.texto }));
+  // Escuadrón motorizado (manual p. 61): mientras se enfrentan a ellos, todos los vampiros tienen el ESPECIAL «Chocar y arder».
+  if (!bloq.has("especiales") && !ultimo && m.amenazas.some(a => a.clave === "motoristas" && a.valor > 0)) especiales.push({ nombre: "Chocar y arder", texto: "Inflige 3 de daño al escuadrón de motoristas.", golpe: 3 });
+  // Si había sangre nazi a la vista al empezar, se puede beber aunque la última amenaza caiga en esta misma acción.
+  const vivasAlTirar = m.amenazas.filter(a => a.valor > 0), conSangre = vivasAlTirar.length > 0 && !vivasAlTirar.every(a => a.sinSangre);
   const tirada = {
     actor: actor.id, ultimo, atributo: ultimo ? `Último gesto: ${s.ultimoGesto}` : (ATRIBUTOS[atributo] ?? "Sin atributo"),
     umbral: ataque.amenaza?.umbral ?? 4, dados: caras(rJ).map(c => ({ c, origen: "", destino: null })),
     gm: { caras: carasGM, exitos: R.exitosGM(carasGM, { anatema: ataque.amenaza?.anatema }), amenaza: ataque.amenaza?.id ?? "", nombre: ataque.amenaza?.nombre ?? "", garras: Boolean(ataque.amenaza?.garras), otras: Math.max(0, R.activas(m.amenazas).length - 1) },
-    usados, bonos: bloq.has("bonos") ? [] : bonos, sinBonos: bloq.has("bonos") && bonos.length > 0, especiales, sinBeber: bloq.has("beber"),
+    usados, bonos: bloq.has("bonos") ? [] : bonos, sinBonos: bloq.has("bonos") && bonos.length > 0, especiales, sinEspeciales: bloq.has("especiales"), sinBeber: bloq.has("beber"), conSangre,
     defensa: 0, absorbido: {}, notas, flashback: null, cerrada: false, resultado: null
   };
   await actor.update(cambios);
@@ -145,18 +151,27 @@ function manoDe(mensaje, t) {
   return libres.includes(elegido) ? elegido : libres[0] ?? -1;
 }
 
-/** Dónde puede ir un éxito (manual, p. 31): un Objetivo, una Amenaza, defenderse, beber sangre o, con un 6, un ESPECIAL. */
+/** Un ESPECIAL que cura heridas (el manual, p. 36, no deja usarlo en un último gesto). */
+const curaHeridas = e => /elimina una lesi|cura|regenera|sana/i.test(`${e.nombre} ${e.texto}`);
+
+/**
+ * Dónde puede ir un éxito (manual, p. 31): un Objetivo, una Amenaza, defenderse, beber sangre o, con un 6, un ESPECIAL.
+ * Un último gesto (p. 36) solo se aplica a Objetivos y Amenazas (y a ESPECIALES que no curen). Contra una amenaza con umbral
+ * (Rust-Witch: solo valen el 5 y el 6) un dado más bajo no cuenta aunque la tirada tenga otro umbral.
+ */
 function destinos(t, i) {
   const m = mision(), d = t.dados[i], ex = R.exitosDado(d.c, t.umbral), quedan = Math.max(0, t.gm.exitos - t.defensa);
   const vivas = m.amenazas.filter(a => a.valor > 0);
   const soloSinSangre = vivas.length > 0 && vivas.every(a => a.sinSangre);
+  const hayAlimento = t.conSangre ?? (vivas.length > 0 && !soloSinSangre);
   const reto = o => (o.desafio ? `Desafío ${o.desafio}` : "");
+  const especiales = t.sinEspeciales || d.c !== 6 ? [] : t.especiales.filter(e => !(t.ultimo && curaHeridas(e)));
   return [
-    ...m.objetivos.filter(o => o.valor > 0).map(o => ({ tipo: "objetivo", id: o.id, texto: o.nombre, cifra: o.valor, nota: [o.secundario ? "secundario" : "", reto(o)].filter(Boolean).join(" · ") })),
-    ...vivas.map(a => ({ tipo: "amenaza", id: a.id, texto: a.nombre, cifra: a.valor, nota: reto(a) })),
-    ...(quedan ? [{ tipo: "defensa", texto: "Defenderte", cifra: quedan, nota: quedan === 1 ? "ataque por parar" : "ataques por parar" }] : []),
-    ...(t.sinBeber || soloSinSangre || !vivas.length ? [] : [{ tipo: "sangre", texto: "Beber sangre", cifra: `+${ex}` }]),
-    ...(d.c === 6 ? [...t.especiales.map(e => ({ tipo: "especial", nombre: e.nombre, texto: e.nombre, nota: "especial", ayuda: e.texto })), { tipo: "especial", nombre: "", texto: "Otro especial" }] : [])
+    ...m.objetivos.filter(o => o.valor > 0).map(o => ({ tipo: "objetivo", id: o.id, texto: o.nombre, cifra: o.valor, nota: [o.rescate ? "rescate" : o.secundario ? "secundario" : "", reto(o)].filter(Boolean).join(" · ") })),
+    ...vivas.filter(a => d.c >= (a.umbral ?? 4)).map(a => ({ tipo: "amenaza", id: a.id, texto: a.nombre, cifra: a.valor, nota: reto(a) })),
+    ...(quedan && !t.ultimo ? [{ tipo: "defensa", texto: "Defenderte", cifra: quedan, nota: quedan === 1 ? "ataque por parar" : "ataques por parar" }] : []),
+    ...(t.sinBeber || t.ultimo || !hayAlimento ? [] : [{ tipo: "sangre", texto: "Beber sangre", cifra: `+${ex}` }]),
+    ...(d.c === 6 && !t.sinEspeciales ? [...especiales.map(e => ({ tipo: "especial", nombre: e.nombre, texto: e.nombre, nota: "especial", ayuda: e.texto })), ...(t.ultimo ? [] : [{ tipo: "especial", nombre: "", texto: "Otro especial" }])] : [])
   ];
 }
 
@@ -256,11 +271,14 @@ export function escucharTiradas() {
     if (!d || d.destino) return;
     const ex = R.exitosDado(d.c, t.umbral);
     if (!ex) return;
-    let texto = "", nombre = datos.nombre;
+    let texto = "", nombre = datos.nombre, rescatado = "";
+    if (datos.tipo === "especial" && t.sinEspeciales) return;      // la lesión impide usar ESPECIALES
+    if (t.ultimo && ["defensa", "sangre"].includes(datos.tipo)) return;   // el último gesto solo va a Objetivos y Amenazas (p. 36)
     if (datos.tipo === "objetivo" || datos.tipo === "amenaza") {
       await cambiarMision(m => {
         const o = (datos.tipo === "objetivo" ? m.objetivos : m.amenazas).find(x => x.id === datos.id);
         if (!o || o.valor <= 0) return;
+        if (datos.tipo === "amenaza" && d.c < (o.umbral ?? 4)) return;   // Aura de desgracia: contra ella solo valen el 5 y el 6
         const r = R.aplicarExitos(o, ex, t.absorbido[o.id] ?? 0);
         t.absorbido[o.id] = r.absorbido;
         o.valor = r.valor;
@@ -268,10 +286,12 @@ export function escucharTiradas() {
         texto = `${o.nombre}: ${r.absorbe ? `el Desafío absorbe ${r.absorbe}; ` : ""}${ex - r.absorbe ? `−${ex - r.absorbe} → ${o.valor}` : "sin efecto"}`;
         if (o.valor === 0) {
           if (datos.tipo === "amenaza") { o.ataque = 0; if (o.uber && !m.caidos.includes(o.nombre)) m.caidos.push(o.nombre); texto += o.revive ? ". ¡Rechazada! (volverá con refuerzos)" : ". ¡Destruida!"; }
+          else if (o.rescate) { rescatado = o.rescate; texto += `. ¡Rescatado! ${o.premio || "Vuelve al combate."}`; sonar("objetivo"); }
           else { texto += o.secundario ? ". ¡Secundario cumplido! Elige recompensa." : ". ¡Objetivo cumplido!"; sonar("objetivo"); }
         }
       });
       if (!texto) return;
+      if (rescatado) await game.actors.get(rescatado)?.update({ "system.derribado": false });   // rescatarlo lo devuelve al combate, sin más premio
     } else if (datos.tipo === "defensa") {
       t.defensa += ex; nombre = "Defensa"; texto = `Se defiende: −${ex} ataque${ex > 1 ? "s" : ""}`;
     } else if (datos.tipo === "sangre") {
@@ -280,7 +300,18 @@ export function escucharTiradas() {
       nombre = "Sangre"; texto = `Bebe sangre: +${ahora - antes} (tiene ${ahora})`; sonar("sangre", 0.6);
     } else if (datos.tipo === "especial" && d.c === 6) {
       const e = t.especiales.find(x => x.nombre === datos.nombre);
+      if (t.ultimo && (!e || curaHeridas(e))) return;
       nombre = e?.nombre || "ESPECIAL"; texto = e ? `ESPECIAL · ${e.nombre}: ${e.texto}` : "ESPECIAL (aplicadlo en el Panel de misión)";
+      if (e?.golpe) {   // Chocar y arder: 3 de daño al escuadrón de motoristas
+        await cambiarMision(m => {
+          const o = m.amenazas.find(x => x.clave === "motoristas" && x.valor > 0);
+          if (!o) { texto += " (no hay motoristas a la vista)"; return; }
+          const r = R.aplicarExitos(o, e.golpe, t.absorbido[o.id] ?? 0);
+          t.absorbido[o.id] = r.absorbido; o.valor = r.valor;
+          if (o.valor === 0) o.ataque = 0;
+          texto += `: ${o.nombre} −${e.golpe - r.absorbe} → ${o.valor}`;
+        });
+      }
     } else return;
     d.destino = { tipo: datos.tipo, nombre, texto };
     await guardar(msg, t);
@@ -303,7 +334,8 @@ export function escucharTiradas() {
     if (!t || t.flashback || actor.system.flashback || t.dados.some(d => d.destino) || R.totalExitos(t.dados.map(d => d.c), t.umbral) > 2) return;
     const otros = escuadron().filter(v => v.id !== actor.id && !v.system.muerto);
     const quienSale = otros.length ? otros[Math.floor(Math.random() * otros.length)].name : "alguien de F.A.N.G.";
-    const roll = vestir(await new Roll(`${t.dados.length + 2}d6`).evaluate(), actor);
+    // «Agrega 2 dados a tu reserva» (p. 41): la reserva original, sin los dados de bonificación que ya se hubieran tirado.
+    const roll = vestir(await new Roll(`${t.dados.filter(d => !d.origen).length + 2}d6`).evaluate(), actor);
     mostrar3d(roll, quien);
     t.flashback = { contexto: FLASHBACK.contexto[(await d6()) - 1], pregunta: FLASHBACK.preguntas[(await d6()) - 1].replace("[personaje]", quienSale) };
     t.dados = caras(roll).map(c => ({ c, origen: "", destino: null }));

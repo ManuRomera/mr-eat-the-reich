@@ -87,8 +87,14 @@ export class HojaVampiro extends HojaBase {
   /** Pulsar una casilla libre gasta un uso; pulsar una tachada lo devuelve. La gris (el último uso) es la última en gastarse. */
   static #uso(ev, b) {
     if (!this.isEditable) return;
-    const ruta = b.dataset.objeto, o = foundry.utils.getProperty(this.document.system, ruta);
-    return this.cambiar(`${ruta}.usos`, Math.min(o.max, Math.max(0, o.usos + (b.classList.contains("llena") ? -1 : 1))));
+    const ruta = b.dataset.objeto, o = foundry.utils.getProperty(this.document.system, ruta), gasta = b.classList.contains("llena");
+    const usos = Math.min(o.max, Math.max(0, o.usos + (gasta ? -1 : 1)));
+    // «Marca un uso para obtener N de Sangre» (los Cigarrillos de Iryna): al tachar un uso, la Sangre sube sola.
+    const sangre = gasta && o.usos > 0 && !o.dado ? Number(/obtener (\d+) de Sangre/i.exec(o.nota ?? "")?.[1]) || 0 : 0;
+    if (!sangre) return this.cambiar(`${ruta}.usos`, usos);
+    const ahora = Math.min(SANGRE_MAX, this.document.system.sangre + sangre);
+    ui.notifications.info(`${o.nombre}: +${ahora - this.document.system.sangre} de Sangre.`);
+    return this.document.update({ [`system.${ruta}.usos`]: usos, "system.sangre": ahora });
   }
   static #lesion(ev, b) {
     if (!this.isEditable) return;

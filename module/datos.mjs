@@ -72,7 +72,7 @@ export const VAMPIROS = [
       hab("Negro absoluto", "sangre", "Sumes la zona en una oscuridad en la que solo tú ves.", { bono: 2, req: "emboscada" })
     ],
     lesiones: [
-      les("Aturdida", "Disparo en la cabeza"),
+      les("Aturdida", "Disparo en la cabeza", "No puedes usar ESPECIALES", { bloqueo: "especiales" }),
       les("Solo un roce", "Desangrada", "Gastas 1 de Sangre al empezar tu turno", { bloqueo: "sangria" }),
       les("Mano herida", "Brazo mutilado", "Solo puedes usar un objeto por turno", { bloqueo: "unObjeto" })
     ],
@@ -94,7 +94,7 @@ export const VAMPIROS = [
     mejoras: [
       hab("Memoria pútrida", "sangre", "Quitas o implantas recuerdos a alguien a quien miras fijamente.", { bono: 1, req: "nunca estuviste aquí" }),
       hab("Explosión mortífera", "sangre", "Maldices a un nazi cercano: estalla al morir.", { bono: 2, req: "espacios cerrados" }),
-      hab("Suerte de muerto", "pasiva", "Después de tirar y antes de descartar, quita éxitos de ataque del GM según tus dados (ver la ficha del manual).")
+      hab("Suerte de muerto", "pasiva", "Después de tirar y antes de descartar, quita 1 éxito de ataque del GM por cada «1» que hayas sacado.")
     ],
     lesiones: [
       les("Dedos cercenados", "Brazo arrancado", "−1 a todos los atributos", { mod: TODOS(-1) }),
